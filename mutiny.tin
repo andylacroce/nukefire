@@ -8,6 +8,7 @@
 #nop ------------------ CORE VARIABLES ------------------
 #nop Keep variables first; actions/aliases depend on these.
 #VARIABLE {me} {Mutiny}
+#VARIABLE {password} {REDACTED_PASSWORD}
 #VARIABLE {lvl} {}
 #VARIABLE {dest} {}
 #VARIABLE {trackee} {}
@@ -149,6 +150,6 @@
 #split
 #session nukefire tdome.nukefire.org 4000
 #action {What's your name, freejack?} {$me}
-#action {Password:} {REDACTED_PASSWORD}
+#action {Password:} {$password}
 #action {*** PRESS RETURN:} {#send {}}
 #action {Make your choice:} {1}
