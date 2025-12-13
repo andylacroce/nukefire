@@ -17,7 +17,7 @@
 #nop ------------------ LOGGING ------------------
 #var LOGDIR nukefire\logs
 #var LOGFILE {$LOGDIR}\nukefire_mutiny_%Y-%m-%d_%H-%M-%S.log
-#log on {$LOGFILE}
+#log append {$LOGFILE}
 
 #nop ------------------ MOVEMENT / TRACKING ------------------
 #ACTION {Remaining directions: %1} {#variable dest %1}
