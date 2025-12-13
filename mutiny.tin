@@ -15,10 +15,8 @@
 #VARIABLE {container} {satchel}
 
 #nop ------------------ LOGGING ------------------
-#var LOGDIR {logs}
-#var LOGFILE {$LOGDIR/nukefire_mutiny_%t.log}
-#system {mkdir $LOGDIR}
-#log append {$LOGFILE}
+#format {LOGTIME} {%t} {%Y-%m-%d_%H-%M-%S}
+#VARIABLE LOGFILE {nukefire/logs/nukefire_mutiny_$LOGTIME.log}
 
 #nop ------------------ MOVEMENT / TRACKING ------------------
 #ACTION {Remaining directions: %1} {#variable dest %1}
@@ -154,6 +152,8 @@
 
 #nop ------------------ AUTOSTART ------------------
 #session nukefire tdome.nukefire.org 4000
+#config {LOG} {PLAIN}
+#log append {$LOGFILE}
 #action {What's your name, freejack?} {$me}
 #action {Password:} {$password}
 #action {*** PRESS RETURN:} {#send {}}
