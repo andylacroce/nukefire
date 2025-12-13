@@ -127,7 +127,7 @@
 #nop AUTOLOOT
 #nop Keep autoloot include and control aliases together.
 #nop =========================
-#read {autoloot.tin}
+#read {nukefire/autoloot.tin}
 #var {autoloot_on} {1}
 #alias {aloot_on} {
     #read {nukefire/autoloot.tin};
