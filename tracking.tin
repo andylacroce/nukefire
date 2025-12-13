@@ -1,0 +1,32 @@
+#nop =====================================================
+#nop TRACKING
+#nop =====================================================
+
+#class tracking open
+	#ALIAS {trk %1} {#variable trackee %1;track $trackee}
+	#ALIAS {untrk} {#variable trackee $me}
+	#ACTION {You sense a trail %1 from here!} {%1;track $trackee}
+#class tracking close
+
+#nop ------------------ TRACKING CONTROL ------------------
+#alias {tracking_on} {
+    #class {tracking} {open};
+    #ALIAS {trk %1} {#variable trackee %1;track $trackee};
+    #ALIAS {untrk} {#variable trackee $me};
+    #ACTION {You sense a trail %1 from here!} {%1;track $trackee};
+    #class {tracking} {close};
+    #var {tracking_on} {1};
+    #showme {Tracking ON};
+    #send {}
+}
+#alias {tracking_off} {
+    #class {tracking} {clear};
+    #var {tracking_on} {0};
+    #showme {Tracking OFF};
+    #send {}
+}
+#alias {tracking} {
+    #if {$tracking_on} {tracking_off} {tracking_on}
+}
+
+#class {tracking} {save}

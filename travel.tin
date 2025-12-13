@@ -1,0 +1,28 @@
+#nop =====================================================
+#nop TRAVEL & NAVIGATION
+#nop GPS, map, and location shortcuts
+#nop =====================================================
+
+#nop ------------------ GPS COMMANDS ------------------
+#ACTION {Remaining directions: %1} {#variable dest %1}
+#ALIAS {gs} {gps set %1}
+#ALIAS {gf %1}  {gps find %1}
+#ALIAS {rd} {run $dest}
+
+#nop ------------------ MAP & RECALL ------------------
+#ALIAS {pp} {map}
+#ALIAS {rec} {recall}
+
+#nop ------------------ LOCATION SHORTCUTS ------------------
+#ALIAS {ama} {gs 41;#delay {1} {rd}}
+#ALIAS {bad} {gs 56;#delay {1} {rd}}
+#ALIAS {cbgb} {gs 109;#delay {1} {rd}}
+#ALIAS {crim} {gs 102;#delay {1} {rd}}
+#ALIAS {g0} {gs 71;#delay {1} {rd}}
+#ALIAS {glass} {gs 53;#delay {1} {rd}}
+#ALIAS {hor} {gs 51;#delay {1} {rd}}
+#ALIAS {mach} {gs 78;#delay {1} {rd}}
+#ALIAS {nuc} {gs 63;#delay {1} {rd}}
+#ALIAS {sst} {gs 115;#delay {1} {rd}}
+#ALIAS {wheel} {gs 97;#delay {1} {rd}}
+#ALIAS {wild} {gs 20;#delay {1} {rd}}

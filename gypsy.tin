@@ -1,0 +1,40 @@
+#nop =====================================================
+#nop GYPSY COMBAT
+#nop Combat aliases and macros for gypsy class
+#nop =====================================================
+
+#nop ------------------ COMBAT ALIASES ------------------
+#ALIAS {xx} {shoot mob burst}
+#ALIAS {aaa} {#if {$lvl > 49}{sli 'rot'};shred}
+#ALIAS {rr} {hyp mob;backstab mob;#if {$lvl > 44}{vtwist};#if {$lvl > 39}{bgrow};#if {$lvl > 14}{mysticveil};#if {$lvl > 34}{spiritr};#if {$lvl > 44}{impale}}
+
+#nop ------------------ MACROS ------------------
+#MACRO {-} {aaa}
+#MACRO {=} {rr}
+#MACRO {[} {hyp mob;spiritrush mob}
+#MACRO {]} {hyp mob;dise mob}
+
+#nop ------------------ SPELL / SKILL UTILITIES ------------------
+#ALIAS {cb %1} {sli 'cure blind' %1}
+#ALIAS {rc %1} {sli 'remove curse' %1}
+#ALIAS {id %1} {sli 'identify' %1}
+#ALIAS {fa} {first %1}
+#ALIAS {fam} {first $me}
+
+#nop ------------------ LEVEL-DRIVEN ACTIONS ------------------
+#ACTION {[Regen]} {#if {$lvl > 39}{sign;tarot self}}
+#ACTION {The dance comes to a graceful end, as you posture and bow.} {rom}
+#ACTION {The mirages fade away, leaving you exposed.} {mir}
+#ACTION {You awaken, and sit up.} {#if {$lvl > 19}{rom};#if {$lvl > 24}{mir};#if {$lvl > 39}{sign;tarot self}}
+#ACTION {You receive %1 experience points.} {#if {$lvl > 19}{rom};#if {$lvl > 24}{mir};#if {$lvl > 39}{tarot self}}
+#ACTION {Your Voodoo Contract has been broken, the hex dissipates.} {sign}
+#ACTION {Your attempt to establish the Voodoo Contract fails.} {sign}
+#ACTION {You rise a level!} {
+	emote gained a level and dances a celebratory jig.;
+	#delay {3} {
+		#if {$lvl < 15} {combo disem disem disem};
+		#elseif {$lvl < 30}{combo mys mys mys};
+		#elseif {$lvl < 45}{combo bgrow bgrow mys};
+		#else {combo vtwist bgrow mys}
+	}
+}

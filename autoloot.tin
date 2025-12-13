@@ -3,6 +3,7 @@
 #nop =========================
 
 #class autoloot open
+	#ACTION {credits is lying here.} {get all.credits}
 	#ACTION {a puppet with severed strings.} {gall}
 	#ACTION {a soul lost to the wasteland.} {gall}
 	#ACTION {cacophony of the apocalypse.} {gall}
@@ -34,4 +35,22 @@
 	#ACTION {voodoo doll has been broken.} {gall}
 	#ACTION {winds of desolation.} {gall}
 #class autoloot close
+
+#nop ------------------ AUTOLOOT CONTROL ------------------
+#alias {aloot_on} {
+    #read {nukefire/autoloot.tin};
+    #var {autoloot_on} {1};
+    #showme {Autoloot ON};
+    #send {}
+}
+#alias {aloot_off} {
+    #class {autoloot} {clear};
+    #var {autoloot_on} {0};
+    #showme {Autoloot OFF};
+    #send {}
+}
+#alias {aloot} {
+    #if {$autoloot_on} {aloot_off} {aloot_on}
+}
+
 #class {autoloot} {save}

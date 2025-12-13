@@ -1,0 +1,6 @@
+#nop =====================================================
+#nop REMORT
+#nop Remort handling
+#nop =====================================================
+
+#ALIAS {mort} {gather silver;buy $remort_num;addmat}

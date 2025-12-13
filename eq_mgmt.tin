@@ -1,0 +1,18 @@
+#nop =====================================================
+#nop EQUIPMENT MANAGEMENT
+#nop Equipment, inventory, shopping, and upgrades
+#nop =====================================================
+
+#nop ------------------ SHOPPING / INSCRIBE ------------------
+#ALIAS {auc %1 %2} {auction %1 %2}
+#ALIAS {wauc} {whatsauc}
+#ALIAS {bi %1} {buy inscribe %1 $me}
+#ALIAS {bu %1} {buy uninscribe %1}
+
+#nop ------------------ SELLING / UPGRADES ------------------
+#ALIAS {rs %1} {rsell %1}
+#ALIAS {rsa} {addmat;rsell all}
+#ALIAS {uc} {upgrade conceal conceal}
+#ALIAS {ui %1} {upgrade imp %1}
+#ALIAS {upe %1} {upgrade eq %1}
+#ALIAS {ut %1} {upgrade tat %1}

@@ -1,0 +1,8 @@
+#nop =====================================================
+#nop SLEEP & REST
+#nop Sleep and posture management
+#nop =====================================================
+
+#ALIAS {sl} {sleep}
+#ALIAS {slw} {sleep;wake;stand}
+#ALIAS {wa} {wake;stand}

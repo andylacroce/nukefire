@@ -1,0 +1,9 @@
+#nop =====================================================
+#nop COMMUNICATION CHANNELS
+#nop Channel commands and history tracking
+#nop =====================================================
+
+#nop ------------------ CHANNEL HISTORY ------------------
+#ALIAS {hg} {hist gos}
+#ALIAS {ht} {hist tel}
+#ALIAS {hgt} {hist group}

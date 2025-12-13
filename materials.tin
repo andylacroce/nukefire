@@ -1,0 +1,9 @@
+#nop =====================================================
+#nop MATERIALS
+#nop Material/disc collection and handling
+#nop =====================================================
+
+#ACTION {A small silver disc hovers before you in mid-air.} {get all.disc}
+#ACTION {You retrieve a small silver disc from} {am}
+#ACTION {You get a small silver disc.} {am}
+#ALIAS {am} {addmat}

@@ -1,0 +1,12 @@
+#nop =====================================================
+#nop LOOTING & CONTAINERS
+#nop =====================================================
+
+#ALIAS {gc} {get all.credits;get credits all}
+#ALIAS {ls} {look in $container}
+#ALIAS {gg %1} {get %1 $container}
+#ALIAS {ps %1} {put %1 $container}
+#ALIAS {lc} {look in corpse;look in remains}
+#ALIAS {x} {exam corpse;exam remains}
+#ALIAS {gall} {get all all.corpse;get all all.remains}
+#ALIAS {ret} {retrieve;get all corpse;rewear;get all corpse;rewear;conceal dirk;conceal dagger;conceal knife;junk corpse;junk corpse}

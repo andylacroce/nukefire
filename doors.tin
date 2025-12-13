@@ -1,0 +1,12 @@
+#nop =====================================================
+#nop DOORS
+#nop Door handling aliases and actions
+#nop =====================================================
+
+#ALIAS {od} {open door}
+#ALIAS {pd} {pick door}
+#ALIAS {o} {pd;od}
+#ALIAS {cd} {close door}
+#ACTION {It is locked, and you don't know how to open it.} {pd}
+#ACTION {It resists your attempts to pick it.} {od}
+#ACTION {There doesn't seem to be a door that can be picked.} {od}
