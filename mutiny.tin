@@ -1,31 +1,55 @@
+#nop =====================================================
+#nop Mutiny profile — organized with dependency-safe ordering
+#nop =====================================================
+
+#nop ------------------ SESSION & IO ------------------
 #split
 
-#nop ------------------ VARIABLES ------------------ 
-
-#VARIABLE {dest} {}
-#VARIABLE {lvl} {}
-#VARIABLE {trackee} {}
+#nop ------------------ CORE VARIABLES ------------------
+#nop Keep variables first; actions/aliases depend on these.
 #VARIABLE {me} {Mutiny}
+#VARIABLE {lvl} {}
+#VARIABLE {dest} {}
+#VARIABLE {trackee} {}
 #VARIABLE {container} {satchel}
 
-#nop ------------------ ACTIONS ------------------  
+#nop ------------------ MOVEMENT / TRACKING ------------------
+#ACTION {Remaining directions: %1} {#variable dest %1}
+#ALIAS {gs} {gps set %1}
+#ALIAS {rd} {run $dest}
+#ALIAS {trk %1} {#variable trackee %1;track $trackee}
+#ALIAS {untrk} {#variable trackee $me}
+#ACTION {You sense a trail %1 from here!} {%1;track $trackee}
 
-#ACTION {Lvl %1,} {#variable lvl %1}
-
+#nop ------------------ LOOTING & CONTAINERS ------------------
 #ACTION {credits is lying here.} {get all.credits}
+#ALIAS {gc} {get all.credits;get credits all}
+#ALIAS {ls} {look in $container}
+#ALIAS {gg %1} {get %1 $container}
+#ALIAS {ps %1} {put %1 $container}
+#ALIAS {lc} {look in corpse;look in remains}
+#ALIAS {x} {exam corpse;exam remains}
+#ALIAS {gall} {get all all.corpse;get all all.remains}
+#ALIAS {ret} {retrieve;get all corpse;rewear;get all corpse;rewear;conceal dirk;conceal dagger;conceal knife;junk corpse;junk corpse}
 
+#nop ------------------ ITEM-SPECIFIC ACTIONS ------------------
 #ACTION {A small silver disc hovers before you in mid-air.} {get all.disc}
 #ACTION {You retrieve a small silver disc from} {am}
 #ACTION {You get a small silver disc.} {am}
+#ALIAS {am} {addmat}
+#ALIAS {mort} {gather silver;buy 764;addmat}
 
+#nop ------------------ DOORS ------------------
+#ALIAS {od} {open door}
+#ALIAS {pd} {pick door}
+#ALIAS {o} {pd;od}
+#ALIAS {cd} {close door}
 #ACTION {It is locked, and you don't know how to open it.} {pd}
 #ACTION {It resists your attempts to pick it.} {od}
 #ACTION {There doesn't seem to be a door that can be picked.} {od}
 
-#ACTION {Remaining directions: %1} {#variable dest %1}
-
-#ACTION {You sense a trail %1 from here!} {%1;track $trackee}
-
+#nop ------------------ LEVEL-DRIVEN ACTIONS ------------------
+#ACTION {Lvl %1,} {#variable lvl %1}
 #ACTION {Regen} {#if {$lvl > 39}{sign}}
 #ACTION {The dance comes to a graceful end, as you posture and bow.} {rom}
 #ACTION {The mirages fade away, leaving you exposed.} {mir}
@@ -33,7 +57,6 @@
 #ACTION {You receive %1 experience points.} {#if {$lvl > 19}{rom};#if {$lvl > 24}{mir};#if {$lvl > 39}{tarot self}}
 #ACTION {Your Voodoo Contract has been broken, the hex dissipates.} {sign}
 #ACTION {Your attempt to establish the Voodoo Contract fails.} {sign}
-
 #ACTION {You rise a level!} {
 	emote gained a level and dances a celebratory jig.;
 	#delay {3} {
@@ -44,68 +67,38 @@
 	}
 }
 
-#nop ------------------ ALIASES ------------------ 
-
+#nop ------------------ COMBAT ------------------
 #ALIAS {xx} {shoot mob burst}
 #ALIAS {aaa} {#if {$lvl > 49}{sli 'rot'};shred}
 #ALIAS {rr} {hyp mob;backstab mob;#if {$lvl > 44}{vtwist};#if {$lvl > 39}{bgrow};#if {$lvl > 14}{mysticveil};#if {$lvl > 34}{spiritr};#if {$lvl > 44}{impale}}
 
-#ALIAS {am} {addmat}
+#nop ------------------ MACROS ------------------
+#MACRO {-} {aaa}
+#MACRO {=} {rr}
+#MACRO {[} {hyp mob;spiritrush mob}
+#MACRO {]} {hyp mob;dise mob}
 
+#nop ------------------ SHOPPING / INSCRIBE ------------------
 #ALIAS {auc %1 %2} {auction %1 %2}
 #ALIAS {wauc} {whatsauc}
-
 #ALIAS {bi %1} {buy inscribe %1 $me}
 #ALIAS {bu %1} {buy uninscribe %1}
 
+#nop ------------------ SPELL UTILITIES ------------------
 #ALIAS {cb %1} {sli 'cure blind' %1}
 #ALIAS {rc %1} {sli 'remove curse' %1}
 #ALIAS {id %1} {sli 'identify' %1}
 
-#ALIAS {od} {open door}
-#ALIAS {pd} {pick door}
-#ALIAS {o} {pd;od}
-#ALIAS {cd} {close door}
-
+#nop ------------------ STATUS / HISTORY ------------------
 #ALIAS {fa} {first %1}
 #ALIAS {fam} {first $me}
-
-#ALIAS {lc} {look in corpse;look in remains}
-#ALIAS {x} {exam corpse;exam remains}
-#ALIAS {gall} {get all all.corpse;get all all.remains}
-#ALIAS {gc} {get all.credits;get credits all}
-
-#ALIAS {ls} {look in $container}
-#ALIAS {gg %1} {get %1 $container}
-#ALIAS {ps %1} {put %1 $container}
-
-#ALIAS {gf %1} {gps find %1}
-#ALIAS {gfi} {gps find}
-#ALIAS {gs} {gps set %1}
-#ALIAS {rd} {run $dest}
-
 #ALIAS {hg} {hist gos}
 #ALIAS {ht} {hist tel}
 #ALIAS {hgt} {hist group}
 
-#ALIAS {mort} {gather silver;buy 764;addmat}
-
-#ALIAS {pp} {map} 
-
+#nop ------------------ MAP / TRAVEL SHORTCUTS ------------------
+#ALIAS {pp} {map}
 #ALIAS {rec} {recall}
-
-#ALIAS {rs %1} {rsell %1}
-#ALIAS {rsa} {addmat;rsell all}
-
-#ALIAS {sl} {sleep}
-#ALIAS {slw} {sleep;wake;stand}
-#ALIAS {wa} {wake;stand}
-
-#ALIAS {uc} {upgrade conceal conceal}
-#ALIAS {ui %1} {upgrade imp %1}
-#ALIAS {upe %1} {upgrade eq %1}
-#ALIAS {ut %1} {upgrade tat %1}
-
 #ALIAS {ama} {gs 41;#delay {1} {rd}}
 #ALIAS {bad} {gs 56;#delay {1} {rd}}
 #ALIAS {cbgb} {gs 109;#delay {1} {rd}}
@@ -119,51 +112,42 @@
 #ALIAS {wheel} {gs 97;#delay {1} {rd}}
 #ALIAS {wild} {gs 20;#delay {1} {rd}}
 
-#ALIAS {ret} {retrieve;get all corpse;rewear;get all corpse;rewear;conceal dirk;conceal dagger;conceal knife;junk corpse;junk corpse}
-
-#ALIAS {trk %1} {#variable trackee %1;track $trackee}
-#ALIAS {untrk} {#variable trackee $me}
-
-#nop ------------------ MACROS ------------------ 
-
-#MACRO {-} {aaa}
-#MACRO {=} {rr}
-#MACRO {[} {hyp mob;spiritrush mob}
-#MACRO {]} {hyp mob;dise mob}
+#nop ------------------ SELLING / UPGRADES ------------------
+#ALIAS {rs %1} {rsell %1}
+#ALIAS {rsa} {addmat;rsell all}
+#ALIAS {sl} {sleep}
+#ALIAS {slw} {sleep;wake;stand}
+#ALIAS {wa} {wake;stand}
+#ALIAS {uc} {upgrade conceal conceal}
+#ALIAS {ui %1} {upgrade imp %1}
+#ALIAS {upe %1} {upgrade eq %1}
+#ALIAS {ut %1} {upgrade tat %1}
 
 #nop =========================
 #nop AUTOLOOT
+#nop Keep autoloot include and control aliases together.
 #nop =========================
-
 #read {autoloot.tin}
-
 #var {autoloot_on} {1}
-
 #alias {aloot_on} {
     #read {autoloot.tin};
     #var {autoloot_on} {1};
     #showme {Autoloot ON};
     #send {}
 }
-
 #alias {aloot_off} {
     #class {autoloot} {clear};
     #var {autoloot_on} {0};
     #showme {Autoloot OFF};
     #send {}
 }
-
 #alias {aloot} {
     #if {$autoloot_on} {aloot_off} {aloot_on}
 }
 
-
 #nop ------------------ AUTOSTART ------------------
-
-#split 
-
+#split
 #session nukefire tdome.nukefire.org 4000
-
 #action {What's your name, freejack?} {$me}
 #action {Password:} {REDACTED_PASSWORD}
 #action {*** PRESS RETURN:} {#send {}}
