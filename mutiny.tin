@@ -14,6 +14,11 @@
 #VARIABLE {trackee} {}
 #VARIABLE {container} {satchel}
 
+#nop ------------------ LOGGING ------------------
+#var LOGDIR nukefire\logs
+#var LOGFILE {$LOGDIR}\nukefire_mutiny_%Y-%m-%d_%H-%M-%S.log
+#log on {$LOGFILE}
+
 #nop ------------------ MOVEMENT / TRACKING ------------------
 #ACTION {Remaining directions: %1} {#variable dest %1}
 #ALIAS {gs} {gps set %1}
