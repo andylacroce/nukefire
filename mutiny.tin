@@ -15,8 +15,9 @@
 #VARIABLE {container} {satchel}
 
 #nop ------------------ LOGGING ------------------
-#var LOGDIR nukefire\logs
-#var LOGFILE {$LOGDIR}\nukefire_mutiny_%Y-%m-%d_%H-%M-%S.log
+#var LOGDIR {logs}
+#var LOGFILE {$LOGDIR/nukefire_mutiny_%t.log}
+#system {mkdir $LOGDIR}
 #log append {$LOGFILE}
 
 #nop ------------------ MOVEMENT / TRACKING ------------------
