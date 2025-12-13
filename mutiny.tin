@@ -10,7 +10,7 @@
 
 #nop ------------------ ACTIONS ------------------  
 
-#ACTION {[Lvl %1,} {#variable lvl %1}
+#ACTION {Lvl %1,} {#variable lvl %1}
 
 #ACTION {credits is lying here.} {get all.credits}
 
