@@ -55,7 +55,7 @@
 #nop ------------------ LEVEL-DRIVEN ACTIONS ------------------
 #ALIAS {mort} {gather silver;buy 764;addmat}
 #ACTION {Lvl %1,} {#variable lvl %1}
-#ACTION {[Regen]} {#if {$lvl > 39}{sign}}
+#ACTION {[Regen]} {#if {$lvl > 39}{sign;tarot self}}
 #ACTION {The dance comes to a graceful end, as you posture and bow.} {rom}
 #ACTION {The mirages fade away, leaving you exposed.} {mir}
 #ACTION {You awaken, and sit up.} {#if {$lvl > 19}{rom};#if {$lvl > 24}{mir};#if {$lvl > 39}{sign;tarot self}}
