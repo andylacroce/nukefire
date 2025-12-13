@@ -147,7 +147,6 @@
 }
 
 #nop ------------------ AUTOSTART ------------------
-#split
 #session nukefire tdome.nukefire.org 4000
 #action {What's your name, freejack?} {$me}
 #action {Password:} {$password}
