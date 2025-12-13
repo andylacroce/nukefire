@@ -101,6 +101,11 @@
 #ALIAS {ht} {hist tel}
 #ALIAS {hgt} {hist group}
 
+#nop ------------------ REST / POSTURE ------------------
+#ALIAS {sl} {sleep}
+#ALIAS {slw} {sleep;wake;stand}
+#ALIAS {wa} {wake;stand}
+
 #nop ------------------ MAP / TRAVEL SHORTCUTS ------------------
 #ALIAS {pp} {map}
 #ALIAS {rec} {recall}
@@ -120,9 +125,6 @@
 #nop ------------------ SELLING / UPGRADES ------------------
 #ALIAS {rs %1} {rsell %1}
 #ALIAS {rsa} {addmat;rsell all}
-#ALIAS {sl} {sleep}
-#ALIAS {slw} {sleep;wake;stand}
-#ALIAS {wa} {wake;stand}
 #ALIAS {uc} {upgrade conceal conceal}
 #ALIAS {ui %1} {upgrade imp %1}
 #ALIAS {upe %1} {upgrade eq %1}
