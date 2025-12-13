@@ -2,28 +2,18 @@
 #nop LOGGING
 #nop =====================================================
 
-#class logging open
-	#format {LOGTIME} {%t} {%Y-%m-%d_%H-%M-%S}
-	#VARIABLE LOGFILE {nukefire/logs/nukefire_$me_$LOGTIME.log}
-	#config {LOG} {PLAIN}
-	#log append {$LOGFILE}
-#class logging close
-
 #nop ------------------ LOGGING CONTROL ------------------
 #alias {logging_on} {
-    #class {logging} {open};
     #format {LOGTIME} {%t} {%Y-%m-%d_%H-%M-%S};
-    #VARIABLE LOGFILE {nukefire/logs/nukefire_$me_$LOGTIME.log};
+    #VARIABLE LOGFILE {nukefire/logs/nukefire_${me}_${LOGTIME}.log};
     #config {LOG} {PLAIN};
-    #log append {$LOGFILE};
-    #class {logging} {close};
+    #log append {${LOGFILE}};
     #var {logging_on} {1};
-    #showme {Logging ON - writing to $LOGFILE};
+    #showme {Logging ON - writing to ${LOGFILE}};
     #send {}
 }
 #alias {logging_off} {
     #log off;
-    #class {logging} {clear};
     #var {logging_on} {0};
     #showme {Logging OFF};
     #send {}
@@ -31,5 +21,3 @@
 #alias {logging} {
     #if {$logging_on} {logging_off} {logging_on}
 }
-
-#class {logging} {save}

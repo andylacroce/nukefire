@@ -1,5 +1,5 @@
 #nop =====================================================
-#nop Mutiny profile — organized with dependency-safe ordering
+#nop Mutiny Profile
 #nop =====================================================
 
 #nop ------------------ CORE VARIABLES ------------------
@@ -21,24 +21,27 @@
 #nop ------------------ LEVEL TRACKING ------------------
 #ACTION {Lvl %1,} {#variable lvl %1}
 
-#nop ------------------ LOAD MODULES ------------------
+#nop ------------------ LOAD GENERIC MODULES ------------------
 #read {nukefire/looting.tin}
 #read {nukefire/travel.tin}
 #read {nukefire/tracking.tin}
 #read {nukefire/materials.tin}
 #read {nukefire/doors.tin}
 #read {nukefire/remort.tin}
-#read {nukefire/gypsy.tin}
 #read {nukefire/sleep.tin}
 #read {nukefire/eq_mgmt.tin}
 #read {nukefire/channels.tin}
 #read {nukefire/autoloot.tin}
+#read {nukefire/logging.tin}
+
+#nop ------------------ LOAD CLASS-SPECIFIC MODULES ------------------
+#read {nukefire/gypsy.tin}
 
 #nop ------------------ AUTOSTART ------------------
 #split
-#read {nukefire/logging.tin}
 #session nukefire tdome.nukefire.org 4000
 #action {What's your name, freejack?} {$me}
 #action {Password:} {$password}
 #action {*** PRESS RETURN:} {#send {}}
-#action {Make your choice:} {1}
+#action {Make your choice:} {#send {1};#send {logging_on}}
+#action {Reconnecting.} {#send {logging_on}}
