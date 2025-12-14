@@ -28,5 +28,3 @@
 #alias {tracking} {
     #if {$tracking_on} {tracking_off} {tracking_on}
 }
-
-#class {tracking} {save}

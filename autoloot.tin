@@ -35,22 +35,21 @@
 	#ACTION {voodoo doll has been broken.} {gall}
 	#ACTION {winds of desolation.} {gall}
 #class autoloot close
+#if {!$autoloot_on} {#class {autoloot} {clear}}
 
 #nop ------------------ AUTOLOOT CONTROL ------------------
 #alias {aloot_on} {
+	#var {autoloot_on} {1};
     #read {nukefire/autoloot.tin};
-    #var {autoloot_on} {1};
     #showme {Autoloot ON};
     #send {}
 }
 #alias {aloot_off} {
+	#var {autoloot_on} {0};
     #class {autoloot} {clear};
-    #var {autoloot_on} {0};
     #showme {Autoloot OFF};
     #send {}
 }
 #alias {aloot} {
     #if {$autoloot_on} {aloot_off} {aloot_on}
 }
-
-#class {autoloot} {save}

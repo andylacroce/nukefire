@@ -64,4 +64,3 @@
 #alias {autoheal} {
 	#if {$autoheal_on} {autoheal_off} {autoheal_on}
 }
-#class {autoheal} {save}
