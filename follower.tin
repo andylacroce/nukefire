@@ -1,2 +1,23 @@
+#nop =====================================================
+#nop FOLLOWER UTILITIES
+#nop Auto-follow and group management for followers
+#nop =====================================================
+
+#nop ------------------ FOLLOW STATUS TRACKING ------------------
+#nop Not in group - auto-follow
+#ACTION {^You must specify a group option, or type HELP GROUP for more info.} {
+	tel ${leader} not grouped, trying to follow;
+	fol ${leader}
+}
+
+#nop Leader not in room - just notify
+#ACTION {^No freejack by that name here, punk.} {
+	tel ${leader} not in room, waiting for you
+}
+
+#nop ------------------ AUTO-CHECK GROUP STATUS ------------------
+#TICKER {group_check} {gr} {15}
+
+#nop ------------------ LEADER ACTIONS ------------------
 #action {${leader}'s form shimmers with eldritch power as he vanishes beyond mortal planes!} {recall}
 #action {${leader} telepaths to you, 'o %1'} {%1}

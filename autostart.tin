@@ -18,3 +18,11 @@
     #screen set title {Nukefire - ${ME_UPPER}};
     logging_on
 }
+
+#nop ------------------ GROUP SETUP ------------------
+#if {$is_follower} {
+    #delay {3} {fol ${leader}}
+};
+#else {
+    #delay {2} {group new}
+}

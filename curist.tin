@@ -8,6 +8,9 @@
 #nop AFX - Check buffs and recast missing ones
 #VARIABLE {has_armor} {0}
 
+#alias {heal %1} {sli 'heal' %1}
+#alias {healme} {sli 'heal' $me}
+
 #ACTION {$leader telepaths to you, 'heal'} {sli 'heal' $leader}
 
 #ACTION {^SPL: %* armor} {#variable {has_armor} {1}}
