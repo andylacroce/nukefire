@@ -21,8 +21,26 @@
 #ALIAS {fa} {first %1}
 #ALIAS {fam} {first $me}
 
+#nop AFX - Check buffs and recast missing ones
+#VARIABLE {has_voodoo} {0}
+#VARIABLE {has_phantom} {0}
+#VARIABLE {has_fortune} {0}
+
+#ACTION {^SPL: %* voodoo contract} {#variable {has_voodoo} {1}}
+#ACTION {^SPL: %* phantom mirage} {#variable {has_phantom} {1}}
+#ACTION {^SPL: %* fortune's blessing} {#variable {has_fortune} {1}}
+#ACTION {TIMER: %*} {
+	#if {"%*" !~ "Gypsy_Dance"}{rom};
+	#if {$has_voodoo == 0}{sign};
+	#if {$has_phantom == 0}{mir};
+	#if {$has_fortune == 0}{tarot self};
+	#variable {has_voodoo} {0};
+	#variable {has_phantom} {0};
+	#variable {has_fortune} {0}
+}
+
 #nop ------------------ LEVEL-DRIVEN ACTIONS ------------------
-#ACTION {[Regen]} {#if {$lvl > 39}{sign;tarot self}}
+#ACTION {[Regen]} {#if {$lvl > 39}{afx}}
 #ACTION {The dance comes to a graceful end, as you posture and bow.} {rom}
 #ACTION {The mirages fade away, leaving you exposed.} {mir}
 #ACTION {You awaken, and sit up.} {#if {$lvl > 19}{rom};#if {$lvl > 24}{mir};#if {$lvl > 39}{sign;tarot self}}

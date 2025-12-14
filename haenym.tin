@@ -1,10 +1,10 @@
 #nop =====================================================
-#nop Mutiny Profile
+#nop Haenym Profile
 #nop =====================================================
 
 #nop ------------------ CORE VARIABLES ------------------
 #nop Keep variables first; actions/aliases depend on these.
-#VARIABLE {me} {Mutiny}
+#VARIABLE {me} {Haenym}
 #VARIABLE {password} {REDACTED_PASSWORD}
 #VARIABLE {lvl} {}
 #VARIABLE {dest} {}
@@ -18,7 +18,7 @@
 #nop Toggle: tracking / tracking_on / tracking_off
 #VARIABLE {tracking_on} {1}
 #nop Class-specific module file (without .tin extension)
-#VARIABLE {class_module} {gypsy}
+#VARIABLE {class_module} {curist}
 
 #nop ------------------ LOAD CHARACTER ------------------
 #read {nukefire/char_load.tin}

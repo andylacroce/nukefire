@@ -1,0 +1,2 @@
+#action {${leader}'s form shimmers with eldritch power as he vanishes beyond mortal planes!} {recall}
+#action {${leader} telepaths to you, 'o %1'} {%1}

@@ -1,0 +1,37 @@
+#nop =====================================================
+#nop CHARACTER LOADER
+#nop Generic module loading for all characters
+#nop Expects: $class_module variable to be set in calling file
+#nop =====================================================
+
+#nop ------------------ LEADER CONFIGURATION ------------------
+#VARIABLE {leader} {Mutiny}
+
+#nop ------------------ DETERMINE CHARACTER ROLE ------------------
+#variable {is_follower} {1}
+#if {"${me}" == "Mutiny"} {#variable {is_follower} {0}}
+
+#nop ------------------ LEVEL TRACKING ------------------
+#ACTION {Lvl %1,} {#variable lvl %1}
+
+#nop ------------------ LOAD GENERIC MODULES ------------------
+#read {nukefire/looting.tin}
+#read {nukefire/travel.tin}
+#read {nukefire/tracking.tin}
+#read {nukefire/materials.tin}
+#read {nukefire/doors.tin}
+#read {nukefire/remort.tin}
+#read {nukefire/sleep.tin}
+#read {nukefire/eq_mgmt.tin}
+#read {nukefire/channels.tin}
+#read {nukefire/autoloot.tin}
+#read {nukefire/logging.tin}
+
+#nop ------------------ LOAD CLASS-SPECIFIC MODULES ------------------
+#read {nukefire/${class_module}.tin}
+
+#nop ------------------ LOAD ROLE-SPECIFIC MODULES ------------------
+#if {$is_follower} {#read {nukefire/follower.tin}}
+
+#nop ------------------ AUTOSTART ------------------
+#read {nukefire/autostart.tin}

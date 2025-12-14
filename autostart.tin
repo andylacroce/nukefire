@@ -1,0 +1,20 @@
+#nop =====================================================
+#nop AUTOSTART
+#nop =====================================================
+
+#nop ------------------ SPLIT SCREEN ------------------
+#split
+
+#nop ------------------ SESSION ------------------
+#session nukefire tdome.nukefire.org 4000
+#action {What's your name, freejack?} {$me}
+#action {Password:} {$password}
+#action {*** PRESS RETURN:} {#send {}}
+#action {Make your choice:} {#send {1}}
+
+#nop ------------------ CLIENT SETUP ------------------
+#delay {2} {
+    #format {ME_UPPER} {%u} {${me}};
+    #screen set title {Nukefire - ${ME_UPPER}};
+    logging_on
+}
