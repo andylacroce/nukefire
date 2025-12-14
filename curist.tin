@@ -36,9 +36,32 @@
 
 
 #nop Auto-heal group members below 75% HP from group status output
-#action {[%1 %2] %3 : [%4/%5]H %*} {
-   #showme {DEBUG: lvl=%1 class=%2 name=%3 hp=%4 maxhp=%5};
-   #math {target_hp_pct} {100 * %4 / %5};
-   #showme {DEBUG: pct=$target_hp_pct};
-   #if {$target_hp_pct < 75 && $lvl > 13} {sli 'heal' %3}
+#class autoheal open
+	#var {autoheal_on} {1}
+	 #TICKER {curist_group_check} {gr} {3}
+	 #action {[%1 %2] %3 : [%4/%5]H %*} {
+		 #nop #showme {DEBUG: lvl=%1 class=%2 name=%3 hp=%4 maxhp=%5};
+		 #math {target_hp_pct} {100 * %4 / %5};
+		 #nop #showme {DEBUG: pct=$target_hp_pct};
+		 #if {$target_hp_pct < 75 && $lvl > 13} {sli 'heal' %3}
+	 }
+#class autoheal close
+
+#nop ------------------ AUTOHEAL CONTROL ------------------
+#alias {autoheal_on} {
+	#read {nukefire/curist.tin};
+	#class {autoheal} {open};
+	#var {autoheal_on} {1};
+	#showme {Autoheal ON};
+	#send {}
 }
+#alias {autoheal_off} {
+	#class {autoheal} {clear};
+	#var {autoheal_on} {0};
+	#showme {Autoheal OFF};
+	#send {}
+}
+#alias {autoheal} {
+	#if {$autoheal_on} {autoheal_off} {autoheal_on}
+}
+#class {autoheal} {save}
