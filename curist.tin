@@ -1,0 +1,23 @@
+#nop =====================================================
+#nop CURIST COMBAT
+#nop Combat aliases and macros for curist class
+#nop =====================================================
+
+#nop ------------------ SPELL / SKILL UTILITIES ------------------
+
+#nop AFX - Check buffs and recast missing ones
+#VARIABLE {has_armor} {0}
+
+#ACTION {$leader telepaths to you, 'heal'} {sli 'heal' $leader}
+
+#ACTION {^SPL: %* armor} {#variable {has_armor} {1}}
+#ACTION {TIMER: %*} {
+	#delay {2} {
+		#if {$has_armor == 0}{sli 'aura of prot'};
+		#variable {has_armor} {0}
+	}
+}
+
+
+#nop ------------------ LEVEL-DRIVEN ACTIONS ------------------
+#ACTION {[Regen]} {#if {$lvl > 8}{afx}}

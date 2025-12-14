@@ -30,13 +30,15 @@
 #ACTION {^SPL: %* phantom mirage} {#variable {has_phantom} {1}}
 #ACTION {^SPL: %* fortune's blessing} {#variable {has_fortune} {1}}
 #ACTION {TIMER: %*} {
-	#if {"%*" !~ "Gypsy_Dance"}{rom};
-	#if {$has_voodoo == 0}{sign};
-	#if {$has_phantom == 0}{mir};
-	#if {$has_fortune == 0}{tarot self};
-	#variable {has_voodoo} {0};
-	#variable {has_phantom} {0};
-	#variable {has_fortune} {0}
+	#delay {2} {
+		#if {"%*" !~ "Gypsy_Dance" && $lvl > 19}{rom};
+		#if {$has_voodoo == 0 && $lvl > 39}{sign};
+		#if {$has_phantom == 0 && $lvl > 24}{mir};
+		#if {$has_fortune == 0 && $lvl > 39}{tarot self};
+		#variable {has_voodoo} {0};
+		#variable {has_phantom} {0};
+		#variable {has_fortune} {0}
+	}
 }
 
 #nop ------------------ LEVEL-DRIVEN ACTIONS ------------------
