@@ -16,7 +16,7 @@
 #ACTION {^SPL: %* armor} {#variable {has_armor} {1}}
 #ACTION {TIMER: %*} {
 	#delay {2} {
-		#if {$has_armor == 0}{sli 'aura of prot'};
+		#if {$has_armor == 0 && $lvl > 8}{sli 'aura of prot'};
 		#variable {has_armor} {0}
 	}
 }
