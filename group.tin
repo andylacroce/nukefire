@@ -1,0 +1,12 @@
+#nop =====================================================
+#nop GROUP UTILITIES
+#nop Group commands and coordination
+#nop =====================================================
+
+#nop ------------------ REPORT COMMAND ------------------
+#ALIAS {rep} {report}
+
+#nop Followers auto-report when leader reports
+#if {$is_follower} {
+	#ACTION {[Group] ${leader} reports:} {report}
+}
