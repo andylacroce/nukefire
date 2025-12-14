@@ -16,13 +16,11 @@
 #delay {2} {
     #format {ME_UPPER} {%u} {${me}};
     #screen set title {Nukefire - ${ME_UPPER}};
-    logging_on
-}
-
-#nop ------------------ GROUP SETUP ------------------
-#if {$is_follower} {
-    #delay {3} {fol ${leader}}
-};
-#else {
-    #delay {2} {group new}
+    logging_on;
+    #if {!$is_follower} {
+        #delay {2} {group new}
+    }
+    #if {$is_follower} {
+        #delay {3} {fol ${leader}}
+    }
 }
