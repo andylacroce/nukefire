@@ -30,7 +30,9 @@
         #action {( %1) a recall scroll%*} {#var recall_count %1};
 
         look in $container;
-        #delay 0.5 {#if {$recall_count > 0 && $recall_count < 10} {gt Running low on recall scrolls - $recall_count remaining}}
+        #delay 0.5 {
+            #if {$recall_count > 0 && $recall_count < 10} {gt Running low on recall scrolls - $recall_count remaining}
+        }
     };
     recall;
 };
