@@ -10,7 +10,7 @@
 #VARIABLE {dest} {}
 #VARIABLE {trackee} {}
 #VARIABLE {container} {satchel}
-#VARIABLE {remort_num} {764}
+#VARIABLE {remort_num} {933}
 #nop Toggle: aloot / aloot_on / aloot_off
 #VARIABLE {autoloot_on} {1}
 #nop Toggle: logging / logging_on / logging_off

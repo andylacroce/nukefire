@@ -24,7 +24,7 @@
 #read {nukefire/sleep.tin}
 #read {nukefire/eq_mgmt.tin}
 #read {nukefire/channels.tin}
-#read {nukefire/autoloot.tin}
+#if {!$is_follower} {#read {nukefire/autoloot.tin}}
 #read {nukefire/logging.tin}
 
 #nop ------------------ LOAD CLASS-SPECIFIC MODULES ------------------
