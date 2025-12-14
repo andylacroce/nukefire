@@ -8,10 +8,14 @@
 #nop AFX - Check buffs and recast missing ones
 #VARIABLE {has_armor} {0}
 
-#alias {heal %1} {sli 'heal' %1}
-#alias {healme} {sli 'heal' $me}
+#alias {heal %1} {#if {$lvl > 24} {sli 'rejuvinate' %1} {#if {$lvl > 13} {sli 'heal' %1} {#if {$lvl > 8} {sli 'cure critic' %1}}}}
+#alias {healme} {#if {$lvl > 24} {sli 'rejuvinate' $me} {#if {$lvl > 13} {sli 'heal' $me} {#if {$lvl > 8} {sli 'cure critic' $me}}}}
 
-#ACTION {$leader telepaths to you, 'heal'} {sli 'heal' $leader}
+#alias {invig %1} {#if {$lvl > 17} {sli 'invigorate' %1}}
+#alias {invigme} {#if {$lvl > 17} {sli 'invigorate' $me}}
+
+#ACTION {$leader telepaths to you, 'heal'} {#if {$lvl > 24} {sli 'rejuvinate' $leader} {#if {$lvl > 13} {sli 'heal' $leader} {#if {$lvl > 8} {sli 'cure critic' $leader}}}}
+#ACTION {$leader telepaths to you, 'invig'} {#if {$lvl > 17} {sli 'invigorate' $leader}}
 
 #ACTION {^SPL: %* armor} {#variable {has_armor} {1}}
 #ACTION {TIMER: %*} {
@@ -35,17 +39,32 @@
 #ACTION {[Regen]} {#if {$lvl > 8}{afx}}
 
 
+#nop Group status ticker for autoheal and autoinvig
+#class groupcheck open
+	#var {groupcheck_on} {1}
+	#TICKER {curist_group_check} {gr} {3}
+#class groupcheck close
+
 #nop Auto-heal group members below 75% HP from group status output
 #class autoheal open
 	#var {autoheal_on} {1}
-	 #TICKER {curist_group_check} {gr} {3}
-	 #action {[%1 %2] %3 : [%4/%5]H %*} {
-		 #nop #showme {DEBUG: lvl=%1 class=%2 name=%3 hp=%4 maxhp=%5};
-		 #math {target_hp_pct} {100 * %4 / %5};
-		 #nop #showme {DEBUG: pct=$target_hp_pct};
-		 #if {$target_hp_pct < 75 && $lvl > 13} {sli 'heal' %3}
-	 }
+	#action {[%1 %2] %3 %*: [%4/%5]H} {
+		#nop #showme {DEBUG: lvl=%1 class=%2 name=%3 hp=%4 maxhp=%5};
+		#math {target_hp_pct} {100 * %4 / %5};
+		#nop #showme {DEBUG: pct=$target_hp_pct};
+		#if {$target_hp_pct < 75} {#if {$lvl > 24} {sli 'rejuvinate' %3} {#if {$lvl > 13} {sli 'heal' %3} {#if {$lvl > 8} {sli 'cure critic' %3}}}}
+	}
 #class autoheal close
+
+#nop Auto-invigorate group members below 25% V from group status output
+#class autoinvig open
+	#var {autoinvig_on} {1}
+	#action {[%1 %2] %3 %*: [%4/%5]H [%6/%7]M [%8/%9]V %*} {
+		#math {target_v_pct} {100 * %8 / %9};
+		#nop #showme {DEBUG: v_pct=$target_v_pct};
+		#if {$target_v_pct < 25 && $lvl > 17} {sli 'invigorate' %3}
+	}
+#class autoinvig close
 
 #nop ------------------ AUTOHEAL CONTROL ------------------
 #alias {autoheal_on} {
@@ -63,4 +82,40 @@
 }
 #alias {autoheal} {
 	#if {$autoheal_on} {autoheal_off} {autoheal_on}
+}
+
+#nop ------------------ AUTOINVIG CONTROL ------------------
+#alias {autoinvig_on} {
+	#read {nukefire/curist.tin};
+	#class {autoinvig} {open};
+	#var {autoinvig_on} {1};
+	#showme {Autoinvig ON};
+	#send {}
+}
+#alias {autoinvig_off} {
+	#class {autoinvig} {clear};
+	#var {autoinvig_on} {0};
+	#showme {Autoinvig OFF};
+	#send {}
+}
+#alias {autoinvig} {
+	#if {$autoinvig_on} {autoinvig_off} {autoinvig_on}
+}
+
+#nop ------------------ GROUPCHECK CONTROL ------------------
+#alias {groupcheck_on} {
+	#read {nukefire/curist.tin};
+	#class {groupcheck} {open};
+	#var {groupcheck_on} {1};
+	#showme {Groupcheck ON};
+	#send {}
+}
+#alias {groupcheck_off} {
+	#class {groupcheck} {clear};
+	#var {groupcheck_on} {0};
+	#showme {Groupcheck OFF};
+	#send {}
+}
+#alias {groupcheck} {
+	#if {$groupcheck_on} {groupcheck_off} {groupcheck_on}
 }
