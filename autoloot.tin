@@ -3,7 +3,6 @@
 #nop =========================
 
 #class autoloot open
-	#ACTION {credits is lying here.} {get all.credits}
 	#ACTION {a puppet with severed strings.} {gall}
 	#ACTION {a soul lost to the wasteland.} {gall}
 	#ACTION {cacophony of the apocalypse.} {gall}

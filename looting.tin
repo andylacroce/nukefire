@@ -10,3 +10,5 @@
 #ALIAS {x} {exam corpse;exam remains}
 #ALIAS {gall} {get all all.corpse;get all all.remains}
 #ALIAS {ret} {retrieve;get all corpse;rewear;get all corpse;rewear;conceal dirk;conceal dagger;conceal knife;junk corpse;junk corpse}
+
+#ACTION {credits is lying here.} {get all.credits}
