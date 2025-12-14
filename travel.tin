@@ -11,7 +11,21 @@
 
 #nop ------------------ MAP & RECALL ------------------
 #ALIAS {pp} {map}
-#ALIAS {rec} {recall}
+#ALIAS {rec} {
+	#if {!$is_follower}{
+		#variable {i} {1};
+		#while {$i <= &followers[]} {
+			#list followers get $i follower;
+			#if {"$follower" != "$me"}{
+				get recall $container;
+				give recall $follower;
+                tel $follower o recite recall
+			};
+			#variable {i} {$i + 1}
+		}
+	};
+	recall
+}
 
 #nop ------------------ LOCATION SHORTCUTS ------------------
 #ALIAS {ama} {gs 41;#delay {1} {rd}}

@@ -6,10 +6,11 @@
 
 #nop ------------------ LEADER CONFIGURATION ------------------
 #VARIABLE {leader} {Mutiny}
+#list {followers} {create} {Haenym}
 
 #nop ------------------ DETERMINE CHARACTER ROLE ------------------
 #variable {is_follower} {1}
-#if {"${me}" == "Mutiny"} {#variable {is_follower} {0}}
+#if {"${me}" == "${leader}"} {#variable {is_follower} {0}}
 
 #nop ------------------ LEVEL TRACKING ------------------
 #ACTION {Lvl %1,} {#variable lvl %1}
