@@ -95,3 +95,10 @@
 #alias {groupcheck} {
 	#if {$groupcheck_on} {groupcheck_off} {groupcheck_on}
 }
+
+#ACTION {You rise a level!} {
+	emote gained a level and dances a celebratory jig.;
+	#delay {3} {
+		combo bash bash bash;
+	}
+}

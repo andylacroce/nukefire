@@ -61,3 +61,12 @@
     }
     
 }
+
+#ACTION {You rise a level!} {
+	emote gained a level and dances a celebratory jig.;
+	#delay {3} {
+		#if {$lvl < 3} {combo kick kick kick};
+		#elseif {$lvl < 13}{combo bash bash bash};
+		#else {combo pound pound pound}
+	}
+}

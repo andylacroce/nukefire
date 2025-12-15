@@ -14,7 +14,7 @@
     #split;
     #format {ME_UPPER} {%u} {${me}};
     #screen set title {Nukefire - ${ME_UPPER}};
-    #delay {1} {logging_on};
+    #delay {1} {logging_on;afx};
     #if {!$is_follower} {
         #delay {1} {group new}
     };
