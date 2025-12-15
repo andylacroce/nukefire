@@ -18,7 +18,7 @@
 	}
 	#action {TIMER: %*} {
 		#delay {2} {
-			#if {$has_damcon == 0 && $lvl > 8}{damcon};
+			#if {!$has_damcon} {damcon};
 		}
 	}
 #class dcon close
