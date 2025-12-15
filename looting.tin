@@ -9,8 +9,11 @@
 #ALIAS {lc} {look in corpse;look in remains}
 #ALIAS {x} {exam corpse;exam remains}
 #ALIAS {gall} {get all all.corpse;get all all.remains}
-#ALIAS {ret} {retrieve;get all corpse;rewear;get all corpse;rewear;conceal dirk;conceal dagger;conceal knife;junk corpse;junk corpse}
-
+#ALIAS {ret} {
+    #if {"$me" == "Mutiny"} {retrieve;get all corpse;rewear;conceal dirk;conceal dagger;conceal knife;junk corpse};
+    #if {"$me" == "Haenym"} {retrieve;get all corpse;rewear;junk corpse};
+    #if {"$me" == "Prodigy"} {retrieve;get all corpse;get all remains;rewear;junk corpse;junk remains};
+}
 #ALIAS {gcr %1 %2} {give %1 credits %2}
 
 #ACTION {credits is lying here.} {get all.credits}

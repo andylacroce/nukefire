@@ -50,23 +50,16 @@
 #nop Auto-heal group members below 75% HP from group status output
 #class autoheal open
 	#var {autoheal_on} {1}
-	#action {[%1 %2] %3 %*: [%4/%5]H} {
-		#nop #showme {DEBUG: lvl=%1 class=%2 name=%3 hp=%4 maxhp=%5};
+	#action {[%1 %2] %3 %*: [%4/%5]H %* [%6/%7]V} {
+		#nop #showme {DEBUG: lvl=%1 class=%2 name=%3 hp=%4 maxhp=%5 mv=%6 maxmv=%7};
 		#math {target_hp_pct} {100 * %4 / %5};
+		#math {target_v_pct} {100 * %6 / %7};
 		#nop #showme {DEBUG: pct=$target_hp_pct};
-		#if {$target_hp_pct < 75} {#if {$lvl > 24} {sli 'rejuvinate' %3} {#if {$lvl > 13} {sli 'heal' %3} {#if {$lvl > 8} {sli 'cure critic' %3}}}}
+		#nop #showme {DEBUG: pct=$target_v_pct};
+		#if {$target_hp_pct < 75} {#if {$lvl > 24} {sli 'rejuvinate' %3} {#if {$lvl > 13} {sli 'heal' %3} {#if {$lvl > 8} {sli 'cure critic' %3}}}};
+		#if {$target_v_pct < 50 && $lvl > 17} {sli 'invigorate' %3}
 	}
 #class autoheal close
-
-#nop Auto-invigorate group members below 25% V from group status output
-#class autoinvig open
-	#var {autoinvig_on} {1}
-	#action {[%1 %2] %3 %*: [%4/%5]H [%6/%7]M [%8/%9]V %*} {
-		#math {target_v_pct} {100 * %8 / %9};
-		#nop #showme {DEBUG: v_pct=$target_v_pct};
-		#if {$target_v_pct < 25 && $lvl > 17} {sli 'invigorate' %3}
-	}
-#class autoinvig close
 
 #nop ------------------ AUTOHEAL CONTROL ------------------
 #alias {autoheal_on} {
@@ -84,24 +77,6 @@
 }
 #alias {autoheal} {
 	#if {$autoheal_on} {autoheal_off} {autoheal_on}
-}
-
-#nop ------------------ AUTOINVIG CONTROL ------------------
-#alias {autoinvig_on} {
-	#read {nukefire/curist.tin};
-	#class {autoinvig} {open};
-	#var {autoinvig_on} {1};
-	#showme {Autoinvig ON};
-	#send {}
-}
-#alias {autoinvig_off} {
-	#class {autoinvig} {clear};
-	#var {autoinvig_on} {0};
-	#showme {Autoinvig OFF};
-	#send {}
-}
-#alias {autoinvig} {
-	#if {$autoinvig_on} {autoinvig_off} {autoinvig_on}
 }
 
 #nop ------------------ GROUPCHECK CONTROL ------------------

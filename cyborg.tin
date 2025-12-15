@@ -1,0 +1,44 @@
+#nop =====================================================
+#nop CYBORG COMBAT
+#nop Combat aliases and macros for cyborg class
+#nop =====================================================
+
+#VARIABLE {dcon_on} {1}
+
+#nop ------------------ SPELL / SKILL UTILITIES ------------------
+
+#nop Damcon toggle class
+#class dcon open
+	#var {dcon_on} {1}
+	#variable {has_damcon} {0}
+	#action {SPL: %* damcon} {#variable {has_damcon} {1}}
+	#action {The DAMCON status light blinks off.} {
+		#variable {has_damcon} {0};
+		damcon
+	}
+	#action {TIMER: %*} {
+		#delay {2} {
+			#if {$has_damcon == 0 && $lvl > 8}{damcon};
+		}
+	}
+#class dcon close
+
+#nop ------------------ LEVEL-DRIVEN ACTIONS ------------------
+#ACTION {[Regen]} {afx}
+
+#nop ------------------ DAMCON CONTROL ------------------
+#alias {dcon_on} {
+	#class {dcon} {open};
+	#var {dcon_on} {1};
+	#showme {DCON ON};
+	#send {}
+}
+#alias {dcon_off} {
+	#class {dcon} {close};
+	#var {dcon_on} {0};
+	#showme {DCON OFF};
+	#send {}
+}
+#alias {dcon} {
+	#if {$dcon_on} {dcon_off} {dcon_on}
+}

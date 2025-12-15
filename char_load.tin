@@ -1,12 +1,12 @@
 #nop =====================================================
 #nop CHARACTER LOADER
 #nop Generic module loading for all characters
-#nop Expects: $class_module variable to be set in calling file
+#nop Expects: $class variable to be set in calling file
 #nop =====================================================
 
 #nop ------------------ LEADER CONFIGURATION ------------------
 #VARIABLE {leader} {Mutiny}
-#list {followers} {create} {Haenym}
+#list {followers} {create} {Haenym} {Prodigy}
 
 #nop ------------------ DETERMINE CHARACTER ROLE ------------------
 #variable {is_follower} {1}
@@ -30,7 +30,7 @@
 #read {nukefire/logging.tin}
 
 #nop ------------------ LOAD CLASS-SPECIFIC MODULES ------------------
-#read {nukefire/${class_module}.tin}
+#read {nukefire/${class}.tin}
 
 #nop ------------------ LOAD ROLE-SPECIFIC MODULES ------------------
 #if {$is_follower} {#read {nukefire/follower.tin}}

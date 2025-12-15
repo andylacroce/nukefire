@@ -20,7 +20,6 @@
 #VARIABLE {tracking_on} {1}
 #nop Class-specific module file (without .tin extension)
 #VARIABLE {class} {gypsy}
-#VARIABLE {class_module} {gypsy}
 
 #nop ------------------ LOAD CHARACTER ------------------
 #read {nukefire/char_load.tin}

@@ -1,12 +1,12 @@
 #nop =====================================================
-#nop Haenym Profile
+#nop Prodigy Profile
 #nop =====================================================
 
 #nop ------------------ CORE VARIABLES ------------------
 #nop Keep variables first; actions/aliases depend on these.
-#VARIABLE {me} {Haenym}
+#VARIABLE {me} {Prodigy}
 #read {nukefire/local_secrets.tin}
-#VARIABLE {password} {$haenym_password}
+#VARIABLE {password} {$prodigy_password}
 #VARIABLE {lvl} {}
 #VARIABLE {dest} {}
 #VARIABLE {trackee} {}
@@ -19,7 +19,7 @@
 #nop Toggle: tracking / tracking_on / tracking_off
 #VARIABLE {tracking_on} {1}
 #nop Class-specific module file (without .tin extension)
-#VARIABLE {class} {curist}
+#VARIABLE {class} {cyborg}
 
 #nop ------------------ LOAD CHARACTER ------------------
 #read {nukefire/char_load.tin}
