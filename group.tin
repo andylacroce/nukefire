@@ -10,3 +10,9 @@
 #if {$is_follower} {
 	#ACTION {[Group] ${leader} reports:} {report}
 }
+
+#if {$is_follower} {
+	#ACTION {[Group] ${leader} says, 'o %*'} {%1}
+} 
+
+#action {You are dead!  Sorry...} {#delay {3} {ret}}

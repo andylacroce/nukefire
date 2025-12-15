@@ -3,36 +3,37 @@
 #nop =========================
 
 #class autoloot open
-	#ACTION {a puppet with severed strings.} {gall}
-	#ACTION {a soul lost to the wasteland.} {gall}
-	#ACTION {cacophony of the apocalypse.} {gall}
-	#ACTION {collapses in a heap of metallic wreckage!} {gall}
-	#ACTION {collapses into a pile of useless components.} {gall}
-	#ACTION {cries are abruptly extinguished.} {gall}
-	#ACTION {death looms closer.} {gall}
-	#ACTION {echoing through the halls of doom!} {gall}
-	#ACTION {emanates from} {gall}
-	#ACTION {essence dissolving into the ether!} {gall}
-	#ACTION {exposing bone!} {gall}
-	#ACTION {flesh rots away!} {gall}
-	#ACTION {grim lullaby for the damned.} {gall}
-	#ACTION {its body going limp and lifeless.} {gall}
-	#ACTION {its form going rigid and cold.} {gall}
-	#ACTION {its internal systems irreparably damaged.} {gall}
-	#ACTION {its lights dimming forever.} {gall}
-	#ACTION {its parts scattering.} {gall}
-	#ACTION {laid to rest beneath a Mystic Veil!} {gall}
-	#ACTION {last utterance in this world.} {gall}
-	#ACTION {marking the passing} {gall}
-	#ACTION {power source irreversibly depletes.} {gall}
-	#ACTION {powers down one last time.} {gall}
-	#ACTION {ripped from this world.} {gall}
-	#ACTION {sending shivers down your spine!} {gall}
-	#ACTION {signaling its final malfunction.} {gall}
-	#ACTION {soon to be forgotten.} {gall}
-	#ACTION {tortured breaths.} {gall}
-	#ACTION {voodoo doll has been broken.} {gall}
-	#ACTION {winds of desolation.} {gall}
+	#ACTION {a puppet with severed strings.} {gc}
+	#ACTION {a soul lost to the wasteland.} {gc}
+	#ACTION {cacophony of the apocalypse.} {gc}
+	#ACTION {collapses in a heap of metallic wreckage!} {gc}
+	#ACTION {collapses into a pile of useless components.} {gc}
+	#ACTION {cries are abruptly extinguished.} {gc}
+	#ACTION {death looms closer.} {gc}
+	#ACTION {echoing through the halls of doom!} {gc}
+	#ACTION {emanates from} {gc}
+	#ACTION {essence dissolving into the ether!} {gc}
+	#ACTION {exposing bone!} {gc}
+	#ACTION {flesh rots away!} {gc}
+	#ACTION {grim lullaby for the damned.} {gc}
+	#ACTION {its body going limp and lifeless.} {gc}
+	#ACTION {its form going rigid and cold.} {gc}
+	#ACTION {its internal systems irreparably damaged.} {gc}
+	#ACTION {its lights dimming forever.} {gc}
+	#ACTION {its parts scattering.} {gc}
+	#ACTION {laid to rest beneath a Mystic Veil!} {gc}
+	#ACTION {last utterance in this world.} {gc}
+	#ACTION {marking the passing} {gc}
+	#ACTION {power source irreversibly depletes.} {gc}
+	#ACTION {powers down one last time.} {gc}
+	#ACTION {ripped from this world.} {gc}
+	#ACTION {sending shivers down your spine!} {gc}
+	#ACTION {signaling its final malfunction.} {gc}
+	#ACTION {soon to be forgotten.} {gc}
+	#ACTION {tortured breaths.} {gc}
+	#ACTION {voodoo doll has been broken.} {gc}
+	#ACTION {winds of desolation.} {gc}
+	#ACTION {crimson testament to the fallen.} {gc}
 #class autoloot close
 #if {!$autoloot_on} {#class {autoloot} {clear}}
 

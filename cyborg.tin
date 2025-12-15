@@ -3,42 +3,61 @@
 #nop Combat aliases and macros for cyborg class
 #nop =====================================================
 
-#VARIABLE {dcon_on} {1}
+#nop ------------------ LEVEL-DRIVEN ACTIONS ------------------
+#ACTION {[Regen]} {afx}
 
 #nop ------------------ SPELL / SKILL UTILITIES ------------------
 
 #nop Damcon toggle class
 #class dcon open
-	#var {dcon_on} {1}
 	#variable {has_damcon} {0}
 	
     #action {SPL: %* damcon} {#variable {has_damcon} {1}}
-	#action {TIMER: %*} {
-		#delay {2} {
-			#if {!$has_damcon} {damcon;#variable {has_damcon} {1}}
-		}
-	}
     
-    #action {status light blinks on.} {#variable {has_damcon} {1}}
-    #action {status light blinks off.} {#variable {has_damcon} {0};damcon}
+    #action {The //DAMCON\\\\ status light blinks on.} {#variable {has_damcon} {1}}
+    #action {The //DAMCON\\\\ status light blinks off.} {#variable {has_damcon} {0};damcon}
 #class dcon close
-
-#nop ------------------ LEVEL-DRIVEN ACTIONS ------------------
-#ACTION {[Regen]} {afx}
 
 #nop ------------------ DAMCON CONTROL ------------------
 #alias {dcon_on} {
+	#read {nukefire/cyborg.tin};
 	#class {dcon} {open};
 	#var {dcon_on} {1};
 	#showme {DCON ON};
 	#send {}
 }
 #alias {dcon_off} {
-	#class {dcon} {close};
+	#class {dcon} {clear};
 	#var {dcon_on} {0};
 	#showme {DCON OFF};
 	#send {}
 }
 #alias {dcon} {
 	#if {$dcon_on} {dcon_off} {dcon_on}
+}
+
+#nop ------------------ TURBO CONTROL ------------------
+
+#nop Turbo requires level > 10 to use/auto-cast
+#class turbo open
+	#variable {has_turbo} {0}
+	
+    #action {SPL: %* turbo} {#variable {has_turbo} {1}}
+    
+    #action {The //TURBO\\\\ status light blinks blinks on in your vision field.} {#variable {has_turbo} {1}}
+    #action {The //TURBO\\\\ status light blinks off.\nThe //TURBO\\\\ status light blinks off.} {#variable {has_turbo} {0};turbo}
+#class turbo close
+
+#alias {turbo_on} {#if {$lvl > 9} {#read {nukefire/cyborg.tin}; #class {turbo} {open}; #var {turbo_on} {1}; #showme {TURBO ON}; #send {}} {#showme {TURBO UNAVAILABLE}}}
+#alias {turbo_off} {#if {$lvl > 9} {#class {turbo} {clear}; #var {turbo_on} {0}; #showme {TURBO OFF}; #send {}} {#showme {TURBO UNAVAILABLE}}}
+#alias {tur} {#if {$lvl > 9} {#if {$turbo_on} {turbo_off} {turbo_on}} {#showme {TURBO UNAVAILABLE}}}
+
+#action {TIMER: %*} {
+    #delay {2} {
+        #if {!$has_damcon && $dcon_on} {damcon;#variable {has_damcon} {1}};
+        #if {$lvl > 9} {
+            #if {!$has_turbo && $turbo_on} {turbo;#variable {has_turbo} {1}}
+        }
+    }
+    
 }

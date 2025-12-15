@@ -21,5 +21,8 @@
 #nop Class-specific module file (without .tin extension)
 #VARIABLE {class} {cyborg}
 
+#VARIABLE {dcon_on} {1}
+#VARIABLE {turbo_on} {1}
+
 #nop ------------------ LOAD CHARACTER ------------------
 #read {nukefire/char_load.tin}
