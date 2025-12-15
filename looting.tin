@@ -12,7 +12,7 @@
 #ALIAS {ret} {
     #if {"$me" == "Mutiny"} {retrieve;get all corpse;rewear;conceal dirk;conceal dagger;conceal knife;junk corpse;n;u};
     #if {"$me" == "Haenym"} {retrieve;get all corpse;rewear;junk corpsen;u};
-    #if {"$me" == "Prodigy"} {retrieve;get all corpse;rewear;get all remains;rewear;junk corpse;junk remains;n;u};
+    #if {"$me" == "Prodigy"} {retrieve;get all remains;rewear;get all corpse;rewear;junk remains;junk corpse;n;u}
 }
 #ALIAS {gcr %1 %2} {give %1 credits %2}
 
