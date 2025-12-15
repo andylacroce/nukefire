@@ -11,16 +11,16 @@
 #class dcon open
 	#var {dcon_on} {1}
 	#variable {has_damcon} {0}
-	#action {SPL: %* damcon} {#variable {has_damcon} {1}}
-	#action {The DAMCON status light blinks off.} {
-		#variable {has_damcon} {0};
-		damcon
-	}
+	
+    #action {SPL: %* damcon} {#variable {has_damcon} {1}}
 	#action {TIMER: %*} {
 		#delay {2} {
-			#if {!$has_damcon} {damcon};
+			#if {!$has_damcon} {damcon;#variable {has_damcon} {1}}
 		}
 	}
+    
+    #action {status light blinks on.} {#variable {has_damcon} {1}}
+    #action {status light blinks off.} {#variable {has_damcon} {0};damcon}
 #class dcon close
 
 #nop ------------------ LEVEL-DRIVEN ACTIONS ------------------
