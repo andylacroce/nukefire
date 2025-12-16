@@ -1,0 +1,27 @@
+#nop =====================================================
+#nop Rancor Profile
+#nop =====================================================
+
+#nop ------------------ CORE VARIABLES ------------------
+#nop Keep variables first; actions/aliases depend on these.
+#VARIABLE {me} {Rancor}
+#read {nukefire/local_secrets.tin}
+#VARIABLE {password} {$rancor_password}
+#VARIABLE {lvl} {}
+#VARIABLE {dest} {}
+#VARIABLE {trackee} {}
+#VARIABLE {container} {satchel}
+#VARIABLE {remort_num} {933}
+#nop Toggle: aloot / aloot_on / aloot_off
+#VARIABLE {autoloot_on} {0}
+#nop Toggle: logging / logging_on / logging_off
+#VARIABLE {logging_on} {1}
+#nop Toggle: tracking / tracking_on / tracking_off
+#VARIABLE {tracking_on} {1}
+#nop Class-specific module file (without .tin extension)
+#VARIABLE {class} {ranger}
+
+#VARIABLE {autoheal_on} {1}
+
+#nop ------------------ LOAD CHARACTER ------------------
+#read {nukefire/char_load.tin}

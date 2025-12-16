@@ -6,7 +6,7 @@
 
 #nop ------------------ LEADER CONFIGURATION ------------------
 #VARIABLE {leader} {Mutiny}
-#list {followers} {create} {Haenym} {Prodigy}
+#list {followers} {create} {Haenym} {Prodigy} {Rancor}
 
 #nop ------------------ DETERMINE CHARACTER ROLE ------------------
 #variable {is_follower} {1}

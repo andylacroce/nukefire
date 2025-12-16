@@ -8,4 +8,6 @@ wt -M ^
   ; new-tab --title "Haenym" -d "%BIN%" cmd /k ^
     "timeout /t 5 /nobreak > nul & \"%BIN%\tt++.exe\" -r \"nukefire\haenym.tin\"" ^
   ; new-tab --title "Prodigy" -d "%BIN%" cmd /k ^
-    "timeout /t 10 /nobreak > nul & \"%BIN%\tt++.exe\" -r \"nukefire\prodigy.tin\""
+    "timeout /t 10 /nobreak > nul & \"%BIN%\tt++.exe\" -r \"nukefire\prodigy.tin\"" ^
+  ; new-tab --title "Rancor" -d "%BIN%" cmd /k ^
+    "timeout /t 15 /nobreak > nul & \"%BIN%\tt++.exe\" -r \"nukefire\rancor.tin\""

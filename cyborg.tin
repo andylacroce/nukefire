@@ -66,6 +66,8 @@
 }
 
 #action {TIMER: %*} {
+    #variable {has_damcon} {0};
+    #variable {has_turbo} {0};
     #delay {2} {
         #if {!$has_damcon && $dcon_on} {damcon;#variable {has_damcon} {1}};
         #if {$lvl > 9} {
