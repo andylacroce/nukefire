@@ -17,7 +17,6 @@
 #nop ------------------ SPELL / SKILL UTILITIES ------------------
 #ALIAS {cb %1} {sli 'cure blind' %1}
 #ALIAS {rc %1} {sli 'remove curse' %1}
-#ALIAS {id %1} {sli 'identify' %1}
 #ALIAS {tarot_group} {tarot self;#if {$is_follower == 0}{#var i 1;#while {$i <= &followers[]}{#list followers get $i name;#if {"$name" != "$me"}{tarot $name};#math i $i + 1}}}
 #ALIAS {fa} {first %1}
 #ALIAS {fam} {first $me}

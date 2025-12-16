@@ -17,3 +17,6 @@
 #ALIAS {ui %1} {upgrade imp %1}
 #ALIAS {upe %1} {upgrade eq %1}
 #ALIAS {ut %1} {upgrade tat %1}
+
+
+#ALIAS {id %1} {sli 'identify' %1}
