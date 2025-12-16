@@ -53,7 +53,6 @@
 }
 #ACTION {You receive %1 experience points.} {
 	#if {$lvl > 19}{rom};
-	#if {$lvl > 24}{mir};
 	#if {$lvl > 39}{tarot_group}
 }
 #ACTION {Your Voodoo Contract has been broken, the hex dissipates.} {sign}

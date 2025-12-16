@@ -7,6 +7,7 @@
 #ALIAS {auc %1 %2} {auction %1 %2}
 #ALIAS {wauc} {whatsauc}
 #ALIAS {bi %1} {buy inscribe %1 $me}
+#ALIAS {biw %1} {rem %1;bi %1;wear %1}
 #ALIAS {bu %1} {buy uninscribe %1}
 
 #nop ------------------ SELLING / UPGRADES ------------------

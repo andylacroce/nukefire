@@ -48,9 +48,22 @@
     #action {The //TURBO\\\\ status light blinks off.\nThe //TURBO\\\\ status light blinks off.} {#variable {has_turbo} {0};turbo}
 #class turbo close
 
-#alias {turbo_on} {#if {$lvl > 9} {#read {nukefire/cyborg.tin}; #class {turbo} {open}; #var {turbo_on} {1}; #showme {TURBO ON}; #send {}} {#showme {TURBO UNAVAILABLE}}}
-#alias {turbo_off} {#if {$lvl > 9} {#class {turbo} {clear}; #var {turbo_on} {0}; #showme {TURBO OFF}; #send {}} {#showme {TURBO UNAVAILABLE}}}
-#alias {tur} {#if {$lvl > 9} {#if {$turbo_on} {turbo_off} {turbo_on}} {#showme {TURBO UNAVAILABLE}}}
+#alias {turbo_on} {
+	#read {nukefire/cyborg.tin};
+	#class {turbo} {open};
+	#var {turbo_on} {1};
+	#showme {TURBO ON};
+	#send {}
+}
+#alias {turbo_off} {
+	#class {turbo} {clear};
+	#var {turbo_on} {0};
+	#showme {TURBO OFF};
+	#send {}
+}
+#alias {tur} {
+	#if {$turbo_on} {turbo_off} {turbo_on}
+}
 
 #action {TIMER: %*} {
     #delay {2} {
