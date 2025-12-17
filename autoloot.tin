@@ -34,6 +34,7 @@
 	#ACTION {voodoo doll has been broken.} {gc}
 	#ACTION {winds of desolation.} {gc}
 	#ACTION {crimson testament to the fallen.} {gc}
+	#ACTION {tragic tableau of demise.} {gc}
 #class autoloot close
 #if {!$autoloot_on} {#class {autoloot} {clear}}
 

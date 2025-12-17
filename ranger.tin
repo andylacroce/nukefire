@@ -5,44 +5,21 @@
 
 #nop ------------------ DEFAULT TOGGLES ------------------
 #VARIABLE {bark_on} {1}
-#VARIABLE {catseye_on} {1}
 #VARIABLE {autoheal_on} {1}
 #VARIABLE {groupcheck_on} {1}
 
-
+#ACTION {[Regen]} {#if {$lvl > 14}{afx}}
 
 #nop ------------------ BARK SKIN REAPPLY ------------------
+#nop Bark requires level > 14 to use/auto-cast
 #class bark open
 	#variable {has_bark} {0}
 
 	#action {SPL: %* bark skin} {#variable {has_bark} {1}}
 	#action {SPL: %* bark} {#variable {has_bark} {1}}
 	#action {You invoke your bark skin, taking on a rough, tree-like appearance.} {#variable {has_bark} {1}}
-	#action {The bark-like texture surrounding you fades away as you cease concentration.} {#variable {has_bark} {0};bark}
+	#action {The bark-like texture surrounding you fades away as you cease concentration.} {#variable {has_bark} {0};#if {$lvl > 14 && $bark_on} {bark;#variable {has_bark} {1}}}
 #class bark close
-
-#nop ------------------ CATSEYE REAPPLY ------------------
-#class catseye open
-	#variable {has_catseye} {0}
-	#action {SPL: %* catseye} {#variable {has_catseye} {1}}
-#class catseye close
-
-#alias {catseye_on} {
-	#read {nukefire/ranger.tin};
-	#class {catseye} {open};
-	#var {catseye_on} {1};
-	#showme {CATSEYE ON};
-	#send {}
-}
-#alias {catseye_off} {
-	#class {catseye} {clear};
-	#var {catseye_on} {0};
-	#showme {CATSEYE OFF};
-	#send {}
-}
-#alias {ce} {
-	#if {$catseye_on} {catseye_off} {catseye_on}
-}
 
 #alias {bark_on} {
 	#read {nukefire/ranger.tin};
@@ -63,12 +40,12 @@
 
 #action {TIMER: %*} {
 	#variable {has_bark} {0};
-	#variable {has_catseye} {0};
 	#delay {2} {
-		#if {!$has_bark && $bark_on} {bark;#variable {has_bark} {1}};
-		#if {!$has_catseye && $catseye_on} {sli 'catseye';#variable {has_catseye} {1}}
+		#if {$lvl > 14} {
+			#if {!$has_bark && $bark_on} {bark;#variable {has_bark} {1}}
+		}
 	}
-}
+} 
 
 #nop Group status ticker for autoheal
 #class groupcheck open

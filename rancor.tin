@@ -22,7 +22,6 @@
 #VARIABLE {class} {ranger}
 
 #VARIABLE {bark_on} {1}
-#VARIABLE {catseye_on} {1}
 #VARIABLE {autoheal_on} {1}
 
 #nop ------------------ LOAD CHARACTER ------------------
