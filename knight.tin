@@ -1,0 +1,102 @@
+#nop =====================================================
+#nop Knight COMBAT
+#nop Combat aliases and macros for Knight class
+#nop =====================================================
+
+#nop ------------------ SPELL / SKILL UTILITIES ------------------
+
+#nop AFX - Check buffs and recast missing ones
+#VARIABLE {has_armor} {0}
+
+#alias {rec} {#if {lvl > 18} {sli 'word of recall'}}
+
+#alias {heal %1} {#if {$lvl > 24} {sli 'heal' %1}}
+#alias {healme} {#if {$lvl > 24} {sli 'heal' $me}}
+
+#ACTION {$leader telepaths to you, 'heal'} {#if {$lvl > 24} {sli 'heal' $leader}}
+
+#ACTION {^SPL: %* armor} {#variable {has_armor} {1}}
+#ACTION {TIMER: %*} {
+	#delay {2} {
+		#if {$has_armor == 0 && $lvl > 4}{sli 'armor' $me};
+		#variable {has_armor} {0};
+	}
+}
+
+#nop Aura falls off messages
+#ACTION {You feel less protected.} {
+	#variable {has_armor} {0};
+	#if {$lvl > 4}{sli 'armor' $me};
+}
+#ACTION {%1 looks less protected.} {
+	#if {$lvl > 4 && ("%1" == "${leader}" || %1 in {${followers}[]})}{sli 'armor' %1};
+	#if {"%1" == "${me}"}{#variable {has_armor} {0}}
+}
+
+
+
+#nop ------------------ LEVEL-DRIVEN ACTIONS ------------------
+#ACTION {[Regen]} {#if {$lvl > 4}{afx}}
+
+
+#nop Group status ticker for autoheal and autoinvig
+#class groupcheck open
+	#var {groupcheck_on} {1}
+	#TICKER {knight_group_check} {gr} {3}
+#class groupcheck close
+
+#nop Auto-heal group members below 75% HP from group status output
+#class autoheal open
+	#action {[%1 %2] %3 %*: [%4/%5]H %*} {
+		#nop #showme {DEBUG: lvl=%1 class=%2 name=%3 hp=%4 maxhp=%5};
+		#math {target_hp_pct} {100 * %4 / %5};
+		#nop #showme {DEBUG: pct=$target_hp_pct};
+		#if {$target_hp_pct < 75} {#if {$lvl > 24} {sli 'heal' %3}};
+	}
+#class autoheal close
+
+#nop ------------------ AUTOHEAL CONTROL ------------------
+#alias {autoheal_on} {
+	#read {nukefire/knight.tin};
+	#class {autoheal} {open};
+	#var {autoheal_on} {1};
+	#showme {Autoheal ON};
+	#send {}
+}
+#alias {autoheal_off} {
+	#class {autoheal} {clear};
+	#var {autoheal_on} {0};
+	#showme {Autoheal OFF};
+	#send {}
+}
+#alias {autoheal} {
+	#if {$autoheal_on} {autoheal_off} {autoheal_on}
+}
+
+#nop ------------------ GROUPCHECK CONTROL ------------------
+#alias {groupcheck_on} {
+	#read {nukefire/knight.tin};
+	#class {groupcheck} {open};
+	#var {groupcheck_on} {1};
+	#showme {Groupcheck ON};
+	#send {}
+}
+#alias {groupcheck_off} {
+	#class {groupcheck} {clear};
+	#var {groupcheck_on} {0};
+	#showme {Groupcheck OFF};
+	#send {}
+}
+#alias {groupcheck} {
+	#if {$groupcheck_on} {groupcheck_off} {groupcheck_on}
+}
+
+#ACTION {You rise a level!} {
+	emote gained a level and dances a celebratory jig.;
+	#delay {3} {
+		#if {$lvl < 6} {combo kick kick kick};
+		#elseif {$lvl < 15}{combo bash bash bash};
+        #elseif {$lvl < 20}{combo flurry flurry flurry};
+		#else {combo grapple grapple grapple}
+	}
+}
