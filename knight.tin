@@ -7,6 +7,9 @@
 
 #nop AFX - Check buffs and recast missing ones
 #VARIABLE {has_armor} {0}
+#VARIABLE {has_barrier} {0}
+#VARIABLE {has_war} {0}
+#VARIABLE {has_honor} {0}
 
 #alias {rec} {#if {lvl > 18} {sli 'word of recall'}}
 
@@ -16,10 +19,19 @@
 #ACTION {$leader telepaths to you, 'heal'} {#if {$lvl > 24} {sli 'heal' $leader}}
 
 #ACTION {^SPL: %* armor} {#variable {has_armor} {1}}
+#ACTION {^SPL: %* barrier} {#variable {has_barrier} {1}}
+#ACTION {^SPL: %* war} {#variable {has_war} {1}}
+#ACTION {^SPL: %* honor} {#variable {has_honor} {1}}
 #ACTION {TIMER: %*} {
 	#delay {2} {
 		#if {$has_armor == 0 && $lvl > 4}{sli 'armor' $me};
+		#if {$has_barrier == 0 && $lvl > 24}{sli 'barrier' $me};
+		#if {$has_war == 0 && $lvl > 24}{sli 'war' $me};
+		#if {$has_honor == 0 && $lvl > 18}{sli 'honor' $me};
 		#variable {has_armor} {0};
+		#variable {has_barrier} {0};
+		#variable {has_war} {0};
+		#variable {has_honor} {0}
 	}
 }
 

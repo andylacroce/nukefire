@@ -34,6 +34,7 @@
 
 #nop ------------------ LOAD ROLE-SPECIFIC MODULES ------------------
 #if {$is_follower} {#read {nukefire/follower.tin}}
+#if {!$is_follower} {#read {nukefire/leader.tin}}
 
 #nop ------------------ AUTOSTART ------------------
 #read {nukefire/autostart.tin}

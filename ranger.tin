@@ -56,13 +56,22 @@
 #nop Auto-heal group members below 75% HP from group status output
 #class autoheal open
 	#action {[%1 %2] %3 %*: [%4/%5]H %* [%6/%7]V} {
+		#nop #showme {DEBUG: lvl=%1 class=%2 name=%3 hp=%4 maxhp=%5 mv=%6 maxmv=%7};
 		#math {target_hp_pct} {100 * %4 / %5};
+		#math {target_v_pct} {100 * %6 / %7};
+		#nop #showme {DEBUG: pct=$target_hp_pct};
+		#nop #showme {DEBUG: pct=$target_v_pct};
 		#if {$target_hp_pct < 75} {#if {$lvl > 15} {sli 'heal' %3} {#if {$lvl > 2} {sli 'cure light' %3}}};
+		#if {$target_v_pct < 50 && $lvl > 14} {sli 'invigorate' %3};
 	}
 #class autoheal close
 
 #alias {heal %1} {#if {$lvl > 15} {sli 'heal' %1} {#if {$lvl > 2} {sli 'cure light' %1}}}
 #alias {healme} {#if {$lvl > 15} {sli 'heal' $me} {#if {$lvl > 2} {sli 'cure light' $me}}}
+
+#alias {invig %1} {#if {$lvl > 14} {sli 'invigorate' %1}}
+#alias {invigme} {#if {$lvl > 14} {sli 'invigorate' $me}}
+#ACTION {$leader telepaths to you, 'invig'} {#if {$lvl > 14} {sli 'invigorate' $leader}}
 
 #nop ------------------ AUTOHEAL CONTROL ------------------
 #alias {autoheal_on} {

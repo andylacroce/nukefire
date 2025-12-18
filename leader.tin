@@ -1,0 +1,36 @@
+#alias {otf %*} {
+    #var i 1;
+    #while {$i <= &followers[]} {
+        #list followers get $i follower;
+        #if {"$follower" != "$me"} {tel $follower o %1};
+        #math i $i + 1;
+    };
+}
+
+#alias {seq} {
+    otf snapeq;
+    snapeq;
+}
+
+#ALIAS {rec} {
+    #if {!$is_follower} {
+        #var i 1;
+        #while {$i <= &followers[]} {
+            #list followers get $i follower;
+            #if {"$follower" != "$me"} {
+                get recall $container;
+                give recall $follower;
+                tel $follower o recite recall;
+            };
+            #math i $i + 1;
+        };
+
+        #action {( %1) a recall scroll%*} {#var recall_count %1};
+
+        look in $container;
+        #delay 2 {
+            #if {$recall_count < 30} {gt Running low on recall scrolls - $recall_count remaining}
+        }
+    };
+    recall;
+}

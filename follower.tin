@@ -20,4 +20,8 @@
 
 #nop ------------------ LEADER ACTIONS ------------------
 #action {${leader}'s form shimmers with eldritch power as he vanishes beyond mortal planes!} {recall}
-#action {${leader} telepaths to you, 'o %1'} {%1}
+#action {${leader} telepaths to you, 'o %*'} {%1}
+
+#action {[Saved your re-wear script.]} {tel ${leader} eq snapped}
+
+#action {[ Class Remorts:]\n%*\n} {tel ${leader} %1}
