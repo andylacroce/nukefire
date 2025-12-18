@@ -23,19 +23,20 @@
 #ACTION {^SPL: %* armor} {#variable {has_armor} {1}}
 #ACTION {TIMER: %*} {
 	#delay {2} {
-		#if {$has_armor == 0 && $lvl > 8}{sli 'aura of prot'};
+		#if {$has_armor == 0 && $lvl > 8 && $group_cast_on_fade}{sli 'aura of prot'};
 	}
 }
 
 #nop Aura falls off messages
 #ACTION {You feel less protected.} {
 	#variable {has_armor} {0};
-	#if {$lvl > 8}{sli 'aura of prot'}
-}
+	#if {$lvl > 8 && $group_cast_on_fade}{sli 'aura of prot'};
+} 
 #ACTION {%1 looks less protected.} {
-	#if {$lvl > 8 && ("%1" == "${leader}" || %1 in {${followers}[]})}{sli 'aura of prot'};
-	#if {"%1" == "${me}"}{#variable {has_armor} {0}}
-}
+	#var recaster %1;
+	is_group_member %1;
+	#if {$lvl > 8 && $igm_result == 1 && $group_cast_on_fade} {sli 'aura of prot';};
+}  
 
 
 #nop ------------------ LEVEL-DRIVEN ACTIONS ------------------

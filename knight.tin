@@ -3,49 +3,78 @@
 #nop Combat aliases and macros for Knight class
 #nop =====================================================
 
-#nop ------------------ SPELL / SKILL UTILITIES ------------------
-
-#nop AFX - Check buffs and recast missing ones
+#nop ------------------ CORE: STATE & HELPERS ------------------
+#nop - Buff state trackers used by AFX routines
+#nop - Manual group aliases (thin wrappers) rely on `cast_group` in `group.tin`
 #VARIABLE {has_armor} {0}
 #VARIABLE {has_barrier} {0}
 #VARIABLE {has_war} {0}
 #VARIABLE {has_honor} {0}
 
+#nop ------------------ BASIC ALIASES ------------------
 #alias {rec} {#if {lvl > 18} {sli 'word of recall'}}
-
 #alias {heal %1} {#if {$lvl > 24} {sli 'heal' %1}}
 #alias {healme} {#if {$lvl > 24} {sli 'heal' $me}}
-
 #ACTION {$leader telepaths to you, 'heal'} {#if {$lvl > 24} {sli 'heal' $leader}}
 
+#nop ------------------ MANUAL GROUP-CALL ALIASES ------------------
+#ALIAS {armor_group} {cast_group armor 4}
+#ALIAS {barrier_group} {cast_group barrier 24}
+#ALIAS {war_group} {cast_group war 24}
+
+#nop ------------------ AFX: SPELL LISTENERS & TIMER ------------------
+#nop - SPL handlers mark when a buff is detected; TIMER periodically ensures buffs are present
 #ACTION {^SPL: %* armor} {#variable {has_armor} {1}}
 #ACTION {^SPL: %* barrier} {#variable {has_barrier} {1}}
 #ACTION {^SPL: %* war} {#variable {has_war} {1}}
 #ACTION {^SPL: %* honor} {#variable {has_honor} {1}}
 #ACTION {TIMER: %*} {
 	#delay {2} {
-		#if {$has_armor == 0 && $lvl > 4}{sli 'armor' $me};
-		#if {$has_barrier == 0 && $lvl > 24}{sli 'barrier' $me};
-		#if {$has_war == 0 && $lvl > 24}{sli 'war' $me};
+		#if {$has_armor == 0 && $group_cast_on_fade}{armor_group};
+		#if {$has_barrier == 0 && $group_cast_on_fade}{barrier_group};
+		#if {$has_war == 0 && $group_cast_on_fade}{war_group};
 		#if {$has_honor == 0 && $lvl > 18}{sli 'honor' $me};
 		#variable {has_armor} {0};
 		#variable {has_barrier} {0};
 		#variable {has_war} {0};
-		#variable {has_honor} {0}
+		#variable {has_honor} {0};
 	}
 }
 
-#nop Aura falls off messages
+#nop ------------------ FALL-OFF HANDLERS (AUTO-REAPPLY) ------------------
+#nop - When a member loses a buff, reapply it to leader + followers using group aliases
 #ACTION {You feel less protected.} {
 	#variable {has_armor} {0};
-	#if {$lvl > 4}{sli 'armor' $me};
-}
+	#if {$group_cast_on_fade && $lvl > 4} {armor_group};
+};
 #ACTION {%1 looks less protected.} {
-	#if {$lvl > 4 && ("%1" == "${leader}" || %1 in {${followers}[]})}{sli 'armor' %1};
-	#if {"%1" == "${me}"}{#variable {has_armor} {0}}
-}
+	#var recaster %1;
+	is_group_member %1;
+	#if {$group_cast_on_fade && $lvl > 4 && $igm_result == 1} {armor_group;};
+	#if {"%1" == "${me}"}{#variable {has_armor} {0}};
+};  
 
+#nop Barrier falls off messages
+#ACTION {Your barrier of valor has gone limp.} {
+	#variable {has_barrier} {0};
+	#if {$group_cast_on_fade && $lvl > 24} {barrier_group};
+}; 
+#ACTION {%1's barrier of valor slackens and fades.} {
+	#var recaster %1;
+	is_group_member %1;
+	#if {$group_cast_on_fade && $lvl > 24 && $igm_result == 1} {barrier_group;};
+};  
 
+#nop War falls off messages
+#ACTION {Your war banner has gone limp.} {
+	#variable {has_war} {0};
+	#if {$group_cast_on_fade && $lvl > 24} {war_group};
+}; 
+#ACTION {%1's war banner goes limp.} {
+	#var recaster %1;
+	is_group_member %1;
+	#if {$group_cast_on_fade && $lvl > 24 && $igm_result == 1} {war_group;};
+};  
 
 #nop ------------------ LEVEL-DRIVEN ACTIONS ------------------
 #ACTION {[Regen]} {#if {$lvl > 4}{afx}}

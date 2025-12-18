@@ -17,7 +17,7 @@
 #nop ------------------ SPELL / SKILL UTILITIES ------------------
 #ALIAS {cb %1} {sli 'cure blind' %1}
 #ALIAS {rc %1} {sli 'remove curse' %1}
-#ALIAS {tarot_group} {tarot self;#if {$is_follower == 0}{#var i 1;#while {$i <= &followers[]}{#list followers get $i name;#if {"$name" != "$me"}{tarot $name};#math i $i + 1}}}
+#ALIAS {tarot_group} {group_targeted tarot}
 #ALIAS {fa} {first %1}
 #ALIAS {fam} {first $me}
 
@@ -34,12 +34,23 @@
 		#if {"%*" !~ "Gypsy_Dance" && $lvl > 19}{rom};
 		#if {$has_voodoo == 0 && $lvl > 39}{sign};
 		#if {$has_phantom == 0 && $lvl > 24}{mir};
-		#if {$has_fortune == 0 && $lvl > 39}{tarot_group};
+		#if {$has_fortune == 0 && $lvl > 39 && $group_cast_on_fade}{tarot_group};
 		#variable {has_voodoo} {0};
 		#variable {has_phantom} {0};
 		#variable {has_fortune} {0}
 	}
 }
+
+#nop Fortune falls off messages
+#ACTION {Fortune's blessing retreats from you.} {
+	#variable {has_fortune} {0};
+	#if {$lvl > 39 && $group_cast_on_fade}{tarot_group};
+}
+#ACTION {The shimmer of Fortune's blessing fades from around %1.} {
+	#var recaster %1;
+	is_group_member %1;
+	#if {$lvl > 39 && $igm_result == 1 && $group_cast_on_fade}{tarot_group};
+} 
 
 #nop ------------------ LEVEL-DRIVEN ACTIONS ------------------
 #ACTION {[Regen]} {#if {$lvl > 39}{afx}}
@@ -56,6 +67,7 @@
 }
 #ACTION {Your Voodoo Contract has been broken, the hex dissipates.} {sign}
 #ACTION {Your attempt to establish the Voodoo Contract fails.} {sign}
+
 #ACTION {You rise a level!} {
 	emote gained a level and dances a celebratory jig.;
 	#delay {3} {

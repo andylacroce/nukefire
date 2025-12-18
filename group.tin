@@ -6,6 +6,53 @@
 #nop ------------------ REPORT COMMAND ------------------
 #ALIAS {rep} {report}
 
+#nop Helper: test if a name is the leader or a follower
+#alias {is_group_member %1} {
+	#var _igm_name %1;
+	#var _igm_res 0;
+	#if {"$_igm_name" == "${leader}"} {#var _igm_res 1};
+	#if {$_igm_res == 0} {
+		#var _igm_i 1;
+		#while {$_igm_i <= &followers[]} {
+			#list followers get $_igm_i follower;
+			#if {"$follower" == "$_igm_name"} {#var _igm_res 1};
+			#math _igm_i $_igm_i + 1;
+		};
+	};
+	#var igm_result $_igm_res;
+}
+
+#VARIABLE {group_cast_on_fade} {1}
+#alias {group_cast_on} {#variable {group_cast_on_fade} {1};#showme {Group-cast-on-fade ON}}
+#alias {group_cast_off} {#variable {group_cast_on_fade} {0};#showme {Group-cast-on-fade OFF}}
+#alias {group_cast} {#if {$group_cast_on_fade} {group_cast_off} {group_cast_on}}
+
+#alias {cast_group %1 %2} {
+	#nop %1 = spell name (e.g., armor), %2 = minimum level threshold (use 4 for level > 4);
+	#nop Casts the named spell on leader and followers (manual invocation)
+	#if {$lvl > %2} {
+		#if {"${leader}" != ""} {sli '%1' ${leader};};
+		#var _i 1;
+		#while {$_i <= &followers[]} {
+			#list followers get $_i follower;
+			#if {"$follower" != "${leader}"} {sli '%1' $follower};
+			#math _i $_i + 1;
+		};
+	};
+}
+
+#alias {group_targeted %1} {
+	#nop %1 = command verb (e.g. 'tarot');
+	#nop apply to leader if set;
+	#if {"${leader}" != ""} {%1 ${leader};};
+	#var _i 1;
+	#while {$_i <= &followers[]} {
+		#list followers get $_i name;
+		#if {"$name" != "${leader}" && "$name" != "$me"} {%1 $name};
+		#math _i $_i + 1;
+	};
+}
+
 #nop Followers auto-report when leader reports
 #if {$is_follower} {
 	#ACTION {[Group] ${leader} reports:} {report}

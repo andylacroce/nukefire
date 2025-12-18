@@ -12,6 +12,11 @@
     snapeq;
 }
 
+#alias {af} {
+    otf afx;
+    afx;
+}
+
 #ALIAS {rec} {
     #if {!$is_follower} {
         #var i 1;
