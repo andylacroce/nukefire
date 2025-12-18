@@ -18,15 +18,32 @@ Nukefire characters.
   terminal size. By default it uses `wt` (Windows Terminal) to open
   tabs running `t++.exe` with profile files.
 - `*.tin` — TinTin++ profile modules:
-  - `mutiny.tin` — Mutiny character profile (loads `local_secrets.tin`).
-  - `haenym.tin` — Haenym character profile (loads `local_secrets.tin`).
-  - `char_load.tin` — Generic loader, loads common modules and class-specific modules.
-  - `autostart.tin` — Autostart session instructions and client setup hooks.
-  - `local_secrets.tin` — Local passwords and secrets file (gitignored).
-  - `autoloot.tin`, `logging.tin`, `tracking.tin`, `travel.tin`,
-    `looting.tin`, `materials.tin`, `eq_mgmt.tin`, `follower.tin`,
-    `group.tin`, `gypsy.tin`, `haenym.tin` — feature modules and
-    aliases.
+  - Character profiles:
+    - `mutiny.tin` — Mutiny character profile (loads `local_secrets.tin`).
+    - `haenym.tin` — Haenym character profile (loads
+      `local_secrets.tin`).
+    - `prodigy.tin` — Prodigy character profile (loads
+      `local_secrets.tin`).
+    - `rancor.tin` — Rancor character profile (loads
+      `local_secrets.tin`).
+    - `ranger.tin` — Ranger character profile.
+    - `remort.tin` — Remort-related helpers and presets.
+  - Class & role modules:
+    - `knight.tin` — Knight class combat and buff helpers.
+    - `cyborg.tin` — Cyborg-specific aliases and scripts.
+    - `curist.tin` — Curist (healer) utilities and aliases.
+    - `leader.tin` — Leader/follower helper aliases.
+  - Utilities & features:
+    - `char_load.tin` — Generic loader for common and class modules.
+    - `autostart.tin` — Autostart session mappings and login hooks.
+    - `autoloot.tin`, `logging.tin`, `tracking.tin`, `travel.tin`,
+      `looting.tin`, `materials.tin`, `eq_mgmt.tin`, `follower.tin`,
+      `group.tin`, `channels.tin`, `doors.tin`, `sleep.tin` —
+      utility modules and aliases.
+  - `local_secrets.tin` — Local passwords and secrets file
+    (gitignored).
+  - `local_secrets.tin.example` — Template to copy when creating
+    `local_secrets.tin`.
 - `.gitignore` — ensures `local_secrets.tin` and the `logs/` folder are not committed.
 
 ## Setup
@@ -110,14 +127,31 @@ from a command prompt:
   Also confirm `local_secrets.tin` exists and has your password
   variables defined.
 
-## Next Steps
+## Quickstart checklist ✅
 
-- A `local_secrets.tin.example` has been added to the repo as a
-  template — copy it to `local_secrets.tin` and fill in real values.
-- Ask for help if you'd like me to add a short checklist, or
-  additional examples for class modules.
+Follow this short checklist to get the repository ready and start a session:
+
+1. Copy the example secrets file and edit it with your passwords:
+
+   ```bat
+   copy local_secrets.tin.example local_secrets.tin
+   ```
+
+2. Edit `nukefire.bat` to set `BIN` to the folder containing `t++.exe`.
+
+3. (Optional) Adjust terminal width and height in
+   `nukefire.bat` by changing `COLS` and `LINES`.
+
+4. Launch the launcher (double-click or run from cmd):
+
+   ```bat
+   nukefire.bat
+   ```
+
+5. Verify logs are created in the `logs/` folder and that
+   `local_secrets.tin` is not committed to git.
 
 ---
 
-If you'd like, I can add `local_secrets.tin.example` and a short
-checklist to this README — want me to do that now?
+If you want, I can add more examples for class modules or a brief
+troubleshooting checklist.
