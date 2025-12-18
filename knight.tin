@@ -30,9 +30,9 @@
 #ACTION {^SPL: %* honor} {#variable {has_honor} {1}}
 #ACTION {TIMER: %*} {
 	#delay {2} {
-		#if {$has_armor == 0 && $group_cast_on_fade}{armor_group};
-		#if {$has_barrier == 0 && $group_cast_on_fade}{barrier_group};
-		#if {$has_war == 0 && $group_cast_on_fade}{war_group};
+		#if {$has_armor == 0}{armor_group};
+		#if {$has_barrier == 0}{barrier_group};
+		#if {$has_war == 0}{war_group};
 		#if {$has_honor == 0 && $lvl > 18}{sli 'honor' $me};
 		#variable {has_armor} {0};
 		#variable {has_barrier} {0};
@@ -45,35 +45,35 @@
 #nop - When a member loses a buff, reapply it to leader + followers using group aliases
 #ACTION {You feel less protected.} {
 	#variable {has_armor} {0};
-	#if {$group_cast_on_fade && $lvl > 4} {armor_group};
+	#if {$lvl > 4} {armor_group};
 };
 #ACTION {%1 looks less protected.} {
 	#var recaster %1;
 	is_group_member %1;
-	#if {$group_cast_on_fade && $lvl > 4 && $igm_result == 1} {armor_group;};
+	#if {$lvl > 4 && $igm_result == 1} {armor_group;};
 	#if {"%1" == "${me}"}{#variable {has_armor} {0}};
 };  
 
 #nop Barrier falls off messages
 #ACTION {Your barrier of valor has gone limp.} {
 	#variable {has_barrier} {0};
-	#if {$group_cast_on_fade && $lvl > 24} {barrier_group};
+	#if {$lvl > 24} {barrier_group};
 }; 
 #ACTION {%1's barrier of valor slackens and fades.} {
 	#var recaster %1;
 	is_group_member %1;
-	#if {$group_cast_on_fade && $lvl > 24 && $igm_result == 1} {barrier_group;};
+	#if {$lvl > 24 && $igm_result == 1} {barrier_group;};
 };  
 
 #nop War falls off messages
 #ACTION {Your war banner has gone limp.} {
 	#variable {has_war} {0};
-	#if {$group_cast_on_fade && $lvl > 24} {war_group};
+	#if {$lvl > 24} {war_group};
 }; 
 #ACTION {%1's war banner goes limp.} {
 	#var recaster %1;
 	is_group_member %1;
-	#if {$group_cast_on_fade && $lvl > 24 && $igm_result == 1} {war_group;};
+	#if {$lvl > 24 && $igm_result == 1} {war_group;};
 };  
 
 #nop ------------------ LEVEL-DRIVEN ACTIONS ------------------

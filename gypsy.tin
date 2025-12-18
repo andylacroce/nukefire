@@ -34,7 +34,7 @@
 		#if {"%*" !~ "Gypsy_Dance" && $lvl > 19}{rom};
 		#if {$has_voodoo == 0 && $lvl > 39}{sign};
 		#if {$has_phantom == 0 && $lvl > 24}{mir};
-		#if {$has_fortune == 0 && $lvl > 39 && $group_cast_on_fade}{tarot_group};
+		#if {$has_fortune == 0 && $lvl > 39}{tarot_group};
 		#variable {has_voodoo} {0};
 		#variable {has_phantom} {0};
 		#variable {has_fortune} {0}
@@ -44,12 +44,12 @@
 #nop Fortune falls off messages
 #ACTION {Fortune's blessing retreats from you.} {
 	#variable {has_fortune} {0};
-	#if {$lvl > 39 && $group_cast_on_fade}{tarot_group};
-}
+	#if {$lvl > 39}{tarot_group};
+} 
 #ACTION {The shimmer of Fortune's blessing fades from around %1.} {
 	#var recaster %1;
 	is_group_member %1;
-	#if {$lvl > 39 && $igm_result == 1 && $group_cast_on_fade}{tarot_group};
+	#if {$lvl > 39 && $igm_result == 1}{tarot_group};
 } 
 
 #nop ------------------ LEVEL-DRIVEN ACTIONS ------------------

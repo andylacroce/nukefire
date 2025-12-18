@@ -22,16 +22,12 @@
 	#var igm_result $_igm_res;
 }
 
-#VARIABLE {group_cast_on_fade} {1}
-#alias {group_cast_on} {#variable {group_cast_on_fade} {1};#showme {Group-cast-on-fade ON}}
-#alias {group_cast_off} {#variable {group_cast_on_fade} {0};#showme {Group-cast-on-fade OFF}}
-#alias {group_cast} {#if {$group_cast_on_fade} {group_cast_off} {group_cast_on}}
-
 #alias {cast_group %1 %2} {
 	#nop %1 = spell name (e.g., armor), %2 = minimum level threshold (use 4 for level > 4);
-	#nop Casts the named spell on leader and followers (manual invocation)
+	#nop Casts the named spell on leader and followers (manual invocation);
+
 	#if {$lvl > %2} {
-		#if {"${leader}" != ""} {sli '%1' ${leader};};
+		#if {"${leader}" != ""} {sli '%1' ${leader};} {sli '%1' $me};
 		#var _i 1;
 		#while {$_i <= &followers[]} {
 			#list followers get $_i follower;
