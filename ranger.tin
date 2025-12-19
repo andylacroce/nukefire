@@ -61,7 +61,7 @@
 		#math {target_v_pct} {100 * %6 / %7};
 		#nop #showme {DEBUG: pct=$target_hp_pct};
 		#nop #showme {DEBUG: pct=$target_v_pct};
-		#if {$target_hp_pct < 75} {#if {$lvl > 15} {sli 'heal' %3} {#if {$lvl > 2} {sli 'cure light' %3}}};
+		#if {$target_hp_pct < 85} {#if {$lvl > 15} {sli 'heal' %3} {#if {$lvl > 2} {sli 'cure light' %3}}};
 		#if {$target_v_pct < 50 && $lvl > 14} {sli 'invigorate' %3};
 	}
 #class autoheal close
