@@ -44,10 +44,14 @@
 	#var _i 1;
 	#while {$_i <= &followers[]} {
 		#list followers get $_i name;
-		#if {"$name" != "${leader}" && "$name" != "$me"} {%1 $name};
+		#if {"$name" != "${leader}"} {%1 $name};
 		#math _i $_i + 1;
 	};
 }
+
+#ALIAS {groupassist_exec %1} {groupassist %1 $group_combo}
+#ALIAS {groupassist_group} {group_targeted groupassist_exec}
+#ALIAS {set_group_combo %1} {#var {group_combo} {%1}}
 
 #nop Followers auto-report when leader reports
 #if {$is_follower} {

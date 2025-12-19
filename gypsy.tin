@@ -71,9 +71,25 @@
 #ACTION {You rise a level!} {
 	emote gained a level and dances a celebratory jig.;
 	#delay {3} {
-		#if {$lvl < 15} {combo disem disem disem};
-		#elseif {$lvl < 30}{combo mys mys mys};
-		#elseif {$lvl < 45}{combo bgrow bgrow mys};
-		#else {combo vtwist bgrow mys}
+		#if {$lvl < 15} {
+			combo disem disem disem;
+			#var {group_combo} {disem disem disem};
+			groupassist_group;
+		};
+		#elseif {$lvl < 30} {
+			combo mys mys mys;
+			#var {group_combo} {mys mys mys};
+			groupassist_group;
+		};
+		#elseif {$lvl < 45} {
+			combo bgrow bgrow mys;
+			#var {group_combo} {bgrow bgrow mys};
+			groupassist_group;
+		};
+		#else {
+			combo vtwist bgrow mys;
+			#var {group_combo} {vtwist bgrow mys};
+			groupassist_group;
+		}
 	}
 }

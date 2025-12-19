@@ -112,9 +112,25 @@
 #ACTION {You rise a level!} {
 	emote gained a level and dances a celebratory jig.;
 	#delay {3} {
-		#if {$lvl < 9} {combo kick kick kick};
-		#elseif {$lvl < 15}{combo bash bash bash};
-        #elseif {$lvl < 20}{combo bush bush bush};
-		#else {combo grapple grapple grapple}
+		#if {$lvl < 9} {
+			combo kick kick kick;
+			#var {group_combo} {kick kick kick};
+			groupassist_group;
+		};
+		#elseif {$lvl < 15} {
+			combo bash bash bash;
+			#var {group_combo} {bash bash bash};
+			groupassist_group;
+		};
+        #elseif {$lvl < 20} {
+			combo bush bush bush;
+			#var {group_combo} {bush bush bush};
+			groupassist_group;
+		};
+		#else {
+			combo grapple grapple grapple;
+			#var {group_combo} {grapple grapple grapple};
+			groupassist_group;
+		}
 	}
 }

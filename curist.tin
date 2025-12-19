@@ -102,5 +102,7 @@
 	emote gained a level and dances a celebratory jig.;
 	#delay {3} {
 		combo bash bash bash;
+		#var {group_combo} {bash bash bash};
+		groupassist_group;
 	}
 }
