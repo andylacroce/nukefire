@@ -90,10 +90,20 @@
 			#var {group_combo} {bash bash bash};
 			groupassist_group;
 		};
-		#else {
+		#elseif {$lvl < 35} {
 			combo pound pound pound;
 			#var {group_combo} {pound pound pound};
 			groupassist_group;
-		}
+		};
+		#elseif {$lvl < 40} {
+			combo neur neur neur;
+			#var {group_combo} {neur neur neur};
+			groupassist_group;
+		};
+		#else {
+			combo nano neur neur;
+			#var {group_combo} {nano neur neur};
+			groupassist_group;
+		};
 	}
 }
