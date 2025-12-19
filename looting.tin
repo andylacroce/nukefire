@@ -26,7 +26,11 @@
         retrieve;
         get all corpse;
         rewear;
+        get all corpse;
+        rewear;
         junk corpse;
+        get all corpse;
+        rewear;
         get all corpse;
         rewear;
         junk corpse;
@@ -36,7 +40,11 @@
         retrieve;
         get all remains;
         rewear;
+        get all remains;
+        rewear;
         junk remains;
+        get all corpse;
+        rewear;
         get all corpse;
         rewear;
         junk corpse;
@@ -46,7 +54,11 @@
         retrieve;
         get all corpse;
         rewear;
+        get all corpse;
+        rewear;
         junk corpse;
+        get all corpse;
+        rewear;
         get all corpse;
         rewear;
         junk corpse;
