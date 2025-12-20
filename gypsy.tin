@@ -27,6 +27,7 @@
 
 #action {You receive %1 experience points.} {
 	#if {$lvl > 19} {rom};
+	#if {$lvl > 39} {tarot_group};
 }
 
 #ACTION {^SPL: %* voodoo contract} {#variable {has_voodoo} {1}}
