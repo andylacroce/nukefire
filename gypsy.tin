@@ -11,6 +11,7 @@
 #nop ------------------ MACROS ------------------
 #MACRO {-} {aaa}
 #MACRO {=} {rr}
+#MACRO {]} {hyp mob;disem mob;disem;disem}
 
 #nop ------------------ SPELL / SKILL UTILITIES ------------------
 #ALIAS {cb %1} {sli 'cure blind' %1}
@@ -23,6 +24,10 @@
 #VARIABLE {has_voodoo} {0}
 #VARIABLE {has_phantom} {0}
 #VARIABLE {has_fortune} {0}
+
+#action {You receive %1 experience points.} {
+	#if {$lvl > 19} {rom};
+}
 
 #ACTION {^SPL: %* voodoo contract} {#variable {has_voodoo} {1}}
 #ACTION {^SPL: %* phantom mirage} {#variable {has_phantom} {1}}
