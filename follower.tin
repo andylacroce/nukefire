@@ -24,4 +24,7 @@
 
 #action {[Saved your re-wear script.]} {tel ${leader} eq snapped}
 
-#action {[ Class Remorts:]\n%*\n} {tel ${leader} %1}
+#action {[ Class Remorts:]\n%*\n} {
+	#variable {class_remorts} {%1}; 
+	tel ${leader} Lvl: $lvl, Exp to Next: $exp_to_level, Class Remorts: $class_remorts;
+}

@@ -12,6 +12,11 @@
     snapeq;
 }
 
+#alias {sc} {
+    otf sc;
+    score;
+}
+
 #alias {af} {
     otf afx;
     afx;

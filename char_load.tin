@@ -13,7 +13,10 @@
 #if {"${me}" == "${leader}"} {#variable {is_follower} {0}}
 
 #nop ------------------ LEVEL TRACKING ------------------
-#ACTION {Lvl %1,} {#variable lvl %1}
+#action {[Lvl %1, EXP to %*: %2]} {
+    #variable {lvl} {%1};
+    #variable {exp_to_level} {%2};
+}
 
 #nop ------------------ LOAD GENERIC MODULES ------------------
 #read {nukefire/looting.tin}
