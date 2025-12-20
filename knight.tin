@@ -14,8 +14,8 @@
 
 #nop ------------------ BASIC ALIASES ------------------
 #alias {rec} {#if {lvl > 18} {sli 'word of recall'}}
-#alias {heal %1} {#if {$lvl > 24} {sli 'heal' %1}}
-#alias {healme} {#if {$lvl > 24} {sli 'heal' $me}}
+#alias {heal %1} {sli 'rejuv' %1}
+#alias {healme} {sli 'rejuv'}
 #ACTION {$leader telepaths to you, 'heal'} {#if {$lvl > 24} {sli 'heal' $leader}}
 
 #alias {invig %1} {sli 'invigorate' %1}
@@ -110,7 +110,7 @@
 		#math {target_hp_pct} {100 * %4 / %5};
 		#math {target_v_pct} {100 * %6 / %7};
 		#nop #showme {DEBUG: pct=$target_hp_pct};
-		#if {$target_hp_pct < 85} {#if {$lvl > 24} {sli 'heal' %3}};
+		#if {$target_hp_pct < 85} {sli 'rejuv' %3};
 		#if {$target_v_pct < 50} {sli 'invigorate' %3};
 	}
 #class autoheal close
