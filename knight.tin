@@ -10,6 +10,7 @@
 #VARIABLE {has_barrier} {0}
 #VARIABLE {has_war} {0}
 #VARIABLE {has_honor} {0}
+#VARIABLE {has_oath} {0}  # oathbreaker's resolve (SPL-driven; available at lvl 40)
 
 #nop ------------------ BASIC ALIASES ------------------
 #alias {rec} {#if {lvl > 18} {sli 'word of recall'}}
@@ -32,16 +33,19 @@
 #ACTION {^SPL: %* barrier} {#variable {has_barrier} {1}}
 #ACTION {^SPL: %* war} {#variable {has_war} {1}}
 #ACTION {^SPL: %* honor} {#variable {has_honor} {1}}
+#ACTION {^SPL: %* oathbreaker's resolve} {#variable {has_oath} {1}}
 #ACTION {TIMER: %*} {
 	#delay {2} {
 		#if {$has_armor == 0}{armor_group};
 		#if {$has_barrier == 0}{barrier_group};
 		#if {$has_war == 0}{war_group};
 		#if {$has_honor == 0 && $lvl > 18}{sli 'honor' $me};
+		#if {$has_oath == 0 && $lvl > 39}{oath};
 		#variable {has_armor} {0};
 		#variable {has_barrier} {0};
 		#variable {has_war} {0};
 		#variable {has_honor} {0};
+		#variable {has_oath} {0};
 	}
 }
 
@@ -78,7 +82,11 @@
 	is_group_member %1;
 	#if {$lvl > 24 && $igm_result == 1} {sli 'war' %1;};
 };  
-
+#nop Oathbreaker's Resolve falls off (server text: "Oathbreaker's Resolve has been broken, the dark energy dissipates.")
+#ACTION {Oathbreaker's Resolve has been broken, the dark energy dissipates.} {
+	#variable {has_oath} {0};
+	#if {$lvl > 39} {oath};
+};
 #nop ------------------ LEVEL-DRIVEN ACTIONS ------------------
 #ACTION {[Regen]} {#if {$lvl > 4}{afx}}
 
@@ -150,9 +158,14 @@
 			#var {group_combo} {flurry flurry flurry};
 			groupassist_group;
 		};
-		#else {
+		#elseif {$lvl < 35} {
 			combo grapple grapple grapple;
 			#var {group_combo} {grapple grapple grapple};
+			groupassist_group;
+		};
+		#else {
+			combo sacred sacred sacred;
+			#var {group_combo} {sacred sacred sacred};
 			groupassist_group;
 		}
 	}
