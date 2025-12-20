@@ -10,7 +10,7 @@
 #VARIABLE {has_barrier} {0}
 #VARIABLE {has_war} {0}
 #VARIABLE {has_honor} {0}
-#VARIABLE {has_oath} {0}  # oathbreaker's resolve (SPL-driven; available at lvl 40)
+#VARIABLE {has_oath} {0}
 
 #nop ------------------ BASIC ALIASES ------------------
 #alias {rec} {#if {lvl > 18} {sli 'word of recall'}}
@@ -34,7 +34,7 @@
 }
 
 #nop ------------------ AFX: SPELL LISTENERS & TIMER ------------------
-#nop - SPL handlers mark when a buff is detected; TIMER periodically ensures buffs are present
+#nop - SPL handlers mark when a buff is detected, TIMER periodically ensures buffs are present
 #ACTION {^SPL: %* armor} {#variable {has_armor} {1}}
 #ACTION {^SPL: %* barrier} {#variable {has_barrier} {1}}
 #ACTION {^SPL: %* war} {#variable {has_war} {1}}
