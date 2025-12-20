@@ -17,6 +17,10 @@
     #variable {lvl} {%1};
     #variable {exp_to_level} {%2};
 }
+#action {[Lvl %1, Ready to Remort!]} {
+    #variable {lvl} {%1};
+    #variable {exp_to_level} {Ready to Remort!};
+}
 
 #nop ------------------ LOAD GENERIC MODULES ------------------
 #read {nukefire/looting.tin}

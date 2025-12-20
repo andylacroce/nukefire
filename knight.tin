@@ -26,6 +26,12 @@
 #ALIAS {armor_group} {cast_group armor 4}
 #ALIAS {barrier_group} {cast_group barrier 24}
 #ALIAS {war_group} {cast_group war 24}
+#ALIAS {buff} {
+	armor_group;
+	barrier_group;
+	war_group;
+	tel ${leader} Buffs applied.;
+}
 
 #nop ------------------ AFX: SPELL LISTENERS & TIMER ------------------
 #nop - SPL handlers mark when a buff is detected; TIMER periodically ensures buffs are present
