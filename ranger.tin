@@ -4,7 +4,6 @@
 #nop =====================================================
 
 #nop ------------------ DEFAULT TOGGLES ------------------
-#VARIABLE {bark_on} {1}
 #VARIABLE {autoheal_on} {1}
 #VARIABLE {groupcheck_on} {1}
 
@@ -12,37 +11,25 @@
 
 #nop ------------------ BARK SKIN REAPPLY ------------------
 #nop Bark requires level > 14 to use/auto-cast
-#class bark open
-	#variable {has_bark} {0}
+#variable {has_bark} {0}
+#variable {has_totem} {0}
 
-	#action {SPL: %* bark skin} {#variable {has_bark} {1}}
-	#action {SPL: %* bark} {#variable {has_bark} {1}}
-	#action {You invoke your bark skin, taking on a rough, tree-like appearance.} {#variable {has_bark} {1}}
-	#action {The bark-like texture surrounding you fades away as you cease concentration.} {#variable {has_bark} {0};#if {$lvl > 14 && $bark_on} {bark;#variable {has_bark} {1}}}
-#class bark close
+#action {SPL: %* bark skin} {#variable {has_bark} {1}}
+#action {You invoke your bark skin, taking on a rough, tree-like appearance.} {#variable {has_bark} {1}}
+#action {The bark-like texture surrounding you fades away as you cease concentration.} {#variable {has_bark} {0};#if {$lvl > 14} {bark;#variable {has_bark} {1}}} 
 
-#alias {bark_on} {
-	#read {nukefire/ranger.tin};
-	#class {bark} {open};
-	#var {bark_on} {1};
-	#showme {BARK ON};
-	#send {}
-}
-#alias {bark_off} {
-	#class {bark} {clear};
-	#var {bark_on} {0};
-	#showme {BARK OFF};
-	#send {}
-}
-#alias {bar} {
-	#if {$bark_on} {bark_off} {bark_on}
-}
+#action {^SPL: (perm) invisibility} {#variable {has_totem} {1}}
+#action {Your an Animal Spirit Totem crumbles back into the earth.} {#variable {has_totem} {0};#if {$lvl > 11}{sli 'animal';hold totem;#variable {has_totem} {1}};} 
 
 #action {TIMER: %*} {
 	#variable {has_bark} {0};
+	#variable {has_totem} {0};
 	#delay {2} {
 		#if {$lvl > 14} {
-			#if {!$has_bark && $bark_on} {bark;#variable {has_bark} {1}}
+			#if {!$has_bark} {bark;#variable {has_bark} {1}}
+		};
+		#if {$lvl > 11} {
+			#if {!$has_totem} {sli 'animal';hold totem;;#variable {has_totem} {1}}
 		}
 	}
 } 

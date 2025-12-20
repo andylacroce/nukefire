@@ -21,7 +21,6 @@
 #nop Class-specific module file (without .tin extension)
 #VARIABLE {class} {ranger}
 
-#VARIABLE {bark_on} {1}
 #VARIABLE {autoheal_on} {1}
 
 #nop ------------------ LOAD CHARACTER ------------------

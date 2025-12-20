@@ -1,0 +1,35 @@
+#ACTION {You rise a level!} {
+	emote gained a level and dances a celebratory jig.;
+	#delay {3} {
+		#if {$lvl < 12} {
+			combo knee knee knee;
+			#var {group_combo} {knee knee knee};
+			groupassist_group;
+		};
+		#elseif {$lvl < 15} {
+			combo elbow elbow elbow;
+			#var {group_combo} {elbow elbow elbow};
+			groupassist_group;
+		};
+		#elseif {$lvl < 20} {
+			combo head head head;
+			#var {group_combo} {head head head};
+			groupassist_group;
+		};
+		#elseif  {$lvl < 23} {
+			combo grapple grapple grapple;
+			#var {group_combo} {grapple grapple grapple};
+			groupassist_group;
+		};
+		#elseif  {$lvl < 40} {
+			combo clothes clothes clothes;
+			#var {group_combo} {clothes clothes clothes};
+			groupassist_group;
+		};
+        #else {
+            combo tornado tornado tornado;
+            #var {group_combo} {tornado tornado tornado};
+            groupassist_group;
+        };
+	}
+}
