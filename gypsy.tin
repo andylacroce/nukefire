@@ -54,15 +54,6 @@
 #ACTION {[Regen]} {#if {$lvl > 39}{afx}}
 #ACTION {The dance comes to a graceful end, as you posture and bow.} {rom}
 #ACTION {The mirages fade away, leaving you exposed.} {mir}
-#ACTION {You awaken, and sit up.} {
-	#if {$lvl > 19}{rom};
-	#if {$lvl > 24}{mir};
-	#if {$lvl > 39}{sign;tarot_group}
-}
-#ACTION {You receive %1 experience points.} {
-	#if {$lvl > 19}{rom};
-	#if {$lvl > 39}{tarot_group}
-}
 #ACTION {Your Voodoo Contract has been broken, the hex dissipates.} {sign}
 #ACTION {Your attempt to establish the Voodoo Contract fails.} {sign}
 
