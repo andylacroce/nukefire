@@ -32,6 +32,7 @@
 	war_group;
 	tel ${leader} Buffs applied.;
 }
+#ALIAS {esc} {sli 'aura of escape'}
 
 #nop ------------------ AFX: SPELL LISTENERS & TIMER ------------------
 #nop - SPL handlers mark when a buff is detected, TIMER periodically ensures buffs are present

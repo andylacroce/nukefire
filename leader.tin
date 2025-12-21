@@ -22,6 +22,10 @@
     afx;
 }
 
+#ALIAS {esc} {
+    tel haenym o esc;
+}
+
 #ALIAS {rec} {
     #if {!$is_follower} {
         #var i 1;
