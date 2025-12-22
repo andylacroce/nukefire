@@ -57,7 +57,7 @@
 } 
 
 #nop ------------------ LEVEL-DRIVEN ACTIONS ------------------
-#ACTION {[Regen]} {#if {$lvl > 39}{afx}}
+#ACTION {[Regen]} {#if {$lvl > 24}{afx}}
 #ACTION {The dance comes to a graceful end, as you posture and bow.} {rom}
 #ACTION {The mirages fade away, leaving you exposed.} {mir}
 #ACTION {Your Voodoo Contract has been broken, the hex dissipates.} {sign}
