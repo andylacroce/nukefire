@@ -6,6 +6,8 @@
 #alias {fort} {sli 'aura of fort'}
 #alias {sum %1} {#if {$lvl > 9} {sli 'summon' %1}}
 #alias {esc} {#if {$lvl > 16} {sli 'aura of escape'}}
+#alias {wyrm} {#if {$lvl > 49} {sli 'wyrm'}}
+#alias {sof} {#if {$lvl > 49} {sli 'shield of flames'}}
 
 #nop ------------------ IMMOLATE TOGGLE ------------------
 #var {immolate_on} {1};
@@ -32,16 +34,23 @@
 #alias {immolate} {
     #if {$immolate_on} {immolate_off} {immolate_on}
 }
+#nop ------------------ SHIELD OF FLAMES TOGGLE ------------------
+#variable {flames_on} {1}
+#alias {flames_on} {#var {flames_on} {1};#showme {Shield of Flames ON};#send {}}
+#alias {flames_off} {#var {flames_on} {0};#showme {Shield of Flames OFF};#send {}}
+#alias {flames} {#if {$flames_on} {flames_off} {flames_on}}
 
 #nop ------------------ BUFF TRACKING ------------------
 #variable {has_fort} {0}
 #variable {has_unholy} {0}
 #variable {has_dark} {0}
 #variable {has_covenant} {0}
+#variable {has_shield_of_flames} {0}
 #ACTION {^SPL: %* fortify} {#variable {has_fort} {1}}
 #ACTION {^SPL: %* unholyfist} {#variable {has_unholy} {1}}
 #ACTION {^SPL: %* dark blessing} {#variable {has_dark} {1}}
 #ACTION {^SPL: %* dark covenant} {#variable {has_covenant} {1}}
+#ACTION {^SPL: %* shield of flames} {#variable {has_shield_of_flames} {1}}
 
 #ACTION {TIMER: %*} {
     #delay {2} {
@@ -49,10 +58,12 @@
         #if {$has_unholy == 0 && $lvl > 10} {sli 'unholyfist'};
         #if {$has_dark == 0 && $lvl > 21} {sli 'aura of dark'};
         #if {$has_covenant == 0 && $lvl > 24} {covenant};
-        #variable {has_fort} {0}
-        #variable {has_unholy} {0}
-        #variable {has_dark} {0}
-        #variable {has_covenant} {0}
+        #if {$has_shield_of_flames == 0 && $flames_on} {sof};
+        #variable {has_fort} {0};
+        #variable {has_unholy} {0};
+        #variable {has_dark} {0};
+        #variable {has_covenant} {0};
+        #variable {has_shield_of_flames} {0};
     }
 }
 
@@ -84,6 +95,12 @@
     #if {$lvl > 24} {covenant};
 }
 
+#nop ------------------ SHIELD OF FLAMES FALL HANDLERS ------------------
+#ACTION {Your Shield of Flames is ready to wield.} {
+    #variable {has_shield_of_flames} {0};
+    #if {$flames_on} {sof};
+}
+
 #nop ------------------ AUTOHEAL / GROUPCHECK ------------------
 #class groupcheck open
     #var {groupcheck_on} {1}
@@ -95,8 +112,12 @@
         #math {target_hp_pct} {100 * %4 / %5};
         #math {target_v_pct} {100 * %6 / %7};
         #if {$target_v_pct < 85 && $lvl > 17} {sli 'sinful vigor' %3};
-        #if {"%3" == "$me" && $target_hp_pct < 50 && $lvl > 25} {sli 'augury' $me};
-        #if {$target_hp_pct < 85} {#if {$lvl > 24} {sli 'rejuvinate' %3} {#if {$lvl > 13} {sli 'heal' %3}}};
+        #if {"%3" == "$me" && $target_hp_pct < 75 && $lvl > 25} {sli 'augury' $me};
+        #if {$target_hp_pct < 85} {
+            #if {$lvl > 39} {sli 'demon' %3};
+            #elseif {$lvl > 24} {sli 'rejuvinate' %3};
+            #elseif {$lvl > 13} {sli 'heal' %3};
+        };
     }
 #class autoheal close
 
@@ -143,10 +164,67 @@
 			#var {group_combo} {bash bash bash};
 			groupassist_group;
 		};
-		#else {
+		#elseif {$lvl < 35} {
 			combo here here here;
 			#var {group_combo} {here here here};
 			groupassist_group;
-		}
+		};
+        #elseif {$lvl < 45} {
+			combo torment torment torment;
+			#var {group_combo} {torment torment torment};
+			groupassist_group;
+		};
+        #else{
+			combo hellquake smite cleave;
+			#var {group_combo} {hellquake smite cleave};
+			groupassist_group;
+		};
 	}
 }
+
+#NOP Allowed skills:
+#NOP   (25) Cleave
+#NOP   (14) Heal
+#NOP   (25) Rejuvinate
+#NOP   (45) HellQuake
+#NOP   (40) Demonglow
+#NOP   (25) Grouprejuv
+#NOP   (26) Augury
+#NOP   (25) Heretic Drain
+#NOP   Bash
+#NOP   (35) Torment
+#NOP   (40) Smite
+
+#NOP Level   Skill
+#NOP 1       fortify
+#NOP         dual wield
+#NOP         immolate
+#NOP 5       dark blessing
+#NOP 9       aura fortification
+#NOP 10      summon
+#NOP 11      unholyfist
+#NOP         swordplay
+#NOP 12      remove curse
+#NOP 14      heal
+#NOP 15      sanctuary
+#NOP 17      aura of escape
+#NOP 18      sinful vigor
+#NOP 22      aura of healing
+#NOP         aura of dark blessing
+#NOP 25      carnal cleave
+#NOP         rejuvenate
+#NOP         dark pact
+#NOP         heretic drain
+#NOP         dark covenant
+#NOP 26      augury
+#NOP 30      aura of sinful vigor
+#NOP 35      tormenting visions
+#NOP         doom bringer's curse
+#NOP         aura of rejuv
+#NOP 40      smite
+#NOP         demonglow
+#NOP 45      hellquake
+#NOP         soul drain
+#NOP 50      wyrmhole
+#NOP         glyph of protection
+#NOP         shield of flames
