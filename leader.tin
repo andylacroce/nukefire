@@ -31,10 +31,13 @@
         #var i 1;
         #while {$i <= &followers[]} {
             #list followers get $i follower;
-            #if {"$follower" != "$me"} {
+            #if {"$follower" != "$me" && "$follower" != "Haenym"} {
                 get recall $container;
                 give recall $follower;
                 tel $follower o recite recall;
+            };
+            #elseif {"$follower" == "Haenym"} {
+                tel Haenym o recall;
             };
             #math i $i + 1;
         };

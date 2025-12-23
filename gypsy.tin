@@ -6,7 +6,7 @@
 #nop ------------------ COMBAT ALIASES ------------------
 #ALIAS {xx} {shoot mob burst}
 #ALIAS {aaa} {#if {$lvl > 49}{sli 'rot'};shred}
-#ALIAS {rr} {hyp mob;backstab mob;#if {$lvl > 44}{vtwist};#if {$lvl > 39}{bgrow};#if {$lvl > 14}{mysticveil};#if {$lvl > 34}{spiritr};#if {$lvl > 44}{impale}}
+#ALIAS {rr} {hyp mob;backstab mob;#if {$lvl > 44}{vtwist};#if {$lvl > 39}{bgrow};#if {$lvl > 14}{mysticveil};#if {$lvl > 44}{impale};#if {$lvl > 34}{spiritr};#if {$lvl > 34}{sucker}}
 
 #nop ------------------ MACROS ------------------
 #MACRO {-} {aaa}
@@ -76,7 +76,7 @@
 			#var {group_combo} {mys mys mys};
 			groupassist_group;
 		};
-		#elseif {$lvl < 45} {
+		#elseif {$lvl < 40} {
 			combo bgrow bgrow mys;
 			#var {group_combo} {bgrow bgrow mys};
 			groupassist_group;
