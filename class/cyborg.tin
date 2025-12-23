@@ -20,7 +20,7 @@
 
 #nop ------------------ DAMCON CONTROL ------------------
 #alias {dcon_on} {
-	#read {nukefire/cyborg.tin};
+	#read {nukefire/class/cyborg.tin};
 	#class {dcon} {open};
 	#var {dcon_on} {1};
 	#showme {DCON ON};
@@ -49,7 +49,7 @@
 #class turbo close
 
 #alias {turbo_on} {
-	#read {nukefire/cyborg.tin};
+	#read {nukefire/class/cyborg.tin};
 	#class {turbo} {open};
 	#var {turbo_on} {1};
 	#showme {TURBO ON};

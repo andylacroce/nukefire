@@ -18,21 +18,9 @@ Nukefire characters.
   terminal size. By default it uses `wt` (Windows Terminal) to open
   tabs running `t++.exe` with profile files.
 - `*.tin` — TinTin++ profile modules:
-  - Character profiles:
-    - `mutiny.tin` — Mutiny character profile (loads `local_secrets.tin`).
-    - `haenym.tin` — Haenym character profile (loads
-      `local_secrets.tin`).
-    - `prodigy.tin` — Prodigy character profile (loads
-      `local_secrets.tin`).
-    - `rancor.tin` — Rancor character profile (loads
-      `local_secrets.tin`).
-    - `ranger.tin` — Ranger character profile.
-    - `remort.tin` — Remort-related helpers and presets.
-  - Class & role modules:
-    - `knight.tin` — Knight class combat and buff helpers.
-    - `cyborg.tin` — Cyborg-specific aliases and scripts.
-    - `curist.tin` — Curist (healer) utilities and aliases.
-    - `leader.tin` — Leader/follower helper aliases.
+  - Character profiles are stored in `char/` (e.g., `char/*.tin`).
+  - Class and role modules are stored in `class/` (e.g., `class/*.tin`).
+  - Utility modules live at the repository root (e.g., `remort.tin`, `leader.tin`).
   - Utilities & features:
     - `char_load.tin` — Generic loader for common and class modules.
     - `autostart.tin` — Autostart session mappings and login hooks.
@@ -76,7 +64,7 @@ If you prefer not to use `wt`, you can run TinTin++ directly
 from a command prompt:
 
 ```cmd
-%BIN%\t++.exe -r "nukefire\mutiny.tin"
+%BIN%\t++.exe -r "nukefire\char\mutiny.tin"
 ```
 
 ## Important Configuration Notes
@@ -122,7 +110,7 @@ from a command prompt:
   available in PATH, or change `nukefire.bat` to run the client
   directly, for example:
 
-  `cmd /k "%BIN%\t++.exe" -r "nukefire\mutiny.tin"`.
+  `cmd /k "%BIN%\t++.exe" -r "nukefire\char\mutiny.tin"`.
 - If aliases or modules don't load, confirm `BIN` paths.
   Also confirm `local_secrets.tin` exists and has your password
   variables defined.

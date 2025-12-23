@@ -62,7 +62,7 @@
 
 #nop ------------------ AUTOHEAL CONTROL ------------------
 #alias {autoheal_on} {
-	#read {nukefire/ranger.tin};
+	#read {nukefire/class/ranger.tin};
 	#class {autoheal} {open};
 	#var {autoheal_on} {1};
 	#showme {Autoheal ON};
@@ -80,7 +80,7 @@
 
 #nop ------------------ GROUPCHECK CONTROL ------------------
 #alias {groupcheck_on} {
-	#read {nukefire/ranger.tin};
+	#read {nukefire/class/ranger.tin};
 	#class {groupcheck} {open};
 	#var {groupcheck_on} {1};
 	#showme {Groupcheck ON};

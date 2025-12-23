@@ -19,7 +19,7 @@
 
 #alias {immolate_on} {
     #var {immolate_on} {1};
-    #read {nukefire/heretic.tin};
+    #read {nukefire/class/heretic.tin};
     #showme {Immolate ON};
     #send {}
 }
@@ -101,7 +101,7 @@
 #class autoheal close
 
 #alias {autoheal_on} {
-    #read {nukefire/heretic.tin};
+    #read {nukefire/class/heretic.tin};
     #class {autoheal} {open};
     #var {autoheal_on} {1};
     #showme {Autoheal ON};
@@ -118,7 +118,7 @@
 }
 
 #alias {groupcheck_on} {
-    #read {nukefire/heretic.tin};
+    #read {nukefire/class/heretic.tin};
     #class {groupcheck} {open};
     #var {groupcheck_on} {1};
     #showme {Groupcheck ON};
