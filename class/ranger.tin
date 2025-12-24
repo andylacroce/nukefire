@@ -48,14 +48,11 @@
 		#math {target_v_pct} {100 * %6 / %7};
 		#nop #showme {DEBUG: pct=$target_hp_pct};
 		#nop #showme {DEBUG: pct=$target_v_pct};
-		#if {$target_hp_pct < 85} {sli 'rejuv' %3};
 		#if {$target_v_pct < 50 && $lvl > 14} {sli 'invigorate' %3};
 	}
 #class autoheal close
 
-#alias {heal %1} {sli 'rejuv' %1}
-#alias {healme} {sli 'rejuv'}
-
+#nop ------------------ INVIGORATE ALIASES ------------------
 #alias {invig %1} {#if {$lvl > 14} {sli 'invigorate' %1}}
 #alias {invigme} {#if {$lvl > 14} {sli 'invigorate' $me}}
 #ACTION {$leader telepaths to you, 'invig'} {#if {$lvl > 14} {sli 'invigorate' $leader}}

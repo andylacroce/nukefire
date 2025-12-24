@@ -25,6 +25,10 @@
 #VARIABLE {has_voodoo} {0}
 #VARIABLE {has_phantom} {0}
 #VARIABLE {has_fortune} {0}
+#VARIABLE {grows_max_hp} {0}
+#VARIABLE {grows_current_hp} {0}
+#VARIABLE {grows_set_on_next_prompt} {0}
+#VARIABLE {grows_cooldown} {0}
 
 #action {You receive %1 experience points.} {
 	#if {$lvl > 19} {rom};
@@ -57,6 +61,49 @@
 	#if {$lvl > 39 && $igm_result == 1}{tarot_group};
 } 
 
+#nop ------------------ GROWS / HP MAX TRACKING ------------------
+#ACTION {You're already as healthy as you can be.} {
+    #var {grows_set_on_next_prompt} {1};
+}
+
+#ACTION {^< %1H %2M %3V} {
+    #var {grows_current_hp} {%1};
+    #if {$grows_set_on_next_prompt == 1} {
+        #var {grows_max_hp} {%1};
+        #var {grows_set_on_next_prompt} {0};
+    };
+    #if {%1 > $grows_max_hp} {
+        #var {grows_max_hp} {%1};
+    };
+    #if {$grows_max_hp > 0} {
+        #math {grows_pct} {100 * %1 / $grows_max_hp};
+        #if {$grows_pct < 75 && $grows_cooldown == 0} {
+            grows;
+            #var {grows_cooldown} {1};
+            #delay {3} {#var {grows_cooldown} {0};};
+        };
+    };
+}
+
+#ACTION {< %1H %2M %3V [} {
+    #var {grows_current_hp} {%1};
+    #if {$grows_set_on_next_prompt == 1} {
+        #var {grows_max_hp} {%1};
+        #var {grows_set_on_next_prompt} {0};
+    };
+    #if {%1 > $grows_max_hp} {
+        #var {grows_max_hp} {%1};
+    };
+    #if {$grows_max_hp > 0} {
+        #math {grows_pct} {100 * %1 / $grows_max_hp};
+        #if {$grows_pct < 75 && $grows_cooldown == 0} {
+            grows;
+            #var {grows_cooldown} {1};
+            #delay {3} {#var {grows_cooldown} {0};};
+        };
+    };
+}
+
 #nop ------------------ LEVEL-DRIVEN ACTIONS ------------------
 #ACTION {[Regen]} {#if {$lvl > 24}{afx}}
 #ACTION {The dance comes to a graceful end, as you posture and bow.} {rom}
@@ -78,14 +125,14 @@
 			groupassist_group;
 		};
 		#elseif {$lvl < 45} {
-			combo bgrow bgrow mys;
-			#var {group_combo} {bgrow bgrow mys};
+			combo bgrow bgrow bgrow;
+			#var {group_combo} {bgrow bgrow bgrow};
 			groupassist_group;
 		};
 		#else {
-			combo vtwist bgrow mys;
-			#var {group_combo} {vtwist bgrow mys};
+			combo vtwist impale impale;
+			#var {group_combo} {vtwist impale impale};
 			groupassist_group;
-		}
+		};
 	}
 }

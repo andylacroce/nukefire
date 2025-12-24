@@ -25,3 +25,4 @@
 #ALIAS {sst} {gs 115;#delay {1} {rd}}
 #ALIAS {wheel} {gs 97;#delay {1} {rd}}
 #ALIAS {wild} {gs 20;#delay {1} {rd}}
+#ALIAS {mek} {gs 57;#delay {1} {rd}}

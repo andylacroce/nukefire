@@ -3,7 +3,7 @@
 #nop =====================================================
 
 #nop ------------------ ALIASES ------------------
-#alias {fort} {sli 'aura of fort'}
+#alias {fort} {sli 'aura of fort'; #variable {has_fort} {1};}
 #alias {sum %1} {#if {$lvl > 9} {sli 'summon' %1}}
 #alias {esc} {#if {$lvl > 16} {sli 'aura of escape'}}
 #alias {wyrm} {#if {$lvl > 49} {sli 'wyrm'}}
@@ -54,9 +54,9 @@
 
 #ACTION {TIMER: %*} {
     #delay {2} {
-        #if {$has_fort == 0 && $lvl > 8} {sli 'aura of fort'};
+        #if {$has_fort == 0 && $lvl > 8} {sli 'aura of fort'; #variable {has_fort} {1};};
         #if {$has_unholy == 0 && $lvl > 10} {sli 'unholyfist'};
-        #if {$has_dark == 0 && $lvl > 21} {sli 'aura of dark'};
+        #if {$has_dark == 0 && $lvl > 21} {sli 'aura of dark'; #variable {has_dark} {1};};
         #if {$has_covenant == 0 && $lvl > 24} {covenant};
         #if {$has_shield_of_flames == 0 && $flames_on} {sof};
         #variable {has_fort} {0};
@@ -70,23 +70,32 @@
 #nop ------------------ FORTUNE FALL HANDLERS ------------------
 #ACTION {Fortune's blessing retreats from you.} {
     #variable {has_fort} {0};
-    #if {$lvl > 8} {sli 'aura of fort'};
+    #if {$lvl > 8} {sli 'aura of fort'; #variable {has_fort} {1};};
 }
 #ACTION {The shimmer of Fortune's blessing fades from around %1.} {
     #variable {has_fort} {0};
     is_group_member %1;
-    #if {$lvl > 8 && $igm_result == 1} {sli 'aura of fort'};
+    #if {$lvl > 8 && $igm_result == 1} {sli 'aura of fort'; #variable {has_fort} {1};};
+}
+#ACTION {You feel less fortified.} {
+    #variable {has_fort} {0};
+    #if {$lvl > 8} {sli 'aura of fort'; #variable {has_fort} {1};};
+}
+#ACTION {%1 looks less fortified.} {
+    #variable {has_fort} {0};
+    is_group_member %1;
+    #if {$lvl > 8 && $igm_result == 1} {sli 'aura of fort'; #variable {has_fort} {1};};
 }
 
 #nop ------------------ DARK BLESSING FALL HANDLERS ------------------
 #ACTION {You feel your dark blessing retreat.} {
     #variable {has_dark} {0};
-    #if {$lvl > 21} {sli 'aura of dark'};
+    #if {$lvl > 21} {sli 'aura of dark'; #variable {has_dark} {1};};
 }
 #ACTION {The dark aura around %1 thins and fades.} {
     #variable {has_dark} {0};
     is_group_member %1;
-    #if {$lvl > 21 && $igm_result == 1} {sli 'aura of dark'};
+    #if {$lvl > 21 && $igm_result == 1} {sli 'aura of dark'; #variable {has_dark} {1};};
 }
 
 #nop ------------------ COVENANT FALL HANDLERS ------------------
@@ -116,7 +125,6 @@
         #if {$target_hp_pct < 85} {
             #if {$lvl > 39} {sli 'demon' %3};
             #elseif {$lvl > 24} {sli 'rejuvinate' %3};
-            #elseif {$lvl > 13} {sli 'heal' %3};
         };
     }
 #class autoheal close
@@ -174,7 +182,7 @@
 			#var {group_combo} {torment torment torment};
 			groupassist_group;
 		};
-        #else{
+        #else {
 			combo hellquake smite cleave;
 			#var {group_combo} {hellquake smite cleave};
 			groupassist_group;
