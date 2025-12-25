@@ -62,4 +62,9 @@
 	#ACTION {[Group] ${leader} says, 'o %*'} {%1}
 } 
 
-#action {You are dead!  Sorry...} {#delay {3} {ret}}
+#action {You are dead!  Sorry...} {
+	#delay {3} {
+		ret;
+		#if {$me == "${leader}"} {group new};
+	};
+}
