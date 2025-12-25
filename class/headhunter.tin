@@ -1,0 +1,186 @@
+#nop =====================================================
+#nop HEADHUNTER COMBAT
+#nop Adds damcon and overboost (from cyborg) with toggles and defaults ON
+#nop =====================================================
+
+#nop ------------------ DAMCON TOGGLE ------------------
+#class dcon open
+	#variable {has_damcon} {0}
+	
+    #action {SPL: %* damcon} {#variable {has_damcon} {1}}
+    
+    #action {The //DAMCON\\ status light blinks on.} {#variable {has_damcon} {1}}
+    #action {The //DAMCON\\ status light blinks off.} {#variable {has_damcon} {0};damcon}
+#class dcon close
+
+#alias {dcon_on} {
+	#read {nukefire/class/headhunter.tin};
+	#class {dcon} {open};
+	#var {dcon_on} {1};
+	#showme {DCON ON};
+	#send {}
+}
+#alias {dcon_off} {
+	#class {dcon} {clear};
+	#var {dcon_on} {0};
+	#showme {DCON OFF};
+	#send {}
+}
+#alias {dcon} {
+	#if {$dcon_on} {dcon_off} {dcon_on}
+}
+
+#var {dcon_on} {1}
+
+#nop Turbo requires level > 9 to use/auto-cast
+#class turbo open
+	#variable {has_turbo} {0}
+	
+    #action {SPL: %* turbo} {#variable {has_turbo} {1}}
+    
+    #action {The //TURBO\\ status light blinks on in your vision field.} {#variable {has_turbo} {1}}
+    #action {The //TURBO\\ status light blinks off.} {#variable {has_turbo} {0};turbo}
+#class turbo close
+
+#alias {turbo_on} {
+	#read {nukefire/class/headhunter.tin};
+	#class {turbo} {open};
+	#var {turbo_on} {1};
+	#showme {TURBO ON};
+	#send {}
+}
+#alias {turbo_off} {
+	#class {turbo} {clear};
+	#var {turbo_on} {0};
+	#showme {TURBO OFF};
+	#send {}
+}
+#alias {tur} {
+	#if {$turbo_on} {turbo_off} {turbo_on}
+}
+
+#var {turbo_on} {1}
+
+#nop ------------------ TIMER / AUTOCAST ------------------
+#action {TIMER: %*} {
+    #variable {has_damcon} {0};
+    #variable {has_turbo} {0};
+    #delay {2} {
+        #if {!$has_damcon && $dcon_on} {damcon;#variable {has_damcon} {1}};
+        #if {$lvl > 9} {
+            #if {!$has_turbo && $turbo_on} {turbo;#variable {has_turbo} {1}}
+        }
+    }
+}
+
+#nop ------------------ RECON TRACKING ------------------
+#action {You are now tracking %*.} {tel $leader Currently tracking: %1} 
+#action {TARGET: %* | GPS LINK: ACTIVE | DIRECTION: %2} {tel $leader The target, %1, is %2.}
+
+#ACTION {You rise a level!} {
+	emote gained a level and dances a celebratory jig.;
+	#delay {3} {
+		#if {$lvl < 10} {
+			combo putemup putemup putemup;
+			#var {group_combo} {putemup putemup putemup};
+			groupassist_group;
+		};
+		#elseif {$lvl < 15} {
+			combo tripw putemup putemup;
+			#var {group_combo} {tripw putemup putemup};
+			groupassist_group;
+		};
+		#else {
+			combo tripw auger hstomp;
+			#var {group_combo} {tripw auger hstomp};
+			groupassist_group;
+		};
+    };
+}
+
+
+#nop Allowed skills:
+#nop   Auger (15)
+#nop   Tripwire (10)
+#nop   Recon (25)        
+#nop   Selfrepair 
+#nop   Overboost
+#nop   Bash
+#nop   Hstomp (15)
+#nop 
+#nop 
+#nop Skills/Levels:
+#nop 
+#nop Burnished Block - Level 1
+#nop   Headhunters have adapted to their cyber-enahnced bodies, using more heavily
+#nop   armored metal areas to block incoming attacks without the benefit of wearing a shield.
+#nop 
+#nop True Grit - Level 1
+#nop   For Example:  An Ac 12 On Body armor is normally x3 resulting in -36 armor.
+#nop   True Grit gives the Barbarian x4 resulting in -48 armor for that location.
+#nop 
+#nop Improved Self-Repair - Level 1
+#nop   Upgraded for serious combat, Improved Self-Repair restores a greater amount of lost
+#nop   hit points at a faster rate, but costs a much larger amount of stamina.
+#nop   Usage Command: No change from original
+#nop 
+#nop Optimized DAMCON - Level 1
+#nop   Streamlined and optimized - reduces damage taken by a slightly increased amount over
+#nop   the original cyborg staple protection skill at a moderately higher cost.
+#nop   Usage Command: No change from original
+#nop 
+#nop Auto Track - Level 1
+#nop   Allows Headhunters to lock on to their prey, automatically displaying the next cardinal
+#nop   direction to their location whenever the Headhunter moves, fairly high accuracy.
+#nop  Usage Command: Toggle autot/AutoT/autotrack <target>
+#nop 
+#nop Tripwire - Level 10
+#nop   The Headhunter lays an explosive snare for the unwary. May only be used to initiate
+#nop   combat, but makes a hell of a mess.
+#nop   Usage Command: tripwire <target> or tw <target>
+#nop 
+#nop Optimized TURBO - Level 10
+#nop   Puts the Headhunter in an overcharged state. Slightly upgraded version of the original
+#nop   cyborg skill at a higher cost.
+#nop   Usage Command: No change
+#nop 
+#nop Improvised Weapon I - Level 15
+#nop   Replaces Barehand I, allows the use of weapons other than fist types.
+#nop 
+#nop Metal Auger - Level 15
+#nop   Headhunters can fire an armor-piercing, explosive dart at their foes, reducing
+#nop   their armor for a period of time. This uses up a small amount of bio-energy,
+#nop   and takes time to recharge.
+#nop   Usage Command: auger <target>, if no target is specified, it will affect
+#nop   whomever the player is in combat with.
+#nop 
+#nop Hydraulic Stomp - Level 15
+#nop   Headhunters can use their massive powered limbs to inflict grievous harm on
+#nop   opponents, rendering them helpless for a short time. This requires a small
+#nop   amount of bio-energy, and takes time to recharge.
+#nop   Usage Command: hs/hstomp <target>, if no target is specified, it will attempt to
+#nop   hit whomever the player is in combat with.
+#nop 
+#nop Recon - Level 25
+#nop   Recon uses GPS and satellite imaging to give the real time location of the Headhunters target.
+#nop   Usage Command: Recon <target>
+#nop 
+#nop Improvised Weapon II - Level 25
+#nop   Replaces Barehand II, allows the use of weapons other than fist types.
+#nop 
+#nop Mono Net - Level 30
+#nop   The Headhunter will occasionally fire off a monofilament netting, entangling the
+#nop   target and inflicting damage over time. This can happen at random intervals,
+#nop   no command input is needed. Takes effect on whomever the player is currently
+#nop   in combat with.
+#nop 
+#nop Chainsaw Dervish - Level 40
+#nop   The Headhunter leaps into the fray, whirling with extended buzzsaws. This is a mechanical
+#nop   upgrade of the dreaded Whirlwind attack! Bask in the glory (and gore) your character
+#nop   will achieve with it!
+#nop   Usage Command: chainsaw/cd/saw
+#nop 
+#nop Innate Skill - Brutal Strike
+#nop   Headhunters will randomly beat the living daylights out of opponents, just like
+#nop   Barbarians. No command input is needed, just sit
+#nop   back, relax, and enjoy watching the caps scroll as your enemies scream like little girls.

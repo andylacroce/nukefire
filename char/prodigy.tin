@@ -19,7 +19,7 @@
 #nop Toggle: tracking / tracking_on / tracking_off
 #VARIABLE {tracking_on} {1}
 #nop Class-specific module file (without .tin extension)
-#VARIABLE {class} {barbarian}
+#VARIABLE {class} {headhunter}
 
 #nop ------------------ LOAD CHARACTER ------------------
 #read {nukefire/char_load.tin}
