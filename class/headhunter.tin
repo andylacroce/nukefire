@@ -3,6 +3,8 @@
 #nop Adds damcon and overboost (from cyborg) with toggles and defaults ON
 #nop =====================================================
 
+#ACTION {[Regen]} {afx}
+
 #nop ------------------ DAMCON TOGGLE ------------------
 #class dcon open
 	#variable {has_damcon} {0}

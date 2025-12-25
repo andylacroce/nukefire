@@ -38,11 +38,11 @@
     };
     #if {"$me" == "Prodigy"} {
         retrieve;
-        get all corpse;
+        get all remains;
         rewear;
-        get all corpse;
+        get all remains;
         rewear;
-        junk corpse;
+        junk remains;
         get all corpse;
         rewear;
         get all corpse;
