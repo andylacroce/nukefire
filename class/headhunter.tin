@@ -92,11 +92,16 @@
 			#var {group_combo} {tripw putemup putemup};
 			groupassist_group;
 		};
-		#else {
+		#elseif {$lvl < 40} {
 			combo tripw auger hstomp;
 			#var {group_combo} {tripw auger hstomp};
 			groupassist_group;
 		};
+		#else {
+			combo chainsaw chainsaw chainsaw;
+			#var {group_combo} {chainsaw chainsaw chainsaw};
+			groupassist_group;
+		};	
     };
 }
 

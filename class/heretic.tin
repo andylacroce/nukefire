@@ -16,6 +16,9 @@
     #action {You receive %1 experience points.} {
         immo corpse;
     }
+    #action {You can't gain anymore experience.} {
+        immo corpse;
+    }
 #class immolate close
 #if {!$immolate_on} {#class {immolate} {clear}}
 
@@ -183,8 +186,8 @@
 			groupassist_group;
 		};
         #else {
-			combo hellquake smite cleave;
-			#var {group_combo} {hellquake smite cleave};
+			combo hellquake hellquake hellquake;
+			#var {group_combo} {hellquake hellquake hellquake};
 			groupassist_group;
 		};
 	}

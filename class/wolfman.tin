@@ -1,0 +1,85 @@
+#nop =====================================================
+#nop WOLFMAN - aliases, toggles, buffs, and helpers
+#nop =====================================================
+
+#nop ------------------ DEFAULT TOGGLES ------------------
+#variable {wolfout_on} {1}
+#variable {has_wolfout} {0}
+
+#nop ------------------ WOLFOUT TOGGLE & TIMER ------------------
+#alias {wolfout_on} {#var {wolfout_on} {1}; #showme {Wolfout ON}; #send {}}
+#alias {wolfout_off} {#var {wolfout_on} {0}; #showme {Wolfout OFF}; #send {}}
+#alias {wolfout} {#if {$wolfout_on} {wolfout_off} {wolfout_on}}
+
+#ACTION {^SPL: %* wolfout} {#variable {has_wolfout} {1}}
+#ACTION {TIMER: %*} {
+	#delay {2} {
+		#if {$has_wolfout == 0 && $wolfout_on && $lvl > 14} {wolf};
+		#variable {has_wolfout} {0};
+	}
+}
+
+#nop ------------------ LEVEL-DRIVEN ACTIONS ------------------
+#ACTION {[Regen]} {#if {$lvl > 14}{afx}}
+
+#ACTION {You rise a level!} {
+	emote gained a level and dances a celebratory jig.;
+	#delay {3} {
+		#if {$lvl < 20} {
+			combo bash bash bash;
+			#var {group_combo} {bash bash bash};
+			groupassist_group;
+		};
+		#elseif {$lvl < 35} {
+			combo chilli gnaw pounce;
+			#var {group_combo} {chilli gnaw pounce};
+			groupassist_group;
+		};
+		#else {
+			combo rage rage rage;
+			#var {group_combo} {rage rage rage};
+			groupassist_group;
+		};
+	}
+}
+
+
+#nop - REGENERATION - Level 1
+#nop  While traditional healing doesn't help the Wolfman much, they have a much faster than normal
+#nop  regeneration rate.
+#nop - TRAIL - Level 1
+#nop  The Wolfman examines the terrain to track their prey.
+#nop - DUAL WIELD - Level 9
+#nop - FERAL AGILITY - Level 15
+#nop - PREDATORY INSTINCTS - Level 15
+#nop - RENDING CLAWS - Level 15
+#nop - BESTIAL FORTITUDE - Level 15
+#nop - SAVAGE FORM - Level 15
+#nop  These skills encompass the Wolfman's natural abilities, no need to type anything for
+#nop  these.
+#nop - WOLFOUT - Level 15
+#nop  The primary ability of the Wolfman is to transform into a savage creature of fang and
+#nop  claw, granting them many inherent benefits. While extremely potent, it does come with
+#nop  some... side effects. This will turn all of your innate Wolfman abilities on.
+#nop - GRUESOME GNAW - Level 20
+#nop  The Wolfman targets his opponent's face with a bite attack, blinding them and rendering
+#nop  them defenseless for a short while.
+#nop - GUTTING STRIKE - Level 20
+#nop  The Wolfman targets his opponent's vitals with a powerful clawed attack, eviscerating them.
+#nop - CHILLING HOWL - Level 20
+#nop - POUNCE - Level 20
+#nop  The Wolfman pounces on his prey, knocking them down and stunning them.
+#nop - STALK - Level 20
+#nop  The Wolfman carefully stalks their prey and catches them off guard.
+#nop - FEAST - Level 20
+#nop  The Wolfman has a hunger for freshly-killed flesh.
+#nop - CLAWED MASTER - Level 20
+#nop  The Wolfman is a natural killer with those claws.
+#nop - SUPREME REND - Level 35
+#nop  The Wolfman's thick talons and powerful jaws rip into the enemy, causing huge
+#nop  damage and a bleed.
+#nop - RAGE - Level 35
+#nop  A complete rage of attacks on all valid targets in a room. Gruesome.
+#nop - CONTAGIOUS FRENETICISM - Level 40
+#nop  The Wolfman's blood-hungry howl drives the pack into contagious
+#nop  frenzy, sharpening their strikes and flooding them with wild vigor.

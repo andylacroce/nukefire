@@ -35,6 +35,11 @@
 	#if {$lvl > 39} {tarot_group};
 }
 
+#action {You can't gain anymore experience.} {
+	#if {$lvl > 19} {rom};
+	#if {$lvl > 39} {tarot_group};
+}
+
 #ACTION {^SPL: %* voodoo contract} {#variable {has_voodoo} {1}}
 #ACTION {^SPL: %* phantom mirage} {#variable {has_phantom} {1}}
 #ACTION {^SPL: %* fortune's blessing} {#variable {has_fortune} {1}}
@@ -124,14 +129,14 @@
 			#var {group_combo} {mys mys mys};
 			groupassist_group;
 		};
-		#elseif {$lvl < 45} {
+		#elseif {$lvl < 40} {
 			combo bgrow bgrow bgrow;
 			#var {group_combo} {bgrow bgrow bgrow};
 			groupassist_group;
 		};
 		#else {
-			combo vtwist impale impale;
-			#var {group_combo} {vtwist impale impale};
+			combo shred shred shred;
+			#var {group_combo} {shred shred shred};
 			groupassist_group;
 		};
 	}

@@ -19,7 +19,7 @@
 #nop Toggle: tracking / tracking_on / tracking_off
 #VARIABLE {tracking_on} {1}
 #nop Class-specific module file (without .tin extension)
-#VARIABLE {class} {ranger}
+#VARIABLE {class} {wolfman}
 
 #VARIABLE {autoheal_on} {1}
 
