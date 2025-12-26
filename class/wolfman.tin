@@ -2,21 +2,39 @@
 #nop WOLFMAN - aliases, toggles, buffs, and helpers
 #nop =====================================================
 
-#nop ------------------ DEFAULT TOGGLES ------------------
+#nop ------------------ CORE: STATE & HELPERS ------------------
 #variable {wolfout_on} {1}
 #variable {has_wolfout} {0}
+#variable {frenzy_on} {1}
+#variable {has_frenzy} {0}
 
-#nop ------------------ WOLFOUT TOGGLE & TIMER ------------------
-#alias {wolfout_on} {#var {wolfout_on} {1}; #showme {Wolfout ON}; #send {}}
-#alias {wolfout_off} {#var {wolfout_on} {0}; #showme {Wolfout OFF}; #send {}}
-#alias {wolfout} {#if {$wolfout_on} {wolfout_off} {wolfout_on}}
+#nop ------------------ BASIC ALIASES / TOGGLES ------------------
+#alias {wolfout_on}  {#var {wolfout_on} {1};  #showme {Wolfout ON};  #send {}}
+#alias {wolfout_off} {#var {wolfout_on} {0};  #showme {Wolfout OFF}; #send {}}
+#alias {wolfout}     {#if {$wolfout_on} {wolfout_off} {wolfout_on}}
+#alias {wolfout_auto} {wolfout}  # legacy name, kept for scripts
 
+#alias {frenzy_on}  {#var {frenzy_on} {1};  #showme {Frenzy ON};  #send {}}
+#alias {frenzy_off} {#var {frenzy_on} {0};  #showme {Frenzy OFF}; #send {}}
+#alias {frenz}      {#if {$frenzy_on} {frenzy_off} {frenzy_on}}
+
+#nop ------------------ AFX: SPELL LISTENERS & TIMER ------------------
 #ACTION {^SPL: %* wolfout} {#variable {has_wolfout} {1}}
+#ACTION {^SPL: %* contagious frenticism} {#variable {has_frenzy} {1}}
+
 #ACTION {TIMER: %*} {
 	#delay {2} {
 		#if {$has_wolfout == 0 && $wolfout_on && $lvl > 14} {wolf};
 		#variable {has_wolfout} {0};
+		#if {$has_frenzy == 0 && $frenzy_on && $lvl > 39} {frenzy};
+		#variable {has_frenzy} {0};
 	}
+}
+
+#nop ------------------ FALL-OFF / AUTO-REAPPLY ------------------
+#ACTION {The frenzy ebbs, leaving you with ragged breath and a fading taste of blood.} {
+	#variable {has_frenzy} {0};
+	#if {$lvl > 39 && $frenzy_on} {frenzy};
 }
 
 #nop ------------------ LEVEL-DRIVEN ACTIONS ------------------
@@ -43,7 +61,16 @@
 	}
 }
 
+#nop ------------------ EXPERIENCE TRIGGERS ------------------
+#action {You receive %1 experience points.} {
+	#if {$lvl > 39} {frenzy};
+}
 
+#action {You can't gain anymore experience.} {
+	#if {$lvl > 39} {frenzy};
+}
+
+#nop ------------------ SKILL NOTES ------------------
 #nop - REGENERATION - Level 1
 #nop  While traditional healing doesn't help the Wolfman much, they have a much faster than normal
 #nop  regeneration rate.
