@@ -26,5 +26,5 @@
 
 #action {[ Class Remorts:]\n%*\n} {
 	#variable {class_remorts} {%1}; 
-	tel ${leader} Lvl: $lvl, Exp to Next: $exp_to_level, Class Remorts: $class_remorts;
+	tel ${leader} Lvl: $lvl, $exp_to_level, Class Remorts: $class_remorts;
 }
