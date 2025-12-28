@@ -6,13 +6,13 @@
 #nop ------------------ COMBAT ALIASES ------------------
 #ALIAS {xx} {shoot mob burst}
 #ALIAS {aaa} {#if {$lvl > 49}{sli 'rot'};shred}
-#ALIAS {rr} {hyp mob;backstab mob;#if {$lvl > 44}{vtwist};#if {$lvl > 39}{bgrow};#if {$lvl > 14}{mysticveil};#if {$lvl > 44}{impale};#if {$lvl > 34}{spiritr};#if {$lvl > 34}{sucker}}
+#ALIAS {rr} {hyp;backstab;#if {$lvl > 44}{vtwist};#if {$lvl > 39}{bgrow};#if {$lvl > 14}{mysticveil};#if {$lvl > 44}{impale};#if {$lvl > 34}{spiritr};#if {$lvl > 34}{sucker}}
 #ALIAS {grows} {grow scar}
 
 #nop ------------------ MACROS ------------------
 #MACRO {-} {aaa}
 #MACRO {=} {rr}
-#MACRO {]} {hyp mob;disem mob;disem;disem}
+#MACRO {]} {hyp;disem;disem;disem}
 
 #nop ------------------ SPELL / SKILL UTILITIES ------------------
 #ALIAS {cb %1} {sli 'cure blind' %1}
