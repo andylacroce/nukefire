@@ -14,7 +14,12 @@
     #split;
     #format {ME_UPPER} {%u} {${me}};
     #screen set title {Nukefire - ${ME_UPPER}};
-    #delay {1} {logging_on;afx};
+    #delay {1} {
+        logging_on;
+        afx;
+        snap_store;
+        sc;
+    };
     #if {!$is_follower} {
         #delay {1} {group new}
     };

@@ -12,8 +12,8 @@
 }
 
 #alias {seq} {
-    otf snapeq;
-    snapeq;
+    otf seq;
+    snap_store;
 }
 
 #alias {sc} {
