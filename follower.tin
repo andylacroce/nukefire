@@ -3,6 +3,33 @@
 #nop Auto-follow and group management for followers
 #nop =====================================================
 
+#nop ------------------ LEADER PRESENCE CHECK ------------------
+#nop Detect if leader is in room — tel them and retry `look` when absent
+#nop Reset leader presence flag at start of room (room title line like "The stairway - [Inside]")
+#action {^%* - \[%*} {
+	#variable {leader_here} {0};
+}
+
+#nop Detect a leader line such as "[Leader  44]Mutiny is standing here."
+#nop Uses the ${leader} variable so it works for any leader name
+#action {^\[Leader %*\]${leader} %*} {
+	#variable {leader_here} {1};
+}
+#action {^\[Leader %*\]A whirling blur is here.} {
+	#variable {leader_here} {1};
+}
+
+#nop After the room listing ends (when "Obvious exits:" is printed), act based on whether leader was seen
+#action {^Obvious exits:} {
+	#if ($leader_here) {
+		#variable {leader_here} {0};
+	};
+	#else {
+		tel ${leader} not here...;
+		#delay {10} {look};
+	}
+}
+
 #nop ------------------ FOLLOW STATUS TRACKING ------------------
 #nop Not in group - auto-follow
 #ACTION {^You must specify a group option, or type HELP GROUP for more info.} {
@@ -27,4 +54,17 @@
 #action {[ Class Remorts:]\n%*\n} {
 	#variable {class_remorts} {%1}; 
 	tel ${leader} Lvl: $lvl, $exp_to_level, Class Remorts: $class_remorts;
+}
+
+#nop ------------------ REMORT ACTIONS ------------------
+#action {But this will cost you %1 credits!!} {
+	tel ${leader} remort cost: %1 credits
+}
+
+#action {The Remorter tells you, 'You need %1 silver discs in order to remort now.'} {
+	tel ${leader} remort needs: %1 silver discs
+}
+
+#action {The Remorter tells you, 'There you are, kid.'} {
+	tel ${leader} remort complete
 }
