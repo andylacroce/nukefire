@@ -26,26 +26,16 @@
 
 #action {You are wearing \[%1\] out of \[%*\] possible eq slots.} {
     #var {eq_count} {%1};
-    #if {$snap_eq_count >= 0} {
+    #if {$snap_eq_count >= 0 && !$snapping} {
         #if {$eq_count != $snap_eq_count} {
-            #if {"$me" == "${leader}"} {
-                #delay {1} {#showme {(((( EQUIPMENT MISMATCH )))): wearing $eq_count expected $snap_eq_count}}
-            };
-            #else {
-                #delay {1} {tel ${leader} (((( EQUIPMENT MISMATCH )))): wearing $eq_count expected $snap_eq_count}
-            };
+            #if {"$me" == "${leader}"} { #delay {1} {#showme {(((( EQUIPMENT MISMATCH )))): wearing $eq_count expected $snap_eq_count}} } { #delay {1} {tel ${leader} (((( EQUIPMENT MISMATCH )))): wearing $eq_count expected $snap_eq_count} };
         };
     };
 }
 
 #action {^\[Saved your re-wear script\.\]} {
     #var {snap_eq_count} $eq_count;
-    #if {"$me" == "${leader}"} {
-        #showme {Snapshot eq_count saved: $snap_eq_count}
-    };
-    #else {
-        tel ${leader} Snapshot eq_count saved: $snap_eq_count
-    }
+    #if {"$me" == "${leader}"} { #showme {Snapshot eq_count saved: $snap_eq_count} } { tel ${leader} Snapshot eq_count saved: $snap_eq_count };
 }
 #nop ------------------ EQUIPMENT SNAPSHOT CAPTURE ------------------
 #var {snapping} {0}; #var {snapped_count} {0};
