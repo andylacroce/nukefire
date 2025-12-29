@@ -55,6 +55,7 @@
 #ACTION {^SPL: %* dark covenant} {#variable {has_covenant} {1}}
 #ACTION {^SPL: %* shield of flames} {#variable {has_shield_of_flames} {1}}
 
+#nop ------------------ AUTO-CAST / TIMER ------------------
 #ACTION {TIMER: %*} {
     #delay {2} {
         #if {$has_fort == 0 && $lvl > 8} {sli 'aura of fort'; #variable {has_fort} {1};};

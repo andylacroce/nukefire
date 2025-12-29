@@ -1,3 +1,9 @@
+#nop =====================================================
+#nop BARBARIAN COMBAT
+#nop Combat aliases and level-up macros for barbarian class
+#nop =====================================================
+
+#nop ------------------ LEVEL-UP ACTIONS ------------------
 #ACTION {You rise a level!} {
 	emote gained a level and dances a celebratory jig.;
 	#delay {3} {
@@ -32,4 +38,4 @@
             groupassist_group;
         };
 	}
-}
+} 

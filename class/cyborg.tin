@@ -8,7 +8,8 @@
 
 #nop ------------------ SPELL / SKILL UTILITIES ------------------
 
-#nop Damcon toggle class
+#nop ------------------ DAMCON ------------------
+#nop Toggle and listeners for damcon
 #class dcon open
 	#variable {has_damcon} {0}
 	

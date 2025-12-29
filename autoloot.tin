@@ -1,8 +1,10 @@
-#nop =========================
+#nop =====================================================
 #nop AUTOLOOT
-#nop =========================
+#nop Auto-loot listeners and corpse handling
+#nop =====================================================
 
 #class autoloot open
+	#nop ------------------ LISTENERS ------------------
 	#ACTION {a puppet with severed strings.} {gc}
 	#ACTION {a soul lost to the wasteland.} {gc}
 	#ACTION {cacophony of the apocalypse.} {gc}

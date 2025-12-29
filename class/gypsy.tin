@@ -21,7 +21,8 @@
 #ALIAS {fa} {first %1}
 #ALIAS {fam} {first $me}
 
-#nop AFX - Check buffs and recast missing ones
+#nop ------------------ AFX - BUFF MANAGEMENT ------------------
+#nop Check buffs and recast missing ones
 #VARIABLE {has_voodoo} {0}
 #VARIABLE {has_phantom} {0}
 #VARIABLE {has_fortune} {0}
@@ -30,6 +31,7 @@
 #VARIABLE {grows_set_on_next_prompt} {0}
 #VARIABLE {grows_cooldown} {0}
 
+#nop ------------------ EXPERIENCE TRIGGERS ------------------
 #action {You receive %1 experience points.} {
 	#if {$lvl > 19} {rom};
 	#if {$lvl > 39} {tarot_group};
@@ -38,7 +40,7 @@
 #action {You can't gain anymore experience.} {
 	#if {$lvl > 19} {rom};
 	#if {$lvl > 39} {tarot_group};
-}
+} 
 
 #ACTION {^SPL: %* voodoo contract} {#variable {has_voodoo} {1}}
 #ACTION {^SPL: %* phantom mirage} {#variable {has_phantom} {1}}
@@ -55,6 +57,7 @@
 	}
 }
 
+#nop ------------------ FALL-OFF HANDLERS ------------------
 #nop Fortune falls off messages
 #ACTION {Fortune's blessing retreats from you.} {
 	#variable {has_fortune} {0};

@@ -4,6 +4,9 @@
 #nop Expects: $class variable to be set in calling file
 #nop =====================================================
 
+#nop ------------------ LOAD ORDER NOTICE ------------------
+#nop The order of reads below matters; do not reorder or remove
+#nop modules unless you understand dependencies (class, role, etc.).
 #nop ------------------ LEADER CONFIGURATION ------------------
 #VARIABLE {leader} {Mutiny}
 #list {followers} {create} {Haenym} {Prodigy} {Rancor}

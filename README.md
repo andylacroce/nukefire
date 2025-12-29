@@ -141,5 +141,49 @@ Follow this short checklist to get the repository ready and start a session:
 
 ---
 
-If you want, I can add more examples for class modules or a brief
-troubleshooting checklist.
+## Style & Contributing
+
+We follow the Tintin/Tintin++ style documented in `CONTRIBUTING.md`.
+
+- Use `#nop` top headers and `#nop ------------------` section separators
+  in all `.tin` files.
+- Keep comments short and use `#nop` only in `.tin` files.
+  Markdown `#` headings belong in `.md` files.
+
+Run the linter before committing to catch style issues:
+
+Option A (npm):
+
+```powershell
+# install dev deps once
+npm ci
+
+# run both linters (Markdown + Tintin headers)
+npm run lint
+```
+
+Option B (PowerShell wrapper):
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\run_ci_linters.ps1
+```
+
+The linter checks for a top header and at least one `#nop ------------------`
+section in each `.tin` file. It exits with a non-zero status on issues, so it
+can be integrated into CI.
+
+Contributing checklist
+
+- Run the linter and fix warnings.
+- Do not reorder `#read` statements in `char_load.tin` unless you understand
+  startup dependencies. Reordering can break initialization.
+- Prefer non-functional changes when possible (organization/comments only).
+  If you make functional changes, include a clear rationale and test steps in your
+  PR.
+
+A GitHub Actions workflow runs these linters on pushes and pull requests and
+will fail the check if any warnings or errors are found. See
+`.github/workflows/lint.yml` for details.
+
+I can also extend the linter to enforce additional rules or auto-fix trivial
+style issues.

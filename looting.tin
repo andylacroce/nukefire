@@ -2,6 +2,7 @@
 #nop LOOTING & CONTAINERS
 #nop =====================================================
 
+#nop ------------------ ALIASES ------------------
 #ALIAS {gc} {get all.credits;get credits all}
 #ALIAS {ls} {look in $container}
 #ALIAS {gg %1} {get %1 $container}

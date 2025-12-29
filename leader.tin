@@ -1,7 +1,14 @@
+#nop =====================================================
+#nop LEADER UTILITIES
+#nop Leader aliases, actions, and remort helpers
+#nop =====================================================
+
+#nop ------------------ ACTIONS ------------------
 #action {Body recovery complete...} {
     #delay {3} {group new};
 }
 
+#nop ------------------ ALIASES ------------------
 #alias {otf %*} {
     #var i 1;
     #while {$i <= &followers[]} {

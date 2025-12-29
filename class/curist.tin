@@ -5,7 +5,8 @@
 
 #nop ------------------ SPELL / SKILL UTILITIES ------------------
 
-#nop AFX - Check buffs and recast missing ones
+#nop ------------------ AFX - BUFF MANAGEMENT ------------------
+#nop Check buffs and recast missing ones
 #VARIABLE {has_armor} {0}
 
 #alias {rec} {sli 'word of recall'}
@@ -27,6 +28,7 @@
 	}
 }
 
+#nop ------------------ FALL-OFF HANDLERS ------------------
 #nop Aura falls off messages
 #ACTION {You feel less protected.} {
 	#variable {has_armor} {0};
@@ -42,8 +44,7 @@
 #nop ------------------ LEVEL-DRIVEN ACTIONS ------------------
 #ACTION {[Regen]} {#if {$lvl > 8}{afx}}
 
-
-#nop Group status ticker for autoheal and autoinvig
+#nop ------------------ GROUP STATUS TICKER ------------------#nop Group status ticker for autoheal and autoinvig
 #class groupcheck open
 	#var {groupcheck_on} {1}
 	#TICKER {curist_group_check} {gr} {3}
