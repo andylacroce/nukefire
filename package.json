@@ -6,6 +6,7 @@
     "markdownlint-cli": "^0.47.0"
   },
   "scripts": {
+    "postinstall": "npm run lint",
     "lint:md": "npx markdownlint-cli README.md CONTRIBUTING.md",
     "lint:tin": "powershell -NoProfile -NonInteractive -ExecutionPolicy Bypass -File ./scripts/check_tin_headers.ps1",
     "lint": "npm run lint:md && npm run lint:tin"
