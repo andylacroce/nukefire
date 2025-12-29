@@ -18,11 +18,11 @@ jobs:
         with:
           node-version: '18'
 
-      - name: Install markdownlint
-        run: npm install -g markdownlint-cli
+      - name: Install dependencies
+        run: npm ci
 
       - name: Run markdownlint
-        run: markdownlint-cli README.md CONTRIBUTING.md
+        run: npm run lint:md
 
   tintin:
     name: Tintin headers lint
