@@ -34,5 +34,8 @@ jobs:
           node-version: '20'
 
       - name: Install dependencies and run Tintin linter
-        run: npm ci --ignore-scripts && npm run lint:tin
+        run: |
+          npm ci --ignore-scripts
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          npm run lint:tin
         shell: powershell
