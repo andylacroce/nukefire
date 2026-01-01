@@ -20,6 +20,12 @@
 #action {^\[Leader %*\]A whirling blur is here.} {
 	#variable {leader_here} {1};
 }
+#action {^\[Leader %*\]A big muscular beast is standing here.} {
+	#variable {leader_here} {1};
+}
+#action {^\[Leader %*\]A big muscular beast is here} {
+	#variable {leader_here} {1};
+}
 
 #nop After the room listing ends (when "Obvious exits:" is printed), act based on whether leader was seen
 #action {^Obvious exits:} {
@@ -45,7 +51,7 @@
 }
 
 #nop ------------------ AUTO-CHECK GROUP STATUS ------------------
-#TICKER {group_check} {gr} {15}
+#TICKER {group_check} {l;gr} {15}
 
 #nop ------------------ LEADER ACTIONS ------------------
 #action {${leader}'s form shimmers with eldritch power as he vanishes beyond mortal planes!} {recall}
