@@ -23,6 +23,10 @@
     otf give all.silver ${leader};
 }
 
+#alias {cred} {
+    otf cred;
+}
+
 #alias {seq} {
     otf seq;
     snap_store;
@@ -68,6 +72,7 @@
     tel %1 o mort;
 }
 
-#alias {cred} {
-    otf cred;
+#action {But this will cost you %1 credits!!} {
+	with %1;
+    mort;
 }
