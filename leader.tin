@@ -18,6 +18,11 @@
     };
 }
 
+#alias {silv} {
+    otf gather silver;
+    otf give all.silver ${leader};
+}
+
 #alias {seq} {
     otf seq;
     snap_store;
@@ -61,4 +66,8 @@
     give %2 silver %1;
     am;
     tel %1 o mort;
+}
+
+#alias {cred} {
+    otf cred;
 }

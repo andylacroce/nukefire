@@ -100,3 +100,7 @@
 #action {The Remorter tells you, 'There you are, kid.'} {
 	tel ${leader} remort complete
 }
+
+#alias {cred} {
+	gcr $total_credits ${leader};
+}
