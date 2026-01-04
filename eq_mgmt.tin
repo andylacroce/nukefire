@@ -62,8 +62,10 @@
 
 #nop ------------------ Auction Management ------------------
 #nop A small but sturdy Skynet(TM) drone drops to hover height and delivers a heavy carbon steel key.
-#action {A small but sturdy Skynet\(TM\) drone drops to hover height and delivers a %*\.} {
+#action {A small but sturdy Skynet\(TM\) drone drops to hover height and delivers %*\.} {
     #var {item_name} {%1};
+    #replace {item_name} {^a } {};
+    #replace {item_name} {^an } {};
     #var {temp_name} {$item_name};
     #replace {temp_name} { } {;};
     #list {words} {create} {$temp_name};

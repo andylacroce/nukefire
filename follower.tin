@@ -83,9 +83,13 @@
 #action {${leader}'s form shimmers with eldritch power as he vanishes beyond mortal planes!} {recall}
 #action {${leader} telepaths to you, 'o %*'} {%1}
 
+#action {[ Remorts:     %1 ]} {
+	#variable {total_remorts} {%1};
+}
+
 #action {[ Class Remorts:]\n%*\n} {
 	#variable {class_remorts} {%1}; 
-	tel ${leader} Lvl: $lvl, $exp_to_level, Class Remorts: $class_remorts;
+	#delay {.5} {tel ${leader} Lvl: $lvl, $exp_to_level, Class Remorts: $class_remorts, Total Remorts: $total_remorts;}
 }
 
 #nop ------------------ REMORT ACTIONS ------------------
