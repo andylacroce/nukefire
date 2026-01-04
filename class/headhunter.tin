@@ -62,6 +62,7 @@
 }
 
 #var {turbo_on} {1}
+#var {autoheal_on} {1}
 
 #nop ------------------ TIMER / AUTOCAST ------------------
 #action {TIMER: %*} {
@@ -78,6 +79,54 @@
 #nop ------------------ RECON TRACKING ------------------
 #action {You are now tracking %*.} {tel $leader Currently tracking: %1} 
 #action {TARGET: %* | GPS LINK: ACTIVE | DIRECTION: %2} {tel $leader The target, %1, is %2.}
+
+#nop Group status ticker for autoheal
+#class groupcheck open
+	#var {groupcheck_on} {1}
+	#TICKER {headhunter_group_check} {gr} {3}
+#class groupcheck close
+
+#class autoheal open
+	#action {[%1 %2] %3 %*: [%4/%5]H %* [%6/%7]V} {
+		#math {target_hp_pct} {100 * %4 / %5};
+		#math {target_v_pct} {100 * %6 / %7};
+		#if {"%3" == "$me" && $target_hp_pct < 85 && $autoheal_on} {selfrepair};
+	}
+#class autoheal close
+
+#alias {autoheal_on} {
+	#read {nukefire/class/headhunter.tin};
+	#class {autoheal} {open};
+	#var {autoheal_on} {1};
+	#showme {Autoheal ON};
+	#send {}
+}
+#alias {autoheal_off} {
+	#class {autoheal} {clear};
+	#var {autoheal_on} {0};
+	#showme {Autoheal OFF};
+	#send {}
+}
+#alias {autoheal} {
+	#if {$autoheal_on} {autoheal_off} {autoheal_on}
+}
+
+#alias {groupcheck_on} {
+	#read {nukefire/class/headhunter.tin};
+	#class {groupcheck} {open};
+	#var {groupcheck_on} {1};
+	#showme {Groupcheck ON};
+	#send {}
+}
+#alias {groupcheck_off} {
+	#class {groupcheck} {clear};
+	#var {groupcheck_on} {0};
+	#showme {Groupcheck OFF};
+	#send {}
+}
+#alias {groupcheck} {
+	#if {$groupcheck_on} {groupcheck_off} {groupcheck_on}
+}
 
 #ACTION {You rise a level!} {
 	emote gained a level and dances a celebratory jig.;
