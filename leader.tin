@@ -9,6 +9,13 @@
 }
 
 #nop ------------------ ALIASES ------------------
+#macro {[} {
+    #if {$lvl > 39} {shred};
+    tel prodigy o chain;
+    tel rancor o rage;
+    tel haenym o hellquake;
+}
+
 #alias {otf %*} {
     #var i 1;
     #while {$i <= &followers[]} {
