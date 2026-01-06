@@ -10,10 +10,11 @@
 
 #nop ------------------ ALIASES ------------------
 #macro {[} {
-    #if {$lvl > 39} {shred};
+    #if {$lvl > 49} {sli 'rot'};
     tel prodigy o chain;
     tel rancor o rage;
     tel haenym o hellquake;
+     #if {$lvl > 39} {shred};
 }
 
 #alias {otf %*} {
