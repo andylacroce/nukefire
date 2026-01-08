@@ -126,7 +126,7 @@
         #math {target_hp_pct} {100 * %4 / %5};
         #math {target_v_pct} {100 * %6 / %7};
         #if {$target_v_pct < 85 && $lvl > 17} {sli 'sinful vigor' %3};
-        #if {"%$target_hp_pct < 85} {
+        #if {$target_hp_pct < 85} {
             #if {"%3" == "$me" && $lvl > 25} {sli 'augury' $me};
             #elseif {$lvl > 39} {sli 'demon' %3};
             #elseif {$lvl > 24} {sli 'rejuvinate' %3};
