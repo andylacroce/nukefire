@@ -69,6 +69,6 @@
 
 #ACTION {credits is lying here.} {get all.credits}
 
-#action {[ Credits:        $   %1 ]} {
+#action {[ Credits:        $%* %1 ]} {
     #var total_credits %1;
 }

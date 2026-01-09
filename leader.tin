@@ -11,6 +11,7 @@
 #nop ------------------ ALIASES ------------------
 #macro {[} {
     #if {$lvl > 49} {sli 'rot'};
+    #elseif {$lvl > 39} {shred};
     #else {backstab};
     tel prodigy o chain;
     tel rancor o rage;
