@@ -11,6 +11,7 @@
 #nop ------------------ ALIASES ------------------
 #macro {[} {
     #if {$lvl > 49} {sli 'rot'};
+    #else {backstab};
     tel prodigy o chain;
     tel rancor o rage;
     tel haenym o hellquake;
@@ -33,6 +34,10 @@
 
 #alias {cred} {
     otf cred;
+}
+
+#alias {gam} {
+    otf give all mutiny;silv;cred;
 }
 
 #alias {seq} {
