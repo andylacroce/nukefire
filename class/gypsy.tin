@@ -12,7 +12,6 @@
 #nop ------------------ MACROS ------------------
 #MACRO {-} {aaa}
 #MACRO {=} {rr}
-#MACRO {]} {hyp;disem;disem;disem}
 
 #nop ------------------ SPELL / SKILL UTILITIES ------------------
 #ALIAS {cb %1} {sli 'cure blind' %1}
