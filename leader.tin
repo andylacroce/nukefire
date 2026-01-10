@@ -12,11 +12,10 @@
 #macro {[} {
     #if {$lvl > 49} {sli 'rot'};
     #elseif {$lvl > 39} {shred};
-    #else {backstab};
     tel prodigy o chain;
     tel rancor o rage;
     tel haenym o hellquake;
-     #if {$lvl > 39} {shred};
+    #if {$lvl > 39} {shred};
 }
 
 #alias {otf %*} {
