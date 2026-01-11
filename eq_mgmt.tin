@@ -73,3 +73,16 @@
         ps $word;
     };
 }
+
+#nop Field Tech salutes Mutiny and slaps a crate into their arms: a chitin-strung drone cloak
+#action {Field Tech salutes Mutiny and slaps a crate into their arms: %*} {
+    #var {item_name} {%1};
+    #replace {item_name} {^a } {};
+    #replace {item_name} {^an } {};
+    #var {temp_name} {$item_name};
+    #replace {temp_name} { } {;};
+    #list {words} {create} {$temp_name};
+    #foreach {$words[]} {word} {
+        ps $word;
+    };
+}
