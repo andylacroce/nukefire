@@ -46,7 +46,7 @@
 #ACTION {^SPL: %* fortune's blessing} {#variable {has_fortune} {1}}
 #ACTION {TIMER: %*} {
 	#delay {2} {
-		#if {"%*" !~ "Gypsy_Dance" && $lvl > 19}{rom};
+		#if {"%1" != "%*Gypsy_Dance%*" && $lvl > 19}{rom};
 		#if {$has_voodoo == 0 && $lvl > 39}{sign};
 		#if {$has_phantom == 0 && $lvl > 24}{mir};
 		#if {$has_fortune == 0 && $lvl > 39}{tarot_group};
