@@ -21,7 +21,6 @@
 #macro {]} {
     tel prodigy o chain;
     tel rancor o rage;
-    tel haenym o hellquake;
 }
 
 #alias {otf %*} {
