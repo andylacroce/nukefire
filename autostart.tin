@@ -3,6 +3,9 @@
 #nop =====================================================
 
 #nop ------------------ SESSION ------------------
+#read nukefire/gmcp.tin;
+#config {telnet} {on}
+
 #session nukefire tdome.nukefire.org 4000
 #action {What's your name, freejack?} {$me}
 #action {Password:} {$password}

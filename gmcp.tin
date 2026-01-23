@@ -1,0 +1,51 @@
+#EVENT {SESSION CONNECTED}
+{
+    #variable TELNET[IAC]  \xFF;
+    #variable TELNET[DONT] \xFE;
+    #variable TELNET[DO]   \xFD;
+    #variable TELNET[WONT] \xFC;
+    #variable TELNET[WILL] \xFB;
+    #variable TELNET[SB]   \xFA;
+    #variable TELNET[SE]   \xF0;
+    #variable TELNET[GMCP] \xC9;
+    #nop Turn telnet debug on to see telnet debugging information.;
+    #nop #config {debug telnet} {on};
+}
+
+#EVENT {IAC WILL GMCP}
+{
+    #info SYSTEM save;
+    #send {$TELNET[IAC]$TELNET[DO]$TELNET[GMCP]\};
+    #send {$TELNET[IAC]$TELNET[SB]$TELNET[GMCP] core.hello { "client": "$info[SYSTEM][CLIENT_NAME]", "version": "$info[SYSTEM][CLIENT_VERSION]" } $TELNET[IAC]$TELNET[SE]\};
+    #send {$TELNET[IAC]$TELNET[SB]$TELNET[GMCP] core.supports.set [ "room 1", "room.info 1", "char 1", "char.status 1" ] $TELNET[IAC]$TELNET[SE]\}
+}
+
+#EVENT {IAC SB GMCP char.status IAC SE}
+{
+    #variable gmcp[char][status] {%0}
+}
+
+#EVENT {IAC SB GMCP char.base IAC SE}
+{
+    #variable gmcp[char][base] {%0}
+}
+
+#EVENT {IAC SB GMCP Char.Vitals IAC SE}
+{
+    #variable gmcp[char][vitals] {%0}
+}
+
+#EVENT {IAC SB GMCP char.maxstats IAC SE}
+{
+    #variable gmcp[char][maxstats] {%0}
+}
+
+#EVENT {IAC SB GMCP group IAC SE}
+{
+    #variable gmcp[group] {%0}
+}
+
+#EVENT {IAC SB GMCP room.info IAC SE}
+{
+    #variable gmcp[room][info] {%0};
+}
