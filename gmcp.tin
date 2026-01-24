@@ -17,35 +17,88 @@
     #info SYSTEM save;
     #send {$TELNET[IAC]$TELNET[DO]$TELNET[GMCP]\};
     #send {$TELNET[IAC]$TELNET[SB]$TELNET[GMCP] core.hello { "client": "$info[SYSTEM][CLIENT_NAME]", "version": "$info[SYSTEM][CLIENT_VERSION]" } $TELNET[IAC]$TELNET[SE]\};
-    #send {$TELNET[IAC]$TELNET[SB]$TELNET[GMCP] core.supports.set [ "room 1", "room.info 1", "char 1", "char.status 1" ] $TELNET[IAC]$TELNET[SE]\}
+    #send {$TELNET[IAC]$TELNET[SB]$TELNET[GMCP] core.supports.set [ "room 1", "room.info 1", "char 1", "char.status 1", "char.base 1", "char.vitals 1", "char.maxstats 1", "group 1" ] $TELNET[IAC]$TELNET[SE]\}
+}
+
+#variable gmcp_debug {0};
+#alias gmcp_debug {
+    #local arg {%1};
+    #if {"$arg" == ""} {#math gmcp_debug {1 - $gmcp_debug}} {
+        #if {"$arg" == "toggle"} {#math gmcp_debug {1 - $gmcp_debug}} {
+            #if {"$arg" == "on"} {#variable gmcp_debug 1} {
+                #if {"$arg" == "off"} {#variable gmcp_debug 0} {#showme {Usage: gmcp_debug [on|off|toggle]}}
+            }
+        }
+    };
+    #if {$gmcp_debug} {#showme {GMCP debug: ON}} {#showme {GMCP debug: OFF}};
+}
+
+#alias _gmcp_show_group {
+    #if {$gmcp_debug} {#showme {GMCP group: $gmcp[group][groupname] ($gmcp[group][status]) leader $gmcp[group][leader] members $gmcp[group][count]}};
+    #local gcount {0};
+    #if {"$gmcp[group][count]" != ""} {#math gcount {$gmcp[group][count]}};
+    #if {$gcount > 0} {
+        #local gi {1};
+        #while {$gi <= $gcount} {
+            #if {$gmcp_debug} {#showme {GMCP member: $gmcp[group][members][$gi][name] lvl $gmcp[group][members][$gi][info][lvl] hp $gmcp[group][members][$gi][info][hp]/$gmcp[group][members][$gi][info][mhp] mn $gmcp[group][members][$gi][info][mn]/$gmcp[group][members][$gi][info][mmn] mv $gmcp[group][members][$gi][info][mv]/$gmcp[group][members][$gi][info][mmv]}};
+            #math gi {$gi + 1};
+        };
+    };
+}
+
+#alias _gmcp_show_room {
+    #local exstr {};
+    #if {"$gmcp[room][info][exits][north]" != ""} {#local exstr {$exstr n:$gmcp[room][info][exits][north]}};
+    #if {"$gmcp[room][info][exits][east]" != ""} {#local exstr {$exstr e:$gmcp[room][info][exits][east]}};
+    #if {"$gmcp[room][info][exits][south]" != ""} {#local exstr {$exstr s:$gmcp[room][info][exits][south]}};
+    #if {"$gmcp[room][info][exits][west]" != ""} {#local exstr {$exstr w:$gmcp[room][info][exits][west]}};
+    #if {"$gmcp[room][info][exits][up]" != ""} {#local exstr {$exstr u:$gmcp[room][info][exits][up]}};
+    #if {"$gmcp[room][info][exits][down]" != ""} {#local exstr {$exstr d:$gmcp[room][info][exits][down]}};
+    #if {"$exstr" != ""} {
+        #if {$gmcp_debug} {#showme {GMCP room: $gmcp[room][info][num] $gmcp[room][info][name] [$gmcp[room][info][area] / $gmcp[room][info][terrain]] zone $gmcp[room][info][zone] exits$exstr}}
+    } {
+        #if {$gmcp_debug} {#showme {GMCP room: $gmcp[room][info][num] $gmcp[room][info][name] [$gmcp[room][info][area] / $gmcp[room][info][terrain]] zone $gmcp[room][info][zone]}}
+    };
 }
 
 #EVENT {IAC SB GMCP char.status IAC SE}
 {
-    #variable gmcp[char][status] {%0}
+    #variable gmcp[char][status] {%0};
+    #if {$gmcp_debug} {#showme {GMCP status: $gmcp[char][status][name] lvl $gmcp[char][status][level] $gmcp[char][status][class] hr $gmcp[char][status][hitroll] dr $gmcp[char][status][damroll] ac $gmcp[char][status][ac] align $gmcp[char][status][alignment] bank $gmcp[char][status][bank] gold $gmcp[char][status][gold] tnl $gmcp[char][status][tnl] pos $gmcp[char][status][position] wimpy $gmcp[char][status][wimpy]}}
 }
 
 #EVENT {IAC SB GMCP char.base IAC SE}
 {
-    #variable gmcp[char][base] {%0}
+    #variable gmcp[char][base] {%0};
+    #if {$gmcp_debug} {#showme {GMCP base: str $gmcp[char][base][str] dex $gmcp[char][base][dex] con $gmcp[char][base][con] int $gmcp[char][base][int] wis $gmcp[char][base][wis] cha $gmcp[char][base][cha]}}
 }
 
 #EVENT {IAC SB GMCP Char.Vitals IAC SE}
 {
-    #variable gmcp[char][vitals] {%0}
+    #variable gmcp[char][vitals] {%0};
+    #if {$gmcp_debug} {#showme {GMCP vitals: HP $gmcp[char][vitals][hp]/$gmcp[char][maxstats][maxhp] MN $gmcp[char][vitals][mana]/$gmcp[char][maxstats][maxmana] MV $gmcp[char][vitals][move]/$gmcp[char][maxstats][maxmoves]}}
+}
+
+#EVENT {IAC SB GMCP char.vitals IAC SE}
+{
+    #variable gmcp[char][vitals] {%0};
+    #if {$gmcp_debug} {#showme {GMCP vitals: HP $gmcp[char][vitals][hp]/$gmcp[char][maxstats][maxhp] MN $gmcp[char][vitals][mana]/$gmcp[char][maxstats][maxmana] MV $gmcp[char][vitals][move]/$gmcp[char][maxstats][maxmoves]}}
 }
 
 #EVENT {IAC SB GMCP char.maxstats IAC SE}
 {
-    #variable gmcp[char][maxstats] {%0}
+    #variable gmcp[char][maxstats] {%0};
+    #if {$gmcp_debug} {#showme {GMCP max: HP $gmcp[char][maxstats][maxhp] MN $gmcp[char][maxstats][maxmana] MV $gmcp[char][maxstats][maxmoves] str $gmcp[char][maxstats][str] dex $gmcp[char][maxstats][dex] con $gmcp[char][maxstats][con] int $gmcp[char][maxstats][int] wis $gmcp[char][maxstats][wis] cha $gmcp[char][maxstats][cha]}}
 }
 
 #EVENT {IAC SB GMCP group IAC SE}
 {
-    #variable gmcp[group] {%0}
+    #variable gmcp[group] {%0};
+    _gmcp_show_group
 }
 
 #EVENT {IAC SB GMCP room.info IAC SE}
 {
     #variable gmcp[room][info] {%0};
+    _gmcp_show_room
 }

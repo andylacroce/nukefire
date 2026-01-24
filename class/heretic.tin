@@ -9,6 +9,13 @@
 #alias {wyrm} {#if {$lvl > 49} {sli 'wyrm'}}
 #alias {sof} {#if {$lvl > 49} {sli 'shield of flames'}}
 #alias {hellquake} {#if {$lvl > 44} {sli 'hellquake'}}
+#alias {heal %1} {
+    #format {__hl} {%l} {%1};
+    #format {__hm} {%l} {$me};
+    #if {"$__hl" == "$__hm" && $lvl > 25} {sli 'augury' $me};
+    #elseif {$lvl > 39} {sli 'demon' %1};
+    #elseif {$lvl > 24} {sli 'rejuvinate' %1};  
+}
 
 #nop ------------------ IMMOLATE TOGGLE ------------------
 #var {immolate_on} {1};
@@ -50,6 +57,8 @@
 #variable {has_dark} {0}
 #variable {has_covenant} {0}
 #variable {has_shield_of_flames} {0}
+#variable {fort_cd} {0}
+#variable {dark_cd} {0}
 #ACTION {^SPL: %* fortify} {#variable {has_fort} {1}}
 #ACTION {^SPL: %* unholyfist} {#variable {has_unholy} {1}}
 #ACTION {^SPL: %* dark blessing} {#variable {has_dark} {1}}
@@ -72,16 +81,7 @@
     }
 }
 
-#nop ------------------ FORTUNE FALL HANDLERS ------------------
-#ACTION {Fortune's blessing retreats from you.} {
-    #variable {has_fort} {0};
-    #if {$lvl > 8} {sli 'aura of fort'; #variable {has_fort} {1};};
-}
-#ACTION {The shimmer of Fortune's blessing fades from around %1.} {
-    #variable {has_fort} {0};
-    is_group_member %1;
-    #if {$lvl > 8 && $igm_result == 1} {sli 'aura of fort'; #variable {has_fort} {1};};
-}
+#nop ------------------ FORTIFICATION FALL HANDLERS ------------------
 #ACTION {You feel less fortified.} {
     #variable {has_fort} {0};
     #if {$lvl > 8} {sli 'aura of fort'; #variable {has_fort} {1};};
@@ -89,7 +89,7 @@
 #ACTION {%1 looks less fortified.} {
     #variable {has_fort} {0};
     is_group_member %1;
-    #if {$lvl > 8 && $igm_result == 1} {sli 'aura of fort'; #variable {has_fort} {1};};
+    #if {$lvl > 8 && $igm_result == 1 && $fort_cd == 0} {sli 'aura of fort'; #variable {has_fort} {1}; #var fort_cd 1; #delay {3} {#var fort_cd 0};};
 }
 
 #nop ------------------ DARK BLESSING FALL HANDLERS ------------------
@@ -100,7 +100,7 @@
 #ACTION {The dark aura around %1 thins and fades.} {
     #variable {has_dark} {0};
     is_group_member %1;
-    #if {$lvl > 21 && $igm_result == 1} {sli 'aura of dark'; #variable {has_dark} {1};};
+    #if {$lvl > 21 && $igm_result == 1 && $dark_cd == 0} {sli 'aura of dark'; #variable {has_dark} {1}; #var dark_cd 1; #delay {3} {#var dark_cd 0};};
 }
 
 #nop ------------------ COVENANT FALL HANDLERS ------------------
@@ -125,12 +125,8 @@
     #action {[%1 %2] %3 %*: [%4/%5]H %* [%6/%7]V} {
         #math {target_hp_pct} {100 * %4 / %5};
         #math {target_v_pct} {100 * %6 / %7};
-        #if {$target_v_pct < 85 && $lvl > 17} {sli 'sinful vigor' %3};
-        #if {$target_hp_pct < 85} {
-            #if {"%3" == "$me" && $lvl > 25} {sli 'augury' $me};
-            #elseif {$lvl > 39} {sli 'demon' %3};
-            #elseif {$lvl > 24} {sli 'rejuvinate' %3};
-        };
+        #if {$target_v_pct < 85 && $lvl > 17} {tel $leader @-@C<< INVIGORATING %3 >>; sli 'sinful vigor' %3};
+        #if {$target_hp_pct < 85 && $lvl > 24} {tel $leader @-@Y<< HEALING %3 >>; heal %3};
     }
 #class autoheal close
 
