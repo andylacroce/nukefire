@@ -18,7 +18,7 @@
         get all corpse;
         rewear;
         junk corpse;junk corpse;
-        conceal dirk;conceal dagger;conceal dirk;
+        conceal dirk;conceal spike;conceal dirk;
         group new;
         n;u;eq;
     };
