@@ -166,6 +166,7 @@
 
 
 #ACTION {You rise a level!} {
+    sc;
 	emote gained a level and dances a celebratory jig.;
 	#delay {3} {
 		#if {$lvl < 24} {
