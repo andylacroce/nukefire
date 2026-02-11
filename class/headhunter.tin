@@ -138,20 +138,15 @@
 			groupassist_group;
 		};
 		#elseif {$lvl < 15} {
-			combo tripw putemup putemup;
-			#var {group_combo} {tripw putemup putemup};
+			combo tripw tripw putemup;
+			#var {group_combo} {tripw tripw putemup};
 			groupassist_group;
 		};
-		#elseif {$lvl < 40} {
+		#else {
 			combo tripw auger hstomp;
 			#var {group_combo} {tripw auger hstomp};
 			groupassist_group;
 		};
-		#else {
-			combo chainsaw chainsaw chainsaw;
-			#var {group_combo} {chainsaw chainsaw chainsaw};
-			groupassist_group;
-		};	
     };
 }
 

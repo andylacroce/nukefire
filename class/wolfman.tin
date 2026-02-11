@@ -50,13 +50,13 @@
 			groupassist_group;
 		};
 		#elseif {$lvl < 35} {
-			combo chilli gnaw pounce;
-			#var {group_combo} {chilli gnaw pounce};
+			combo stalk pounce pounce;
+			#var {group_combo} {stalk pounce pounce};
 			groupassist_group;
 		};
 		#else {
-			combo rage rage rage;
-			#var {group_combo} {rage rage rage};
+			combo srend srend pounce;
+			#var {group_combo} {srend srend pounce};
 			groupassist_group;
 		};
 	}

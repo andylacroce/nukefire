@@ -116,14 +116,14 @@
 			#var {group_combo} {mys mys mys};
 			groupassist_group;
 		};
-		#elseif {$lvl < 40} {
-			combo bgrow bgrow bgrow;
-			#var {group_combo} {bgrow bgrow bgrow};
+		#elseif {$lvl < 45} {
+			combo bgrow mys disem;
+			#var {group_combo} {bgrow mys disem};
 			groupassist_group;
 		};
 		#else {
-			combo shred shred shred;
-			#var {group_combo} {shred shred shred};
+			combo vtwist bgrow impale;
+			#var {group_combo} {vtwist bgrow impale};
 			groupassist_group;
 		};
 	}

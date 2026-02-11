@@ -179,14 +179,9 @@
 			#var {group_combo} {here here here};
 			groupassist_group;
 		};
-        #elseif {$lvl < 45} {
-			combo torment torment torment;
-			#var {group_combo} {torment torment torment};
-			groupassist_group;
-		};
         #else {
-			combo hellquake hellquake hellquake;
-			#var {group_combo} {hellquake hellquake hellquake};
+			combo doom torment here;
+			#var {group_combo} {doom torment here};
 			groupassist_group;
 		};
 	}
