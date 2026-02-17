@@ -10,9 +10,11 @@
 
 #nop ------------------ ALIASES ------------------
 #macro {[} {
+    hyp mob;
+    backstab mob;
+    tel rancor o stalk mob;
     #if {$lvl > 49} {sli 'rot'};
     #elseif {$lvl > 39} {shred};
-    tel rancor o stalk mob;
     tel prodigy o chain;
     tel rancor o rage;
     tel haenym o hellquake;
@@ -20,8 +22,10 @@
 }
 
 #macro {]} {
+    tel rancor o stalk mob;
     tel prodigy o chain;
     tel rancor o rage;
+    tel haenym o hellquake;
 }
 
 #alias {otf %*} {

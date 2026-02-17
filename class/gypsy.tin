@@ -6,7 +6,7 @@
 #nop ------------------ COMBAT ALIASES ------------------
 #ALIAS {xx} {shoot mob burst}
 #ALIAS {aaa} {#if {$lvl > 49}{sli 'rot'};shred}
-#ALIAS {rr} {hyp;backstab;#if {$lvl > 44}{vtwist};#if {$lvl > 39}{bgrow};#if {$lvl > 14}{mysticveil};#if {$lvl > 44}{impale};#if {$lvl > 34}{spiritr};#if {$lvl > 34}{sucker}}
+#ALIAS {rr} {hyp mob;backstab mob;#if {$lvl > 14}{mysticveil};#if {$lvl > 44}{vtwist};#if {$lvl > 39}{bgrow};#if {$lvl > 34}{spiritr};#if {$lvl > 34}{sucker}}
 #ALIAS {grows} {grow scar}
 
 #nop ------------------ MACROS ------------------
@@ -106,24 +106,19 @@
 #ACTION {You rise a level!} {
 	emote gained a level and dances a celebratory jig.;
 	#delay {3} {
-		#if {$lvl < 15} {
+		#if {$lvl < 35} {
 			combo disem disem disem;
 			#var {group_combo} {disem disem disem};
 			groupassist_group;
 		};
-		#elseif {$lvl < 30} {
-			combo mys mys mys;
-			#var {group_combo} {mys mys mys};
-			groupassist_group;
-		};
 		#elseif {$lvl < 45} {
-			combo bgrow mys disem;
-			#var {group_combo} {bgrow mys disem};
+			combo spiritr sucker sucker;
+			#var {group_combo} {spiritr sucker sucker};
 			groupassist_group;
 		};
 		#else {
-			combo vtwist bgrow impale;
-			#var {group_combo} {vtwist bgrow impale};
+			combo impale spiritr sucker;
+			#var {group_combo} {impale spiritr sucker};
 			groupassist_group;
 		};
 	}
