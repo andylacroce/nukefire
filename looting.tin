@@ -65,7 +65,10 @@
         n;u;eq;
     };
 }
-#ALIAS {gcr %1 %2} {give %1 credits %2}
+#ALIAS {gcr %1 %2} {
+    with %1;
+    give %1 credits %2;
+}
 
 #ACTION {credits is lying here.} {get all.credits}
 

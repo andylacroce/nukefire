@@ -83,7 +83,6 @@
 
 #nop ------------------ REMORT ACTIONS ------------------
 #action {%1 telepaths to you, 'remort cost: %2 credits'} {
-	with %2;
 	gcr %2 %1;
     tel %1 o mort;
 }
