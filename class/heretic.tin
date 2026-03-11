@@ -115,53 +115,67 @@
     #if {$flames_on} {sof};
 }
 
-#nop ------------------ AUTOHEAL / GROUPCHECK ------------------
-#class groupcheck open
-    #var {groupcheck_on} {1}
-    #TICKER {heretic_group_check} {gr} {3}
-#class groupcheck close
+#nop ------------------ AUGURY: PROMPT-BASED SELF-HEAL ------------------
+#variable {augury_max_hp} {0}
+#variable {augury_cooldown} {0}
+#variable {augury_set_on_next_prompt} {0}
 
-#class autoheal open
-    #action {[%1 %2] %3 %*: [%4/%5]H %* [%6/%7]V} {
-        #math {target_hp_pct} {100 * %4 / %5};
-        #math {target_v_pct} {100 * %6 / %7};
-        #if {$target_v_pct < 85 && $lvl > 17} {tel $leader @-@C<< INVIGORATING %3 >>; sli 'sinful vigor' %3};
-        #if {$target_hp_pct < 85 && $lvl > 24} {tel $leader @-@Y<< HEALING %3 >>; heal %3};
-    }
-#class autoheal close
+#ACTION {You're already as healthy as you can be.} {
+    #var {augury_set_on_next_prompt} {1};
+}
+
+#action {< %1H %2M %3V [Lvl %4, %5]} {
+    #if {$augury_set_on_next_prompt == 1} {
+        #var {augury_max_hp} {%1};
+        #var {augury_set_on_next_prompt} {0};
+    };
+    #if {%1 > $augury_max_hp} {
+        #var {augury_max_hp} {%1};
+    };
+    #if {$augury_max_hp > 0 && $lvl > 25} {
+        #math {augury_pct} {100 * %1 / $augury_max_hp};
+        #if {$augury_pct < 85 && $augury_cooldown == 0 && $autoheal_on} {
+            sli 'augury' $me;
+            #var {augury_cooldown} {1};
+            #delay {3} {#var {augury_cooldown} {0};};
+        };
+    };
+}
+
+#nop ------------------ AUTOHEAL / GROUPCHECK ------------------
+#nop GMCP-driven hook: fires automatically on every group update from server
+#nop Self-heal is handled by the prompt trigger above; skip $me here
+#variable {sinvig_cooldown} {0}
+#variable {heal_cooldown} {0}
+#alias {_on_gmcp_group} {
+    #local gi {1};
+    #while {$gi <= $gmcp[group][count]} {
+        #local mname {$gmcp[group][members][$gi][name]};
+        #if {"$mname" == "$me"} {#math gi {$gi + 1}; #continue};
+        #local mhp   {$gmcp[group][members][$gi][info][hp]};
+        #local mmhp  {$gmcp[group][members][$gi][info][mhp]};
+        #local mmv   {$gmcp[group][members][$gi][info][mv]};
+        #local mmmv  {$gmcp[group][members][$gi][info][mmv]};
+        #if {$mmhp > 0} {#math hp_pct {100 * $mhp / $mmhp}};
+        #if {$mmmv > 0} {#math mv_pct {100 * $mmv / $mmmv}};
+        #if {$mv_pct < 85 && $lvl > 17 && $autoheal_on && $sinvig_cooldown == 0} {whisper $leader @-@C<< INVIGORATING $mname >>; sli 'sinful vigor' $mname; #var sinvig_cooldown 1; #delay {3} {#var sinvig_cooldown 0}; #delay {3} {_on_gmcp_group}};
+        #if {$hp_pct < 85 && $lvl > 24 && $autoheal_on && $heal_cooldown == 0} {whisper $leader @-@Y<< HEALING $mname >>; heal $mname; #var heal_cooldown 1; #delay {3} {#var heal_cooldown 0}; #delay {3} {_on_gmcp_group}};
+        #math gi {$gi + 1};
+    };
+}
 
 #alias {autoheal_on} {
-    #read {nukefire/class/heretic.tin};
-    #class {autoheal} {open};
     #var {autoheal_on} {1};
     #showme {Autoheal ON};
     #send {}
 }
 #alias {autoheal_off} {
-    #class {autoheal} {clear};
     #var {autoheal_on} {0};
     #showme {Autoheal OFF};
     #send {}
 }
 #alias {autoheal} {
     #if {$autoheal_on} {autoheal_off} {autoheal_on}
-}
-
-#alias {groupcheck_on} {
-    #read {nukefire/class/heretic.tin};
-    #class {groupcheck} {open};
-    #var {groupcheck_on} {1};
-    #showme {Groupcheck ON};
-    #send {}
-}
-#alias {groupcheck_off} {
-    #class {groupcheck} {clear};
-    #var {groupcheck_on} {0};
-    #showme {Groupcheck OFF};
-    #send {}
-}
-#alias {groupcheck} {
-    #if {$groupcheck_on} {groupcheck_off} {groupcheck_on}
 }
 
 

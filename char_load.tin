@@ -36,6 +36,8 @@
 #read {nukefire/logging.tin}
 
 #nop ------------------ LOAD CLASS-SPECIFIC MODULES ------------------
+#nop Default no-op; healer classes override with group heal logic
+#alias {_on_gmcp_group} {#nop}
 #read {nukefire/class/${class}.tin}
 
 #nop ------------------ LOAD ROLE-SPECIFIC MODULES ------------------

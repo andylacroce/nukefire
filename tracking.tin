@@ -3,8 +3,8 @@
 #nop =====================================================
 
 #nop ------------------ RECON TRACKING MESSAGES ------------------
-#alias {ato} {tel prodigy o autotrack}
-#alias {at %1} {tel prodigy o autotrack %1}
+#alias {ato} {whisper prodigy o autotrack}
+#alias {at %1} {whisper prodigy o autotrack %1}
 #action {Prodigy telepaths to you, 'The target, %*, is %2.'} {%2}
 
 #nop ------------------ RECON TRACKING CLASS ------------------

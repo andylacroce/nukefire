@@ -77,8 +77,8 @@
 }
 
 #nop ------------------ RECON TRACKING ------------------
-#action {You are now tracking %*.} {tel $leader Currently tracking: %1} 
-#action {TARGET: %* | GPS LINK: ACTIVE | DIRECTION: %2} {tel $leader The target, %1, is %2.}
+#action {You are now tracking %*.} {whisper $leader Currently tracking: %1} 
+#action {TARGET: %* | GPS LINK: ACTIVE | DIRECTION: %2} {whisper $leader The target, %1, is %2.}
 
 #nop ------------------ SELFREPAIR: PROMPT-BASED ------------------
 #variable {repair_max_hp} {0}

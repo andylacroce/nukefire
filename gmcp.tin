@@ -94,7 +94,8 @@
 #EVENT {IAC SB GMCP group IAC SE}
 {
     #variable gmcp[group] {%0};
-    _gmcp_show_group
+    _gmcp_show_group;
+    _on_gmcp_group;
 }
 
 #EVENT {IAC SB GMCP room.info IAC SE}

@@ -12,42 +12,51 @@
 #macro {[} {
     hyp mob;
     backstab mob;
-    tel rancor o stalk mob;
+    whisper rancor o stalk mob;
     #if {$lvl > 49} {sli 'rot'};
     #elseif {$lvl > 39} {shred};
-    tel prodigy o chain;
-    tel rancor o rage;
-    tel haenym o hellquake;
+    whisper prodigy o chain;
+    whisper rancor o rage;
+    whisper haenym o hellquake;
     #if {$lvl > 39} {shred};
 }
 
 #macro {]} {
-    tel rancor o stalk mob;
-    tel prodigy o chain;
-    tel rancor o rage;
-    tel haenym o hellquake;
+    whisper rancor o stalk mob;
+    whisper prodigy o chain;
+    whisper rancor o rage;
+    whisper haenym o hellquake;
 }
 
 #alias {otf %*} {
     #var i 1;
     #while {$i <= &followers[]} {
         #list followers get $i follower;
-        #if {"$follower" != "$me"} {tel $follower o %1};
+        #if {"$follower" != "$me"} {whisper $follower o %1};
+        #math i $i + 1;
+    };
+}
+
+#alias {ow %*} {
+    #var i 1;
+    #while {$i <= &followers[]} {
+        #list followers get $i follower;
+        #if {"$follower" != "$me"} {whisper $follower o %1};
         #math i $i + 1;
     };
 }
 
 #alias {silv} {
-    otf gather silver;
-    otf give all.silver ${leader};
+    ow gather silver;
+    ow give all.silver ${leader};
 }
 
 #alias {cred} {
-    otf cred;
+    ow cred;
 }
 
 #alias {gam} {
-    otf give all mutiny;silv;cred;
+    ow give all mutiny;silv;cred;
 }
 
 #alias {seq} {
@@ -82,19 +91,32 @@
 }
 
 #nop ------------------ REMORT ACTIONS ------------------
-#action {%1 telepaths to you, 'remort cost: %2 credits'} {
+#action {%1 whispers to you, 'remort cost: %2 credits'} {
 	gcr %2 %1;
-    tel %1 o mort;
+    whisper %1 o mort;
 }
 
-#action {%1 telepaths to you, 'remort needs: %2 silver discs'} {
+#action {%1 whispers to you, 'remort needs: %2 silver discs'} {
     gather silver;
     give %2 silver %1;
     am;
-    tel %1 o mort;
+    whisper %1 o mort;
 }
 
 #action {But this will cost you %1 credits!!} {
 	with %1;
     mort;
+}
+
+#nop ------------------ OTHER ACTIONS ------------------
+
+#action {[ Remorts:    %1 ]} {
+	#variable {total_remorts} {%1};
+	#replace {total_remorts} {{^[ ]+}} {};
+}
+
+#action {[ Class Remorts:]\n%*\n} {
+	#variable {class_remorts} {%1}; 
+	#replace {class_remorts} {{ }} {};
+	#delay {.5} {#showme {\e]P40000AA <048>Lvl: $lvl || $exp_to_level || Class Remorts: $class_remorts || Total Remorts: $total_remorts}}
 }
