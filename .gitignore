@@ -24,3 +24,5 @@ Thumbs.db
 # Build / test
 dist/
 coverage/
+
+.claude/
