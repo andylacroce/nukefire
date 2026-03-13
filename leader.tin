@@ -46,6 +46,10 @@
     };
 }
 
+#alias {sum %1} {
+    whisper haenym o sum %1;
+}
+
 #alias {silv} {
     ow gather silver;
     ow give all.silver ${leader};

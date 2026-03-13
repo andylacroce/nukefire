@@ -178,6 +178,9 @@
     #if {$autoheal_on} {autoheal_off} {autoheal_on}
 }
 
+#action {%1 telepaths to you, 'summon'} {
+    sum %1;
+}
 
 #ACTION {You rise a level!} {
     sc;
