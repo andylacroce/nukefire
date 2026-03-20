@@ -65,8 +65,14 @@
 
 #nop ------------------ AUTOHEAL CONTROL ------------------
 #alias {autoheal_on} {
-	#read {nukefire/class/curist.tin};
 	#class {autoheal} {open};
+	#action {[%%1 %%2] %%3 %%*: [%%4/%%5]H %%* [%%6/%%7]V} {
+		#math {target_hp_pct} {100 * %%4 / %%5};
+		#math {target_v_pct} {100 * %%6 / %%7};
+		#if {$target_hp_pct < 75} {#if {$lvl > 24} {sli 'rejuvinate' %%3} {#if {$lvl > 13} {sli 'heal' %%3} {#if {$lvl > 8} {sli 'cure critic' %%3}}}};
+		#if {$target_v_pct < 50 && $lvl > 17} {sli 'invigorate' %%3}
+	};
+	#class {autoheal} {close};
 	#var {autoheal_on} {1};
 	#showme {Autoheal ON};
 	#send {}
@@ -83,8 +89,9 @@
 
 #nop ------------------ GROUPCHECK CONTROL ------------------
 #alias {groupcheck_on} {
-	#read {nukefire/class/curist.tin};
 	#class {groupcheck} {open};
+	#TICKER {curist_group_check} {gr} {3};
+	#class {groupcheck} {close};
 	#var {groupcheck_on} {1};
 	#showme {Groupcheck ON};
 	#send {}

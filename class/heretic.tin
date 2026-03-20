@@ -31,8 +31,11 @@
 #if {!$immolate_on} {#class {immolate} {clear}}
 
 #alias {immolate_on} {
+    #class {immolate} {open};
+    #action {You receive %%1 experience points.} {immo corpse;};
+    #action {You can't gain anymore experience.} {immo corpse;};
+    #class {immolate} {close};
     #var {immolate_on} {1};
-    #read {nukefire/class/heretic.tin};
     #showme {Immolate ON};
     #send {}
 }

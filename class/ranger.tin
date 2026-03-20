@@ -59,8 +59,13 @@
 
 #nop ------------------ AUTOHEAL CONTROL ------------------
 #alias {autoheal_on} {
-	#read {nukefire/class/ranger.tin};
 	#class {autoheal} {open};
+	#action {[%%1 %%2] %%3 %%*: [%%4/%%5]H %%* [%%6/%%7]V} {
+		#math {target_hp_pct} {100 * %%4 / %%5};
+		#math {target_v_pct} {100 * %%6 / %%7};
+		#if {$target_v_pct < 50 && $lvl > 14} {sli 'invigorate' %%3};
+	};
+	#class {autoheal} {close};
 	#var {autoheal_on} {1};
 	#showme {Autoheal ON};
 	#send {}
@@ -77,8 +82,9 @@
 
 #nop ------------------ GROUPCHECK CONTROL ------------------
 #alias {groupcheck_on} {
-	#read {nukefire/class/ranger.tin};
 	#class {groupcheck} {open};
+	#TICKER {ranger_group_check} {gr} {3};
+	#class {groupcheck} {close};
 	#var {groupcheck_on} {1};
 	#showme {Groupcheck ON};
 	#send {}

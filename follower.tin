@@ -43,8 +43,17 @@
 #if {!$leader_presence_on} {#class {leader_presence} {clear}}
 
 #alias {leader_presence_on} {
-	#read {nukefire/follower.tin};
 	#class {leader_presence} {open};
+	#action {^Obvious exits:} {
+		#if ($leader_here) {
+			#variable {leader_here} {0};
+		};
+		#else {
+			tel ${leader} not here...;
+			#delay {10} {look};
+		}
+	};
+	#class {leader_presence} {close};
 	#var {leader_presence_on} {1};
 	#showme {Leader presence ON};
 	#send {}
