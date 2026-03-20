@@ -88,10 +88,10 @@
     };
     #if {$grows_max_hp > 0} {
         #math {grows_pct} {100 * %1 / $grows_max_hp};
-        #if {$grows_pct < 75 && $grows_cooldown == 0} {
+        #if {$grows_pct < 50 && $grows_cooldown == 0} {
             grows;
             #var {grows_cooldown} {1};
-            #delay {3} {#var {grows_cooldown} {0};};
+            #delay {5} {#var {grows_cooldown} {0};};
         };
     };
 }

@@ -76,6 +76,11 @@
 	tel ${leader} not in room, waiting for you
 }
 
+#ACTION {You're already in the same room as ${leader}!} {
+	tel ${leader} I'm here now!;
+	untrk;
+}
+
 #nop ------------------ AUTO-CHECK GROUP STATUS ------------------
 #TICKER {group_check} {l;gr} {15}
 

@@ -94,6 +94,17 @@
     recall;
 }
 
+#ALIAS {come} {
+    #if {!$is_follower} {
+        #var i 1;
+        #while {$i <= &followers[]} {
+            #list followers get $i follower;
+            tel $follower o trk ${leader};
+            #math i $i + 1;
+        };
+    };
+}
+
 #nop ------------------ REMORT ACTIONS ------------------
 #action {%1 whispers to you, 'remort cost: %2 credits'} {
 	gcr %2 %1;
