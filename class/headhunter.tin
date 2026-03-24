@@ -80,13 +80,19 @@
 #action {You are now tracking %*.} {whisper $leader Currently tracking: %1} 
 #action {TARGET: %* | GPS LINK: ACTIVE | DIRECTION: %2} {whisper $leader The target, %1, is %2.}
 
-#nop ------------------ SELFREPAIR: PROMPT-BASED ------------------
+#alias {grows} {grow scar}
+
+#nop ------------------ SELFREPAIR + GROW SCAR: PROMPT-BASED ------------------
 #variable {repair_max_hp} {0}
 #variable {repair_cooldown} {0}
 #variable {repair_set_on_next_prompt} {0}
+#variable {grows_max_hp} {0}
+#variable {grows_cooldown} {0}
+#variable {grows_set_on_next_prompt} {0}
 
 #ACTION {You're already as healthy as you can be.} {
 	#var {repair_set_on_next_prompt} {1};
+	#var {grows_set_on_next_prompt} {1};
 }
 
 #action {< %1H %2M %3V [Lvl %4, %5]} {
@@ -103,6 +109,21 @@
 			selfrepair;
 			#var {repair_cooldown} {1};
 			#delay {3} {#var {repair_cooldown} {0};};
+		};
+	};
+	#if {$grows_set_on_next_prompt == 1} {
+		#var {grows_max_hp} {%1};
+		#var {grows_set_on_next_prompt} {0};
+	};
+	#if {%1 > $grows_max_hp} {
+		#var {grows_max_hp} {%1};
+	};
+	#if {$grows_max_hp > 0} {
+		#math {grows_pct} {100 * %1 / $grows_max_hp};
+		#if {$grows_pct < 50 && $grows_cooldown == 0 && $autoheal_on} {
+			grows;
+			#var {grows_cooldown} {1};
+			#delay {5} {#var {grows_cooldown} {0};};
 		};
 	};
 }
@@ -127,18 +148,18 @@
 	emote gained a level and dances a celebratory jig.;
 	#delay {3} {
 		#if {$lvl < 10} {
-			combo putemup putemup putemup;
-			#var {group_combo} {putemup putemup putemup};
+			combo tpunch tpunch tpunch;
+			#var {group_combo} {tpunch tpunch tpunch};
 			groupassist_group;
 		};
 		#elseif {$lvl < 15} {
-			combo tripw tripw putemup;
-			#var {group_combo} {tripw tripw putemup};
+			combo tpunch tpunch tpunch;
+			#var {group_combo} {tpunch tpunch tpunch};
 			groupassist_group;
 		};
 		#else {
-			combo tripw auger hstomp;
-			#var {group_combo} {tripw auger hstomp};
+			combo tpunch tpunch tpunch;
+			#var {group_combo} {tpunch tpunch tpunch};
 			groupassist_group;
 		};
     };

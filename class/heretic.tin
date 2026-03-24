@@ -18,7 +18,7 @@
 }
 
 #nop ------------------ IMMOLATE TOGGLE ------------------
-#var {immolate_on} {1};
+#variable {immolate_on} {1};
 
 #class immolate open
     #action {You receive %1 experience points.} {
@@ -35,12 +35,12 @@
     #action {You receive %%1 experience points.} {immo corpse;};
     #action {You can't gain anymore experience.} {immo corpse;};
     #class {immolate} {close};
-    #var {immolate_on} {1};
+    #variable {immolate_on} {1};
     #showme {Immolate ON};
     #send {}
 }
 #alias {immolate_off} {
-    #var {immolate_on} {0};
+    #variable {immolate_on} {0};
     #class {immolate} {clear};
     #showme {Immolate OFF};
     #send {}
@@ -50,8 +50,8 @@
 }
 #nop ------------------ SHIELD OF FLAMES TOGGLE ------------------
 #variable {flames_on} {1}
-#alias {flames_on} {#var {flames_on} {1};#showme {Shield of Flames ON};#send {}}
-#alias {flames_off} {#var {flames_on} {0};#showme {Shield of Flames OFF};#send {}}
+#alias {flames_on} {#variable {flames_on} {1};#showme {Shield of Flames ON};#send {}}
+#alias {flames_off} {#variable {flames_on} {0};#showme {Shield of Flames OFF};#send {}}
 #alias {flames} {#if {$flames_on} {flames_off} {flames_on}}
 
 #nop ------------------ BUFF TRACKING ------------------
@@ -92,7 +92,7 @@
 #ACTION {%1 looks less fortified.} {
     #variable {has_fort} {0};
     is_group_member %1;
-    #if {$lvl > 8 && $igm_result == 1 && $fort_cd == 0} {sli 'aura of fort'; #variable {has_fort} {1}; #var fort_cd 1; #delay {3} {#var fort_cd 0};};
+    #if {$lvl > 8 && $igm_result == 1 && $fort_cd == 0} {sli 'aura of fort'; #variable {has_fort} {1}; #variable fort_cd 1; #delay {3} {#variable fort_cd 0};};
 }
 
 #nop ------------------ DARK BLESSING FALL HANDLERS ------------------
@@ -103,7 +103,7 @@
 #ACTION {The dark aura around %1 thins and fades.} {
     #variable {has_dark} {0};
     is_group_member %1;
-    #if {$lvl > 21 && $igm_result == 1 && $dark_cd == 0} {sli 'aura of dark'; #variable {has_dark} {1}; #var dark_cd 1; #delay {3} {#var dark_cd 0};};
+    #if {$lvl > 21 && $igm_result == 1 && $dark_cd == 0} {sli 'aura of dark'; #variable {has_dark} {1}; #variable dark_cd 1; #delay {3} {#variable dark_cd 0};};
 }
 
 #nop ------------------ COVENANT FALL HANDLERS ------------------
@@ -124,56 +124,73 @@
 #variable {augury_set_on_next_prompt} {0}
 
 #ACTION {You're already as healthy as you can be.} {
-    #var {augury_set_on_next_prompt} {1};
+    #variable {augury_set_on_next_prompt} {1};
 }
 
 #action {< %1H %2M %3V [Lvl %4, %5]} {
+    #variable {lvl} {%4};
+    #variable {exp_to_level} {%5};
     #if {$augury_set_on_next_prompt == 1} {
-        #var {augury_max_hp} {%1};
-        #var {augury_set_on_next_prompt} {0};
+        #variable {augury_max_hp} {%1};
+        #variable {augury_set_on_next_prompt} {0};
     };
     #if {%1 > $augury_max_hp} {
-        #var {augury_max_hp} {%1};
+        #variable {augury_max_hp} {%1};
     };
-    #if {$augury_max_hp > 0 && $lvl > 25} {
+    #if {$augury_max_hp > 0} {
         #math {augury_pct} {100 * %1 / $augury_max_hp};
-        #if {$augury_pct < 85 && $augury_cooldown == 0 && $autoheal_on} {
+        #if {$augury_pct < 85 && $augury_cooldown == 0 && $lvl > 25} {
             sli 'augury' $me;
-            #var {augury_cooldown} {1};
-            #delay {3} {#var {augury_cooldown} {0};};
+            #variable {augury_cooldown} {1};
+            #delay {3} {#variable {augury_cooldown} {0};};
         };
     };
 }
 
 #nop ------------------ AUTOHEAL / GROUPCHECK ------------------
 #nop GMCP-driven hook: fires automatically on every group update from server
-#nop Self-heal is handled by the prompt trigger above; skip $me here
 #variable {sinvig_cooldown} {0}
 #variable {heal_cooldown} {0}
 #alias {_on_gmcp_group} {
     #local gi {1};
     #while {$gi <= $gmcp[group][count]} {
         #local mname {$gmcp[group][members][$gi][name]};
-        #if {"$mname" == "$me"} {#math gi {$gi + 1}; #continue};
         #local mhp   {$gmcp[group][members][$gi][info][hp]};
         #local mmhp  {$gmcp[group][members][$gi][info][mhp]};
         #local mmv   {$gmcp[group][members][$gi][info][mv]};
         #local mmmv  {$gmcp[group][members][$gi][info][mmv]};
         #if {$mmhp > 0} {#math hp_pct {100 * $mhp / $mmhp}};
         #if {$mmmv > 0} {#math mv_pct {100 * $mmv / $mmmv}};
-        #if {$mv_pct < 85 && $lvl > 17 && $autoheal_on && $sinvig_cooldown == 0} {whisper $leader @-@C<< INVIGORATING $mname >>; sli 'sinful vigor' $mname; #var sinvig_cooldown 1; #delay {3} {#var sinvig_cooldown 0}; #delay {3} {_on_gmcp_group}};
-        #if {$hp_pct < 85 && $lvl > 24 && $autoheal_on && $heal_cooldown == 0} {whisper $leader @-@Y<< HEALING $mname >>; heal $mname; #var heal_cooldown 1; #delay {3} {#var heal_cooldown 0}; #delay {3} {_on_gmcp_group}};
+        #if {$mv_pct < 85 && $lvl > 17 && $autoheal_on && $sinvig_cooldown == 0} {
+            whisper $leader @-@C<< INVIGORATING $mname >>;
+            sli 'sinful vigor' $mname;
+            #variable sinvig_cooldown 1; #delay {3} {#variable sinvig_cooldown 0};
+            #if {"$mname" != "$me"} {#delay {3} {_on_gmcp_group}};
+        };
+        #if {$hp_pct < 85 && $autoheal_on} {
+            #if {"$mname" == "$me" && $augury_cooldown == 0 && $lvl > 25} {
+                whisper $leader @-@Y<< HEALING $me >>;
+                sli 'augury' $me;
+                #variable augury_cooldown 1; #delay {3} {#variable augury_cooldown 0};
+            };
+            #if {"$mname" != "$me" && $heal_cooldown == 0 && $lvl > 24} {
+                whisper $leader @-@Y<< HEALING $mname >>;
+                heal $mname;
+                #variable heal_cooldown 1; #delay {3} {#variable heal_cooldown 0};
+                #delay {3} {_on_gmcp_group};
+            };
+        };
         #math gi {$gi + 1};
     };
 }
 
 #alias {autoheal_on} {
-    #var {autoheal_on} {1};
+    #variable {autoheal_on} {1};
     #showme {Autoheal ON};
     #send {}
 }
 #alias {autoheal_off} {
-    #var {autoheal_on} {0};
+    #variable {autoheal_on} {0};
     #showme {Autoheal OFF};
     #send {}
 }
@@ -191,17 +208,17 @@
 	#delay {3} {
 		#if {$lvl < 24} {
 			combo bash bash bash;
-			#var {group_combo} {bash bash bash};
+			#variable {group_combo} {bash bash bash};
 			groupassist_group;
 		};
 		#elseif {$lvl < 35} {
 			combo here here here;
-			#var {group_combo} {here here here};
+			#variable {group_combo} {here here here};
 			groupassist_group;
 		};
         #else {
-			combo doom torment here;
-			#var {group_combo} {doom torment here};
+			combo torment here here;
+			#variable {group_combo} {torment here here};
 			groupassist_group;
 		};
 	}

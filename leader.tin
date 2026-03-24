@@ -17,7 +17,6 @@
     #elseif {$lvl > 39} {shred};
     whisper prodigy o chain;
     whisper rancor o rage;
-    whisper haenym o hellquake;
     #if {$lvl > 39} {shred};
 }
 
@@ -25,7 +24,6 @@
     whisper rancor o stalk mob;
     whisper prodigy o chain;
     whisper rancor o rage;
-    whisper haenym o hellquake;
 }
 
 #alias {otf %*} {
