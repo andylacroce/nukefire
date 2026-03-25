@@ -127,7 +127,7 @@
     #variable {augury_set_on_next_prompt} {1};
 }
 
-#action {< %1H %2M %3V [Lvl %4, %5]} {
+#action {< %1H %2M %3V%* [Lvl %4, %5]%*} {
     #variable {lvl} {%4};
     #variable {exp_to_level} {%5};
     #if {$augury_set_on_next_prompt == 1} {
@@ -140,6 +140,7 @@
     #if {$augury_max_hp > 0} {
         #math {augury_pct} {100 * %1 / $augury_max_hp};
         #if {$augury_pct < 85 && $augury_cooldown == 0 && $lvl > 25} {
+            whisper $leader @-@Y<< HEALING $me >>;
             sli 'augury' $me;
             #variable {augury_cooldown} {1};
             #delay {3} {#variable {augury_cooldown} {0};};

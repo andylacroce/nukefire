@@ -75,7 +75,7 @@
     #var {grows_set_on_next_prompt} {1};
 }
 
-#action {< %1H %2M %3V [Lvl %4, %5]} {
+#action {< %1H %2M %3V%* [Lvl %4, %5]%*} {
 	#variable {lvl} {%4};
     #variable {exp_to_level} {%5};
     #var {grows_current_hp} {%1};

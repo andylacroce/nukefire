@@ -83,7 +83,9 @@
 	#var {grows_set_on_next_prompt} {1};
 }
 
-#action {< %1H %2M %3V [Lvl %4, %5]} {
+#action {< %1H %2M %3V%* [Lvl %4, %5]%*} {
+	#variable {lvl} {%4};
+	#variable {exp_to_level} {%5};
 	#if {$grows_set_on_next_prompt == 1} {
 		#var {grows_max_hp} {%1};
 		#var {grows_set_on_next_prompt} {0};
@@ -94,6 +96,7 @@
 	#if {$grows_max_hp > 0} {
 		#math {grows_pct} {100 * %1 / $grows_max_hp};
 		#if {$grows_pct < 50 && $grows_cooldown == 0 && $autoheal_on} {
+			whisper $leader @-@C<< GROW SCAR $me >>;
 			grows;
 			#var {grows_cooldown} {1};
 			#delay {5} {#var {grows_cooldown} {0};};
