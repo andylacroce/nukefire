@@ -14,8 +14,6 @@
 #VARIABLE {remort_num} {950}
 #nop Toggle: aloot / aloot_on / aloot_off
 #VARIABLE {autoloot_on} {0}
-#nop Toggle: logging / logging_on / logging_off
-#VARIABLE {logging_on} {1}
 #nop Toggle: tracking / tracking_on / tracking_off
 #VARIABLE {tracking_on} {1}
 #nop Class-specific module file (without .tin extension)

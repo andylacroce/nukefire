@@ -8,7 +8,8 @@
 #alias {esc} {#if {$lvl > 16} {sli 'aura of escape'}}
 #alias {wyrm} {#if {$lvl > 49} {sli 'wyrm'}}
 #alias {sof} {#if {$lvl > 49} {sli 'shield of flames'}}
-#alias {hellquake} {#if {$lvl > 44} {sli 'hellquake'}}
+#variable {hellquake_cd} {0}
+#alias {hellquake} {#if {$lvl > 44 && $hellquake_cd == 0} {sli 'hellquake'; #variable hellquake_cd 1; #delay {10} {#variable hellquake_cd 0}}}
 #alias {heal %1} {
     #format {__hl} {%l} {%1};
     #format {__hm} {%l} {$me};

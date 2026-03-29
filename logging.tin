@@ -3,6 +3,7 @@
 #nop =====================================================
 
 #nop ------------------ LOGGING CONTROL ------------------
+#variable {logging_on} {0}
 #alias {logging_on} {
     #format {LOGTIME} {%t} {%Y-%m-%d_%H-%M-%S};
     #VARIABLE LOGFILE {nukefire/logs/nukefire_${me}_${LOGTIME}.log};

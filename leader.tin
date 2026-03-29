@@ -17,6 +17,7 @@
     #elseif {$lvl > 39} {shred};
     whisper prodigy o chain;
     whisper rancor o rage;
+    whisper haenym hellquake;
     #if {$lvl > 39} {shred};
 }
 
@@ -24,6 +25,7 @@
     whisper rancor o stalk mob;
     whisper prodigy o chain;
     whisper rancor o rage;
+    whisper haenym hellquake;
 }
 
 #alias {otf %*} {
@@ -67,7 +69,9 @@
 }
 
 #alias {sc} {
+    otf dps;
     otf sc;
+    dps;
     score;
 }
 
@@ -128,8 +132,12 @@
 	#replace {total_remorts} {{^[ ]+}} {};
 }
 
+#action {best rolling %1} {
+	#variable {dps} {%1};
+}
+
 #action {[ Class Remorts:]\n%*\n} {
 	#variable {class_remorts} {%1}; 
 	#replace {class_remorts} {{ }} {};
-	#delay {.5} {#showme {\e]P40000AA <048>Lvl: $lvl || $exp_to_level || Class Remorts: $class_remorts || Total Remorts: $total_remorts}}
+	#delay {.5} {#showme {\e]P40000AA <048>Lvl: $lvl || $exp_to_level || Class Remorts: $class_remorts || Total Remorts: $total_remorts || DPS: $dps}};
 }

@@ -103,10 +103,14 @@
 	#replace {total_remorts} {{^[ ]+}} {};
 }
 
+#action {best rolling %1} {
+	#variable {dps} {%1};
+}
+
 #action {[ Class Remorts:]\n%*\n} {
 	#variable {class_remorts} {%1}; 
 	#replace {class_remorts} {{ }} {};
-	#delay {.5} {whisper ${leader} @BLvl: $lvl || $exp_to_level || Class Remorts: $class_remorts || Total Remorts: $total_remorts;}
+	#delay {.5} {whisper ${leader} @BLvl: $lvl || $exp_to_level || Class Remorts: $class_remorts || Total Remorts: $total_remorts || DPS: $dps};
 }
 
 #nop ------------------ REMORT ACTIONS ------------------
