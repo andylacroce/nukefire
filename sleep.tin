@@ -5,11 +5,8 @@
 
 #ALIAS {sl} {
 	#if {!$is_follower} {
-		#var i 1;
-		#while {$i <= &followers[]} {
-			#list followers get $i follower;
-			#if {"$follower" != "$me"} { tel $follower o sl; };
-			#math i $i + 1;
+		#foreach {$followers[%*]} {follower} {
+			#if {"$follower" != "$me"} {tel $follower o sl};
 		};
 	};
 	sleep;
@@ -17,11 +14,8 @@
 
 #ALIAS {slw} {
 	#if {!$is_follower} {
-		#var i 1;
-		#while {$i <= &followers[]} {
-			#list followers get $i follower;
-			#if {"$follower" != "$me"} { tel $follower o slw; };
-			#math i $i + 1;
+		#foreach {$followers[%*]} {follower} {
+			#if {"$follower" != "$me"} {tel $follower o slw};
 		};
 	};
 	sleep;wake;stand;
@@ -29,11 +23,8 @@
 
 #ALIAS {wa} {
 	#if {!$is_follower} {
-		#var i 1;
-		#while {$i <= &followers[]} {
-			#list followers get $i follower;
-			#if {"$follower" != "$me"} { tel $follower o wa; };
-			#math i $i + 1;
+		#foreach {$followers[%*]} {follower} {
+			#if {"$follower" != "$me"} {tel $follower o wa};
 		};
 	};
 	wake;stand;

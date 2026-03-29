@@ -26,22 +26,20 @@
 #VARIABLE {has_phantom} {0}
 #VARIABLE {has_fortune} {0}
 #VARIABLE {grows_max_hp} {0}
-#VARIABLE {grows_current_hp} {0}
 #VARIABLE {grows_set_on_next_prompt} {0}
 #VARIABLE {grows_cooldown} {0}
+#VARIABLE {autoheal_on} {1}
 #VARIABLE {rom_cd} {0}
 #VARIABLE {tarot_cd} {0}
 
 #nop ------------------ EXPERIENCE TRIGGERS ------------------
-#action {You receive %1 experience points.} {
+#alias {_gypsy_on_xp} {
 	#if {$lvl > 19 && $rom_cd == 0} {rom; #var rom_cd 1; #delay {20} {#var rom_cd 0};};
 	#if {$lvl > 39 && $tarot_cd == 0} {tarot_group; #var tarot_cd 1; #delay {20} {#var tarot_cd 0};};
 }
 
-#action {You can't gain anymore experience.} {
-	#if {$lvl > 19 && $rom_cd == 0} {rom; #var rom_cd 1; #delay {20} {#var rom_cd 0};};
-	#if {$lvl > 39 && $tarot_cd == 0} {tarot_group; #var tarot_cd 1; #delay {20} {#var tarot_cd 0};};
-} 
+#action {You receive %1 experience points.} {_gypsy_on_xp}
+#action {You can't gain anymore experience.} {_gypsy_on_xp}
 
 #ACTION {^SPL: %* voodoo contract} {#variable {has_voodoo} {1}}
 #ACTION {^SPL: %* phantom mirage} {#variable {has_phantom} {1}}
@@ -78,7 +76,6 @@
 #action {< %1H %2M %3V%* [Lvl %4, %5]%*} {
 	#variable {lvl} {%4};
     #variable {exp_to_level} {%5};
-    #var {grows_current_hp} {%1};
     #if {$grows_set_on_next_prompt == 1} {
         #var {grows_max_hp} {%1};
         #var {grows_set_on_next_prompt} {0};
@@ -88,13 +85,17 @@
     };
     #if {$grows_max_hp > 0} {
         #math {grows_pct} {100 * %1 / $grows_max_hp};
-        #if {$grows_pct < 50 && $grows_cooldown == 0} {
+        #if {$grows_pct < 50 && $grows_cooldown == 0 && $autoheal_on} {
             grows;
             #var {grows_cooldown} {1};
             #delay {5} {#var {grows_cooldown} {0};};
         };
     };
 }
+
+#alias {autoheal_on}  {#var {autoheal_on} {1};  #showme {Autoheal ON};  #send {}}
+#alias {autoheal_off} {#var {autoheal_on} {0};  #showme {Autoheal OFF}; #send {}}
+#alias {autoheal}     {#if {$autoheal_on} {autoheal_off} {autoheal_on}}
 
 #nop ------------------ LEVEL-DRIVEN ACTIONS ------------------
 #ACTION {[Regen]} {#if {$lvl > 24}{afx}}
@@ -106,20 +107,8 @@
 #ACTION {You rise a level!} {
 	emote gained a level and dances a celebratory jig.;
 	#delay {3} {
-		#if {$lvl < 35} {
-			combo disem disem disem;
-			#var {group_combo} {disem disem disem};
-			groupassist_group;
-		};
-		#elseif {$lvl < 45} {
-			combo spiritr sucker sucker;
-			#var {group_combo} {spiritr sucker sucker};
-			groupassist_group;
-		};
-		#else {
-			combo impale spiritr sucker;
-			#var {group_combo} {impale spiritr sucker};
-			groupassist_group;
-		};
+		#if {$lvl < 35}     {set_combo disem disem disem};
+		#elseif {$lvl < 45} {set_combo spiritr sucker sucker};
+		#else               {set_combo impale spiritr sucker};
 	}
 }

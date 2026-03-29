@@ -25,13 +25,20 @@ Section separators
 #nop ------------------ SECTION NAME ------------------
 ```
 
-- Typical sections include:
+- Typical sections for class files (in order):
+  - `CORE: STATE & HELPERS`
+  - `SPELL / SKILL UTILITIES`
+  - `AFX: SPELL LISTENERS & TIMER`
+  - `FALL-OFF HANDLERS`
+  - `LEVEL-DRIVEN ACTIONS`
+  - `GMCP GROUP AUTOHEAL` (or `GMCP GROUP AUTOINVIG` for MV-only classes)
+  - `AUTOHEAL CONTROL`
+  - `LEVEL-UP ACTION`
+- Typical sections for utility files:
   - `ACTIONS`
   - `ALIASES`
-  - `AFX - BUFF MANAGEMENT`
-  - `AUTO-CAST / TIMER`
-  - `TOGGLES`
-  - `AUTOHEAL CONTROL`
+  - `VARIABLES`
+  - `CONTROL`
 
 Inline comments
 
@@ -84,6 +91,15 @@ Do/don't
 - DO: avoid changing functional code. Only add comments or separators
   unless explicitly requested.
 - DON'T: use plain `#` comments in `.tin` files (these are for Markdown).
+- DO: use `set_combo <moves>` (defined in `group.tin`) in level-up actions
+  instead of the three-line `combo` / `#var group_combo` / `groupassist_group`
+  pattern.
+- DO: use `#foreach {$followers[%*]} {follower} { ... }` for iterating
+  followers instead of a manual `#while` loop with index arithmetic.
+- DO: implement group heal/invig via `_on_gmcp_group` (override the default
+  `#nop` set in `char_load.tin`). Do not use a polling ticker with `gr`.
+- DO: initialize all toggle variables explicitly at the top of the class file
+  (e.g., `#variable {autoheal_on} {1}`) so behaviour on first load is defined.
 
 If you'd like a stricter linter or automatic formatter, I can extend the
 script to enforce more rules or fail CI when headers are missing.
@@ -111,11 +127,9 @@ PS> .\scripts\check_tin_headers.ps1
 
 ## File-specific suggestions
 
-- Class files (`class/*.tin`): include:
-  - `ACTIONS`
-  - `ALIASES`
-  - `AFX` / `AUTO-CAST / TIMER`
-  Consider also `AUTOHEAL CONTROL` and `GROUPCHECK CONTROL` where relevant.
+- Class files (`class/*.tin`): follow the canonical section order listed above.
+  Use `GMCP GROUP AUTOHEAL` (not a polling ticker) for group heal/invig logic.
+  Use `AUTOHEAL CONTROL` for the `autoheal_on` / `autoheal_off` / `autoheal` toggle.
 - Utility files (root `.tin`): include top header + sections such as:
   - `ACTIONS`
   - `ALIASES`

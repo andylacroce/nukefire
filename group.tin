@@ -52,6 +52,7 @@
 #ALIAS {groupassist_exec %1} {groupassist %1 $group_combo}
 #ALIAS {groupassist_group} {group_targeted groupassist_exec}
 #ALIAS {set_group_combo %1} {#var {group_combo} {%1}}
+#ALIAS {set_combo} {combo %0; #var {group_combo} {%0}; groupassist_group}
 
 #nop Followers auto-report when leader reports
 #if {$is_follower} {

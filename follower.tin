@@ -3,6 +3,7 @@
 #nop Auto-follow and group management for followers
 #nop =====================================================
 
+#nop ------------------ UTILITY ALIASES ------------------
 #alias {seq} {snap_store;}
 
 #nop ------------------ LEADER PRESENCE CHECK ------------------
@@ -98,6 +99,7 @@
 #action {${leader} telepaths to you, 'o %*'} {%1}
 #action {${leader} whispers to you, 'o %*'} {%1}
 
+#nop ------------------ STATUS REPORTING ------------------
 #action {[ Remorts:    %1 ]} {
 	#variable {total_remorts} {%1};
 	#replace {total_remorts} {{^[ ]+}} {};
@@ -108,7 +110,7 @@
 }
 
 #action {[ Class Remorts:]\n%*\n} {
-	#variable {class_remorts} {%1}; 
+	#variable {class_remorts} {%1};
 	#replace {class_remorts} {{ }} {};
 	#delay {.5} {whisper ${leader} @BLvl: $lvl || $exp_to_level || Class Remorts: $class_remorts || Total Remorts: $total_remorts || DPS: $dps};
 }
@@ -126,6 +128,7 @@
 	whisper ${leader} remort complete
 }
 
+#nop ------------------ CREDIT UTILITY ------------------
 #alias {cred} {
 	give $total_credits credits ${leader};
 }

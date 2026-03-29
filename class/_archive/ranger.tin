@@ -1,0 +1,67 @@
+#nop =====================================================
+#nop RANGER COMBAT
+#nop Combat aliases and macros for ranger class
+#nop =====================================================
+
+#nop ------------------ CORE: STATE & HELPERS ------------------
+#VARIABLE {autoheal_on} {1}
+#variable {has_bark} {0}
+#variable {has_totem} {0}
+
+#nop ------------------ SPELL / SKILL UTILITIES ------------------
+#alias {invig %1} {#if {$lvl > 14} {sli 'invigorate' %1}}
+#alias {invigme} {#if {$lvl > 14} {sli 'invigorate' $me}}
+#ACTION {$leader telepaths to you, 'invig'} {#if {$lvl > 14} {sli 'invigorate' $leader}}
+
+#nop ------------------ AFX: SPELL LISTENERS & TIMER ------------------
+#action {SPL: %* bark skin} {#variable {has_bark} {1}}
+#action {You invoke your bark skin, taking on a rough, tree-like appearance.} {#variable {has_bark} {1}}
+#action {The bark-like texture surrounding you fades away as you cease concentration.} {#variable {has_bark} {0};#if {$lvl > 14} {bark;#variable {has_bark} {1}}}
+
+#action {^SPL: (perm) invisibility} {#variable {has_totem} {1}}
+#action {Your an Animal Spirit Totem crumbles back into the earth.} {#variable {has_totem} {0};#if {$lvl > 11}{sli 'animal';hold totem;#variable {has_totem} {1}};}
+
+#action {TIMER: %*} {
+	#variable {has_bark} {0};
+	#variable {has_totem} {0};
+	#delay {2} {
+		#if {$lvl > 14} {
+			#if {!$has_bark} {bark;#variable {has_bark} {1}}
+		};
+		#if {$lvl > 11} {
+			#if {!$has_totem} {sli 'animal';hold totem;#variable {has_totem} {1}}
+		}
+	}
+}
+
+#nop ------------------ LEVEL-DRIVEN ACTIONS ------------------
+#ACTION {[Regen]} {#if {$lvl > 14}{afx}}
+
+#nop ------------------ GMCP GROUP AUTOINVIG ------------------
+#nop Event-driven: fires on every GMCP group update from server
+#alias {_on_gmcp_group} {
+	#local gi {1};
+	#while {$gi <= $gmcp[group][count]} {
+		#local mname {$gmcp[group][members][$gi][name]};
+		#local mmv   {$gmcp[group][members][$gi][info][mv]};
+		#local mmmv  {$gmcp[group][members][$gi][info][mmv]};
+		#if {$mmmv > 0} {#math mv_pct {100 * $mmv / $mmmv}};
+		#if {$mv_pct < 50 && $autoheal_on && $lvl > 14} {sli 'invigorate' $mname};
+		#math gi {$gi + 1};
+	};
+}
+
+#nop ------------------ AUTOHEAL CONTROL ------------------
+#alias {autoheal_on}  {#var {autoheal_on} {1}; #showme {Autoheal ON};  #send {}}
+#alias {autoheal_off} {#var {autoheal_on} {0}; #showme {Autoheal OFF}; #send {}}
+#alias {autoheal}     {#if {$autoheal_on} {autoheal_off} {autoheal_on}}
+
+#ACTION {You rise a level!} {
+	emote gained a level and dances a celebratory jig.;
+	#delay {3} {
+		#if {$lvl < 9}      {set_combo kick kick kick};
+		#elseif {$lvl < 15} {set_combo bash bash bash};
+		#elseif {$lvl < 20} {set_combo bush bush bush};
+		#else               {set_combo grapple grapple grapple};
+	}
+}

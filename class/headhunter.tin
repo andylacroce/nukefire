@@ -150,23 +150,7 @@
 #ACTION {You rise a level!} {
 	sc;
 	emote gained a level and dances a celebratory jig.;
-	#delay {3} {
-		#if {$lvl < 10} {
-			combo tpunch tpunch tpunch;
-			#var {group_combo} {tpunch tpunch tpunch};
-			groupassist_group;
-		};
-		#elseif {$lvl < 15} {
-			combo tpunch tpunch tpunch;
-			#var {group_combo} {tpunch tpunch tpunch};
-			groupassist_group;
-		};
-		#else {
-			combo tpunch tpunch tpunch;
-			#var {group_combo} {tpunch tpunch tpunch};
-			groupassist_group;
-		};
-    };
+	#delay {3} {set_combo tpunch tpunch tpunch};
 }
 
 

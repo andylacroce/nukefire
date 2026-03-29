@@ -151,6 +151,7 @@
 
 #nop ------------------ AUTOHEAL / GROUPCHECK ------------------
 #nop GMCP-driven hook: fires automatically on every group update from server
+#variable {autoheal_on} {1}
 #variable {sinvig_cooldown} {0}
 #variable {heal_cooldown} {0}
 #alias {_on_gmcp_group} {
@@ -208,21 +209,9 @@
     sc;
 	emote gained a level and dances a celebratory jig.;
 	#delay {3} {
-		#if {$lvl < 24} {
-			combo bash bash bash;
-			#variable {group_combo} {bash bash bash};
-			groupassist_group;
-		};
-		#elseif {$lvl < 35} {
-			combo here here here;
-			#variable {group_combo} {here here here};
-			groupassist_group;
-		};
-        #else {
-			combo torment here here;
-			#variable {group_combo} {torment here here};
-			groupassist_group;
-		};
+		#if {$lvl < 24}     {set_combo bash bash bash};
+		#elseif {$lvl < 35} {set_combo here here here};
+		#else               {set_combo torment here here};
 	}
 }
 

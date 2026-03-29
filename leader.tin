@@ -29,20 +29,14 @@
 }
 
 #alias {otf %*} {
-    #var i 1;
-    #while {$i <= &followers[]} {
-        #list followers get $i follower;
+    #foreach {$followers[%*]} {follower} {
         #if {"$follower" != "$me"} {tel $follower o %1};
-        #math i $i + 1;
     };
 }
 
 #alias {ow %*} {
-    #var i 1;
-    #while {$i <= &followers[]} {
-        #list followers get $i follower;
+    #foreach {$followers[%*]} {follower} {
         #if {"$follower" != "$me"} {whisper $follower o %1};
-        #math i $i + 1;
     };
 }
 
@@ -86,11 +80,8 @@
 
 #ALIAS {rec} {
     #if {!$is_follower} {
-        #var i 1;
-        #while {$i <= &followers[]} {
-            #list followers get $i follower;
-            tel $follower o recall;
-            #math i $i + 1;
+        #foreach {$followers[%*]} {follower} {
+            #if {"$follower" != "$me"} {tel $follower o recall};
         };
     };
     recall;
@@ -98,11 +89,8 @@
 
 #ALIAS {come} {
     #if {!$is_follower} {
-        #var i 1;
-        #while {$i <= &followers[]} {
-            #list followers get $i follower;
-            tel $follower o trk ${leader};
-            #math i $i + 1;
+        #foreach {$followers[%*]} {follower} {
+            #if {"$follower" != "$me"} {tel $follower o trk ${leader}};
         };
     };
 }

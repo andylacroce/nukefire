@@ -6,8 +6,6 @@
 #nop ------------------ LEVEL-DRIVEN ACTIONS ------------------
 #ACTION {[Regen]} {afx}
 
-#nop ------------------ SPELL / SKILL UTILITIES ------------------
-
 #nop ------------------ DAMCON ------------------
 #nop Toggle and listeners for damcon
 #class dcon open
@@ -36,6 +34,7 @@
 #alias {dcon} {
 	#if {$dcon_on} {dcon_off} {dcon_on}
 }
+#var {dcon_on} {1}
 
 #nop ------------------ TURBO CONTROL ------------------
 
@@ -65,6 +64,7 @@
 #alias {tur} {
 	#if {$turbo_on} {turbo_off} {turbo_on}
 }
+#var {turbo_on} {1}
 
 #action {TIMER: %*} {
     #variable {has_damcon} {0};
@@ -81,25 +81,9 @@
 #ACTION {You rise a level!} {
 	emote gained a level and dances a celebratory jig.;
 	#delay {3} {
-		#if {$lvl < 13} {
-			combo bash bash bash;
-			#var {group_combo} {bash bash bash};
-			groupassist_group;
-		};
-		#elseif {$lvl < 35} {
-			combo pound pound pound;
-			#var {group_combo} {pound pound pound};
-			groupassist_group;
-		};
-		#elseif {$lvl < 40} {
-			combo neur neur neur;
-			#var {group_combo} {neur neur neur};
-			groupassist_group;
-		};
-		#else {
-			combo nano neur neur;
-			#var {group_combo} {nano neur neur};
-			groupassist_group;
-		};
+		#if {$lvl < 13}     {set_combo bash bash bash};
+		#elseif {$lvl < 35} {set_combo pound pound pound};
+		#elseif {$lvl < 40} {set_combo neur neur neur};
+		#else               {set_combo nano neur neur};
 	}
 }

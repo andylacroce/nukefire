@@ -1,0 +1,78 @@
+#nop =====================================================
+#nop CURIST COMBAT
+#nop Combat aliases and macros for curist class
+#nop =====================================================
+
+#nop ------------------ SPELL / SKILL UTILITIES ------------------
+
+#nop ------------------ AFX - BUFF MANAGEMENT ------------------
+#nop Check buffs and recast missing ones
+#VARIABLE {has_armor} {0}
+
+#alias {rec} {sli 'word of recall'}
+#alias {sum %1} {sli 'summon' %1}
+
+#alias {heal %1} {#if {$lvl > 24} {sli 'rejuvinate' %1} {#if {$lvl > 13} {sli 'heal' %1} {#if {$lvl > 8} {sli 'cure critic' %1}}}}
+#alias {healme} {#if {$lvl > 24} {sli 'rejuvinate' $me} {#if {$lvl > 13} {sli 'heal' $me} {#if {$lvl > 8} {sli 'cure critic' $me}}}}
+
+#alias {invig %1} {#if {$lvl > 17} {sli 'invigorate' %1}}
+#alias {invigme} {#if {$lvl > 17} {sli 'invigorate' $me}}
+
+#ACTION {$leader telepaths to you, 'heal'} {#if {$lvl > 24} {sli 'rejuvinate' $leader} {#if {$lvl > 13} {sli 'heal' $leader} {#if {$lvl > 8} {sli 'cure critic' $leader}}}}
+#ACTION {$leader telepaths to you, 'invig'} {#if {$lvl > 17} {sli 'invigorate' $leader}}
+
+#ACTION {^SPL: %* armor} {#variable {has_armor} {1}}
+#ACTION {TIMER: %*} {
+	#delay {2} {
+		#if {$has_armor == 0 && $lvl > 8}{sli 'aura of prot'};
+	}
+}
+
+#nop ------------------ FALL-OFF HANDLERS ------------------
+#nop Aura falls off messages
+#ACTION {You feel less protected.} {
+	#variable {has_armor} {0};
+	#if {$lvl > 8}{sli 'aura of prot'};
+} 
+#ACTION {%1 looks less protected.} {
+	#var recaster %1;
+	is_group_member %1;
+	#if {$lvl > 8 && $igm_result == 1} {sli 'aura of prot';};
+}  
+
+
+#nop ------------------ LEVEL-DRIVEN ACTIONS ------------------
+#ACTION {[Regen]} {#if {$lvl > 8}{afx}}
+
+#nop ------------------ GMCP GROUP AUTOHEAL ------------------
+#nop Event-driven: fires on every GMCP group update from server
+#variable {autoheal_on} {1}
+#alias {_on_gmcp_group} {
+	#local gi {1};
+	#while {$gi <= $gmcp[group][count]} {
+		#local mname {$gmcp[group][members][$gi][name]};
+		#local mhp   {$gmcp[group][members][$gi][info][hp]};
+		#local mmhp  {$gmcp[group][members][$gi][info][mhp]};
+		#local mmv   {$gmcp[group][members][$gi][info][mv]};
+		#local mmmv  {$gmcp[group][members][$gi][info][mmv]};
+		#if {$mmhp > 0} {#math hp_pct {100 * $mhp / $mmhp}};
+		#if {$mmmv > 0} {#math mv_pct {100 * $mmv / $mmmv}};
+		#if {$hp_pct < 75 && $autoheal_on} {
+			#if {$lvl > 24} {sli 'rejuvinate' $mname};
+			#elseif {$lvl > 13} {sli 'heal' $mname};
+			#elseif {$lvl > 8} {sli 'cure critic' $mname};
+		};
+		#if {$mv_pct < 50 && $autoheal_on && $lvl > 17} {sli 'invigorate' $mname};
+		#math gi {$gi + 1};
+	};
+}
+
+#nop ------------------ AUTOHEAL CONTROL ------------------
+#alias {autoheal_on}  {#var {autoheal_on} {1}; #showme {Autoheal ON};  #send {}}
+#alias {autoheal_off} {#var {autoheal_on} {0}; #showme {Autoheal OFF}; #send {}}
+#alias {autoheal}     {#if {$autoheal_on} {autoheal_off} {autoheal_on}}
+
+#ACTION {You rise a level!} {
+	emote gained a level and dances a celebratory jig.;
+	#delay {3} {set_combo bash bash bash}
+}

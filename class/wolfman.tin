@@ -12,7 +12,8 @@
 #alias {wolfout_on}  {#var {wolfout_on} {1};  #showme {Wolfout ON};  #send {}}
 #alias {wolfout_off} {#var {wolfout_on} {0};  #showme {Wolfout OFF}; #send {}}
 #alias {wolfout}     {#if {$wolfout_on} {wolfout_off} {wolfout_on}}
-#alias {wolfout_auto} {wolfout}  # legacy name, kept for scripts
+#nop legacy name, kept for scripts
+#alias {wolfout_auto} {wolfout}
 
 #alias {frenzy_on}  {#var {frenzy_on} {1};  #showme {Frenzy ON};  #send {}}
 #alias {frenzy_off} {#var {frenzy_on} {0};  #showme {Frenzy OFF}; #send {}}
@@ -44,32 +45,17 @@
 	sc;
 	emote gained a level and dances a celebratory jig.;
 	#delay {3} {
-		#if {$lvl < 20} {
-			combo bash bash bash;
-			#var {group_combo} {bash bash bash};
-			groupassist_group;
-		};
-		#elseif {$lvl < 35} {
-			combo stalk pounce pounce;
-			#var {group_combo} {stalk pounce pounce};
-			groupassist_group;
-		};
-		#else {
-			combo srend srend pounce;
-			#var {group_combo} {srend srend pounce};
-			groupassist_group;
-		};
+		#if {$lvl < 20}     {set_combo bash bash bash};
+		#elseif {$lvl < 35} {set_combo stalk pounce pounce};
+		#else               {set_combo srend srend pounce};
 	}
 }
 
 #nop ------------------ EXPERIENCE TRIGGERS ------------------
-#action {You receive %1 experience points.} {
-	#if {$lvl > 39} {frenzy};
-}
+#alias {_wolfman_on_xp} {#if {$lvl > 39} {frenzy}}
 
-#action {You can't gain anymore experience.} {
-	#if {$lvl > 39} {frenzy};
-}
+#action {You receive %1 experience points.} {_wolfman_on_xp}
+#action {You can't gain anymore experience.} {_wolfman_on_xp}
 
 #alias {grows} {grow scar}
 

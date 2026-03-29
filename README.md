@@ -20,6 +20,10 @@ Nukefire characters.
 - `*.tin` — TinTin++ profile modules:
   - Character profiles are stored in `char/` (e.g., `char/*.tin`).
   - Class and role modules are stored in `class/` (e.g., `class/*.tin`).
+    Each class file follows a standard section order: `CORE: STATE & HELPERS`,
+    `SPELL / SKILL UTILITIES`, `AFX: SPELL LISTENERS & TIMER`, `FALL-OFF HANDLERS`,
+    `LEVEL-DRIVEN ACTIONS`, `GROUP STATUS TICKER`, `AUTOHEAL CONTROL`,
+    `GROUPCHECK CONTROL`, `LEVEL-UP ACTION`.
   - Utility modules live at the repository root (e.g., `remort.tin`, `leader.tin`).
   - Utilities & features:
     - `char_load.tin` — Generic loader for common and class modules.
@@ -89,6 +93,11 @@ from a command prompt:
   `ps`).
 - Group/follower helpers: auto-following; use `rep` to report.
   Aliases: `sl` / `slw` / `wa` for sleep/wake actions.
+- Autoheal: `autoheal` toggles GMCP-driven group healing on/off (`autoheal_on` /
+  `autoheal_off`). Available on all classes that have self-heal or invig capability.
+  Healing fires automatically on each GMCP group update — no polling ticker needed.
+- Leader broadcast: `otf <cmd>` telepaths a command to all followers; `ow <cmd>`
+  whispers it. Followers relay commands received as `o <cmd>` from the leader.
 
 ## Autostart Notes
 
@@ -180,6 +189,17 @@ Contributing checklist
 - Prefer non-functional changes when possible (organization/comments only).
   If you make functional changes, include a clear rationale and test steps in your
   PR.
+- When adding a new class file, use `set_combo <moves>` (defined in `group.tin`)
+  in the level-up action instead of the three-line `combo` / `#var group_combo`
+  / `groupassist_group` pattern directly.
+- Use `#foreach {$followers[%*]} {follower} { ... }` for follower iteration
+  rather than a manual `#while` loop with index arithmetic.
+- Initialize all toggle state variables explicitly (e.g.,
+  `#variable {autoheal_on} {1}`) so defaults are clear and toggles work
+  correctly on first use.
+- For group healing/invig, implement `_on_gmcp_group` (overriding the default `#nop`
+  defined in `char_load.tin`) rather than a polling ticker with `gr`. The GMCP hook
+  fires on every server group update and is more responsive and less chatty.
 
 A GitHub Actions workflow runs these linters on pushes and pull requests and
 will fail the check if any warnings or errors are found. See

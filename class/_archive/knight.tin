@@ -98,89 +98,36 @@
 #ACTION {[Regen]} {#if {$lvl > 4}{afx}}
 
 
-#nop Group status ticker for autoheal and autoinvig
-#class groupcheck open
-	#var {groupcheck_on} {1}
-	#TICKER {knight_group_check} {gr} {3}
-#class groupcheck close
-
-#nop Auto-heal group members below 75% HP from group status output
-#class autoheal open
-	#action {[%1 %2] %3 %*: [%4/%5]H %* [%6/%7]V} {
-		#nop #showme {DEBUG: lvl=%1 class=%2 name=%3 hp=%4 maxhp=%5 mv=%6 maxmv=%7};
-		#math {target_hp_pct} {100 * %4 / %5};
-		#math {target_v_pct} {100 * %6 / %7};
-		#nop #showme {DEBUG: pct=$target_hp_pct};
-		#if {$target_hp_pct < 85} {sli 'rejuv' %3};
-		#if {$target_v_pct < 50} {sli 'invigorate' %3};
-	}
-#class autoheal close
+#nop ------------------ GMCP GROUP AUTOHEAL ------------------
+#nop Event-driven: fires on every GMCP group update from server
+#variable {autoheal_on} {1}
+#alias {_on_gmcp_group} {
+	#local gi {1};
+	#while {$gi <= $gmcp[group][count]} {
+		#local mname {$gmcp[group][members][$gi][name]};
+		#local mhp   {$gmcp[group][members][$gi][info][hp]};
+		#local mmhp  {$gmcp[group][members][$gi][info][mhp]};
+		#local mmv   {$gmcp[group][members][$gi][info][mv]};
+		#local mmmv  {$gmcp[group][members][$gi][info][mmv]};
+		#if {$mmhp > 0} {#math hp_pct {100 * $mhp / $mmhp}};
+		#if {$mmmv > 0} {#math mv_pct {100 * $mmv / $mmmv}};
+		#if {$hp_pct < 85 && $autoheal_on} {sli 'rejuv' $mname};
+		#if {$mv_pct < 50 && $autoheal_on} {sli 'invigorate' $mname};
+		#math gi {$gi + 1};
+	};
+}
 
 #nop ------------------ AUTOHEAL CONTROL ------------------
-#alias {autoheal_on} {
-	#class {autoheal} {open};
-	#action {[%%1 %%2] %%3 %%*: [%%4/%%5]H %%* [%%6/%%7]V} {
-		#math {target_hp_pct} {100 * %%4 / %%5};
-		#math {target_v_pct} {100 * %%6 / %%7};
-		#if {$target_hp_pct < 85} {sli 'rejuv' %%3};
-		#if {$target_v_pct < 50} {sli 'invigorate' %%3};
-	};
-	#class {autoheal} {close};
-	#var {autoheal_on} {1};
-	#showme {Autoheal ON};
-	#send {}
-}
-#alias {autoheal_off} {
-	#class {autoheal} {clear};
-	#var {autoheal_on} {0};
-	#showme {Autoheal OFF};
-	#send {}
-}
-#alias {autoheal} {
-	#if {$autoheal_on} {autoheal_off} {autoheal_on}
-}
-
-#nop ------------------ GROUPCHECK CONTROL ------------------
-#alias {groupcheck_on} {
-	#class {groupcheck} {open};
-	#TICKER {knight_group_check} {gr} {3};
-	#class {groupcheck} {close};
-	#var {groupcheck_on} {1};
-	#showme {Groupcheck ON};
-	#send {}
-}
-#alias {groupcheck_off} {
-	#class {groupcheck} {clear};
-	#var {groupcheck_on} {0};
-	#showme {Groupcheck OFF};
-	#send {}
-}
-#alias {groupcheck} {
-	#if {$groupcheck_on} {groupcheck_off} {groupcheck_on}
-}
+#alias {autoheal_on}  {#var {autoheal_on} {1}; #showme {Autoheal ON};  #send {}}
+#alias {autoheal_off} {#var {autoheal_on} {0}; #showme {Autoheal OFF}; #send {}}
+#alias {autoheal}     {#if {$autoheal_on} {autoheal_off} {autoheal_on}}
 
 #ACTION {You rise a level!} {
 	emote gained a level and dances a celebratory jig.;
 	#delay {3} {
-		#if {$lvl < 15} {
-			combo bash bash bash;
-			#var {group_combo} {bash bash bash};
-			groupassist_group;
-		};
-        #elseif {$lvl < 20} {
-			combo flurry flurry flurry;
-			#var {group_combo} {flurry flurry flurry};
-			groupassist_group;
-		};
-		#elseif {$lvl < 35} {
-			combo grapple grapple grapple;
-			#var {group_combo} {grapple grapple grapple};
-			groupassist_group;
-		};
-		#else {
-			combo sacred sacred sacred;
-			#var {group_combo} {sacred sacred sacred};
-			groupassist_group;
-		}
+		#if {$lvl < 15}     {set_combo bash bash bash};
+		#elseif {$lvl < 20} {set_combo flurry flurry flurry};
+		#elseif {$lvl < 35} {set_combo grapple grapple grapple};
+		#else               {set_combo sacred sacred sacred};
 	}
 }
