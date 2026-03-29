@@ -187,20 +187,6 @@
     };
 }
 
-#alias {autoheal_on} {
-    #variable {autoheal_on} {1};
-    #showme {Autoheal ON};
-    #send {}
-}
-#alias {autoheal_off} {
-    #variable {autoheal_on} {0};
-    #showme {Autoheal OFF};
-    #send {}
-}
-#alias {autoheal} {
-    #if {$autoheal_on} {autoheal_off} {autoheal_on}
-}
-
 #action {%1 telepaths to you, 'summon'} {
     sum %1;
 }

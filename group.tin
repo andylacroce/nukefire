@@ -69,3 +69,11 @@
 		#if {"$me" == "${leader}"} {group new};
 	};
 }
+
+#nop ------------------ AUTOHEAL TOGGLE ------------------
+#alias {autoheal_on}  {#var {autoheal_on} {1};  #showme {Autoheal ON};  #send {}}
+#alias {autoheal_off} {#var {autoheal_on} {0};  #showme {Autoheal OFF}; #send {}}
+#alias {autoheal}     {#if {$autoheal_on} {autoheal_off} {autoheal_on}}
+
+#nop ------------------ GROWS ------------------
+#alias {grows} {grow scar}

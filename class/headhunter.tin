@@ -88,8 +88,6 @@
 #action {You are now tracking %*.} {whisper $leader Currently tracking: %1} 
 #action {TARGET: %* | GPS LINK: ACTIVE | DIRECTION: %2} {whisper $leader The target, %1, is %2.}
 
-#alias {grows} {grow scar}
-
 #nop ------------------ SELFREPAIR + GROW SCAR: PROMPT-BASED ------------------
 #variable {repair_max_hp} {0}
 #variable {repair_cooldown} {0}
@@ -140,19 +138,6 @@
 	};
 }
 
-#alias {autoheal_on} {
-	#var {autoheal_on} {1};
-	#showme {Autoheal ON};
-	#send {}
-}
-#alias {autoheal_off} {
-	#var {autoheal_on} {0};
-	#showme {Autoheal OFF};
-	#send {}
-}
-#alias {autoheal} {
-	#if {$autoheal_on} {autoheal_off} {autoheal_on}
-}
 
 
 #ACTION {You rise a level!} {
