@@ -3,7 +3,7 @@
 #nop =====================================================
 
 #nop ------------------ SESSION ------------------
-#read nukefire/gmcp.tin;
+#read {nukefire/gmcp.tin};
 #config {telnet} {on}
 
 #session nukefire tdome.nukefire.org 4000

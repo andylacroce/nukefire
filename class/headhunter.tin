@@ -16,8 +16,12 @@
 #class dcon close
 
 #alias {dcon_on} {
-	#read {nukefire/class/headhunter.tin};
+	#class {dcon} {clear};
 	#class {dcon} {open};
+	#action {SPL: %%* damcon} {#variable {has_damcon} {1}};
+	#action {The //DAMCON\\ status light blinks on.} {#variable {has_damcon} {1}};
+	#action {The //DAMCON\\ status light blinks off.} {#variable {has_damcon} {0};damcon};
+	#class {dcon} {close};
 	#var {dcon_on} {1};
 	#showme {DCON ON};
 	#send {}
@@ -45,8 +49,12 @@
 #class turbo close
 
 #alias {turbo_on} {
-	#read {nukefire/class/headhunter.tin};
+	#class {turbo} {clear};
 	#class {turbo} {open};
+	#action {SPL: %%* turbo} {#variable {has_turbo} {1}};
+	#action {The //TURBO\\ status light blinks on in your vision field.} {#variable {has_turbo} {1}};
+	#action {The //TURBO\\ status light blinks off.} {#variable {has_turbo} {0};turbo};
+	#class {turbo} {close};
 	#var {turbo_on} {1};
 	#showme {TURBO ON};
 	#send {}
