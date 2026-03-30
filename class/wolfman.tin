@@ -47,7 +47,7 @@
 	#delay {3} {
 		#if {$lvl < 20}     {set_combo bash bash bash};
 		#elseif {$lvl < 35} {set_combo stalk pounce pounce};
-		#else               {set_combo srend srend pounce};
+		#else               {set_combo stalk srend pounce};
 	}
 }
 
