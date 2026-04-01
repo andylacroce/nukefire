@@ -32,7 +32,6 @@
 #read {nukefire/eq_mgmt.tin}
 #read {nukefire/channels.tin}
 #read {nukefire/group.tin}
-#read {nukefire/autoloot.tin}
 #read {nukefire/logging.tin}
 
 #nop ------------------ LOAD CLASS-SPECIFIC MODULES ------------------

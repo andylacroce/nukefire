@@ -7,7 +7,7 @@ Nukefire characters.
 
 - Purpose: convenience profiles for multiple characters (`Mutiny`,
   `Haenym`, etc.).
-- Includes autostart, logging, autoloot, travel/tracking shortcuts,
+- Includes autostart, logging, travel/tracking shortcuts,
   equipment management, and follower/group helpers.
 - Platform: Windows (the included `nukefire.bat` launches Windows Terminal tabs).
 
@@ -28,7 +28,7 @@ Nukefire characters.
   - Utilities & features:
     - `char_load.tin` — Generic loader for common and class modules.
     - `autostart.tin` — Autostart session mappings and login hooks.
-    - `autoloot.tin`, `logging.tin`, `tracking.tin`, `travel.tin`,
+    - `logging.tin`, `tracking.tin`, `travel.tin`,
       `looting.tin`, `materials.tin`, `eq_mgmt.tin`, `follower.tin`,
       `group.tin`, `channels.tin`, `doors.tin`, `sleep.tin` —
       utility modules and aliases.
@@ -82,7 +82,6 @@ from a command prompt:
 
 ## Common Commands & Aliases
 
-- Auto-loot: `aloot` toggles autoloot on/off (`aloot_on` / `aloot_off`).
 - Logging: `logging` toggles logging on/off (`logging_on` / `logging_off`).
 - Tracking: `tracking` toggles tracking on/off; use `trk <name>` to
   track a target.
