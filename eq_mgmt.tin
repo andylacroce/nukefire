@@ -21,14 +21,33 @@
 
 #ALIAS {id %1} {sli 'identify' %1}
 
+#nop ------------------ EQUIPMENT VIEW ------------------
+#alias {eq} {eqdiff;equip;}
+
 #nop ------------------ EQUIPMENT COUNT MONITOR ------------------
-#var {eq_count} {0}; #var {snap_eq_count} {-1};
+#var {eq_count} {0}; #var {snap_eq_count} {-1}; #var {missing_items} {};
+
+#action {^Equipment Comparison:} {
+    #var {missing_items} {};
+}
+
+#action {^  - Missing: \[%1\]} {
+    #if {"$missing_items" == ""} {
+        #var {missing_items} {%1};
+    } {
+        #var {missing_items} {$missing_items, %1};
+    };
+}
 
 #action {You are wearing \[%1\] out of \[%*\] possible eq slots.} {
     #var {eq_count} {%1};
     #if {$snap_eq_count >= 0} {
         #if {$eq_count != $snap_eq_count} {
-            #if {"$me" == "${leader}"} { #delay {1} {#showme {(((( EQUIPMENT MISMATCH )))): wearing $eq_count expected $snap_eq_count}} } { #delay {1} {tel ${leader} (((( EQUIPMENT MISMATCH )))): wearing $eq_count expected $snap_eq_count} };
+            #delay {1} {
+                #var {mismatch_msg} {(((( EQUIPMENT MISMATCH )))): wearing $eq_count expected $snap_eq_count};
+                #if {"$missing_items" != ""} {#var {mismatch_msg} {$mismatch_msg -- missing: $missing_items}};
+                #if {"$me" == "${leader}"} {#showme {$mismatch_msg}} {tel ${leader} $mismatch_msg};
+            };
         };
     };
 }
