@@ -31,6 +31,10 @@
     #var {missing_items} {};
 }
 
+#action {^All snapshot items are equipped and unchanged.} {
+    #if {"$me" == "${leader}"} {#showme {All eq present.}} {tel ${leader} I have all my eq.};
+}
+
 #action {^  - Missing: \[%1\]} {
     #if {"$missing_items" == ""} {
         #var {missing_items} {%1};
