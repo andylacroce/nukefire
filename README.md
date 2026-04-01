@@ -30,7 +30,7 @@ Nukefire characters.
     - `autostart.tin` — Autostart session mappings and login hooks.
     - `logging.tin`, `tracking.tin`, `travel.tin`,
       `looting.tin`, `materials.tin`, `eq_mgmt.tin`, `follower.tin`,
-      `group.tin`, `channels.tin`, `doors.tin`, `sleep.tin` —
+      `group.tin`, `channels.tin`, `doors.tin` —
       utility modules and aliases.
   - `local_secrets.tin` — Local passwords and secrets file
     (gitignored).
@@ -91,7 +91,6 @@ from a command prompt:
 - Looting: `gall`, `gc`, `ret` and container shortcuts (`ls`, `gg`,
   `ps`).
 - Group/follower helpers: auto-following; use `rep` to report.
-  Aliases: `sl` / `slw` / `wa` for sleep/wake actions.
 - Autoheal: `autoheal` toggles GMCP-driven group healing on/off (`autoheal_on` /
   `autoheal_off`). Available on all classes that have self-heal or invig capability.
   Healing fires automatically on each GMCP group update — no polling ticker needed.

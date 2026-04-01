@@ -28,7 +28,6 @@
 #read {nukefire/materials.tin}
 #read {nukefire/doors.tin}
 #read {nukefire/remort.tin}
-#read {nukefire/sleep.tin}
 #read {nukefire/eq_mgmt.tin}
 #read {nukefire/channels.tin}
 #read {nukefire/group.tin}
