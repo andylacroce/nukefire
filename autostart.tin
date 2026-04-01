@@ -19,7 +19,7 @@
     #screen set title {Nukefire - ${ME_UPPER}};
     #delay {1} {
         afx;
-        snap_store;
+        snapeq;
         sc;
     };
     #if {!$is_follower} {
