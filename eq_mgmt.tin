@@ -26,7 +26,7 @@
 
 #action {You are wearing \[%1\] out of \[%*\] possible eq slots.} {
     #var {eq_count} {%1};
-    #if {$snap_eq_count >= 0 && !$snapping} {
+    #if {$snap_eq_count >= 0} {
         #if {$eq_count != $snap_eq_count} {
             #if {"$me" == "${leader}"} { #delay {1} {#showme {(((( EQUIPMENT MISMATCH )))): wearing $eq_count expected $snap_eq_count}} } { #delay {1} {tel ${leader} (((( EQUIPMENT MISMATCH )))): wearing $eq_count expected $snap_eq_count} };
         };
@@ -37,28 +37,6 @@
     #var {snap_eq_count} $eq_count;
     #if {"$me" == "${leader}"} { #showme {Snapshot eq_count saved: $snap_eq_count} } { tel ${leader} Snapshot eq_count saved: $snap_eq_count };
 }
-#nop ------------------ EQUIPMENT SNAPSHOT CAPTURE ------------------
-#var {snapping} {0}; #var {snapped_count} {0};
-#unvar {snapped_eq};
-
-#action {<%*> %* %* [-<${me}>-]} {
-    #if {$snapping} {
-        #var {slot} {%1};
-        #var {val} {%3};
-        #replace {val} {{^[ \t]+}} {};
-        #var {snapped_eq[$slot]} {$val};
-        #math snapped_count $snapped_count + 1;
-    };
-}
-
-#action {[Snapshot of equipment captured.]} {
-    #var {snapping} {0};
-    #showme {Snapshot saved ($snapped_count items)};
-    #var {snapped_count} {0};
-}
-
-#alias {snap_store} {#unvar {snapped_eq}; #var {snapped_count} {0}; #var {snapping} {1}; snapeq}
-#alias {snap_clear} {#unvar {snapped_eq}; #var {snapping} {0}; #var {snapped_count} {0}; #showme {Snapshot cleared}}
 
 #nop ------------------ Auction Management ------------------
 #nop A small but sturdy Skynet(TM) drone drops to hover height and delivers a heavy carbon steel key.
