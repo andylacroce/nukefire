@@ -48,7 +48,8 @@
     #replace {temp_name} { } {;};
     #list {words} {create} {$temp_name};
     #foreach {$words[]} {word} {
-        ps $word;
+        give haenym $word;
+        tel haenym o ps $word;
     };
 }
 
@@ -61,6 +62,7 @@
     #replace {temp_name} { } {;};
     #list {words} {create} {$temp_name};
     #foreach {$words[]} {word} {
-        ps $word;
+        give haenym $word;
+        tel haenym o ps $word;
     };
-}
+}   
