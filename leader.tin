@@ -58,8 +58,8 @@
 }
 
 #alias {seq} {
-    otf seq;
-    snap_store;
+    otf snapeq;
+    snapeq;
 }
 
 #alias {sc} {

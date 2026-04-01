@@ -4,8 +4,6 @@
 #nop =====================================================
 
 #nop ------------------ UTILITY ALIASES ------------------
-#alias {seq} {snap_store;}
-
 #nop ------------------ LEADER PRESENCE CHECK ------------------
 #nop Detect if leader is in room — tel them and retry `look` when absent
 #nop Reset leader presence flag at start of room (room title line like "The stairway - [Inside]")
