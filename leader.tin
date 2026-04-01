@@ -54,7 +54,7 @@
 }
 
 #alias {gam} {
-    ow give all mutiny;silv;cred;
+    sc;#delay {.5} {ow give all mutiny;silv;cred};
 }
 
 #alias {seq} {
