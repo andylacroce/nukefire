@@ -6,7 +6,7 @@
 #nop ------------------ COMBAT ALIASES ------------------
 #ALIAS {xx} {shoot mob burst}
 #ALIAS {aaa} {#if {$lvl > 49}{sli 'rot'};shred}
-#ALIAS {rr} {hyp mob;backstab mob;#if {$lvl > 14}{mysticveil};#if {$lvl > 44}{vtwist};#if {$lvl > 39}{bgrow};#if {$lvl > 34}{spiritr};#if {$lvl > 34}{sucker}}
+#ALIAS {rr} {hyp mob;backstab mob;shackle;omen;#if {$lvl > 39}{bgrow};#if {$lvl > 14}{mysticveil};#if {$lvl > 44}{impale};#if {$lvl > 44}{vtwist};#if {$lvl > 34}{spiritr};#if {$lvl > 34}{sucker}}
 #nop ------------------ MACROS ------------------
 #MACRO {-} {aaa}
 #MACRO {=} {rr}
@@ -101,8 +101,8 @@
 #ACTION {You rise a level!} {
 	emote gained a level and dances a celebratory jig.;
 	#delay {3} {
-		#if {$lvl < 35}     {set_combo disem disem disem};
-		#elseif {$lvl < 45} {set_combo spiritr sucker sucker};
-		#else               {set_combo impale spiritr sucker};
+		#if {$lvl < 35}     {set_combo shackle omen disem};
+		#elseif {$lvl < 45} {set_combo shackle omen spiritr};
+		#else               {set_combo shackle omen impale};
 	}
 }

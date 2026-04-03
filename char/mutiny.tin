@@ -10,7 +10,7 @@
 #VARIABLE {lvl} {}
 #VARIABLE {dest} {}
 #VARIABLE {trackee} {}
-#VARIABLE {container} {satchel}
+#VARIABLE {container} {maw}
 #VARIABLE {remort_num} {764}
 #nop Toggle: tracking / tracking_on / tracking_off
 #VARIABLE {tracking_on} {1}

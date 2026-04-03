@@ -195,9 +195,9 @@
     sc;
 	emote gained a level and dances a celebratory jig.;
 	#delay {3} {
-		#if {$lvl < 24}     {set_combo bash bash bash};
-		#elseif {$lvl < 35} {set_combo here here here};
-		#else               {set_combo torment here here};
+		#if {$lvl < 24}     {set_combo brand goring goring};
+		#elseif {$lvl < 35} {set_combo brand goring goring};
+		#else               {set_combo torment brand goring };
 	}
 }
 
