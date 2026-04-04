@@ -2,6 +2,15 @@
 #nop WOLFMAN - aliases, toggles, buffs, and helpers
 #nop =====================================================
 
+#alias {rr} {
+	#if {$lvl < 20} {bash;bash;bash};
+	#if {$lvl >= 20} {gnaw};
+	#if {$lvl >= 20} {chilling};
+	#if {$lvl >= 35} {srend};
+	#if {$lvl >= 20} {pounce};
+	#if {$lvl >= 20} {gutting};
+}
+
 #nop ------------------ CORE: STATE & HELPERS ------------------
 #variable {wolfout_on} {1}
 #variable {has_wolfout} {0}
@@ -46,8 +55,8 @@
 	emote gained a level and dances a celebratory jig.;
 	#delay {3} {
 		#if {$lvl < 20}     {set_combo bash bash bash};
-		#elseif {$lvl < 35} {set_combo stalk pounce pounce};
-		#else               {set_combo stalk srend pounce};
+		#elseif {$lvl < 35} {set_combo pounce pounce pounce};
+		#else               {set_combo srend pounce srend};
 	}
 }
 

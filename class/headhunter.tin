@@ -5,6 +5,8 @@
 
 #ACTION {[Regen]} {afx}
 
+#ALIAS {rr} {hstomp;tpunch;servo;heat;overload}
+
 #nop ------------------ DAMCON TOGGLE ------------------
 #class dcon open
 	#variable {has_damcon} {0}
@@ -143,7 +145,7 @@
 #ACTION {You rise a level!} {
 	sc;
 	emote gained a level and dances a celebratory jig.;
-	#delay {3} {set_combo overload tpunch overload};
+	#delay {3} {set_combo heat tpunch overload};
 }
 
 

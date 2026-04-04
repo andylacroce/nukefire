@@ -3,6 +3,10 @@
 #nop =====================================================
 
 #nop ------------------ ALIASES ------------------
+#alias {rr} {
+    #nop TODO
+}
+
 #alias {fort} {sli 'aura of fort'; #variable {has_fort} {1};}
 #alias {sum %1} {#if {$lvl > 9} {sli 'summon' %1}}
 #alias {esc} {#if {$lvl > 16} {sli 'aura of escape'}}
