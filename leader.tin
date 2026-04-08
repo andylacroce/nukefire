@@ -11,13 +11,12 @@
 #nop ------------------ ALIASES ------------------
 #macro {[} {
     hyp mob;
-    backstab mob;
     whisper rancor o stalk mob;
     #if {$lvl > 49} {sli 'rot'};
     #elseif {$lvl > 39} {shred};
     whisper prodigy o chain;
     whisper rancor o rage;
-    whisper haenym hellquake;
+    whisper haenym o hellquake;
     #if {$lvl > 39} {shred};
 }
 

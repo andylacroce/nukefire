@@ -7,7 +7,7 @@
 #ACTION {Remaining directions: %1} {#variable dest %1}
 #ALIAS {gs} {gps set %1}
 #ALIAS {gf %1}  {gps find %1}
-#ALIAS {rd} {run $dest;#delay {.5} {big}}
+#ALIAS {rd} {run $dest}
 
 #nop ------------------ MAP & RECALL ------------------
 #ALIAS {pp} {map}
