@@ -89,7 +89,7 @@
 	#if {$grows_max_hp > 0} {
 		#math {grows_pct} {100 * %1 / $grows_max_hp};
 		#if {$grows_pct < 50 && $grows_cooldown == 0 && $autoheal_on} {
-			whisper $leader @-@C<< GROW SCAR $me >>;
+			whisper $leader @-@C<< GROW SCAR $me >> @n@c(%1/$grows_max_hp HP, @+@C$grows_pct%@n@c);
 			grows;
 			#var {grows_cooldown} {1};
 			#delay {5} {#var {grows_cooldown} {0};};
