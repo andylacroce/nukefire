@@ -66,33 +66,20 @@
 #action {You receive %1 experience points.} {_wolfman_on_xp}
 #action {You can't gain anymore experience.} {_wolfman_on_xp}
 
-#nop ------------------ GROWS / HP MAX TRACKING ------------------
-#variable {grows_max_hp} {0}
+#nop ------------------ GROW SCAR: GMCP-BASED ------------------
 #variable {grows_cooldown} {0}
-#variable {grows_set_on_next_prompt} {0}
 #variable {autoheal_on} {1}
 
-#ACTION {You're already as healthy as you can be.} {
-	#var {grows_set_on_next_prompt} {1};
-}
-
-#action {< %1H %2M %3V%* [Lvl %4, %5]%*} {
-	#variable {lvl} {%4};
-	#variable {exp_to_level} {%5};
-	#if {$grows_set_on_next_prompt == 1} {
-		#var {grows_max_hp} {%1};
-		#var {grows_set_on_next_prompt} {0};
-	};
-	#if {%1 > $grows_max_hp} {
-		#var {grows_max_hp} {%1};
-	};
-	#if {$grows_max_hp > 0} {
-		#math {grows_pct} {100 * %1 / $grows_max_hp};
-		#if {$grows_pct < 50 && $grows_cooldown == 0 && $autoheal_on} {
-			whisper $leader @-@C<< GROW SCAR $me >> @n@c(%1/$grows_max_hp HP, @+@C$grows_pct%@n@c);
+#alias {_on_gmcp_vitals} {
+	#local chp  {$gmcp[char][vitals][hp]};
+	#local cmhp {$gmcp[char][maxstats][maxhp]};
+	#if {$cmhp > 0} {
+		#math hp_pct {100 * $chp / $cmhp};
+		#if {$hp_pct < 50 && $grows_cooldown == 0 && $autoheal_on} {
+			whisper $leader @-@C<< GROW SCAR $me >> @n@c($chp/$cmhp HP, @+@C$hp_pct%@n@c);
 			grows;
-			#var {grows_cooldown} {1};
-			#delay {5} {#var {grows_cooldown} {0};};
+			#variable {grows_cooldown} {1};
+			#delay {5} {#variable {grows_cooldown} {0};};
 		};
 	};
 }

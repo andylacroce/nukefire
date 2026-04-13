@@ -90,52 +90,26 @@
 #action {You are now tracking %*.} {whisper $leader Currently tracking: %1} 
 #action {TARGET: %* | GPS LINK: ACTIVE | DIRECTION: %2} {whisper $leader The target, %1, is %2.}
 
-#nop ------------------ SELFREPAIR + GROW SCAR: PROMPT-BASED ------------------
-#variable {repair_max_hp} {0}
+#nop ------------------ SELFREPAIR + GROW SCAR: GMCP-BASED ------------------
 #variable {repair_cooldown} {0}
-#variable {repair_set_on_next_prompt} {0}
-#variable {grows_max_hp} {0}
 #variable {grows_cooldown} {0}
-#variable {grows_set_on_next_prompt} {0}
 
-#ACTION {You're already as healthy as you can be.} {
-	#var {repair_set_on_next_prompt} {1};
-	#var {grows_set_on_next_prompt} {1};
-}
-
-#action {< %1H %2M %3V%* [Lvl %4, %5]%*} {
-	#variable {lvl} {%4};
-	#variable {exp_to_level} {%5};
-	#if {$repair_set_on_next_prompt == 1} {
-		#var {repair_max_hp} {%1};
-		#var {repair_set_on_next_prompt} {0};
-	};
-	#if {%1 > $repair_max_hp} {
-		#var {repair_max_hp} {%1};
-	};
-	#if {$repair_max_hp > 0} {
-		#math {repair_pct} {100 * %1 / $repair_max_hp};
-		#if {$repair_pct < 85 && $repair_cooldown == 0 && $autoheal_on} {
-			whisper $leader @-@C<< SELFREPAIR $me >> @n@c(%1/$repair_max_hp HP, @+@C$repair_pct%@n@c);
+#alias {_on_gmcp_vitals} {
+	#local chp  {$gmcp[char][vitals][hp]};
+	#local cmhp {$gmcp[char][maxstats][maxhp]};
+	#if {$cmhp > 0} {
+		#math hp_pct {100 * $chp / $cmhp};
+		#if {$hp_pct < 85 && $repair_cooldown == 0 && $autoheal_on} {
+			whisper $leader @-@C<< SELFREPAIR $me >> @n@c($chp/$cmhp HP, @+@C$hp_pct%@n@c);
 			selfrepair;
-			#var {repair_cooldown} {1};
-			#delay {3} {#var {repair_cooldown} {0};};
+			#variable {repair_cooldown} {1};
+			#delay {3} {#variable {repair_cooldown} {0};};
 		};
-	};
-	#if {$grows_set_on_next_prompt == 1} {
-		#var {grows_max_hp} {%1};
-		#var {grows_set_on_next_prompt} {0};
-	};
-	#if {%1 > $grows_max_hp} {
-		#var {grows_max_hp} {%1};
-	};
-	#if {$grows_max_hp > 0} {
-		#math {grows_pct} {100 * %1 / $grows_max_hp};
-		#if {$grows_pct < 50 && $grows_cooldown == 0 && $autoheal_on} {
-			whisper $leader @-@C<< GROW SCAR $me >> @n@c(%1/$grows_max_hp HP, @+@C$grows_pct%@n@c);
+		#if {$hp_pct < 50 && $grows_cooldown == 0 && $autoheal_on} {
+			whisper $leader @-@C<< GROW SCAR $me >> @n@c($chp/$cmhp HP, @+@C$hp_pct%@n@c);
 			grows;
-			#var {grows_cooldown} {1};
-			#delay {5} {#var {grows_cooldown} {0};};
+			#variable {grows_cooldown} {1};
+			#delay {5} {#variable {grows_cooldown} {0};};
 		};
 	};
 }

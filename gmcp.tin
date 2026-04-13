@@ -76,13 +76,15 @@
 #EVENT {IAC SB GMCP Char.Vitals IAC SE}
 {
     #variable gmcp[char][vitals] {%0};
-    #if {$gmcp_debug} {#showme {GMCP vitals: HP $gmcp[char][vitals][hp]/$gmcp[char][maxstats][maxhp] MN $gmcp[char][vitals][mana]/$gmcp[char][maxstats][maxmana] MV $gmcp[char][vitals][move]/$gmcp[char][maxstats][maxmoves]}}
+    #if {$gmcp_debug} {#showme {GMCP vitals: HP $gmcp[char][vitals][hp]/$gmcp[char][maxstats][maxhp] MN $gmcp[char][vitals][mana]/$gmcp[char][maxstats][maxmana] MV $gmcp[char][vitals][move]/$gmcp[char][maxstats][maxmoves]}};
+    _on_gmcp_vitals;
 }
 
 #EVENT {IAC SB GMCP char.vitals IAC SE}
 {
     #variable gmcp[char][vitals] {%0};
-    #if {$gmcp_debug} {#showme {GMCP vitals: HP $gmcp[char][vitals][hp]/$gmcp[char][maxstats][maxhp] MN $gmcp[char][vitals][mana]/$gmcp[char][maxstats][maxmana] MV $gmcp[char][vitals][move]/$gmcp[char][maxstats][maxmoves]}}
+    #if {$gmcp_debug} {#showme {GMCP vitals: HP $gmcp[char][vitals][hp]/$gmcp[char][maxstats][maxhp] MN $gmcp[char][vitals][mana]/$gmcp[char][maxstats][maxmana] MV $gmcp[char][vitals][move]/$gmcp[char][maxstats][maxmoves]}};
+    _on_gmcp_vitals;
 }
 
 #EVENT {IAC SB GMCP char.maxstats IAC SE}

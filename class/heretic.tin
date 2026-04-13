@@ -123,39 +123,26 @@
     #if {$flames_on} {sof};
 }
 
-#nop ------------------ AUGURY: PROMPT-BASED SELF-HEAL ------------------
-#variable {augury_max_hp} {0}
+#nop ------------------ AUGURY + GROW SCAR: GMCP-BASED SELF-HEAL ------------------
 #variable {augury_cooldown} {0}
-#variable {augury_set_on_next_prompt} {0}
 #variable {grows_cooldown} {0}
 
-#ACTION {You're already as healthy as you can be.} {
-    #variable {augury_set_on_next_prompt} {1};
-}
-
-#action {< %1H %2M %3V%* [Lvl %4, %5]%*} {
-    #variable {lvl} {%4};
-    #variable {exp_to_level} {%5};
-    #if {$augury_set_on_next_prompt == 1} {
-        #variable {augury_max_hp} {%1};
-        #variable {augury_set_on_next_prompt} {0};
-    };
-    #if {%1 > $augury_max_hp} {
-        #variable {augury_max_hp} {%1};
-    };
-    #if {$augury_max_hp > 0} {
-        #math {augury_pct} {100 * %1 / $augury_max_hp};
-        #if {$augury_pct < 85 && $augury_cooldown == 0 && $lvl > 25} {
-            whisper $leader @-@Y<< HEALING $me >> @n@y(%1/$augury_max_hp HP, @+@Y$augury_pct%@n@y);
-            sli 'augury' $me;
-            #variable {augury_cooldown} {1};
-            #delay {3} {#variable {augury_cooldown} {0};};
-        };
-        #elseif {$augury_pct < 85 && $grows_cooldown == 0 && $lvl <= 25} {
-            whisper $leader @-@C<< GROW SCAR $me >> @n@c(%1/$augury_max_hp HP, @+@C$augury_pct%@n@c);
-            grows;
-            #variable {grows_cooldown} {1};
-            #delay {5} {#variable {grows_cooldown} {0};};
+#alias {_on_gmcp_vitals} {
+    #local chp  {$gmcp[char][vitals][hp]};
+    #local cmhp {$gmcp[char][maxstats][maxhp]};
+    #if {$cmhp > 0} {
+        #math hp_pct {100 * $chp / $cmhp};
+        #if {$hp_pct < 85 && $autoheal_on} {
+            #if {$augury_cooldown == 0 && $lvl > 25} {
+                whisper $leader @-@Y<< HEALING $me >> @n@y($chp/$cmhp HP, @+@Y$hp_pct%@n@y);
+                sli 'augury' $me;
+                #variable augury_cooldown 1; #delay {3} {#variable augury_cooldown 0};
+            };
+            #elseif {$grows_cooldown == 0 && $lvl <= 25} {
+                whisper $leader @-@C<< GROW SCAR $me >> @n@c($chp/$cmhp HP, @+@C$hp_pct%@n@c);
+                grows;
+                #variable grows_cooldown 1; #delay {5} {#variable grows_cooldown 0};
+            };
         };
     };
 }
@@ -166,38 +153,47 @@
 #variable {sinvig_cooldown} {0}
 #variable {heal_cooldown} {0}
 #alias {_on_gmcp_group} {
+    #nop -- PASS 1: Heal the lowest HP% group member (excluding self) --;
+    #if {$autoheal_on && $heal_cooldown == 0 && $lvl > 24} {
+        #local lowest_pct  {101};
+        #local lowest_name {};
+        #local lowest_hp   {0};
+        #local lowest_mhp  {0};
+        #local gi {1};
+        #while {$gi <= $gmcp[group][count]} {
+            #local mname {$gmcp[group][members][$gi][name]};
+            #if {"$mname" != "$me"} {
+                #local mhp  {$gmcp[group][members][$gi][info][hp]};
+                #local mmhp {$gmcp[group][members][$gi][info][mhp]};
+                #if {$mmhp > 0} {#math hp_pct {100 * $mhp / $mmhp}};
+                #if {$hp_pct < $lowest_pct} {
+                    #local lowest_pct  {$hp_pct};
+                    #local lowest_name {$mname};
+                    #local lowest_hp   {$mhp};
+                    #local lowest_mhp  {$mmhp};
+                };
+            };
+            #math gi {$gi + 1};
+        };
+        #if {$lowest_pct < 85 && "$lowest_name" != ""} {
+            whisper $leader @-@Y<< HEALING $lowest_name >> @n@y($lowest_hp/$lowest_mhp HP, @+@Y$lowest_pct%@n@y);
+            heal $lowest_name;
+            #variable heal_cooldown 1; #delay {3} {#variable heal_cooldown 0};
+            #delay {3} {_on_gmcp_group};
+        };
+    };
+    #nop -- PASS 2: MV restore for any member (lowest priority) --;
     #local gi {1};
     #while {$gi <= $gmcp[group][count]} {
         #local mname {$gmcp[group][members][$gi][name]};
-        #local mhp   {$gmcp[group][members][$gi][info][hp]};
-        #local mmhp  {$gmcp[group][members][$gi][info][mhp]};
         #local mmv   {$gmcp[group][members][$gi][info][mv]};
         #local mmmv  {$gmcp[group][members][$gi][info][mmv]};
-        #if {$mmhp > 0} {#math hp_pct {100 * $mhp / $mmhp}};
         #if {$mmmv > 0} {#math mv_pct {100 * $mmv / $mmmv}};
         #if {$mv_pct < 85 && $lvl > 17 && $autoheal_on && $sinvig_cooldown == 0} {
             whisper $leader @-@C<< INVIGORATING $mname >> @n@c($mmv/$mmmv MV, @+@C$mv_pct%@n@c);
             sli 'sinful vigor' $mname;
             #variable sinvig_cooldown 1; #delay {3} {#variable sinvig_cooldown 0};
             #if {"$mname" != "$me"} {#delay {3} {_on_gmcp_group}};
-        };
-        #if {$hp_pct < 85 && $autoheal_on} {
-            #if {"$mname" == "$me" && $augury_cooldown == 0 && $lvl > 25} {
-                whisper $leader @-@Y<< HEALING $me >> @n@y($mhp/$mmhp HP, @+@Y$hp_pct%@n@y);
-                sli 'augury' $me;
-                #variable augury_cooldown 1; #delay {3} {#variable augury_cooldown 0};
-            };
-            #elseif {"$mname" == "$me" && $grows_cooldown == 0 && $lvl <= 25} {
-                whisper $leader @-@C<< GROW SCAR $me >> @n@c($mhp/$mmhp HP, @+@C$hp_pct%@n@c);
-                grows;
-                #variable grows_cooldown 1; #delay {5} {#variable grows_cooldown 0};
-            };
-            #if {"$mname" != "$me" && $heal_cooldown == 0 && $lvl > 24} {
-                whisper $leader @-@Y<< HEALING $mname >> @n@y($mhp/$mmhp HP, @+@Y$hp_pct%@n@y);
-                heal $mname;
-                #variable heal_cooldown 1; #delay {3} {#variable heal_cooldown 0};
-                #delay {3} {_on_gmcp_group};
-            };
         };
         #math gi {$gi + 1};
     };

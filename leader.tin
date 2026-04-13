@@ -14,16 +14,16 @@
     whisper rancor o stalk mob;
     #if {$lvl > 49} {sli 'rot'};
     #elseif {$lvl > 39} {shred};
-    whisper prodigy o chain;
     whisper rancor o rage;
+    whisper prodigy o chain;
     whisper haenym o hellquake;
     #if {$lvl > 39} {shred};
 }
 
 #macro {]} {
     whisper rancor o stalk mob;
-    whisper prodigy o chain;
     whisper rancor o rage;
+    whisper prodigy o chain;
     whisper haenym hellquake;
 }
 

@@ -5,7 +5,7 @@
 #nop =====================================================
 
 #nop ------------------ LOAD ORDER NOTICE ------------------
-#nop The order of reads below matters; do not reorder or remove
+#nop The order of reads below matters -- do not reorder or remove
 #nop modules unless you understand dependencies (class, role, etc.).
 #nop ------------------ LEADER CONFIGURATION ------------------
 #VARIABLE {leader} {Mutiny}
@@ -34,8 +34,10 @@
 #read {nukefire/logging.tin}
 
 #nop ------------------ LOAD CLASS-SPECIFIC MODULES ------------------
-#nop Default no-op; healer classes override with group heal logic
+#nop Default no-op -- healer classes override with group heal logic
 #alias {_on_gmcp_group} {#nop}
+#nop Default no-op -- classes with self-healing override
+#alias {_on_gmcp_vitals} {#nop}
 #read {nukefire/class/${class}.tin}
 
 #nop ------------------ LOAD ROLE-SPECIFIC MODULES ------------------
