@@ -7,7 +7,15 @@
 #ACTION {Remaining directions: %1} {#variable dest %1}
 #ALIAS {gs} {gps set %1}
 #ALIAS {gf %1}  {gps find %1}
-#ALIAS {rd} {run $dest}
+#ALIAS {rd} {
+    dep;
+    bal;
+    #delay {1} {
+        #VARIABLE {last_balance} {$bank_balance};
+        run $dest;  
+    }
+}
+#ALIAS {lb} {#showme {\e]P40000AA <048>Last Balance: $last_balance};#send {}} 
 
 #nop ------------------ MAP & RECALL ------------------
 #ALIAS {pp} {map}

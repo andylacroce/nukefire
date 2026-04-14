@@ -8,16 +8,19 @@
 #ALIAS {aaa} {#if {$lvl > 49}{sli 'rot'};shred}
 #ALIAS {rr} {
 	hyp mob;
-	impale mob;
-	ow assist mutiny;
-	ow rr;
-	#if {$lvl > 39}{bgrow};
-	#if {$lvl > 14}{mysticveil};
-	#if {$lvl > 44}{vtwist};
-	shackle;
-	omen;
-	#if {$lvl > 34}{spiritr};
-	#if {$lvl > 34}{sucker}
+	whisper rancor o stalk mob;
+	#if {$lvl > 44}{impale mob};
+	#delay {1} {
+		#if {$lvl <= 44}{assist rancor;ow assist mutiny};
+		ow assist rancor;
+		ow rr;
+		#if {$lvl > 39}{bgrow};
+		#if {$lvl > 14}{mysticveil};
+		#if {$lvl > 44}{vtwist};
+		shackle;
+		omen;
+		#if {$lvl > 44}{impale};
+	}
 }
 
 #nop ------------------ MACROS ------------------

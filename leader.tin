@@ -84,6 +84,10 @@
         };
     };
     recall;
+    #delay {1} {
+        bal;
+        #delay {1} {#math run_total {$bank_balance - $last_balance}; #showme {Run Total: \$$run_total}};
+    }
 }
 
 #ALIAS {come} {
@@ -127,4 +131,8 @@
 	#variable {class_remorts} {%1}; 
 	#replace {class_remorts} {{ }} {};
 	#delay {.5} {#showme {\e]P40000AA <048>Lvl: $lvl || $exp_to_level || Class Remorts: $class_remorts || Total Remorts: $total_remorts || DPS: $dps}};
+}
+
+#action {[BANK] Your balance: %1 credits.} {
+    #variable {bank_balance} {%1};
 }
