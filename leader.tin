@@ -78,6 +78,7 @@
 }
 
 #ALIAS {rec} {
+    gam;
     #if {!$is_follower} {
         #foreach {$followers[%*]} {follower} {
             #if {"$follower" != "$me"} {tel $follower o recall};
