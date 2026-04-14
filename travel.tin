@@ -8,12 +8,15 @@
 #ALIAS {gs} {gps set %1}
 #ALIAS {gf %1}  {gps find %1}
 #ALIAS {rd} {
-    dep;
-    bal;
+    gam;
     #delay {1} {
-        #VARIABLE {last_balance} {$bank_balance};
-        run $dest;  
-    }
+        dep;
+        bal;
+        #delay {1} {
+            #VARIABLE {last_balance} {$bank_balance};
+            run $dest;  
+        }
+    };
 }
 #ALIAS {lb} {#showme {\e]P40000AA <048>Last Balance: $last_balance};#send {}} 
 
