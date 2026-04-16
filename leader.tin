@@ -57,19 +57,19 @@
 }
 
 #alias {seq} {
-    otf snapeq;
+    ow snapeq;
     snapeq;
 }
 
 #alias {sc} {
-    otf dps;
-    otf sc;
+    ow dps;
+    ow sc;
     dps;
     score;
 }
 
 #alias {af} {
-    otf afx;
+    ow afx;
     afx;
 }
 
