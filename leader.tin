@@ -24,7 +24,7 @@
     whisper rancor o stalk mob;
     whisper rancor o rage;
     whisper prodigy o chain;
-    whisper haenym hellquake;
+    whisper haenym o hellquake;
 }
 
 #alias {otf %*} {
@@ -53,7 +53,7 @@
 }
 
 #alias {gam} {
-    sc;#delay {.5} {ow give all mutiny;silv;cred};
+    sc;#delay {.5} {ow give all ${leader};silv;cred};
 }
 
 #alias {seq} {

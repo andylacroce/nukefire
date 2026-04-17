@@ -42,6 +42,7 @@
 #if {!$leader_presence_on} {#class {leader_presence} {clear}}
 
 #alias {leader_presence_on} {
+	#class {leader_presence} {clear};
 	#class {leader_presence} {open};
 	#action {^Obvious exits:} {
 		#if ($leader_here) {
