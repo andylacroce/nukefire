@@ -16,17 +16,22 @@
 }
 #ACTION {You gossip, %*} {
     #if {!${is_follower}} {
-        #format {_ts} {%t} {%m/%d %H:%M};
-        #line log {nukefire/logs/gossip.log} {[${_ts}] %0}
+        #var {_log_this} {1};
+        #regexp {%0} {^\d} {#var {_log_this} {0}};
+        #if {${_log_this}} {
+            #format {_ts} {%t} {%m/%d %H:%M};
+            #line log {nukefire/logs/gossip.log} {[${_ts}] %0}
+        }
     }
 }
 
 #nop ------------------ TELEPATH LOG ------------------
 #ACTION {You telepath %*, %*} {
     #var {_log_this} {1};
-    #list {followers} {find} {%1} {_idx};
-    #if {${_idx} > 0} {#var {_log_this} {0}};
-    #if {"${_log_this}" == "1" && "%1" == "${leader}"} {#var {_log_this} {0}};
+    #regexp {%0} {^\d} {#var {_log_this} {0}};
+    #if {${_log_this}} {#list {followers} {find} {%1} {_idx}};
+    #if {${_log_this} && ${_idx} > 0} {#var {_log_this} {0}};
+    #if {${_log_this} && "%1" == "${leader}"} {#var {_log_this} {0}};
     #if {${_log_this}} {#format {_ts} {%t} {%m/%d %H:%M};
         #line log {nukefire/logs/telepath.log} {[${_ts}] [${me}] %0}}
 }
@@ -53,8 +58,12 @@
 }
 #ACTION {You auction, %*} {
     #if {!${is_follower}} {
-        #format {_ts} {%t} {%m/%d %H:%M};
-        #line log {nukefire/logs/auction.log} {[${_ts}] %0}
+        #var {_log_this} {1};
+        #regexp {%0} {^\d} {#var {_log_this} {0}};
+        #if {${_log_this}} {
+            #format {_ts} {%t} {%m/%d %H:%M};
+            #line log {nukefire/logs/auction.log} {[${_ts}] %0}
+        }
     }
 }
 
