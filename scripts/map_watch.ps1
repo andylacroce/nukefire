@@ -77,8 +77,8 @@ function Show-LastMap($reader) {
     for ($i = 0; $i -lt $tail.Count; $i++) {
         if ($tail[$i] -match '^\[ Local Map \]') {
             $mapStart = $i
-            $mapEnd   = -1  # reset so we capture only the first prompt after this map
-        } elseif ($mapStart -ge 0 -and $mapEnd -eq -1 -and $tail[$i] -match '^< \d+H') {
+            $mapEnd   = -1  # reset so we capture only the first blank line after this map
+        } elseif ($mapStart -ge 0 -and $mapEnd -eq -1 -and [string]::IsNullOrWhiteSpace($tail[$i])) {
             $mapEnd = $i
         }
     }
@@ -129,7 +129,7 @@ while ($true) {
         $buffer.Clear()
         $capturing = $true
         $buffer.Add($line)
-    } elseif ($capturing -and $line -match '^< \d+H') {
+    } elseif ($capturing -and [string]::IsNullOrWhiteSpace($line)) {
         $capturing = $false
         Write-Host (Format-ColorMap $buffer) -NoNewline
     } elseif ($capturing) {
