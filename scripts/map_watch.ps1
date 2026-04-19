@@ -77,13 +77,16 @@ function Show-LastMap($reader) {
     for ($i = 0; $i -lt $tail.Count; $i++) {
         if ($tail[$i] -match '^\[ Local Map \]') {
             $mapStart = $i
-            $mapEnd   = -1  # reset so we capture only the first blank line after this map
-        } elseif ($mapStart -ge 0 -and $mapEnd -eq -1 -and [string]::IsNullOrWhiteSpace($tail[$i])) {
+            $mapEnd   = -1
+        } elseif ($mapStart -ge 0 -and $mapEnd -eq -1 -and $tail[$i] -match '^< \d+H') {
             $mapEnd = $i
         }
     }
     if ($mapStart -ge 0 -and $mapEnd -gt $mapStart) {
-        Write-Host (Format-ColorMap $tail[$mapStart..($mapEnd - 1)]) -NoNewline
+        # Trim trailing blank lines and game-text lines (start with a letter) before the prompt
+        $end = $mapEnd - 1
+        while ($end -gt $mapStart -and ([string]::IsNullOrWhiteSpace($tail[$end]) -or $tail[$end] -match '^[a-zA-Z]')) { $end-- }
+        Write-Host (Format-ColorMap $tail[$mapStart..$end]) -NoNewline
     }
 }
 
@@ -100,39 +103,80 @@ while (-not $logFile) {
 
 $reader    = Open-LogReader $logFile.FullName
 $buffer    = [System.Collections.Generic.List[string]]::new()
-$capturing = $false
-$lastCheck = [DateTime]::Now
+# Capture states:
+#   0 = idle
+#   1 = header seen, waiting for legend (line starting with '@')
+#   2 = legend seen, waiting for separator blank
+#   3 = separator blank seen, reading graphical rows
+#   4 = graphical rows seen — next blank line triggers immediate render
+$captureState = 0
+$lastCheck    = [DateTime]::Now
 
 Show-LastMap $reader
+
+function Render-Buffer {
+    while ($buffer.Count -gt 0 -and ([string]::IsNullOrWhiteSpace($buffer[$buffer.Count - 1]) -or $buffer[$buffer.Count - 1] -match '^[a-zA-Z]')) {
+        $buffer.RemoveAt($buffer.Count - 1)
+    }
+    if ($buffer.Count -gt 0) {
+        Write-Host (Format-ColorMap $buffer) -NoNewline
+    }
+}
 
 while ($true) {
     $line = $reader.ReadLine()
     if ($null -eq $line) {
+        $reader.DiscardBufferedData()  # force re-read from stream on next iteration
         # Re-detect new log file when a new session starts
         if (([DateTime]::Now - $lastCheck).TotalSeconds -gt 10) {
             $lastCheck = [DateTime]::Now
             $newer = Find-LatestLog
             if ($newer -and $newer.FullName -ne $logFile.FullName) {
                 $reader.Close()
-                $logFile   = $newer
-                $reader    = Open-LogReader $logFile.FullName
+                $logFile      = $newer
+                $reader       = Open-LogReader $logFile.FullName
                 $buffer.Clear()
-                $capturing = $false
+                $captureState = 0
                 Show-LastMap $reader
             }
         }
-        Start-Sleep -Milliseconds 50
+        Start-Sleep -Milliseconds 10
         continue
     }
 
-    if ($line -match '^\[ Local Map \]') {
-        $buffer.Clear()
-        $capturing = $true
-        $buffer.Add($line)
-    } elseif ($capturing -and [string]::IsNullOrWhiteSpace($line)) {
-        $capturing = $false
-        Write-Host (Format-ColorMap $buffer) -NoNewline
-    } elseif ($capturing) {
-        $buffer.Add($line)
+    switch ($captureState) {
+        0 {
+            if ($line -match '^\[ Local Map \]') {
+                $buffer.Clear()
+                $buffer.Add($line)
+                $captureState = 1
+            }
+        }
+        1 {
+            # Waiting for legend line (starts with '@')
+            $buffer.Add($line)
+            if ($line -match '^@') { $captureState = 2 }
+        }
+        2 {
+            # Waiting for separator blank between legend and graphical rows
+            $buffer.Add($line)
+            if ([string]::IsNullOrWhiteSpace($line)) { $captureState = 3 }
+        }
+        3 {
+            # Waiting for first real graphical row; skip Up/Down Here markers and blank lines
+            $buffer.Add($line)
+            if (-not [string]::IsNullOrWhiteSpace($line) -and $line -notmatch '<--\s*(Up|Down) Here\s*-->') {
+                $captureState = 4
+            }
+        }
+        4 {
+            # In graphical rows — blank line means map drawing is done; render immediately
+            if ([string]::IsNullOrWhiteSpace($line)) {
+                $captureState = 0
+                Render-Buffer
+            } else {
+                $buffer.Add($line)
+            }
+        }
     }
 }
