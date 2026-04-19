@@ -12,7 +12,7 @@
 
 #nop ------------------ SELLING / UPGRADES ------------------
 #ALIAS {rs %1} {rsell %1}
-#ALIAS {rsa} {addmat;rsell all}
+#ALIAS {rsa} {addmat;rsell all;dep}
 #ALIAS {uc} {upgrade conceal conceal}
 #ALIAS {ui %1} {upgrade imp %1}
 #ALIAS {upe %1} {upgrade eq %1}
