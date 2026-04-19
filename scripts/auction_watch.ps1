@@ -1,18 +1,25 @@
 if (-not (Test-Path auction.log)) { New-Item auction.log | Out-Null }
 Clear-Host
-$tailLines = 500
-Get-Content auction.log -Wait -Tail $tailLines | ForEach-Object {
-    if ($_ -match '^(\[\d+/\d+ \d+:\d+\] )(You auction,\s+)(.*)$') {
-        Write-Host $Matches[1] -ForegroundColor DarkGray -NoNewline
-        Write-Host $Matches[2] -ForegroundColor DarkGray -NoNewline
-        Write-Host $Matches[3] -ForegroundColor White
-    } elseif ($_ -match '^(\[\d+/\d+ \d+:\d+\] )(.*?)(\s+auctions,\s+)(.*)$') {
-        Write-Host $Matches[1] -ForegroundColor DarkGray -NoNewline
-        Write-Host $Matches[2] -ForegroundColor Yellow   -NoNewline
-        Write-Host $Matches[3] -ForegroundColor DarkGray -NoNewline
-        Write-Host $Matches[4] -ForegroundColor White
-    } else {
-        Write-Host $_
+
+function Get-NameColor($name) {
+    switch ($name.ToLower()) {
+        'mutiny'  { 'Red'     }
+        'haenym'  { 'Cyan'    }
+        'prodigy' { 'Green'   }
+        'rancor'  { 'Magenta' }
+        default   { 'Gray'    }
     }
+}
+
+function Write-Entry($name, $text) {
+    Write-Host '(' -ForegroundColor DarkGray -NoNewline
+    Write-Host $name -ForegroundColor (Get-NameColor $name) -NoNewline
+    Write-Host ') ' -ForegroundColor DarkGray -NoNewline
+    Write-Host $text -ForegroundColor White
     Write-Host -NoNewline "`a"
+}
+
+Get-Content auction.log -Wait -Tail 500 | ForEach-Object {
+    if      ($_ -match '^\[[\d/]+ [\d:]+\] \[(\w+)\] You auction, (.+)$') { Write-Entry $Matches[1] $Matches[2] }
+    elseif  ($_ -match '^\[[\d/]+ [\d:]+\] (\w+) auctions, (.+)$')        { Write-Entry $Matches[1] $Matches[2] }
 }

@@ -20,7 +20,7 @@
         #regexp {%0} {^\d} {#var {_log_this} {0}};
         #if {${_log_this}} {
             #format {_ts} {%t} {%m/%d %H:%M};
-            #line log {nukefire/logs/gossip.log} {[${_ts}] %0}
+            #line log {nukefire/logs/gossip.log} {[${_ts}] [${me}] %0}
         }
     }
 }
@@ -62,7 +62,7 @@
         #regexp {%0} {^\d} {#var {_log_this} {0}};
         #if {${_log_this}} {
             #format {_ts} {%t} {%m/%d %H:%M};
-            #line log {nukefire/logs/auction.log} {[${_ts}] %0}
+            #line log {nukefire/logs/auction.log} {[${_ts}] [${me}] %0}
         }
     }
 }

@@ -1,0 +1,135 @@
+# Always run in a fresh process so Add-Type never hits stale cached types.
+if (-not $env:NUKEFIRE_LAUNCHED) {
+    $env:NUKEFIRE_LAUNCHED = '1'
+    powershell -ExecutionPolicy Bypass -File $PSCommandPath
+    $env:NUKEFIRE_LAUNCHED = $null
+    exit
+}
+
+Add-Type -AssemblyName System.Windows.Forms
+
+Add-Type @"
+using System;
+using System.Collections.Generic;
+using System.Runtime.InteropServices;
+using System.Text;
+public class NukeWin {
+    [StructLayout(LayoutKind.Sequential)]
+    public struct RECT { public int Left, Top, Right, Bottom; }
+
+    [DllImport("user32.dll")]
+    public static extern bool EnumWindows(EnumWindowsProc lpEnumFunc, IntPtr lParam);
+    public delegate bool EnumWindowsProc(IntPtr hWnd, IntPtr lParam);
+
+    [DllImport("user32.dll", CharSet = CharSet.Auto)]
+    public static extern int GetClassName(IntPtr hWnd, StringBuilder lpClassName, int nMaxCount);
+
+    [DllImport("user32.dll")]
+    public static extern bool GetWindowRect(IntPtr hWnd, out RECT lpRect);
+
+    [DllImport("user32.dll")]
+    public static extern bool SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter, int X, int Y, int cx, int cy, uint uFlags);
+
+    [DllImport("user32.dll")]
+    public static extern int GetWindowLong(IntPtr hWnd, int nIndex);
+
+    [DllImport("user32.dll")]
+    public static extern int SetWindowLong(IntPtr hWnd, int nIndex, int dwNewLong);
+
+    [DllImport("dwmapi.dll")]
+    public static extern int DwmGetWindowAttribute(IntPtr hWnd, int dwAttribute, out RECT pvAttribute, int cbAttribute);
+
+    [DllImport("user32.dll")]
+    public static extern bool SetProcessDPIAware();
+
+    public static List<IntPtr> FindWindowsByClass(string className) {
+        var result = new List<IntPtr>();
+        EnumWindows((hWnd, lParam) => {
+            var sb = new StringBuilder(256);
+            GetClassName(hWnd, sb, 256);
+            if (sb.ToString() == className) result.Add(hWnd);
+            return true;
+        }, IntPtr.Zero);
+        return result;
+    }
+}
+"@
+
+# Fraction of screen width given to the characters window (left). Remainder goes to comms (right).
+$charsWidthFraction = 5 / 9
+
+[NukeWin]::SetProcessDPIAware() | Out-Null
+$wa = [System.Windows.Forms.Screen]::PrimaryScreen.WorkingArea
+$w1 = [int]($wa.Width * $charsWidthFraction)
+$w2 = $wa.Width - $w1
+
+$BIN   = "C:\Users\andyl\AppData\Roaming\WinTin++\bin"
+$NUKE  = "$BIN\nukefire"
+$LOGS  = "$NUKE\logs"
+$CHARS = "$NUKE\scripts\start_char.ps1"
+
+$wtClass = "CASCADIA_HOSTING_WINDOW_CLASS"
+function Get-WtWindows { [NukeWin]::FindWindowsByClass($wtClass) }
+
+# Un-maximize and reposition without calling ShowWindow.
+# ShowWindow sends WM_SHOWWINDOW which triggers WT's own cascade/restore logic.
+# SetWindowLong + SWP_FRAMECHANGED sends only WM_NCCALCSIZE, which WT ignores for layout purposes.
+function Set-Position($hwnd, $x, $y, $w, $h) {
+    $GWL_STYLE   = -16
+    $WS_MAXIMIZE = 0x01000000
+    $style = [NukeWin]::GetWindowLong($hwnd, $GWL_STYLE)
+    if ($style -band $WS_MAXIMIZE) {
+        [NukeWin]::SetWindowLong($hwnd, $GWL_STYLE, ($style -band (-bnot $WS_MAXIMIZE))) | Out-Null
+        # Notify window of style change (WM_NCCALCSIZE only — does not trigger WT restore)
+        [NukeWin]::SetWindowPos($hwnd, [IntPtr]::Zero, 0, 0, 0, 0, 0x27) | Out-Null  # NOMOVE|NOSIZE|NOZORDER|FRAMECHANGED
+    }
+    [NukeWin]::SetWindowPos($hwnd, [IntPtr]::Zero, $x, $y, $w, $h, 0x0040) | Out-Null  # SWP_SHOWWINDOW
+}
+
+# --- Window 1: characters ---
+$before = Get-WtWindows
+
+$charsArgs = (
+    "new-tab --title Mutiny   --tabColor `"#7A4040`" -d `"$BIN`" powershell -NoExit -File `"$CHARS`" -tin nukefire\char\mutiny.tin"   +
+    " ; new-tab --title Haenym  --tabColor `"#3D5E7A`" -d `"$BIN`" powershell -NoExit -File `"$CHARS`" -tin nukefire\char\haenym.tin"  +
+    " ; new-tab --title Prodigy --tabColor `"#3D6B50`" -d `"$BIN`" powershell -NoExit -File `"$CHARS`" -tin nukefire\char\prodigy.tin" +
+    " ; new-tab --title Rancor  --tabColor `"#5C3F7A`" -d `"$BIN`" powershell -NoExit -File `"$CHARS`" -tin nukefire\char\rancor.tin"
+)
+Start-Process wt -ArgumentList $charsArgs
+Start-Sleep -Milliseconds 2500
+
+$after1   = Get-WtWindows
+$charsWnd = $after1 | Where-Object { $before -notcontains $_ } | Select-Object -First 1
+
+# --- Window 2: comms ---
+$commsArgs = (
+    "-w new new-tab --title Gossip   --tabColor `"#6B5C2E`" -d `"$LOGS`" powershell -NoExit -File `"$NUKE\scripts\gossip_watch.ps1`""   +
+    " ; new-tab --title Telepath --tabColor `"#2E6666`" -d `"$LOGS`" powershell -NoExit -File `"$NUKE\scripts\telepath_watch.ps1`""  +
+    " ; new-tab --title Auction  --tabColor `"#7A5230`" -d `"$LOGS`" powershell -NoExit -File `"$NUKE\scripts\auction_watch.ps1`""
+)
+Start-Process wt -ArgumentList $commsArgs
+Start-Sleep -Milliseconds 2500
+
+$after2   = Get-WtWindows
+$commsWnd = $after2 | Where-Object { $after1 -notcontains $_ } | Select-Object -First 1
+
+if (-not $charsWnd) { Write-Warning "Could not find characters window."; exit }
+if (-not $commsWnd) { Write-Warning "Could not find comms window."; exit }
+
+# Wait for windows to fully settle before measuring shadow geometry.
+Start-Sleep -Milliseconds 1000
+
+# Measure shadow via DWM — reliable once the window has been visible for a few seconds.
+# DwmGetWindowAttribute returns the actual visible rect; GetWindowRect returns the full rect
+# including the invisible resize border. The difference is the shadow inset on each side.
+$wr  = New-Object NukeWin+RECT
+$vis = New-Object NukeWin+RECT
+[NukeWin]::GetWindowRect($charsWnd, [ref]$wr)  | Out-Null
+[NukeWin]::DwmGetWindowAttribute($charsWnd, 9, [ref]$vis, 16) | Out-Null
+$sl = $vis.Left   - $wr.Left
+$st = $vis.Top    - $wr.Top
+$sr = $wr.Right   - $vis.Right
+$sb = $wr.Bottom  - $vis.Bottom
+
+Set-Position $charsWnd ($wa.X - $sl)       ($wa.Y - $st) ($w1 + $sl + $sr) ($wa.Height + $st + $sb)
+Set-Position $commsWnd ($wa.X + $w1 - $sl) ($wa.Y - $st) ($w2 + $sl + $sr) ($wa.Height + $st + $sb)
