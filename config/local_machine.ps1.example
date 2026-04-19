@@ -1,0 +1,22 @@
+# Local machine config for nukefire.ps1 (example)
+# Copy to config/local_machine.ps1 and adjust for your setup.
+# This file should stay out of git; only the .example file is tracked.
+
+# Path to the WinTin++ bin directory (the folder that contains tt++.exe)
+$NukeBin = "C:\\Users\\YourName\\AppData\\Roaming\\WinTin++\\bin"
+
+# Full path to the TinTin++ executable.
+# Set this if your executable name or location differs.
+$NukeTinTinExe = "$NukeBin\\tt++.exe"
+
+# Optional: absolute path to this repo root (defaults to the directory containing nukefire.ps1)
+# $NukeRepoRoot = "C:\\Users\\YourName\\AppData\\Roaming\\WinTin++\\bin\\nukefire"
+
+# Optional: override logs directory (defaults to $NukeRepoRoot\\logs)
+# $NukeLogsPath = "D:\\nukefire-logs"
+
+# Optional: left-side width fraction for character window layout (default: 5 / 9)
+# $NukeCharsWidthFraction = 0.5556
+
+# Optional: delay before each character client launches (default: 3)
+# $NukeStartDelaySeconds = 3

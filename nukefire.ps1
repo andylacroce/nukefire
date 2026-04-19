@@ -58,8 +58,23 @@ public class NukeWin {
 }
 "@
 
+# Optional local machine overrides (gitignored):
+# - NukeBin
+# - NukeTinTinExe
+# - NukeRepoRoot
+# - NukeLogsPath
+# - NukeCharsWidthFraction
+# - NukeStartDelaySeconds
+$repoRoot = Split-Path -Parent $PSCommandPath
+$localMachineConfig = Join-Path $repoRoot "config\local_machine.ps1"
+if (Test-Path $localMachineConfig) {
+    . $localMachineConfig
+}
+
+$defaultBin = Split-Path -Parent $repoRoot
+
 # Fraction of screen width given to the characters window (left). Remainder goes to the right panels.
-$charsWidthFraction = 5 / 9
+$charsWidthFraction = if ($null -ne $NukeCharsWidthFraction) { [double]$NukeCharsWidthFraction } else { 5 / 9 }
 
 [NukeWin]::SetProcessDPIAware() | Out-Null
 $wa = [System.Windows.Forms.Screen]::PrimaryScreen.WorkingArea
@@ -68,10 +83,34 @@ $w2 = $wa.Width - $w1                           # map + comms (right)
 $h1 = [int]($wa.Height / 2)                     # map (top-right)
 $h2 = $wa.Height - $h1                          # comms (bottom-right)
 
-$BIN   = "C:\Users\andyl\AppData\Roaming\WinTin++\bin"
-$NUKE  = "$BIN\nukefire"
-$LOGS  = "$NUKE\logs"
-$CHARS = "$NUKE\scripts\start_char.ps1"
+$BIN   = if ($NukeBin) { $NukeBin } else { $defaultBin }
+$NUKE  = if ($NukeRepoRoot) { $NukeRepoRoot } else { $repoRoot }
+$LOGS  = if ($NukeLogsPath) { $NukeLogsPath } else { Join-Path $NUKE "logs" }
+$CHARS = Join-Path $NUKE "scripts\start_char.ps1"
+$TTExe = if ($NukeTinTinExe) { $NukeTinTinExe } else { Join-Path $BIN "tt++.exe" }
+$startDelaySeconds = if ($null -ne $NukeStartDelaySeconds) { [int]$NukeStartDelaySeconds } else { 3 }
+
+$mutinyTin  = Join-Path $NUKE "char\mutiny.tin"
+$haenymTin  = Join-Path $NUKE "char\haenym.tin"
+$prodigyTin = Join-Path $NUKE "char\prodigy.tin"
+$rancorTin  = Join-Path $NUKE "char\rancor.tin"
+
+$mapWatchScript      = Join-Path $NUKE "scripts\map_watch.ps1"
+$gossipWatchScript   = Join-Path $NUKE "scripts\gossip_watch.ps1"
+$telepathWatchScript = Join-Path $NUKE "scripts\telepath_watch.ps1"
+$auctionWatchScript  = Join-Path $NUKE "scripts\auction_watch.ps1"
+
+if (-not (Test-Path $TTExe)) {
+    throw "TinTin executable not found at '$TTExe'. Set NukeTinTinExe in config/local_machine.ps1."
+}
+
+if (-not (Test-Path $CHARS)) {
+    throw "Character launch script not found at '$CHARS'."
+}
+
+if (-not (Test-Path $LOGS)) {
+    New-Item -ItemType Directory -Path $LOGS -Force | Out-Null
+}
 
 $wtClass = "CASCADIA_HOSTING_WINDOW_CLASS"
 function Get-WtWindows { [NukeWin]::FindWindowsByClass($wtClass) }
@@ -101,10 +140,10 @@ function Set-Position($hwnd, $x, $y, $w, $h) {
 $before = Get-WtWindows
 
 $charsArgs = (
-    "new-tab --title Mutiny   --tabColor `"#7A4040`" -d `"$BIN`" powershell -NoExit -File `"$CHARS`" -tin nukefire\char\mutiny.tin"   +
-    " ; new-tab --title Haenym  --tabColor `"#3D5E7A`" -d `"$BIN`" powershell -NoExit -File `"$CHARS`" -tin nukefire\char\haenym.tin"  +
-    " ; new-tab --title Prodigy --tabColor `"#3D6B50`" -d `"$BIN`" powershell -NoExit -File `"$CHARS`" -tin nukefire\char\prodigy.tin" +
-    " ; new-tab --title Rancor  --tabColor `"#5C3F7A`" -d `"$BIN`" powershell -NoExit -File `"$CHARS`" -tin nukefire\char\rancor.tin"
+    "new-tab --title Mutiny   --tabColor `"#7A4040`" -d `"$BIN`" powershell -NoExit -File `"$CHARS`" -tin `"$mutinyTin`" -ttExe `"$TTExe`" -delay $startDelaySeconds"   +
+    " ; new-tab --title Haenym  --tabColor `"#3D5E7A`" -d `"$BIN`" powershell -NoExit -File `"$CHARS`" -tin `"$haenymTin`" -ttExe `"$TTExe`" -delay $startDelaySeconds"  +
+    " ; new-tab --title Prodigy --tabColor `"#3D6B50`" -d `"$BIN`" powershell -NoExit -File `"$CHARS`" -tin `"$prodigyTin`" -ttExe `"$TTExe`" -delay $startDelaySeconds" +
+    " ; new-tab --title Rancor  --tabColor `"#5C3F7A`" -d `"$BIN`" powershell -NoExit -File `"$CHARS`" -tin `"$rancorTin`" -ttExe `"$TTExe`" -delay $startDelaySeconds"
 )
 Start-Process wt -ArgumentList $charsArgs
 Start-Sleep -Milliseconds 2500
@@ -130,7 +169,7 @@ Set-Position $charsWnd ($wa.X - $sl) ($wa.Y - $st) ($w1 + $sl + $sr) ($wa.Height
 Select-FirstTab $charsWnd
 
 # --- Window 2: map (top-right) ---
-$mapArgs = "-w new new-tab --title Map --tabColor `"#1E3A4A`" -d `"$LOGS`" powershell -NoExit -File `"$NUKE\scripts\map_watch.ps1`""
+$mapArgs = "-w new new-tab --title Map --tabColor `"#1E3A4A`" -d `"$LOGS`" powershell -NoExit -File `"$mapWatchScript`""
 Start-Process wt -ArgumentList $mapArgs
 Start-Sleep -Milliseconds 2500
 
@@ -142,9 +181,9 @@ Set-Position $mapWnd ($wa.X + $w1 - $sl) ($wa.Y - $st) ($w2 + $sl + $sr) ($h1 + 
 
 # --- Window 3: comms (bottom-right) ---
 $commsArgs = (
-    "-w new new-tab --title Gossip   --tabColor `"#6B5C2E`" -d `"$LOGS`" powershell -NoExit -File `"$NUKE\scripts\gossip_watch.ps1`""   +
-    " ; new-tab --title Telepath --tabColor `"#2E6666`" -d `"$LOGS`" powershell -NoExit -File `"$NUKE\scripts\telepath_watch.ps1`""  +
-    " ; new-tab --title Auction  --tabColor `"#7A5230`" -d `"$LOGS`" powershell -NoExit -File `"$NUKE\scripts\auction_watch.ps1`""
+    "-w new new-tab --title Gossip   --tabColor `"#6B5C2E`" -d `"$LOGS`" powershell -NoExit -File `"$gossipWatchScript`""   +
+    " ; new-tab --title Telepath --tabColor `"#2E6666`" -d `"$LOGS`" powershell -NoExit -File `"$telepathWatchScript`""  +
+    " ; new-tab --title Auction  --tabColor `"#7A5230`" -d `"$LOGS`" powershell -NoExit -File `"$auctionWatchScript`""
 )
 Start-Process wt -ArgumentList $commsArgs
 Start-Sleep -Milliseconds 2500

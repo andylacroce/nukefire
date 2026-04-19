@@ -5,7 +5,7 @@
 #nop ------------------ CORE VARIABLES ------------------
 #nop Keep variables first; actions/aliases depend on these.
 #VARIABLE {me} {Haenym}
-#read {nukefire/local_secrets.tin}
+#read {nukefire/config/local_secrets.tin}
 #VARIABLE {password} {$haenym_password}
 #VARIABLE {lvl} {}
 #VARIABLE {dest} {}

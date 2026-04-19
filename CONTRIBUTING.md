@@ -4,6 +4,19 @@ Purpose
 
 - Describe the canonical header / comment style used across `.tin`
   files and how to add section separators.
+- Document contributor rules for local-only machine settings.
+
+Machine-specific config policy
+
+- Do not hardcode local paths, usernames, or workstation-only values in tracked
+  scripts.
+- Put machine-local launcher settings in `config/local_machine.ps1`
+  (gitignored), using
+  `config/local_machine.ps1.example` as the template.
+- Keep secrets in `config/local_secrets.tin` (gitignored), using
+  `config/local_secrets.tin.example` as the template.
+- If you introduce a new local-only setting, add it to the relevant `.example`
+  file and document it in `README.md`.
 
 Top-of-file header
 
@@ -90,7 +103,9 @@ Do/don't
 - DO: add `#nop` headers and section separators to improve readability.
 - DO: avoid changing functional code. Only add comments or separators
   unless explicitly requested.
+- DO: externalize machine-local paths/settings to `config/local_machine.ps1`.
 - DON'T: use plain `#` comments in `.tin` files (these are for Markdown).
+- DON'T: commit `config/local_machine.ps1` or `config/local_secrets.tin`.
 - DO: use `set_combo <moves>` (defined in `group.tin`) in level-up actions
   instead of the three-line `combo` / `#var group_combo` / `groupassist_group`
   pattern.
@@ -113,8 +128,13 @@ Before opening a pull request:
 - Run the linter and fix warnings:
 
 ```powershell
-PS> .\scripts\check_tin_headers.ps1
+PS> npm run lint
 ```
+
+- Ensure machine-specific changes are in `config/local_machine.ps1.example` documentation,
+  not in tracked runtime config files.
+- Ensure no local-only files are staged (`config/local_machine.ps1`,
+  `config/local_secrets.tin`, logs).
 
 - Verify you did not accidentally change `char_load.tin` `#read` order.
   If a load-order change is required, explain why in your PR and include
@@ -122,7 +142,7 @@ PS> .\scripts\check_tin_headers.ps1
 - Keep changes non-functional when possible. When making functional
   changes, include a clear description, test steps, and any manual
   verification notes.
-- Do not commit local secrets. Use `local_secrets.tin` in your local
+- Do not commit local secrets. Use `config/local_secrets.tin` in your local
   environment only.
 
 ## File-specific suggestions
@@ -159,6 +179,12 @@ Section separator example:
 The repository includes a small PowerShell linter at
 `scripts/check_tin_headers.ps1` which verifies headers and
 section separators.
+
+`package.json` also defines:
+
+- `npm run lint:md`
+- `npm run lint:tin`
+- `npm run lint`
 
 To integrate into CI, add a job that runs the script and fails
 when it returns non-zero.

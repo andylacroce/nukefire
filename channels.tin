@@ -14,9 +14,10 @@
         }
     }
 }
-#ACTION {You gossip, %*} {
+#ACTION {%*You gossip, %*} {
     #if {!${is_follower}} {
         #var {_log_this} {1};
+        #regexp {%1} {^\s*\d} {#var {_log_this} {0}};
         #regexp {%0} {^\d} {#var {_log_this} {0}};
         #if {${_log_this}} {
             #format {_ts} {%t} {%m/%d %H:%M};

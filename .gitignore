@@ -1,4 +1,8 @@
+config/local_secrets.tin
+config/local_machine.ps1
+# Back-compat in case old local files still exist
 local_secrets.tin
+local_machine.ps1
 logs/
 
 # Node
