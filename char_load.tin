@@ -8,8 +8,11 @@
 #nop The order of reads below matters -- do not reorder or remove
 #nop modules unless you understand dependencies (class, role, etc.).
 #nop ------------------ LEADER CONFIGURATION ------------------
-#VARIABLE {leader} {Mutiny}
-#list {followers} {create} {Haenym} {Prodigy} {Rancor}
+#nop Edit config/local_group.tin (copy from local_group.tin.example) to set your own
+#nop leader and followers. Defaults below are used when that file does not exist.
+#read {nukefire/config/local_group.tin}
+#if {"$leader" == ""} {#VARIABLE {leader} {Mutiny}}
+#if {&followers[] == 0} {#list {followers} {create} {Haenym} {Prodigy} {Rancor}}
 
 #nop ------------------ DETERMINE CHARACTER ROLE ------------------
 #variable {is_follower} {1}

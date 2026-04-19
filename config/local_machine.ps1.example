@@ -2,12 +2,8 @@
 # Copy to config/local_machine.ps1 and adjust for your setup.
 # This file should stay out of git; only the .example file is tracked.
 
-# Path to the WinTin++ bin directory (the folder that contains tt++.exe)
-$NukeBin = "C:\\Users\\YourName\\AppData\\Roaming\\WinTin++\\bin"
-
 # Full path to the TinTin++ executable.
-# Set this if your executable name or location differs.
-$NukeTinTinExe = "$NukeBin\\tt++.exe"
+$NukeTinTinExe = "C:\\Users\\YourName\\AppData\\Roaming\\WinTin++\\bin\\tt++.exe"
 
 # Optional: absolute path to this repo root (defaults to the directory containing nukefire.ps1)
 # $NukeRepoRoot = "C:\\Users\\YourName\\AppData\\Roaming\\WinTin++\\bin\\nukefire"

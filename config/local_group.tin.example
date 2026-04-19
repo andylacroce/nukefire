@@ -1,0 +1,13 @@
+#nop =====================================================
+#nop LOCAL GROUP CONFIG (EXAMPLE)
+#nop Copy this file to `config/local_group.tin` and set your own leader and
+#nop followers. This file is gitignored — only the .example is tracked.
+#nop =====================================================
+
+#nop The leader is the character who runs `group new`, starts logging, and
+#nop whose session log the map window watches.
+#VARIABLE {leader} {Mutiny}
+
+#nop List every character that should auto-follow the leader on login.
+#nop The leader should NOT be in this list.
+#list {followers} {create} {Haenym} {Prodigy} {Rancor}

@@ -52,7 +52,7 @@ function Format-ColorMap($lines) {
 }
 
 function Find-LatestLog {
-    Get-ChildItem "nukefire_Mutiny_*.log" -ErrorAction SilentlyContinue |
+    Get-ChildItem "nukefire_*.log" -ErrorAction SilentlyContinue |
         Sort-Object LastWriteTime -Descending |
         Select-Object -First 1
 }

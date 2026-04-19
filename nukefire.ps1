@@ -75,6 +75,11 @@ if (Test-Path $localMachineConfig) {
     . $localMachineConfig
 }
 
+$localCharsConfig = Join-Path $repoRoot "config\local_chars.ps1"
+if (Test-Path $localCharsConfig) {
+    . $localCharsConfig
+}
+
 $defaultBin = Split-Path -Parent $repoRoot
 
 # Fraction of screen width given to the characters window (left). Remainder goes to the right panels.
@@ -93,11 +98,6 @@ $LOGS  = if ($NukeLogsPath) { $NukeLogsPath } else { Join-Path $NUKE "logs" }
 $CHARS = Join-Path $NUKE "scripts\start_char.ps1"
 $TTExe = if ($NukeTinTinExe) { $NukeTinTinExe } else { Join-Path $BIN "tt++.exe" }
 $startDelaySeconds = if ($null -ne $NukeStartDelaySeconds) { [int]$NukeStartDelaySeconds } else { 3 }
-
-$mutinyTin  = Join-Path $NUKE "char\mutiny.tin"
-$haenymTin  = Join-Path $NUKE "char\haenym.tin"
-$prodigyTin = Join-Path $NUKE "char\prodigy.tin"
-$rancorTin  = Join-Path $NUKE "char\rancor.tin"
 
 $mapWatchScript      = Join-Path $NUKE "scripts\map_watch.ps1"
 $gossipWatchScript   = Join-Path $NUKE "scripts\gossip_watch.ps1"
@@ -143,12 +143,21 @@ function Set-Position($hwnd, $x, $y, $w, $h) {
 # --- Window 1: characters ---
 $before = Get-WtWindows
 
-$charsArgs = (
-    "new-tab --title Mutiny   --tabColor `"#7A4040`" -d `"$BIN`" $ShellExe -NoExit -File `"$CHARS`" -tin `"$mutinyTin`" -ttExe `"$TTExe`" -delay $startDelaySeconds"   +
-    " ; new-tab --title Haenym  --tabColor `"#3D5E7A`" -d `"$BIN`" $ShellExe -NoExit -File `"$CHARS`" -tin `"$haenymTin`" -ttExe `"$TTExe`" -delay $startDelaySeconds"  +
-    " ; new-tab --title Prodigy --tabColor `"#3D6B50`" -d `"$BIN`" $ShellExe -NoExit -File `"$CHARS`" -tin `"$prodigyTin`" -ttExe `"$TTExe`" -delay $startDelaySeconds" +
-    " ; new-tab --title Rancor  --tabColor `"#5C3F7A`" -d `"$BIN`" $ShellExe -NoExit -File `"$CHARS`" -tin `"$rancorTin`" -ttExe `"$TTExe`" -delay $startDelaySeconds"
-)
+if (-not $NukeCharacters) {
+    $NukeCharacters = @(
+        @{ Name = "Mutiny";  Tin = "char\mutiny.tin";  Color = "#7A4040" }
+        @{ Name = "Haenym";  Tin = "char\haenym.tin";  Color = "#3D5E7A" }
+        @{ Name = "Prodigy"; Tin = "char\prodigy.tin"; Color = "#3D6B50" }
+        @{ Name = "Rancor";  Tin = "char\rancor.tin";  Color = "#5C3F7A" }
+    )
+}
+
+$charsArgs = ""
+foreach ($char in $NukeCharacters) {
+    $charTin = Join-Path $NUKE $char.Tin
+    $tab = "new-tab --title $($char.Name) --tabColor `"$($char.Color)`" -d `"$BIN`" $ShellExe -NoExit -File `"$CHARS`" -tin `"$charTin`" -ttExe `"$TTExe`" -delay $startDelaySeconds"
+    if ($charsArgs) { $charsArgs += " ; $tab" } else { $charsArgs = $tab }
+}
 Start-Process wt -ArgumentList $charsArgs
 Start-Sleep -Milliseconds 2500
 

@@ -1,5 +1,7 @@
 config/local_secrets.tin
 config/local_machine.ps1
+config/local_chars.ps1
+config/local_group.tin
 # Back-compat in case old local files still exist
 local_secrets.tin
 local_machine.ps1

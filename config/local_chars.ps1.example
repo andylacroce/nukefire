@@ -1,0 +1,20 @@
+# Character tab definitions for nukefire.ps1 (example)
+# Copy to config/local_chars.ps1 and customize for your characters.
+# This file is gitignored — only the .example is tracked.
+#
+# $NukeCharacters defines one Windows Terminal tab per character in the
+# characters window. The first entry is also the character whose session log
+# the map window will watch.
+#
+#   Name  — tab title shown in Windows Terminal
+#   Tin   — path to the character's .tin profile, relative to repo root
+#   Color — tab highlight color as a #RRGGBB hex string
+#
+# Remove any characters you don't use and add your own.
+
+$NukeCharacters = @(
+    @{ Name = "Mutiny";  Tin = "char\mutiny.tin";  Color = "#7A4040" }
+    @{ Name = "Haenym";  Tin = "char\haenym.tin";  Color = "#3D5E7A" }
+    @{ Name = "Prodigy"; Tin = "char\prodigy.tin"; Color = "#3D6B50" }
+    @{ Name = "Rancor";  Tin = "char\rancor.tin";  Color = "#5C3F7A" }
+)

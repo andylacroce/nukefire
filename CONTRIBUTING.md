@@ -1,27 +1,36 @@
-# Nukefire Tintin Style Guide
+# Nukefire TinTin Style Guide
 
-Purpose
+## Purpose
 
-- Describe the canonical header / comment style used across `.tin`
-  files and how to add section separators.
-- Document contributor rules for local-only machine settings.
+- Describe the canonical header and comment style used across `.tin` files.
+- Document contributor rules for local-only config files.
 
-Machine-specific config policy
+---
 
-- Do not hardcode local paths, usernames, or workstation-only values in tracked
-  scripts.
-- Put machine-local launcher settings in `config/local_machine.ps1`
-  (gitignored), using
-  `config/local_machine.ps1.example` as the template.
-- Keep secrets in `config/local_secrets.tin` (gitignored), using
-  `config/local_secrets.tin.example` as the template.
-- If you introduce a new local-only setting, add it to the relevant `.example`
-  file and document it in `README.md`.
+## Machine-specific config policy
 
-Top-of-file header
+Never hardcode local paths, usernames, or workstation-only values in tracked
+files. The following files are gitignored and must be created locally from
+their `.example` templates:
 
-- Use Tintin comments (`#nop`) only in `.tin` files.
-- Use the following pattern at the top of each module:
+Each has a corresponding `.example` template to copy from:
+
+- `config/local_machine.ps1` — path to `tt++.exe` and optional layout
+  overrides
+- `config/local_secrets.tin` — character passwords
+- `config/local_group.tin` — leader name and followers list
+- `config/local_chars.ps1` — character tabs in the launcher
+
+If you introduce a new local-only setting, add it to the relevant `.example`
+file and document it in `README.md`.
+
+---
+
+## TinTin file style
+
+### Top-of-file header (required)
+
+Every `.tin` file must start with:
 
 ```tintin
 #nop =====================================================
@@ -30,94 +39,90 @@ Top-of-file header
 #nop =====================================================
 ```
 
-Section separators
+### Section separators (required)
 
-- For major blocks, use:
+Every `.tin` file must have at least one section separator:
 
 ```tintin
 #nop ------------------ SECTION NAME ------------------
 ```
 
-- Typical sections for class files (in order):
-  - `CORE: STATE & HELPERS`
-  - `SPELL / SKILL UTILITIES`
-  - `AFX: SPELL LISTENERS & TIMER`
-  - `FALL-OFF HANDLERS`
-  - `LEVEL-DRIVEN ACTIONS`
-  - `GMCP GROUP AUTOHEAL` (or `GMCP GROUP AUTOINVIG` for MV-only classes)
-  - `AUTOHEAL CONTROL`
-  - `LEVEL-UP ACTION`
-- Typical sections for utility files:
-  - `ACTIONS`
-  - `ALIASES`
-  - `VARIABLES`
-  - `CONTROL`
+Typical section order for **class files**:
 
-Inline comments
+- `COMBAT ALIASES`
+- `MACROS`
+- `SPELL / SKILL UTILITIES`
+- `AFX - BUFF MANAGEMENT`
+- `EXPERIENCE TRIGGERS`
+- `FALL-OFF HANDLERS`
+- `GMCP-BASED AUTOHEAL` (or `GMCP-BASED AUTOINVIG` for MV-only classes)
+- `AUTOHEAL CONTROL`
+- `LEVEL-UP ACTION`
 
-- Use `#nop` for non-functional comments and notes.
-- Keep comments short and descriptive.
+Typical section order for **utility files**:
 
-Load order note
+- `ACTIONS`
+- `ALIASES`
+- `VARIABLES`
+- `CONTROL`
 
-- The `char_load.tin` file contains module `#read` statements that define startup
-  order. Do not reorder these reads unless you understand the dependencies. Re-
-  ordering can break initialization.
+### Inline comments
 
-Linter
+Use `#nop` for all non-functional comments. Do not use bare `#` (that is
+Markdown syntax, not TinTin).
 
-- A basic PowerShell linter is available at `scripts/check_tin_headers.ps1`.
-- Run it from the `nukefire` directory:
+---
+
+## Load order
+
+`char_load.tin` controls the module load sequence. Do not reorder its
+`#read` statements unless you understand the dependencies — order matters.
+
+Current load sequence in `char_load.tin`:
+
+1. `config/local_group.tin` — sets `$leader` and `$followers` list
+2. Generic shared modules (looting, travel, tracking, etc.)
+3. `class/$class.tin` — class-specific aliases and GMCP hooks
+4. `leader.tin` or `follower.tin` — role-specific logic
+5. `autostart.tin` — MUD connection and login
+
+---
+
+## Do / don't
+
+- **DO** use `_on_gmcp_group` (override the default `#nop` in `char_load.tin`)
+  for group heal/invig logic. Do not use a polling ticker with `gr`.
+- **DO** use `set_combo <moves>` (defined in `group.tin`) in level-up actions.
+- **DO** use `#foreach {$followers[%*]} {follower} { ... }` for iterating
+  followers — not a manual `#while` loop with index arithmetic.
+- **DO** initialize all toggle variables explicitly at the top of the class
+  file (e.g., `#variable {autoheal_on} {1}`) so behaviour on first load is
+  defined.
+- **DO** put leader/follower group configuration in `config/local_group.tin`,
+  not hardcoded in `char_load.tin`.
+- **DON'T** commit any of the four gitignored config files listed above.
+- **DON'T** use bare `#` comments in `.tin` files.
+
+---
+
+## Linting
+
+A PowerShell linter at `scripts/check_tin_headers.ps1` verifies that every
+`.tin` file has a header and at least one section separator. Run it from the
+repo root:
 
 ```powershell
-PS> .\scripts\check_tin_headers.ps1
-```
-
-- The linter checks that each `.tin` file has a top `#nop ===` header.
-- It also checks for at least one `#nop ------------------` section separator.
-- The linter prints warnings and exits non-zero when issues are found.
-
-Local CI (run the same checks locally)
-
-- Option A (npm):
-
-```powershell
-# install dev deps once
-npm ci
-
-# run both linters (Markdown + Tintin headers)
 npm run lint
 ```
 
-- Option B (PowerShell wrapper):
+Or without Node:
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File .\scripts\run_ci_linters.ps1
 ```
 
-These run the same checks as CI and will exit non-zero if any
-warnings or errors are found.
-
-Do/don't
-
-- DO: add `#nop` headers and section separators to improve readability.
-- DO: avoid changing functional code. Only add comments or separators
-  unless explicitly requested.
-- DO: externalize machine-local paths/settings to `config/local_machine.ps1`.
-- DON'T: use plain `#` comments in `.tin` files (these are for Markdown).
-- DON'T: commit `config/local_machine.ps1` or `config/local_secrets.tin`.
-- DO: use `set_combo <moves>` (defined in `group.tin`) in level-up actions
-  instead of the three-line `combo` / `#var group_combo` / `groupassist_group`
-  pattern.
-- DO: use `#foreach {$followers[%*]} {follower} { ... }` for iterating
-  followers instead of a manual `#while` loop with index arithmetic.
-- DO: implement group heal/invig via `_on_gmcp_group` (override the default
-  `#nop` set in `char_load.tin`). Do not use a polling ticker with `gr`.
-- DO: initialize all toggle variables explicitly at the top of the class file
-  (e.g., `#variable {autoheal_on} {1}`) so behaviour on first load is defined.
-
-If you'd like a stricter linter or automatic formatter, I can extend the
-script to enforce more rules or fail CI when headers are missing.
+`npm run lint` runs both Markdown lint and the TinTin header check. A GitHub
+Actions workflow runs the same checks on every push and pull request.
 
 ---
 
@@ -125,79 +130,25 @@ script to enforce more rules or fail CI when headers are missing.
 
 Before opening a pull request:
 
-- Run the linter and fix warnings:
+- Run the linter and fix all warnings:
 
-```powershell
-PS> npm run lint
-```
+  ```powershell
+  npm run lint
+  ```
 
-- Run secret scanning and fix findings:
+- Run secret scanning and fix any findings:
 
-```powershell
-# install once (Windows)
-PS> winget install gitleaks.gitleaks
+  ```powershell
+  winget install gitleaks.gitleaks   # install once
+  npm run scan:secrets
+  ```
 
-PS> npm run scan:secrets
-```
+- Confirm none of the gitignored config files are staged:
+  `config/local_machine.ps1`, `config/local_secrets.tin`,
+  `config/local_group.tin`, `config/local_chars.ps1`, `logs/`.
 
-- Ensure machine-specific changes are in `config/local_machine.ps1.example` documentation,
-  not in tracked runtime config files.
-- Ensure no local-only files are staged (`config/local_machine.ps1`,
-  `config/local_secrets.tin`, logs).
-
-- Verify you did not accidentally change `char_load.tin` `#read` order.
-  If a load-order change is required, explain why in your PR and include
+- If `char_load.tin` load order changed, explain why in the PR and include
   manual test steps.
-- Keep changes non-functional when possible. When making functional
-  changes, include a clear description, test steps, and any manual
-  verification notes.
-- Do not commit local secrets. Use `config/local_secrets.tin` in your local
-  environment only.
 
-## File-specific suggestions
-
-- Class files (`class/*.tin`): follow the canonical section order listed above.
-  Use `GMCP GROUP AUTOHEAL` (not a polling ticker) for group heal/invig logic.
-  Use `AUTOHEAL CONTROL` for the `autoheal_on` / `autoheal_off` / `autoheal` toggle.
-- Utility files (root `.tin`): include top header + sections such as:
-  - `ACTIONS`
-  - `ALIASES`
-  - `LISTENERS`
-  - `VARIABLES`
-  - `CONTROL`
-
-## Examples
-
-Top header (required):
-
-```tintin
-#nop =====================================================
-#nop MODULE TITLE (ALL CAPS)
-#nop Short description of the module
-#nop =====================================================
-```
-
-Section separator example:
-
-```tintin
-#nop ------------------ ACTIONS ------------------
-```
-
-## Linter / CI
-
-The repository includes a small PowerShell linter at
-`scripts/check_tin_headers.ps1` which verifies headers and
-section separators.
-
-`package.json` also defines:
-
-- `npm run lint:md`
-- `npm run lint:tin`
-- `npm run lint`
-
-To integrate into CI, add a job that runs the script and fails
-when it returns non-zero.
-
-A GitHub Actions workflow runs these linters on pushes and pull requests and
-will fail the check if any warnings or errors are found. See
-`.github/workflows/lint.yml` for details.
+- Keep changes non-functional where possible. Functional changes must include
+  a description, test steps, and manual verification notes.
