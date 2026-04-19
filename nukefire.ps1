@@ -42,6 +42,9 @@ public class NukeWin {
     [DllImport("user32.dll")]
     public static extern bool SetProcessDPIAware();
 
+    [DllImport("user32.dll")]
+    public static extern bool SetForegroundWindow(IntPtr hWnd);
+
     public static List<IntPtr> FindWindowsByClass(string className) {
         var result = new List<IntPtr>();
         EnumWindows((hWnd, lParam) => {
@@ -70,6 +73,12 @@ $CHARS = "$NUKE\scripts\start_char.ps1"
 
 $wtClass = "CASCADIA_HOSTING_WINDOW_CLASS"
 function Get-WtWindows { [NukeWin]::FindWindowsByClass($wtClass) }
+
+function Select-FirstTab($hwnd) {
+    [NukeWin]::SetForegroundWindow($hwnd) | Out-Null
+    Start-Sleep -Milliseconds 300
+    [System.Windows.Forms.SendKeys]::SendWait("^%1")  # Ctrl+Alt+1 — focus first tab
+}
 
 # Un-maximize and reposition without calling ShowWindow.
 # ShowWindow sends WM_SHOWWINDOW which triggers WT's own cascade/restore logic.
@@ -100,24 +109,7 @@ Start-Sleep -Milliseconds 2500
 
 $after1   = Get-WtWindows
 $charsWnd = $after1 | Where-Object { $before -notcontains $_ } | Select-Object -First 1
-
-# --- Window 2: comms ---
-$commsArgs = (
-    "-w new new-tab --title Gossip   --tabColor `"#6B5C2E`" -d `"$LOGS`" powershell -NoExit -File `"$NUKE\scripts\gossip_watch.ps1`""   +
-    " ; new-tab --title Telepath --tabColor `"#2E6666`" -d `"$LOGS`" powershell -NoExit -File `"$NUKE\scripts\telepath_watch.ps1`""  +
-    " ; new-tab --title Auction  --tabColor `"#7A5230`" -d `"$LOGS`" powershell -NoExit -File `"$NUKE\scripts\auction_watch.ps1`""
-)
-Start-Process wt -ArgumentList $commsArgs
-Start-Sleep -Milliseconds 2500
-
-$after2   = Get-WtWindows
-$commsWnd = $after2 | Where-Object { $after1 -notcontains $_ } | Select-Object -First 1
-
 if (-not $charsWnd) { Write-Warning "Could not find characters window."; exit }
-if (-not $commsWnd) { Write-Warning "Could not find comms window."; exit }
-
-# Wait for windows to fully settle before measuring shadow geometry.
-Start-Sleep -Milliseconds 1000
 
 # Measure shadow via DWM — reliable once the window has been visible for a few seconds.
 # DwmGetWindowAttribute returns the actual visible rect; GetWindowRect returns the full rect
@@ -131,5 +123,26 @@ $st = $vis.Top    - $wr.Top
 $sr = $wr.Right   - $vis.Right
 $sb = $wr.Bottom  - $vis.Bottom
 
-Set-Position $charsWnd ($wa.X - $sl)       ($wa.Y - $st) ($w1 + $sl + $sr) ($wa.Height + $st + $sb)
+# Position chars window immediately — must happen before TinTin's #split fires (~5s after connect).
+Set-Position $charsWnd ($wa.X - $sl) ($wa.Y - $st) ($w1 + $sl + $sr) ($wa.Height + $st + $sb)
+Select-FirstTab $charsWnd
+
+# --- Window 2: comms ---
+$commsArgs = (
+    "-w new new-tab --title Map      --tabColor `"#1E3A4A`" -d `"$LOGS`" powershell -NoExit -File `"$NUKE\scripts\map_watch.ps1`""     +
+    " ; new-tab --title Gossip   --tabColor `"#6B5C2E`" -d `"$LOGS`" powershell -NoExit -File `"$NUKE\scripts\gossip_watch.ps1`""   +
+    " ; new-tab --title Telepath --tabColor `"#2E6666`" -d `"$LOGS`" powershell -NoExit -File `"$NUKE\scripts\telepath_watch.ps1`""  +
+    " ; new-tab --title Auction  --tabColor `"#7A5230`" -d `"$LOGS`" powershell -NoExit -File `"$NUKE\scripts\auction_watch.ps1`""
+)
+Start-Process wt -ArgumentList $commsArgs
+Start-Sleep -Milliseconds 2500
+
+$after2   = Get-WtWindows
+$commsWnd = $after2 | Where-Object { $after1 -notcontains $_ } | Select-Object -First 1
+if (-not $commsWnd) { Write-Warning "Could not find comms window."; exit }
+
 Set-Position $commsWnd ($wa.X + $w1 - $sl) ($wa.Y - $st) ($w2 + $sl + $sr) ($wa.Height + $st + $sb)
+Select-FirstTab $commsWnd
+
+# Leave focus on the chars window for immediate data entry.
+[NukeWin]::SetForegroundWindow($charsWnd) | Out-Null

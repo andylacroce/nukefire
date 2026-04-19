@@ -23,7 +23,8 @@
         sc;
     };
     #if {!$is_follower} {
-        #delay {1} {group new}
+        #delay {1} {group new};
+        logging_on
     };
     #if {$is_follower} {
         #delay {2} {fol ${leader}}
