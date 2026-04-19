@@ -1,6 +1,7 @@
-New-Item -Force telepath.log | Out-Null
+if (-not (Test-Path telepath.log)) { New-Item telepath.log | Out-Null }
 Clear-Host
-Get-Content telepath.log -Wait -Tail 20 | ForEach-Object {
+$tailLines = 500
+Get-Content telepath.log -Wait -Tail $tailLines | ForEach-Object {
     if ($_ -match '^(\[\d+/\d+ \d+:\d+\] )(\[\w+\] )(You telepath )(.*?)(,\s+)(.*)$') {
         Write-Host $Matches[1] -ForegroundColor DarkGray -NoNewline
         Write-Host $Matches[2] -ForegroundColor Green    -NoNewline

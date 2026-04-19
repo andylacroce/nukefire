@@ -1,6 +1,7 @@
-New-Item -Force gossip.log | Out-Null
+if (-not (Test-Path gossip.log)) { New-Item gossip.log | Out-Null }
 Clear-Host
-Get-Content gossip.log -Wait -Tail 20 | ForEach-Object {
+$tailLines = 500
+Get-Content gossip.log -Wait -Tail $tailLines | ForEach-Object {
     if ($_ -match '^(\[\d+/\d+ \d+:\d+\] )(You gossip,\s+)(.*)$') {
         Write-Host $Matches[1] -ForegroundColor DarkGray -NoNewline
         Write-Host $Matches[2] -ForegroundColor DarkGray -NoNewline

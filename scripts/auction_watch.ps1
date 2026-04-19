@@ -1,6 +1,7 @@
-New-Item -Force auction.log | Out-Null
+if (-not (Test-Path auction.log)) { New-Item auction.log | Out-Null }
 Clear-Host
-Get-Content auction.log -Wait -Tail 20 | ForEach-Object {
+$tailLines = 500
+Get-Content auction.log -Wait -Tail $tailLines | ForEach-Object {
     if ($_ -match '^(\[\d+/\d+ \d+:\d+\] )(You auction,\s+)(.*)$') {
         Write-Host $Matches[1] -ForegroundColor DarkGray -NoNewline
         Write-Host $Matches[2] -ForegroundColor DarkGray -NoNewline
