@@ -1,7 +1,11 @@
 # Always run in a fresh process so Add-Type never hits stale cached types.
+# Detect which shell executable to use so child shells match the current runtime
+# (keeps behaviour the same when running under Windows PowerShell or PowerShell 7).
+$ShellExe = if ($PSVersionTable.PSEdition -eq 'Core') { 'pwsh' } else { 'powershell' }
+
 if (-not $env:NUKEFIRE_LAUNCHED) {
     $env:NUKEFIRE_LAUNCHED = '1'
-    powershell -ExecutionPolicy Bypass -File $PSCommandPath
+    & $ShellExe -ExecutionPolicy Bypass -File $PSCommandPath
     $env:NUKEFIRE_LAUNCHED = $null
     exit
 }
@@ -140,10 +144,10 @@ function Set-Position($hwnd, $x, $y, $w, $h) {
 $before = Get-WtWindows
 
 $charsArgs = (
-    "new-tab --title Mutiny   --tabColor `"#7A4040`" -d `"$BIN`" powershell -NoExit -File `"$CHARS`" -tin `"$mutinyTin`" -ttExe `"$TTExe`" -delay $startDelaySeconds"   +
-    " ; new-tab --title Haenym  --tabColor `"#3D5E7A`" -d `"$BIN`" powershell -NoExit -File `"$CHARS`" -tin `"$haenymTin`" -ttExe `"$TTExe`" -delay $startDelaySeconds"  +
-    " ; new-tab --title Prodigy --tabColor `"#3D6B50`" -d `"$BIN`" powershell -NoExit -File `"$CHARS`" -tin `"$prodigyTin`" -ttExe `"$TTExe`" -delay $startDelaySeconds" +
-    " ; new-tab --title Rancor  --tabColor `"#5C3F7A`" -d `"$BIN`" powershell -NoExit -File `"$CHARS`" -tin `"$rancorTin`" -ttExe `"$TTExe`" -delay $startDelaySeconds"
+    "new-tab --title Mutiny   --tabColor `"#7A4040`" -d `"$BIN`" $ShellExe -NoExit -File `"$CHARS`" -tin `"$mutinyTin`" -ttExe `"$TTExe`" -delay $startDelaySeconds"   +
+    " ; new-tab --title Haenym  --tabColor `"#3D5E7A`" -d `"$BIN`" $ShellExe -NoExit -File `"$CHARS`" -tin `"$haenymTin`" -ttExe `"$TTExe`" -delay $startDelaySeconds"  +
+    " ; new-tab --title Prodigy --tabColor `"#3D6B50`" -d `"$BIN`" $ShellExe -NoExit -File `"$CHARS`" -tin `"$prodigyTin`" -ttExe `"$TTExe`" -delay $startDelaySeconds" +
+    " ; new-tab --title Rancor  --tabColor `"#5C3F7A`" -d `"$BIN`" $ShellExe -NoExit -File `"$CHARS`" -tin `"$rancorTin`" -ttExe `"$TTExe`" -delay $startDelaySeconds"
 )
 Start-Process wt -ArgumentList $charsArgs
 Start-Sleep -Milliseconds 2500
@@ -169,7 +173,7 @@ Set-Position $charsWnd ($wa.X - $sl) ($wa.Y - $st) ($w1 + $sl + $sr) ($wa.Height
 Select-FirstTab $charsWnd
 
 # --- Window 2: map (top-right) ---
-$mapArgs = "-w new new-tab --title Map --tabColor `"#1E3A4A`" -d `"$LOGS`" powershell -NoExit -File `"$mapWatchScript`""
+$mapArgs = "-w new new-tab --title Map --tabColor `"#1E3A4A`" -d `"$LOGS`" $ShellExe -NoExit -File `"$mapWatchScript`""
 Start-Process wt -ArgumentList $mapArgs
 Start-Sleep -Milliseconds 2500
 
@@ -181,9 +185,9 @@ Set-Position $mapWnd ($wa.X + $w1 - $sl) ($wa.Y - $st) ($w2 + $sl + $sr) ($h1 + 
 
 # --- Window 3: comms (bottom-right) ---
 $commsArgs = (
-    "-w new new-tab --title Gossip   --tabColor `"#6B5C2E`" -d `"$LOGS`" powershell -NoExit -File `"$gossipWatchScript`""   +
-    " ; new-tab --title Telepath --tabColor `"#2E6666`" -d `"$LOGS`" powershell -NoExit -File `"$telepathWatchScript`""  +
-    " ; new-tab --title Auction  --tabColor `"#7A5230`" -d `"$LOGS`" powershell -NoExit -File `"$auctionWatchScript`""
+    "-w new new-tab --title Gossip   --tabColor `"#6B5C2E`" -d `"$LOGS`" $ShellExe -NoExit -File `"$gossipWatchScript`""   +
+    " ; new-tab --title Telepath --tabColor `"#2E6666`" -d `"$LOGS`" $ShellExe -NoExit -File `"$telepathWatchScript`""  +
+    " ; new-tab --title Auction  --tabColor `"#7A5230`" -d `"$LOGS`" $ShellExe -NoExit -File `"$auctionWatchScript`""
 )
 Start-Process wt -ArgumentList $commsArgs
 Start-Sleep -Milliseconds 2500

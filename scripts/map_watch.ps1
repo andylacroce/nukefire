@@ -114,8 +114,20 @@ $lastCheck    = [DateTime]::Now
 
 Show-LastMap $reader
 
-function Render-Buffer {
-    while ($buffer.Count -gt 0 -and ([string]::IsNullOrWhiteSpace($buffer[$buffer.Count - 1]) -or $buffer[$buffer.Count - 1] -match '^[a-zA-Z]')) {
+function Test-ShouldTrimLine {
+    param(
+        [string]$Line
+    )
+
+    return [string]::IsNullOrWhiteSpace($Line) -or $Line -match '^[a-zA-Z]'
+}
+
+function Write-MapBuffer {
+    while ($buffer.Count -gt 0) {
+        $lastLine = $buffer[$buffer.Count - 1]
+        if (-not (Test-ShouldTrimLine $lastLine)) {
+            break
+        }
         $buffer.RemoveAt($buffer.Count - 1)
     }
     if ($buffer.Count -gt 0) {
@@ -173,7 +185,7 @@ while ($true) {
             # In graphical rows — blank line means map drawing is done; render immediately
             if ([string]::IsNullOrWhiteSpace($line)) {
                 $captureState = 0
-                Render-Buffer
+                Write-MapBuffer
             } else {
                 $buffer.Add($line)
             }
