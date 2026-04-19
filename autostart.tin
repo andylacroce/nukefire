@@ -16,7 +16,7 @@
 #delay {5} {
     #split;
     #format {ME_UPPER} {%u} {${me}};
-    #screen set title {Nukefire - ${ME_UPPER}};
+    #screen set title {${ME_UPPER}};
     #delay {1} {
         afx;
         snapeq;
