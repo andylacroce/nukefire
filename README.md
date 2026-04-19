@@ -66,6 +66,95 @@ Templates are provided:
 It also tiles the windows on screen and focuses the character window at the
 end.
 
+## Using Your Own Characters and Classes
+
+### 1. Create a character profile
+
+Copy an existing profile as a starting point:
+
+```powershell
+Copy-Item .\char\mutiny.tin .\char\yourchar.tin
+```
+
+Edit `char/yourchar.tin` and set these variables at the top:
+
+```tintin
+#VARIABLE {me}          {YourCharName}
+#VARIABLE {password}    {$yourchar_password}
+#VARIABLE {container}   {bag}        ; loot container keyword
+#VARIABLE {remort_num}  {0}          ; your character's remort number
+#VARIABLE {tracking_on} {1}          ; 1 = auto-track on, 0 = off
+#VARIABLE {class}       {yourclass}  ; matches class/<yourclass>.tin (no extension)
+```
+
+The file must end with:
+
+```tintin
+#read {nukefire/config/local_secrets.tin}
+#VARIABLE {password} {$yourchar_password}
+...
+#read {nukefire/char_load.tin}
+```
+
+`char_load.tin` handles all module loading automatically once `$me` and `$class`
+are set.
+
+### 2. Create a class module
+
+Copy the closest existing class as a template:
+
+```powershell
+Copy-Item .\class\wolfman.tin .\class\yourclass.tin
+```
+
+Edit `class/yourclass.tin`. Key hooks that `char_load.tin` expects:
+
+- `_on_gmcp_vitals` — called on every GMCP vitals update (HP/mana checks,
+  auto-heal). Define as `#alias {_on_gmcp_vitals} {#nop}` if unused.
+- `_on_gmcp_group` — called on every GMCP group update (healer logic). Define
+  as `#alias {_on_gmcp_group} {#nop}` if unused.
+
+The filename (without `.tin`) must match the `$class` variable you set in the
+character profile.
+
+### 3. Add a password variable
+
+Open `config/local_secrets.tin` and add a line for your new character:
+
+```tintin
+#VARIABLE {yourchar_password} {your_password_here}
+```
+
+Also add it to `config/local_secrets.tin.example` (without the real password)
+so the template stays current.
+
+### 4. Add the character to the launcher
+
+Open `nukefire.ps1` and follow the existing pattern for each character:
+
+```powershell
+# Near the top — define the .tin path
+$yourcharTin = Join-Path $NUKE "char\yourchar.tin"
+
+# In the $charsArgs block — add a new tab
+" ; new-tab --title YourChar --tabColor `"#RRGGBB`" -d `"$BIN`" $ShellExe -NoExit -File `"$CHARS`" -tin `"$yourcharTin`" -ttExe `"$TTExe`" -delay $startDelaySeconds"
+```
+
+### 5. Update the group list in `char_load.tin` (optional)
+
+If your character should be part of the auto-follow group, add it to the
+`followers` list near the top of `char_load.tin`:
+
+```tintin
+#list {followers} {create} {Mutiny} {Haenym} {Prodigy} {Rancor} {YourCharName}
+```
+
+To make a different character the group leader, change:
+
+```tintin
+#VARIABLE {leader} {YourLeaderName}
+```
+
 ## Local Lint / CI
 
 Install dev dependencies once:
