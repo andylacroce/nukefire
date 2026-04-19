@@ -3,11 +3,11 @@ Clear-Host
 
 function Get-NameColor($name) {
     switch ($name.ToLower()) {
-        'mutiny'  { 'Red'     }
+        'mutiny'  { 'Cyan'    }
         'haenym'  { 'Cyan'    }
-        'prodigy' { 'Green'   }
-        'rancor'  { 'Magenta' }
-        default   { 'Gray'    }
+        'prodigy' { 'Cyan'    }
+        'rancor'  { 'Cyan'    }
+        default   { 'DarkGray' }
     }
 }
 
@@ -20,6 +20,16 @@ function Write-Entry($name, $text) {
 }
 
 Get-Content gossip.log -Wait -Tail 500 | ForEach-Object {
-    if      ($_ -match '^\[[\d/]+ [\d:]+\] \[(\w+)\] You gossip, (.+)$') { Write-Entry $Matches[1] $Matches[2] }
-    elseif  ($_ -match '^\[[\d/]+ [\d:]+\] (.+?) gossips, (.+)$')        { Write-Entry $Matches[1] $Matches[2] }
+    $line = $_
+    if ($line -match '^\[[\d/]+ [\d:]+\] \[([^\]]+)\] You gossip, (.+)$') {
+        $name = $Matches[1].Trim().Trim("'")
+        $text = $Matches[2].Trim()
+        if ($text.StartsWith("'") -and $text.EndsWith("'")) { $text = $text.Substring(1, $text.Length - 2) }
+        Write-Entry $name $text
+    } elseif ($line -match '^\[[\d/]+ [\d:]+\] (.+?) gossips, (.+)$') {
+        $name = $Matches[1].Trim().Trim("'")
+        $text = $Matches[2].Trim()
+        if ($text.StartsWith("'") -and $text.EndsWith("'")) { $text = $text.Substring(1, $text.Length - 2) }
+        Write-Entry $name $text
+    }
 }

@@ -3,11 +3,11 @@ Clear-Host
 
 function Get-NameColor($name) {
     switch ($name.ToLower()) {
-        'mutiny'  { 'Red'     }
+        'mutiny'  { 'Cyan'    }
         'haenym'  { 'Cyan'    }
-        'prodigy' { 'Green'   }
-        'rancor'  { 'Magenta' }
-        default   { 'Gray'    }
+        'prodigy' { 'Cyan'    }
+        'rancor'  { 'Cyan'    }
+        default   { 'DarkGray' }
     }
 }
 
@@ -22,6 +22,18 @@ function Write-Entry($from, $to, $text) {
 }
 
 Get-Content telepath.log -Wait -Tail 500 | ForEach-Object {
-    if      ($_ -match '^\[[\d/]+ [\d:]+\] \[(\w+)\] You telepath (\w+), (.+)$')        { Write-Entry $Matches[1] $Matches[2] $Matches[3] }
-    elseif  ($_ -match '^\[[\d/]+ [\d:]+\] \[(\w+)\] (\w+) telepaths to you, (.+)$')    { Write-Entry $Matches[2] $Matches[1] $Matches[3] }
+    $line = $_
+    if ($line -match '^\[[\d/]+ [\d:]+\] \[([^\]]+)\] You telepath ([^,]+), (.+)$') {
+        $from = $Matches[1].Trim().Trim("'")
+        $to   = $Matches[2].Trim().Trim("'")
+        $text = $Matches[3].Trim()
+        if ($text.StartsWith("'") -and $text.EndsWith("'")) { $text = $text.Substring(1, $text.Length - 2) }
+        Write-Entry $from $to $text
+    } elseif ($line -match '^\[[\d/]+ [\d:]+\] \[([^\]]+)\] ([^,]+) telepaths to you, (.+)$') {
+        $from = $Matches[2].Trim().Trim("'")
+        $to   = $Matches[1].Trim().Trim("'")
+        $text = $Matches[3].Trim()
+        if ($text.StartsWith("'") -and $text.EndsWith("'")) { $text = $text.Substring(1, $text.Length - 2) }
+        Write-Entry $from $to $text
+    }
 }
