@@ -131,6 +131,15 @@ Before opening a pull request:
 PS> npm run lint
 ```
 
+- Run secret scanning and fix findings:
+
+```powershell
+# install once (Windows)
+PS> winget install gitleaks.gitleaks
+
+PS> npm run scan:secrets
+```
+
 - Ensure machine-specific changes are in `config/local_machine.ps1.example` documentation,
   not in tracked runtime config files.
 - Ensure no local-only files are staged (`config/local_machine.ps1`,

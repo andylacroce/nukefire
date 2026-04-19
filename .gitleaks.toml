@@ -1,0 +1,7 @@
+title = "nukefire gitleaks config"
+
+[allowlist]
+description = "Allow known placeholder-only examples"
+paths = [
+  '''config/local_secrets\.tin\.example'''
+]

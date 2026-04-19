@@ -91,6 +91,25 @@ Checks currently include:
 - Markdown lint (`README.md`, `CONTRIBUTING.md`)
 - TinTin header/section checks (`scripts/check_tin_headers.ps1`)
 
+## Secret Scanning
+
+This repo includes gitleaks setup for secret scanning:
+
+- CI workflow: `.github/workflows/gitleaks.yml`
+- Local config: `.gitleaks.toml`
+
+Run it locally (if `gitleaks` is installed):
+
+```powershell
+npm run scan:secrets
+```
+
+If `gitleaks` is not installed, install it first (Windows):
+
+```powershell
+winget install gitleaks.gitleaks
+```
+
 ## Troubleshooting
 
 - If the launcher throws `TinTin executable not found`, update
