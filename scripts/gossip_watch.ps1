@@ -21,5 +21,5 @@ function Write-Entry($name, $text) {
 
 Get-Content gossip.log -Wait -Tail 500 | ForEach-Object {
     if      ($_ -match '^\[[\d/]+ [\d:]+\] \[(\w+)\] You gossip, (.+)$') { Write-Entry $Matches[1] $Matches[2] }
-    elseif  ($_ -match '^\[[\d/]+ [\d:]+\] (\w+) gossips, (.+)$')        { Write-Entry $Matches[1] $Matches[2] }
+    elseif  ($_ -match '^\[[\d/]+ [\d:]+\] (.+?) gossips, (.+)$')        { Write-Entry $Matches[1] $Matches[2] }
 }

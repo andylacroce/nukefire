@@ -21,5 +21,5 @@ function Write-Entry($name, $text) {
 
 Get-Content auction.log -Wait -Tail 500 | ForEach-Object {
     if      ($_ -match '^\[[\d/]+ [\d:]+\] \[(\w+)\] You auction, (.+)$') { Write-Entry $Matches[1] $Matches[2] }
-    elseif  ($_ -match '^\[[\d/]+ [\d:]+\] (\w+) auctions, (.+)$')        { Write-Entry $Matches[1] $Matches[2] }
+    elseif  ($_ -match '^\[[\d/]+ [\d:]+\] (.+?) auctions, (.+)$')        { Write-Entry $Matches[1] $Matches[2] }
 }

@@ -58,13 +58,15 @@ public class NukeWin {
 }
 "@
 
-# Fraction of screen width given to the characters window (left). Remainder goes to comms (right).
+# Fraction of screen width given to the characters window (left). Remainder goes to the right panels.
 $charsWidthFraction = 5 / 9
 
 [NukeWin]::SetProcessDPIAware() | Out-Null
 $wa = [System.Windows.Forms.Screen]::PrimaryScreen.WorkingArea
-$w1 = [int]($wa.Width * $charsWidthFraction)
-$w2 = $wa.Width - $w1
+$w1 = [int]($wa.Width * $charsWidthFraction)   # chars (left)
+$w2 = $wa.Width - $w1                           # map + comms (right)
+$h1 = [int]($wa.Height / 2)                     # map (top-right)
+$h2 = $wa.Height - $h1                          # comms (bottom-right)
 
 $BIN   = "C:\Users\andyl\AppData\Roaming\WinTin++\bin"
 $NUKE  = "$BIN\nukefire"
@@ -127,21 +129,31 @@ $sb = $wr.Bottom  - $vis.Bottom
 Set-Position $charsWnd ($wa.X - $sl) ($wa.Y - $st) ($w1 + $sl + $sr) ($wa.Height + $st + $sb)
 Select-FirstTab $charsWnd
 
-# --- Window 2: comms ---
+# --- Window 2: map (top-right) ---
+$mapArgs = "-w new new-tab --title Map --tabColor `"#1E3A4A`" -d `"$LOGS`" powershell -NoExit -File `"$NUKE\scripts\map_watch.ps1`""
+Start-Process wt -ArgumentList $mapArgs
+Start-Sleep -Milliseconds 2500
+
+$after2  = Get-WtWindows
+$mapWnd  = $after2 | Where-Object { $after1 -notcontains $_ } | Select-Object -First 1
+if (-not $mapWnd) { Write-Warning "Could not find map window."; exit }
+
+Set-Position $mapWnd ($wa.X + $w1 - $sl) ($wa.Y - $st) ($w2 + $sl + $sr) ($h1 + $st + $sb)
+
+# --- Window 3: comms (bottom-right) ---
 $commsArgs = (
-    "-w new new-tab --title Map      --tabColor `"#1E3A4A`" -d `"$LOGS`" powershell -NoExit -File `"$NUKE\scripts\map_watch.ps1`""     +
-    " ; new-tab --title Gossip   --tabColor `"#6B5C2E`" -d `"$LOGS`" powershell -NoExit -File `"$NUKE\scripts\gossip_watch.ps1`""   +
+    "-w new new-tab --title Gossip   --tabColor `"#6B5C2E`" -d `"$LOGS`" powershell -NoExit -File `"$NUKE\scripts\gossip_watch.ps1`""   +
     " ; new-tab --title Telepath --tabColor `"#2E6666`" -d `"$LOGS`" powershell -NoExit -File `"$NUKE\scripts\telepath_watch.ps1`""  +
     " ; new-tab --title Auction  --tabColor `"#7A5230`" -d `"$LOGS`" powershell -NoExit -File `"$NUKE\scripts\auction_watch.ps1`""
 )
 Start-Process wt -ArgumentList $commsArgs
 Start-Sleep -Milliseconds 2500
 
-$after2   = Get-WtWindows
-$commsWnd = $after2 | Where-Object { $after1 -notcontains $_ } | Select-Object -First 1
+$after3   = Get-WtWindows
+$commsWnd = $after3 | Where-Object { $after2 -notcontains $_ } | Select-Object -First 1
 if (-not $commsWnd) { Write-Warning "Could not find comms window."; exit }
 
-Set-Position $commsWnd ($wa.X + $w1 - $sl) ($wa.Y - $st) ($w2 + $sl + $sr) ($wa.Height + $st + $sb)
+Set-Position $commsWnd ($wa.X + $w1 - $sl) ($wa.Y + $h1 - $st) ($w2 + $sl + $sr) ($h2 + $st + $sb)
 Select-FirstTab $commsWnd
 
 # Leave focus on the chars window for immediate data entry.
