@@ -103,6 +103,7 @@ $mapWatchScript      = Join-Path $NUKE "scripts\map_watch.ps1"
 $gossipWatchScript   = Join-Path $NUKE "scripts\gossip_watch.ps1"
 $telepathWatchScript = Join-Path $NUKE "scripts\telepath_watch.ps1"
 $auctionWatchScript  = Join-Path $NUKE "scripts\auction_watch.ps1"
+$groupWatchScript    = Join-Path $NUKE "scripts\group_watch.ps1"
 
 if (-not (Test-Path $TTExe)) {
     throw "TinTin executable not found at '$TTExe'. Set NukeTinTinExe in config/local_machine.ps1."
@@ -196,7 +197,8 @@ Set-Position $mapWnd ($wa.X + $w1 - $sl) ($wa.Y - $st) ($w2 + $sl + $sr) ($h1 + 
 $commsArgs = (
     "-w new new-tab --title Gossip   --tabColor `"#6B5C2E`" -d `"$LOGS`" $ShellExe -NoExit -File `"$gossipWatchScript`""   +
     " ; new-tab --title Telepath --tabColor `"#2E6666`" -d `"$LOGS`" $ShellExe -NoExit -File `"$telepathWatchScript`""  +
-    " ; new-tab --title Auction  --tabColor `"#7A5230`" -d `"$LOGS`" $ShellExe -NoExit -File `"$auctionWatchScript`""
+    " ; new-tab --title Auction  --tabColor `"#7A5230`" -d `"$LOGS`" $ShellExe -NoExit -File `"$auctionWatchScript`""   +
+    " ; new-tab --title Group    --tabColor `"#2E4A2E`" -d `"$LOGS`" $ShellExe -NoExit -File `"$groupWatchScript`""
 )
 Start-Process wt -ArgumentList $commsArgs
 Start-Sleep -Milliseconds 2500
