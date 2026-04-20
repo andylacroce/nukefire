@@ -5,7 +5,7 @@ playing the Nukefire MUD on Windows with a multi-window layout.
 
 The launcher opens three tiled Windows Terminal windows: one for your
 character sessions (one tab per character), one for the live map, and one
-for the Gossip/Telepath/Auction channel feeds.
+for the channel feeds (Gos, Auc, Tel, Yay, GSay).
 
 ---
 
@@ -159,7 +159,7 @@ tile automatically:
 - **Top-right** — Map window. Parses the live map from the leader's session
   log and updates as you move. For a solo character it watches that
   character's log.
-- **Bottom-right** — Comms window with Gossip, Telepath, and Auction tabs.
+- **Bottom-right** — Comms window with five tabs: Gos, Auc, Tel, Yay, GSay.
 
 If a window does not appear, see [Troubleshooting](#troubleshooting).
 
@@ -335,11 +335,18 @@ Map symbols are color-coded: `@` (you), `■` (room), `*` (GPS), `X`
 (destination), `!` (locked door), `=`/`:`/`/` (closed door), `|`/`-`
 (corridor link).
 
-### Gossip / Telepath / Auction windows
+### Comms window tabs
 
 Each watch script tails the corresponding log file in `logs/` and colorizes
-entries. The gossip and auction watchers ring a bell on new messages.
-The telepath watcher filters out group-internal and leader traffic.
+entries. All tabs ring a bell on new messages.
+
+| Tab | Log file | Content |
+| --- | -------- | ------- |
+| Gos | `gossip.log` | Global gossip channel |
+| Auc | `auction.log` | Auction channel |
+| Tel | `telepath.log` | Telepath (filters out group-internal and leader traffic) |
+| Yay | `broadcast.log` | `(Skynet)` announcements (cyan) and `[GLORY]` kill milestones (yellow) |
+| GSay | `group.log` | Group-say channel |
 
 Log files are written by `channels.tin` (part of the shared module set).
 
