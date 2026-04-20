@@ -89,8 +89,8 @@ $charsWidthFraction = if ($null -ne $NukeCharsWidthFraction) { [double]$NukeChar
 $wa = [System.Windows.Forms.Screen]::PrimaryScreen.WorkingArea
 $w1 = [int]($wa.Width * $charsWidthFraction)   # chars (left)
 $w2 = $wa.Width - $w1                           # map + comms (right)
-$h1 = [int]($wa.Height / 2)                     # map (top-right)
-$h2 = $wa.Height - $h1                          # comms (bottom-right)
+$h1 = [int]($wa.Height * 4 / 7)                 # map (top-right, 4/7)
+$h2 = $wa.Height - $h1                          # comms (bottom-right, 1/3)
 
 $BIN   = if ($NukeBin) { $NukeBin } else { $defaultBin }
 $NUKE  = if ($NukeRepoRoot) { $NukeRepoRoot } else { $repoRoot }

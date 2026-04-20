@@ -22,6 +22,7 @@
 #action {[Lvl %1, %2]} {
     #variable {lvl} {%1};
     #variable {exp_to_level} {%2};
+    #line log {nukefire/logs/exp.log} {${me}|${exp_to_level}};
 }
 
 #nop ------------------ LOAD GENERIC MODULES ------------------

@@ -158,7 +158,8 @@ tile automatically:
   the terminal to show a status bar at the bottom.
 - **Top-right** — Map window. Parses the live map from the leader's session
   log and updates as you move. For a solo character it watches that
-  character's log.
+  character's log. Group member stats (HP/MN/MV/TNL) are pinned to the
+  bottom of this window and refresh automatically.
 - **Bottom-right** — Comms window with five tabs: Gos, Auc, Tel, Yay, GSay.
 
 If a window does not appear, see [Troubleshooting](#troubleshooting).
@@ -334,6 +335,13 @@ It auto-detects when a new session log starts and follows it.
 Map symbols are color-coded: `@` (you), `■` (room), `*` (GPS), `X`
 (destination), `!` (locked door), `=`/`:`/`/` (closed door), `|`/`-`
 (corridor link).
+
+Group stats are displayed at the bottom of the map window, pinned to the last
+rows regardless of map height. Each member shows level, HP/MN/MV (current and
+max), and TNL (time-to-next-level or "Remort" when ready). Values below 50%
+of max are highlighted in red. Stats refresh automatically when GMCP group
+data updates (at most once every 3 seconds). Only the leader's session writes
+stats — followers' sessions are excluded to prevent duplicates.
 
 ### Comms window tabs
 
