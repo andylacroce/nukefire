@@ -63,31 +63,93 @@ function Get-NameColor($name) {
     }
 }
 
-function Read-GroupStats {
-    $path = "group_stats.log"
-    if (-not (Test-Path $path)) { return @() }
+function New-LogCache {
+    param([string]$Path)
+
+    return @{
+        Path     = $Path
+        Position = 0L
+        Length   = 0L
+        Exists   = $false
+    }
+}
+
+$script:groupStatsCache = New-LogCache "group_stats.log"
+$script:expCache        = New-LogCache "exp.log"
+$script:groupLines      = [System.Collections.Generic.List[string]]::new()
+$script:expMap          = @{}
+
+function Update-LogCache {
+    param(
+        [hashtable]$Cache,
+        [scriptblock]$OnLine
+    )
+
+    $path = $Cache.Path
+    $fi = Get-Item $path -ErrorAction SilentlyContinue
+    if (-not $fi) {
+        $Cache.Exists   = $false
+        $Cache.Position = 0L
+        $Cache.Length   = 0L
+        return
+    }
+
+    $len = [long]$fi.Length
+    if (-not $Cache.Exists -or $len -lt $Cache.Length) {
+        $Cache.Position = 0L
+    }
+
+    if ($len -le $Cache.Position) {
+        $Cache.Exists = $true
+        $Cache.Length = $len
+        return
+    }
+
     try {
         $stream = [System.IO.File]::Open($path, [System.IO.FileMode]::Open, [System.IO.FileAccess]::Read, [System.IO.FileShare]::ReadWrite)
+        $stream.Seek($Cache.Position, [System.IO.SeekOrigin]::Begin) | Out-Null
         $rdr = [System.IO.StreamReader]::new($stream, [System.Text.Encoding]::UTF8)
-        $lines = [System.Collections.Generic.List[string]]::new()
-        $l = $rdr.ReadLine()
-        while ($null -ne $l) { $lines.Add($l); $l = $rdr.ReadLine() }
+        $line = $rdr.ReadLine()
+        while ($null -ne $line) {
+            & $OnLine $line
+            $line = $rdr.ReadLine()
+        }
+        $Cache.Position = $stream.Position
+        $Cache.Length   = $len
+        $Cache.Exists   = $true
         $rdr.Close()
-    } catch { return @() }
-    $marker = -1
-    for ($i = $lines.Count - 1; $i -ge 0; $i--) {
-        if ($lines[$i] -eq '---') { $marker = $i; break }
+    } catch {
+        return
     }
-    if ($marker -lt 0 -or $marker -ge $lines.Count - 1) { return @() }
-    $block = $lines[($marker + 1)..($lines.Count - 1)]
+}
+
+function Update-GroupStatsCache {
+    Update-LogCache -Cache $script:groupStatsCache -OnLine {
+        param([string]$line)
+
+        if ($line -eq '---') {
+            $script:groupLines.Clear()
+            return
+        }
+
+        if (-not [string]::IsNullOrWhiteSpace($line)) {
+            $script:groupLines.Add($line)
+        }
+    }
+}
+
+function Read-GroupStats {
+    Update-GroupStatsCache
+    if ($script:groupLines.Count -eq 0) { return @() }
+
     # Deduplicate by name — keep last occurrence per member in case multiple sessions raced
     $seen    = @{}
     $ordered = [System.Collections.Generic.List[string]]::new()
-    for ($i = $block.Count - 1; $i -ge 0; $i--) {
-        $p = $block[$i] -split '\|'
+    for ($i = $script:groupLines.Count - 1; $i -ge 0; $i--) {
+        $p = $script:groupLines[$i] -split '\|'
         if ($p.Count -ge 2 -and -not $seen.ContainsKey($p[1])) {
             $seen[$p[1]] = $true
-            $ordered.Insert(0, $block[$i])
+            $ordered.Insert(0, $script:groupLines[$i])
         }
     }
     return $ordered.ToArray()
@@ -106,25 +168,20 @@ function Format-Tnl($tnl) {
     } catch { return $tnl }
 }
 
-function Read-ExpToLevel {
-    $path = "exp.log"
-    if (-not (Test-Path $path)) { return @{} }
-    try {
-        $stream = [System.IO.File]::Open($path, [System.IO.FileMode]::Open, [System.IO.FileAccess]::Read, [System.IO.FileShare]::ReadWrite)
-        $rdr = [System.IO.StreamReader]::new($stream, [System.Text.Encoding]::UTF8)
-        $lines = [System.Collections.Generic.List[string]]::new()
-        $l = $rdr.ReadLine()
-        while ($null -ne $l) { $lines.Add($l); $l = $rdr.ReadLine() }
-        $rdr.Close()
-    } catch { return @{} }
-    $result = @{}
-    for ($i = $lines.Count - 1; $i -ge 0; $i--) {
-        $p = $lines[$i] -split '\|', 2
-        if ($p.Count -eq 2 -and -not $result.ContainsKey($p[0])) {
-            $result[$p[0]] = $p[1]
+function Update-ExpCache {
+    Update-LogCache -Cache $script:expCache -OnLine {
+        param([string]$line)
+
+        $p = $line -split '\|', 2
+        if ($p.Count -eq 2) {
+            $script:expMap[$p[0]] = $p[1]
         }
     }
-    return $result
+}
+
+function Read-ExpToLevel {
+    Update-ExpCache
+    return $script:expMap
 }
 
 function Get-StatAnsi($cur, $max) {
@@ -235,6 +292,26 @@ function Show-LastMap($reader) {
     }
 }
 
+function Render-MapAndStats {
+    if ($null -eq $script:lastMapLines) { return }
+    Write-Host ($HIDE + (Format-ColorMap $script:lastMapLines) + (Format-GroupStats) + $SHOW) -NoNewline
+}
+
+function Publish-MapBuffer {
+    while ($buffer.Count -gt 0) {
+        $lastLine = $buffer[$buffer.Count - 1]
+        if (-not (Test-ShouldTrimLine $lastLine)) {
+            break
+        }
+        $buffer.RemoveAt($buffer.Count - 1)
+    }
+
+    if ($buffer.Count -gt 0) {
+        $script:lastMapLines = $buffer.ToArray()
+        Render-MapAndStats
+    }
+}
+
 # Wait for log file
 $logFile = $null
 while (-not $logFile) {
@@ -248,7 +325,6 @@ while (-not $logFile) {
 
 $reader       = Open-LogReader $logFile.FullName
 $buffer       = [System.Collections.Generic.List[string]]::new()
-$lastMapLines  = $null
 $sf0 = Get-Item "group_stats.log" -ErrorAction SilentlyContinue
 $lastStatsTime = if ($sf0) { $sf0.LastWriteTime } else { [DateTime]::MinValue }
 # Capture states:
@@ -259,12 +335,27 @@ $lastStatsTime = if ($sf0) { $sf0.LastWriteTime } else { [DateTime]::MinValue }
 #   4 = graphical rows seen — next blank line triggers immediate render
 $captureState = 0
 $lastCheck    = [DateTime]::Now
-$pendingMap   = $null
+$lastStatsPoll = [DateTime]::MinValue
+
+Update-GroupStatsCache
+Update-ExpCache
 
 Show-LastMap $reader
 
 function Write-StatsOnly {
-    Write-Host ($HIDE + (Format-ColorMap $script:lastMapLines) + (Format-GroupStats) + $SHOW) -NoNewline
+    Render-MapAndStats
+}
+
+function Try-RefreshStats {
+    # Poll stats on a short cadence independent of map parsing state.
+    if (([DateTime]::Now - $script:lastStatsPoll).TotalMilliseconds -lt 250) { return }
+    $script:lastStatsPoll = [DateTime]::Now
+
+    $sf = Get-Item "group_stats.log" -ErrorAction SilentlyContinue
+    if ($sf -and $sf.LastWriteTime -gt $script:lastStatsTime) {
+        $script:lastStatsTime = $sf.LastWriteTime
+        Write-StatsOnly
+    }
 }
 
 function Test-ShouldTrimLine {
@@ -276,37 +367,15 @@ function Test-ShouldTrimLine {
 }
 
 function Write-MapBuffer {
-    while ($buffer.Count -gt 0) {
-        $lastLine = $buffer[$buffer.Count - 1]
-        if (-not (Test-ShouldTrimLine $lastLine)) {
-            break
-        }
-        $buffer.RemoveAt($buffer.Count - 1)
-    }
-    if ($buffer.Count -gt 0) {
-        $script:lastMapLines = $buffer.ToArray()
-        Write-Host ($HIDE + (Format-ColorMap $script:lastMapLines) + (Format-GroupStats) + $SHOW) -NoNewline
-    }
+    Publish-MapBuffer
 }
 
 while ($true) {
+    Try-RefreshStats
+
     $line = $reader.ReadLine()
     if ($null -eq $line) {
         $reader.DiscardBufferedData()  # force re-read from stream on next iteration
-        # Render the latest map now that we've caught up to the end of available data
-        if ($null -ne $pendingMap) {
-            $script:lastMapLines = $pendingMap
-            $pendingMap = $null
-            Write-Host ($HIDE + (Format-ColorMap $script:lastMapLines) + (Format-GroupStats) + $SHOW) -NoNewline
-        }
-        # Redraw when group stats change between map updates (at most once per second)
-        if ($null -ne $lastMapLines -and ([DateTime]::Now - $lastStatsTime).TotalSeconds -ge 3) {
-            $sf = Get-Item "group_stats.log" -ErrorAction SilentlyContinue
-            if ($sf -and $sf.LastWriteTime -gt $lastStatsTime) {
-                $lastStatsTime = [DateTime]::Now
-                Write-StatsOnly
-            }
-        }
         # Re-detect new log file when a new session starts
         if (([DateTime]::Now - $lastCheck).TotalSeconds -gt 10) {
             $lastCheck = [DateTime]::Now
@@ -350,15 +419,10 @@ while ($true) {
             }
         }
         4 {
-            # In graphical rows — blank line means map drawing is done; defer render
-            if ([string]::IsNullOrWhiteSpace($line)) {
+            # In graphical rows — blank line or prompt means map drawing is done; render now.
+            if ([string]::IsNullOrWhiteSpace($line) -or $line -match '^<\s*\d+H') {
                 $captureState = 0
-                while ($buffer.Count -gt 0 -and (Test-ShouldTrimLine $buffer[$buffer.Count - 1])) {
-                    $buffer.RemoveAt($buffer.Count - 1)
-                }
-                if ($buffer.Count -gt 0) {
-                    $pendingMap = $buffer.ToArray()
-                }
+                Publish-MapBuffer
             } else {
                 $buffer.Add($line)
             }
