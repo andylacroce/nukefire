@@ -13,5 +13,15 @@ Get-Content broadcast.log -Wait -Tail 500 | ForEach-Object {
         Write-Host '[GLORY] ' -ForegroundColor Yellow -NoNewline
         Write-Host $msg -ForegroundColor White
         Write-Host -NoNewline "`a"
+    } elseif ($line -match '^\[[\d/]+ [\d:]+\] \[FACETED WORK\] (.+)$') {
+        $msg = $Matches[1].Trim()
+        Write-Host '[FACETED WORK] ' -ForegroundColor Magenta -NoNewline
+        Write-Host $msg -ForegroundColor White
+        Write-Host -NoNewline "`a"
+    } elseif ($line -match '^\[[\d/]+ [\d:]+\] \[ NEW ITEM EVENT \] (.+)$') {
+        $msg = $Matches[1].Trim()
+        Write-Host '[ NEW ITEM EVENT ] ' -ForegroundColor Green -NoNewline
+        Write-Host $msg -ForegroundColor White
+        Write-Host -NoNewline "`a"
     }
 }
