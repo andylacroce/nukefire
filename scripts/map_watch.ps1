@@ -259,6 +259,7 @@ $lastStatsTime = if ($sf0) { $sf0.LastWriteTime } else { [DateTime]::MinValue }
 #   4 = graphical rows seen — next blank line triggers immediate render
 $captureState = 0
 $lastCheck    = [DateTime]::Now
+$pendingMap   = $null
 
 Show-LastMap $reader
 
@@ -292,6 +293,12 @@ while ($true) {
     $line = $reader.ReadLine()
     if ($null -eq $line) {
         $reader.DiscardBufferedData()  # force re-read from stream on next iteration
+        # Render the latest map now that we've caught up to the end of available data
+        if ($null -ne $pendingMap) {
+            $script:lastMapLines = $pendingMap
+            $pendingMap = $null
+            Write-Host ($HIDE + (Format-ColorMap $script:lastMapLines) + (Format-GroupStats) + $SHOW) -NoNewline
+        }
         # Redraw when group stats change between map updates (at most once per second)
         if ($null -ne $lastMapLines -and ([DateTime]::Now - $lastStatsTime).TotalSeconds -ge 3) {
             $sf = Get-Item "group_stats.log" -ErrorAction SilentlyContinue
@@ -343,10 +350,15 @@ while ($true) {
             }
         }
         4 {
-            # In graphical rows — blank line means map drawing is done; render immediately
+            # In graphical rows — blank line means map drawing is done; defer render
             if ([string]::IsNullOrWhiteSpace($line)) {
                 $captureState = 0
-                Write-MapBuffer
+                while ($buffer.Count -gt 0 -and (Test-ShouldTrimLine $buffer[$buffer.Count - 1])) {
+                    $buffer.RemoveAt($buffer.Count - 1)
+                }
+                if ($buffer.Count -gt 0) {
+                    $pendingMap = $buffer.ToArray()
+                }
             } else {
                 $buffer.Add($line)
             }
