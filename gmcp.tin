@@ -98,16 +98,25 @@
     #variable gmcp[group] {%0};
     _gmcp_show_group;
     _on_gmcp_group;
+    #local {_fn} {nukefire/logs/stats_${me}.log};
     #if {!${is_follower}} {
         #local _gc {0};
         #if {"$gmcp[group][count]" != ""} {#math _gc {$gmcp[group][count]}};
-        #line log {nukefire/logs/group_stats.log} {---};
+        #line log {${_fn}} {---};
         #local _gi {1};
         #while {$_gi <= $_gc} {
             #local _gs {$gmcp[group][members][$_gi][info][lvl]|$gmcp[group][members][$_gi][name]|$gmcp[group][members][$_gi][info][hp]|$gmcp[group][members][$_gi][info][mhp]|$gmcp[group][members][$_gi][info][mn]|$gmcp[group][members][$_gi][info][mmn]|$gmcp[group][members][$_gi][info][mv]|$gmcp[group][members][$_gi][info][mmv]};
-            #line log {nukefire/logs/group_stats.log} {${_gs}};
+            #line log {${_fn}} {${_gs}};
             #math _gi {$_gi + 1};
         };
+        #line log {${_fn}} {~~~};
+        #local _ei {1};
+        #while {"$gmcp[group][enemies][$_ei][name]" != ""} {
+            #local _es {${_ei}|$gmcp[group][enemies][$_ei][info][level]|$gmcp[group][enemies][$_ei][name]|$gmcp[group][enemies][$_ei][info][hp]|$gmcp[group][enemies][$_ei][info][mhp]|$gmcp[group][enemies][$_ei][info][mn]|$gmcp[group][enemies][$_ei][info][mmn]|$gmcp[group][enemies][$_ei][info][mv]|$gmcp[group][enemies][$_ei][info][mmv]};
+            #line log {${_fn}} {${_es}};
+            #math _ei {$_ei + 1};
+        };
+        #line log {${_fn}} {+++};
     };
 }
 

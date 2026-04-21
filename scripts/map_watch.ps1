@@ -74,10 +74,12 @@ function New-LogCache {
     }
 }
 
-$script:groupStatsCache = New-LogCache "group_stats.log"
-$script:expCache        = New-LogCache "exp.log"
-$script:groupLines      = [System.Collections.Generic.List[string]]::new()
-$script:expMap          = @{}
+$script:charCaches    = @{}   # charName -> { Path, Position, Length, Exists, pE }
+$script:expCache      = New-LogCache "exp.log"
+$script:groupLines    = [System.Collections.Generic.List[string]]::new()
+$script:enemyLines    = [System.Collections.Generic.List[string]]::new()
+$script:pendingRedraw = $false
+$script:expMap        = @{}
 
 function Update-LogCache {
     param(
@@ -123,26 +125,51 @@ function Update-LogCache {
     }
 }
 
-function Update-GroupStatsCache {
-    Update-LogCache -Cache $script:groupStatsCache -OnLine {
-        param([string]$line)
-
-        if ($line -eq '---') {
-            $script:groupLines.Clear()
-            return
+function Update-AllCharCaches {
+    # Each stats_<Name>.log is written by exactly one TinTin++ process — no concurrent writes.
+    $files = Get-ChildItem "stats_*.log" -ErrorAction SilentlyContinue
+    if (-not $files) { return }
+    foreach ($f in $files) {
+        $charName = $f.BaseName -replace '^stats_', ''
+        if (-not $script:charCaches.ContainsKey($charName)) {
+            $script:charCaches[$charName] = @{ Path=$f.FullName; Position=0L; Length=0L; Exists=$false; pE=$false }
         }
-
-        if (-not [string]::IsNullOrWhiteSpace($line)) {
-            $script:groupLines.Add($line)
-        }
+        $cs  = $script:charCaches[$charName]
+        $fi  = Get-Item $cs.Path -ErrorAction SilentlyContinue
+        if (-not $fi) { $cs.Exists=$false; $cs.Position=0L; $cs.Length=0L; continue }
+        $len = [long]$fi.Length
+        if (-not $cs.Exists -or $len -lt $cs.Length) { $cs.Position = 0L }
+        if ($len -le $cs.Position) { $cs.Exists=$true; $cs.Length=$len; continue }
+        try {
+            $stream = [System.IO.File]::Open($cs.Path, [System.IO.FileMode]::Open, [System.IO.FileAccess]::Read, [System.IO.FileShare]::ReadWrite)
+            $stream.Seek($cs.Position, [System.IO.SeekOrigin]::Begin) | Out-Null
+            $rdr  = [System.IO.StreamReader]::new($stream, [System.Text.Encoding]::UTF8)
+            $line = $rdr.ReadLine()
+            while ($null -ne $line) {
+                if ($line -eq '+++') {
+                    $script:pendingRedraw = $true
+                } elseif ($line -eq '---') {
+                    $script:groupLines.Clear()
+                    $cs.pE = $false
+                } elseif ($line -eq '~~~') {
+                    $cs.pE = $true
+                    $script:enemyLines.Clear()
+                } elseif (-not [string]::IsNullOrWhiteSpace($line)) {
+                    if ($cs.pE) { $script:enemyLines.Add($line) }
+                    else        { $script:groupLines.Add($line) }
+                }
+                $line = $rdr.ReadLine()
+            }
+            $cs.Position = $stream.Position; $cs.Length = $len; $cs.Exists = $true
+            $rdr.Close()
+        } catch { }
     }
 }
 
 function Read-GroupStats {
-    Update-GroupStatsCache
+    Update-AllCharCaches
     if ($script:groupLines.Count -eq 0) { return @() }
 
-    # Deduplicate by name — keep last occurrence per member in case multiple sessions raced
     $seen    = @{}
     $ordered = [System.Collections.Generic.List[string]]::new()
     for ($i = $script:groupLines.Count - 1; $i -ge 0; $i--) {
@@ -153,6 +180,16 @@ function Read-GroupStats {
         }
     }
     return $ordered.ToArray()
+}
+
+function Read-EnemyStats {
+    $result = [System.Collections.Generic.List[string]]::new()
+    foreach ($line in $script:enemyLines) {
+        $p = $line -split '\|'
+        if ($p.Count -lt 5) { continue }
+        $result.Add("$($p[1])|$($p[2])|$($p[3])|$($p[4])")
+    }
+    return $result.ToArray()
 }
 
 function Format-Tnl($tnl) {
@@ -239,15 +276,51 @@ function Format-GroupStats {
                   "$ESC[90m[$mvA$mv$ESC[90m/$mmv]$ESC[90mV$tnlSuffixAnsi$RESET")
         if ($plain.Length -gt $maxLen) { $maxLen = $plain.Length }
     }
+
+    # Build enemy rows — Read-EnemyStats output: level|name|hp|mhp|reporters
+    $enemyEntries = Read-EnemyStats
+    $enemyParsed  = [System.Collections.Generic.List[hashtable]]::new()
+    $enemyNameW   = 0
+    foreach ($entry in $enemyEntries) {
+        if ([string]::IsNullOrWhiteSpace($entry)) { continue }
+        $p = $entry -split '\|'
+        if ($p.Count -lt 4) { continue }
+        $enemyParsed.Add(@{ lvl=$p[0]; name=$p[1]; hp=$p[2]; mhp=$p[3] })
+        if ($p[1].Length -gt $enemyNameW) { $enemyNameW = $p[1].Length }
+    }
+    $eWHp = $eWMhp = 0
+    foreach ($e in $enemyParsed) {
+        if ($e.hp.Length  -gt $eWHp)  { $eWHp  = $e.hp.Length }
+        if ($e.mhp.Length -gt $eWMhp) { $eWMhp = $e.mhp.Length }
+    }
+    $enemyRows = [System.Collections.Generic.List[string]]::new()
+    foreach ($e in $enemyParsed) {
+        $hpA          = Get-StatAnsi $e.hp $e.mhp
+        $hp           = $e.hp.PadLeft($eWHp);  $mhp = $e.mhp.PadLeft($eWMhp)
+        $pName        = $e.name.PadRight($enemyNameW)
+        $plain        = "[$($e.lvl.PadLeft(2))] $pName : [$hp/$mhp]H"
+        $enemyRows.Add("$ESC[90m[$ESC[91m$($e.lvl.PadLeft(2))$ESC[90m] $ESC[91m$pName$ESC[90m : " +
+                       "$ESC[90m[$hpA$hp$ESC[90m/$mhp]$ESC[90mH")
+        if ($plain.Length -gt $maxLen) { $maxLen = $plain.Length }
+    }
+
+    # Combine all output rows in order so last-row Append vs AppendLine is handled once
+    $allRows   = [System.Collections.Generic.List[string]]::new()
+    $allRows.AddRange($rows)
+    if ($enemyRows.Count -gt 0) {
+        $allRows.Add("$ESC[90m$("-" * $maxLen)$RESET")
+        $allRows.AddRange($enemyRows)
+    }
+
     $termHeight = [Console]::WindowHeight
-    $statsLines = 2 + $parsed.Count  # blank line + separator + N member rows
+    $statsLines = 2 + $allRows.Count  # blank line + separator + all data rows
     $statsRow   = [Math]::Max(1, $termHeight - $statsLines + 1)
     [void]$sb.Append("$ESC[${statsRow};1H")
     [void]$sb.AppendLine("")
     [void]$sb.AppendLine("$ESC[90m$("=" * $maxLen)$RESET")
-    for ($i = 0; $i -lt $rows.Count; $i++) {
-        if ($i -lt $rows.Count - 1) { [void]$sb.AppendLine($rows[$i]) }
-        else                        { [void]$sb.Append($rows[$i]) }
+    for ($i = 0; $i -lt $allRows.Count; $i++) {
+        if ($i -lt $allRows.Count - 1) { [void]$sb.AppendLine($allRows[$i]) }
+        else                           { [void]$sb.Append($allRows[$i]) }
     }
     return $sb.ToString()
 }
@@ -323,22 +396,21 @@ while (-not $logFile) {
     }
 }
 
-$reader       = Open-LogReader $logFile.FullName
-$buffer       = [System.Collections.Generic.List[string]]::new()
-$sf0 = Get-Item "group_stats.log" -ErrorAction SilentlyContinue
-$lastStatsTime = if ($sf0) { $sf0.LastWriteTime } else { [DateTime]::MinValue }
+$reader        = Open-LogReader $logFile.FullName
+$buffer        = [System.Collections.Generic.List[string]]::new()
 # Capture states:
 #   0 = idle
 #   1 = header seen, waiting for legend (line starting with '@')
 #   2 = legend seen, waiting for separator blank
 #   3 = separator blank seen, reading graphical rows
 #   4 = graphical rows seen — next blank line triggers immediate render
-$captureState = 0
-$lastCheck    = [DateTime]::Now
+$captureState  = 0
+$lastCheck     = [DateTime]::Now
 $lastStatsPoll = [DateTime]::MinValue
 
-Update-GroupStatsCache
+Update-AllCharCaches
 Update-ExpCache
+$script:pendingRedraw = $false   # don't double-render on startup
 
 Show-LastMap $reader
 
@@ -347,13 +419,13 @@ function Write-StatsOnly {
 }
 
 function Try-RefreshStats {
-    # Poll stats on a short cadence independent of map parsing state.
     if (([DateTime]::Now - $script:lastStatsPoll).TotalMilliseconds -lt 250) { return }
     $script:lastStatsPoll = [DateTime]::Now
 
-    $sf = Get-Item "group_stats.log" -ErrorAction SilentlyContinue
-    if ($sf -and $sf.LastWriteTime -gt $script:lastStatsTime) {
-        $script:lastStatsTime = $sf.LastWriteTime
+    # Drain new bytes from all char files; render only after +++ marks a complete snapshot.
+    Update-AllCharCaches
+    if ($script:pendingRedraw) {
+        $script:pendingRedraw = $false
         Write-StatsOnly
     }
 }
