@@ -298,19 +298,21 @@ function Format-GroupStats {
         $hpA          = Get-StatAnsi $e.hp $e.mhp
         $hp           = $e.hp.PadLeft($eWHp);  $mhp = $e.mhp.PadLeft($eWMhp)
         $pName        = $e.name.PadRight($enemyNameW)
-        $plain        = "[$($e.lvl.PadLeft(2))] $pName : [$hp/$mhp]H"
+        $pct          = try { [int]([double]$e.hp / [double]$e.mhp * 100) } catch { 0 }
+        $pctStr       = "$pct%"
+        $plain        = "[$($e.lvl.PadLeft(2))] $pName : [$hp/$mhp]H $pctStr"
         $enemyRows.Add("$ESC[90m[$ESC[91m$($e.lvl.PadLeft(2))$ESC[90m] $ESC[91m$pName$ESC[90m : " +
-                       "$ESC[90m[$hpA$hp$ESC[90m/$mhp]$ESC[90mH")
+                       "$ESC[90m[$hpA$hp$ESC[90m/$mhp]$ESC[90mH $hpA$pctStr$RESET")
         if ($plain.Length -gt $maxLen) { $maxLen = $plain.Length }
     }
 
-    # Combine all output rows in order so last-row Append vs AppendLine is handled once
+    # Enemies above, group members below so members stay bottom-aligned
     $allRows   = [System.Collections.Generic.List[string]]::new()
-    $allRows.AddRange($rows)
     if ($enemyRows.Count -gt 0) {
-        $allRows.Add("$ESC[90m$("-" * $maxLen)$RESET")
         $allRows.AddRange($enemyRows)
+        $allRows.Add("$ESC[90m$("-" * $maxLen)$RESET")
     }
+    $allRows.AddRange($rows)
 
     $termHeight = [Console]::WindowHeight
     $statsLines = 2 + $allRows.Count  # blank line + separator + all data rows
