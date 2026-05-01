@@ -4,7 +4,7 @@
 
 #nop ------------------ ALIASES ------------------
 #alias {rr} {
-    #nop TODO
+    #if {$lvl > 39} {smite};
 }
 
 #alias {fort} {sli 'aura of fort'; #variable {has_fort} {1};}
@@ -179,7 +179,6 @@
             whisper $leader @-@Y<< HEALING $lowest_name >> @n@y($lowest_hp/$lowest_mhp HP, @+@Y$lowest_pct%@n@y);
             heal $lowest_name;
             #variable heal_cooldown 1; #delay {3} {#variable heal_cooldown 0};
-            #delay {3} {_on_gmcp_group};
         };
     };
     #nop -- PASS 2: MV restore for any member (lowest priority) --;
@@ -193,7 +192,6 @@
             whisper $leader @-@C<< INVIGORATING $mname >> @n@c($mmv/$mmmv MV, @+@C$mv_pct%@n@c);
             sli 'sinful vigor' $mname;
             #variable sinvig_cooldown 1; #delay {3} {#variable sinvig_cooldown 0};
-            #if {"$mname" != "$me"} {#delay {3} {_on_gmcp_group}};
         };
         #math gi {$gi + 1};
     };
