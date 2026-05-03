@@ -400,12 +400,14 @@ while (-not $logFile) {
 
 $reader        = Open-LogReader $logFile.FullName
 $buffer        = [System.Collections.Generic.List[string]]::new()
+$pendingBlanks = [System.Collections.Generic.List[string]]::new()
 # Capture states:
 #   0 = idle
 #   1 = header seen, waiting for legend (line starting with '@')
 #   2 = legend seen, waiting for separator blank
-#   3 = separator blank seen, reading graphical rows
-#   4 = graphical rows seen — next blank line triggers immediate render
+#   3 = separator blank seen, waiting for first graphical row
+#   4 = in graphical rows — blank deferred to state 5
+#   5 = saw a blank mid-map — waiting to see if more map rows follow
 $captureState  = 0
 $lastCheck     = [DateTime]::Now
 $lastStatsPoll = [DateTime]::MinValue
@@ -459,6 +461,7 @@ while ($true) {
                 $logFile      = $newer
                 $reader       = Open-LogReader $logFile.FullName
                 $buffer.Clear()
+                $pendingBlanks.Clear()
                 $captureState = 0
                 Show-LastMap $reader
             }
@@ -493,12 +496,32 @@ while ($true) {
             }
         }
         4 {
-            # In graphical rows — blank line or prompt means map drawing is done; render now.
-            if ([string]::IsNullOrWhiteSpace($line) -or $line -match '^<\s*\d+H') {
+            # In graphical rows. Blank lines may be internal row spacing, so defer them.
+            if ($line -match '^<\s*\d+H') {
+                $captureState = 0
+                Publish-MapBuffer
+            } elseif ([string]::IsNullOrWhiteSpace($line)) {
+                $pendingBlanks.Clear()
+                $pendingBlanks.Add($line)
+                $captureState = 5
+            } else {
+                $buffer.Add($line)
+            }
+        }
+        5 {
+            # Deferred blank — decide if it's internal spacing or end of map.
+            if ([string]::IsNullOrWhiteSpace($line)) {
+                # Additional blank — keep accumulating.
+                $pendingBlanks.Add($line)
+            } elseif ($line -match '^<\s*\d+H' -or $line -match '[a-zA-Z]{2,}') {
+                # Prompt or non-map text — map ended before the blank(s); publish and reset.
                 $captureState = 0
                 Publish-MapBuffer
             } else {
+                # Another map row — the blank(s) were internal spacing; flush and continue.
+                foreach ($b in $pendingBlanks) { $buffer.Add($b) }
                 $buffer.Add($line)
+                $captureState = 4
             }
         }
     }

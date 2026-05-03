@@ -3,17 +3,15 @@
 #nop =====================================================
 
 #nop ------------------ ALIASES ------------------
-#alias {rr} {
-    #if {$lvl > 39} {smite};
-}
+#variable {heretic_combat_cd} {0}
+#alias {rr} {#if {$heretic_combat_cd == 0} {#if {$lvl < 35} {brand} {torment}; #variable heretic_combat_cd 1; #delay {10} {#variable heretic_combat_cd 0}}}
 
 #alias {fort} {sli 'aura of fort'; #variable {has_fort} {1};}
 #alias {sum %1} {#if {$lvl > 9} {sli 'summon' %1}}
 #alias {esc} {#if {$lvl > 16} {sli 'aura of escape'}}
 #alias {wyrm} {#if {$lvl > 49} {sli 'wyrm'}}
 #alias {sof} {#if {$lvl > 49} {sli 'shield of flames'}}
-#variable {hellquake_cd} {0}
-#alias {hellquake} {#if {$lvl > 44 && $hellquake_cd == 0} {sli 'hellquake'; #variable hellquake_cd 1; #delay {10} {#variable hellquake_cd 0}}}
+#alias {hellquake} {#if {$lvl > 44 && $heretic_combat_cd == 0} {sli 'hellquake'; #variable heretic_combat_cd 1; #delay {10} {#variable heretic_combat_cd 0}}}
 #alias {heal %1} {
     #format {__hl} {%l} {%1};
     #format {__hm} {%l} {$me};
@@ -152,9 +150,37 @@
 #variable {autoheal_on} {1}
 #variable {sinvig_cooldown} {0}
 #variable {heal_cooldown} {0}
+#variable {heal_focus} {}
+
+#nop Follow-up healer: re-checks heal_focus target after cooldown; chains until >= 80%
+#alias {_maybe_followup_heal} {
+    #if {"$heal_focus" == "" || !$autoheal_on} {#return};
+    #local focus_pct {101};
+    #local focus_hp  {0};
+    #local focus_mhp {0};
+    #local gi {1};
+    #while {$gi <= $gmcp[group][count]} {
+        #local mname {$gmcp[group][members][$gi][name]};
+        #if {"$mname" == "$heal_focus"} {
+            #local focus_hp  {$gmcp[group][members][$gi][info][hp]};
+            #local focus_mhp {$gmcp[group][members][$gi][info][mhp]};
+            #if {$focus_mhp > 0} {#math focus_pct {100 * $focus_hp / $focus_mhp}};
+        };
+        #math gi {$gi + 1};
+    };
+    #if {$focus_pct < 80} {
+        whisper $leader @-@R<< FOCUS HEAL $heal_focus >> @n@r($focus_hp/$focus_mhp HP, @+@R$focus_pct%@n@r);
+        heal $heal_focus;
+        #variable heal_cooldown 1; #delay {3} {#variable heal_cooldown 0; _maybe_followup_heal};
+    } {
+        #variable heal_focus {};
+    };
+}
+
 #alias {_on_gmcp_group} {
-    #nop -- PASS 1: Heal the lowest HP% group member (excluding self) --;
+    #nop -- PASS 1: AoE if 2+ OTHER members below threshold, else single heal --;
     #if {$autoheal_on && $heal_cooldown == 0 && $lvl > 24} {
+        #local below_count {0};
         #local lowest_pct  {101};
         #local lowest_name {};
         #local lowest_hp   {0};
@@ -162,23 +188,29 @@
         #local gi {1};
         #while {$gi <= $gmcp[group][count]} {
             #local mname {$gmcp[group][members][$gi][name]};
-            #if {"$mname" != "$me"} {
-                #local mhp  {$gmcp[group][members][$gi][info][hp]};
-                #local mmhp {$gmcp[group][members][$gi][info][mhp]};
-                #if {$mmhp > 0} {#math hp_pct {100 * $mhp / $mmhp}};
-                #if {$hp_pct < $lowest_pct} {
-                    #local lowest_pct  {$hp_pct};
-                    #local lowest_name {$mname};
-                    #local lowest_hp   {$mhp};
-                    #local lowest_mhp  {$mmhp};
-                };
+            #local mhp   {$gmcp[group][members][$gi][info][hp]};
+            #local mmhp  {$gmcp[group][members][$gi][info][mhp]};
+            #if {$mmhp > 0} {#math hp_pct {100 * $mhp / $mmhp}} {#local hp_pct {101}};
+            #if {$hp_pct < 85} {#math below_count {$below_count + 1}};
+            #if {"$mname" != "$me" && $hp_pct < $lowest_pct} {
+                #local lowest_pct  {$hp_pct};
+                #local lowest_name {$mname};
+                #local lowest_hp   {$mhp};
+                #local lowest_mhp  {$mmhp};
             };
             #math gi {$gi + 1};
         };
-        #if {$lowest_pct < 85 && "$lowest_name" != ""} {
+        #if {$below_count > 1 && $lvl > 34} {
+            #variable heal_focus {};
+            whisper $leader @-@G<< AURA OF REJUV ($below_count low) >> @n@g;
+            sli 'aura of rejuv';
+            #variable heal_cooldown 1; #delay {3} {#variable heal_cooldown 0};
+        };
+        #elseif {$lowest_pct < 85 && "$lowest_name" != ""} {
+            #variable heal_focus {$lowest_name};
             whisper $leader @-@Y<< HEALING $lowest_name >> @n@y($lowest_hp/$lowest_mhp HP, @+@Y$lowest_pct%@n@y);
             heal $lowest_name;
-            #variable heal_cooldown 1; #delay {3} {#variable heal_cooldown 0};
+            #variable heal_cooldown 1; #delay {3} {#variable heal_cooldown 0; _maybe_followup_heal};
         };
     };
     #nop -- PASS 2: MV restore for any member (lowest priority) --;
@@ -205,9 +237,8 @@
     sc;
 	emote gained a level and dances a celebratory jig.;
 	#delay {3} {
-		#if {$lvl < 24}     {set_combo brand goring goring};
-		#elseif {$lvl < 35} {set_combo brand goring goring};
-		#else               {set_combo torment brand goring };
+		#if     {$lvl < 35} {set_combo brand goring goring};
+		#else   {set_combo torment brand goring};
 	}
 }
 

@@ -9,9 +9,9 @@
 #ALIAS {rr} {
 	hyp mob;
 	whisper rancor o stalk mob;
-	#if {$lvl > 44}{impale mob};
-    #else {shackle mob};
 	#delay {1} {
+		#if {$lvl > 44}{impale mob};
+    	#else {shackle mob};
 		#if {$lvl <= 44}{assist rancor;ow assist mutiny};
 		ow assist rancor;
 		ow rr;
