@@ -115,15 +115,15 @@
 
 #nop ------------------ REMORT ACTIONS ------------------
 #action {But this will cost you %1 credits!!} {
-	tel ${leader} remort cost: %1 credits
+	whisper ${leader} remort cost: %1 credits
 }
 
 #action {The Remorter tells you, 'You need %1 silver discs in order to remort now.'} {
-	tel ${leader} remort needs: %1 silver discs
+	whisper ${leader} remort needs: %1 silver discs
 }
 
 #action {The Remorter tells you, 'There you are, kid.'} {
-	tel ${leader} remort complete
+	whisper ${leader} remort complete
 }
 
 #nop ------------------ CREDIT UTILITY ------------------

@@ -94,12 +94,12 @@
 }
 
 #nop ------------------ REMORT ACTIONS ------------------
-#action {%1 telepaths to you, 'remort cost: %2 credits'} {
+#action {%1 whispers to you, 'remort cost: %2 credits'} {
 	gcr %2 %1;
     tel %1 o mort;
 }
 
-#action {%1 telepaths to you, 'remort needs: %2 silver discs'} {
+#action {%1 whispers to you, 'remort needs: %2 silver discs'} {
     gather silver;
     give %2 silver %1;
     am;
