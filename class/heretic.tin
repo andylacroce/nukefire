@@ -132,12 +132,12 @@
         #math hp_pct {100 * $chp / $cmhp};
         #if {$hp_pct < 85 && $autoheal_on} {
             #if {$augury_cooldown == 0 && $lvl > 25} {
-                whisper $leader @-@Y<< HEALING $me >> @n@y($chp/$cmhp HP, @+@Y$hp_pct%@n@y);
+                tel $leader @-@Y<< HEALING $me >> @n@y($chp/$cmhp HP, @+@Y$hp_pct%@n@y);
                 sli 'augury' $me;
                 #variable augury_cooldown 1; #delay {3} {#variable augury_cooldown 0};
             };
             #elseif {$grows_cooldown == 0 && $lvl <= 25} {
-                whisper $leader @-@C<< GROW SCAR $me >> @n@c($chp/$cmhp HP, @+@C$hp_pct%@n@c);
+                tel $leader @-@C<< GROW SCAR $me >> @n@c($chp/$cmhp HP, @+@C$hp_pct%@n@c);
                 grows;
                 #variable grows_cooldown 1; #delay {5} {#variable grows_cooldown 0};
             };
@@ -169,7 +169,7 @@
         #math gi {$gi + 1};
     };
     #if {$focus_pct < 80} {
-        whisper $leader @-@R<< FOCUS HEAL $heal_focus >> @n@r($focus_hp/$focus_mhp HP, @+@R$focus_pct%@n@r);
+        tel $leader @-@R<< FOCUS HEAL $heal_focus >> @n@r($focus_hp/$focus_mhp HP, @+@R$focus_pct%@n@r);
         heal $heal_focus;
         #variable heal_cooldown 1; #delay {3} {#variable heal_cooldown 0; _maybe_followup_heal};
     } {
@@ -202,13 +202,13 @@
         };
         #if {$below_count > 1 && $lvl > 34} {
             #variable heal_focus {};
-            whisper $leader @-@G<< AURA OF REJUV ($below_count low) >> @n@g;
+            tel $leader @-@G<< AURA OF REJUV ($below_count low) >> @n@g;
             sli 'aura of rejuv';
             #variable heal_cooldown 1; #delay {3} {#variable heal_cooldown 0};
         };
         #elseif {$lowest_pct < 85 && "$lowest_name" != ""} {
             #variable heal_focus {$lowest_name};
-            whisper $leader @-@Y<< HEALING $lowest_name >> @n@y($lowest_hp/$lowest_mhp HP, @+@Y$lowest_pct%@n@y);
+            tel $leader @-@Y<< HEALING $lowest_name >> @n@y($lowest_hp/$lowest_mhp HP, @+@Y$lowest_pct%@n@y);
             heal $lowest_name;
             #variable heal_cooldown 1; #delay {3} {#variable heal_cooldown 0; _maybe_followup_heal};
         };
@@ -221,7 +221,7 @@
         #local mmmv  {$gmcp[group][members][$gi][info][mmv]};
         #if {$mmmv > 0} {#math mv_pct {100 * $mmv / $mmmv}};
         #if {$mv_pct < 85 && $lvl > 17 && $autoheal_on && $sinvig_cooldown == 0} {
-            whisper $leader @-@C<< INVIGORATING $mname >> @n@c($mmv/$mmmv MV, @+@C$mv_pct%@n@c);
+            tel $leader @-@C<< INVIGORATING $mname >> @n@c($mmv/$mmmv MV, @+@C$mv_pct%@n@c);
             sli 'sinful vigor' $mname;
             #variable sinvig_cooldown 1; #delay {3} {#variable sinvig_cooldown 0};
         };

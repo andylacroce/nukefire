@@ -96,7 +96,6 @@
 #nop ------------------ LEADER ACTIONS ------------------
 #action {${leader}'s form shimmers with eldritch power as he vanishes beyond mortal planes!} {recall}
 #action {${leader} telepaths to you, 'o %*'} {%1}
-#action {${leader} whispers to you, 'o %*'} {%1}
 
 #nop ------------------ STATUS REPORTING ------------------
 #action {[ Remorts:    %1 ]} {
@@ -111,20 +110,20 @@
 #action {[ Class Remorts:]\n%*\n} {
 	#variable {class_remorts} {%1};
 	#replace {class_remorts} {{ }} {};
-	#delay {.5} {whisper ${leader} @BLvl: $lvl || $exp_to_level || Class Remorts: $class_remorts || Total Remorts: $total_remorts || DPS: $dps};
+	#delay {.5} {tel ${leader} @BLvl: $lvl || $exp_to_level || Class Remorts: $class_remorts || Total Remorts: $total_remorts || DPS: $dps};
 }
 
 #nop ------------------ REMORT ACTIONS ------------------
 #action {But this will cost you %1 credits!!} {
-	whisper ${leader} remort cost: %1 credits
+	tel ${leader} remort cost: %1 credits
 }
 
 #action {The Remorter tells you, 'You need %1 silver discs in order to remort now.'} {
-	whisper ${leader} remort needs: %1 silver discs
+	tel ${leader} remort needs: %1 silver discs
 }
 
 #action {The Remorter tells you, 'There you are, kid.'} {
-	whisper ${leader} remort complete
+	tel ${leader} remort complete
 }
 
 #nop ------------------ CREDIT UTILITY ------------------
