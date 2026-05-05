@@ -66,6 +66,38 @@
 #action {You receive %1 experience points.} {_wolfman_on_xp}
 #action {You can't gain anymore experience.} {_wolfman_on_xp}
 
+#nop ------------------ FEAST TOGGLE ------------------
+#variable {feast_on} {1};
+
+#class feast open
+	#action {You receive %1 experience points.} {
+		#send {feast corpse};
+	}
+	#action {You can't gain anymore experience.} {
+		#send {feast corpse};
+	}
+#class feast close
+#if {!$feast_on} {#class {feast} {clear}}
+
+#alias {feast_on} {
+	#class {feast} {open};
+	#action {You receive %%1 experience points.} {#send {feast corpse};};
+	#action {You can't gain anymore experience.} {#send {feast corpse};};
+	#class {feast} {close};
+	#variable {feast_on} {1};
+	#showme {Feast ON};
+	#send {}
+}
+#alias {feast_off} {
+	#variable {feast_on} {0};
+	#class {feast} {clear};
+	#showme {Feast OFF};
+	#send {}
+}
+#alias {feast} {
+	#if {$feast_on} {feast_off} {feast_on}
+}
+
 #nop ------------------ GROW SCAR: GMCP-BASED ------------------
 #variable {grows_cooldown} {0}
 #variable {autoheal_on} {1}
