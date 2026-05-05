@@ -11,20 +11,20 @@
 #nop ------------------ ALIASES ------------------
 #macro {[} {
     hyp mob;
-    tel rancor o stalk mob;
+    whisper rancor o stalk mob;
     #if {$lvl > 49} {sli 'rot'};
     #elseif {$lvl > 39} {shred};
-    tel rancor o rage;
-    tel prodigy o chain;
-    tel haenym o hellquake;
+    whisper rancor o rage;
+    whisper prodigy o chain;
+    whisper haenym o hellquake;
     #if {$lvl > 39} {shred};
 }
 
 #macro {]} {
-    tel rancor o stalk mob;
-    tel rancor o rage;
-    tel prodigy o chain;
-    tel haenym o hellquake;
+    whisper rancor o stalk mob;
+    whisper rancor o rage;
+    whisper prodigy o chain;
+    whisper haenym o hellquake;
 }
 
 #alias {otf %*} {
@@ -33,37 +33,43 @@
     };
 }
 
+#alias {ow %*} {
+    #foreach {$followers[%*]} {follower} {
+        #if {"$follower" != "$me"} {whisper $follower o %1};
+    };
+}
+
 #alias {sum %1} {
-    tel haenym o sum %1;
+    whisper haenym o sum %1;
 }
 
 #alias {silv} {
-    otf gather silver;
-    otf give all.silver ${leader};
+    ow gather silver;
+    ow give all.silver ${leader};
 }
 
 #alias {cred} {
-    otf cred;
+    ow cred;
 }
 
 #alias {gam} {
-    sc;#delay {.5} {otf give all ${leader};silv;cred};
+    sc;#delay {.5} {ow give all ${leader};silv;cred};
 }
 
 #alias {seq} {
-    otf snapeq;
+    ow snapeq;
     snapeq;
 }
 
 #alias {sc} {
-    otf dps;
-    otf sc;
+    ow dps;
+    ow sc;
     dps;
     score;
 }
 
 #alias {af} {
-    otf afx;
+    ow afx;
     afx;
 }
 
@@ -96,14 +102,14 @@
 #nop ------------------ REMORT ACTIONS ------------------
 #action {%1 whispers to you, 'remort cost: %2 credits'} {
 	gcr %2 %1;
-    tel %1 o mort;
+    whisper %1 o mort;
 }
 
 #action {%1 whispers to you, 'remort needs: %2 silver discs'} {
     gather silver;
     give %2 silver %1;
     am;
-    tel %1 o mort;
+    whisper %1 o mort;
 }
 
 #action {But this will cost you %1 credits!!} {

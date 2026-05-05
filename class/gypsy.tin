@@ -8,13 +8,13 @@
 #ALIAS {aaa} {#if {$lvl > 49}{sli 'rot'};shred}
 #ALIAS {rr} {
 	hyp mob;
-	tel rancor o stalk mob;
+	whisper rancor o stalk mob;
 	#delay {1} {
 		#if {$lvl > 44}{impale mob};
     	#else {shackle mob};
-		#if {$lvl <= 44}{assist rancor;otf assist mutiny};
-		otf assist rancor;
-		otf rr;
+		#if {$lvl <= 44}{assist rancor;ow assist mutiny};
+		ow assist rancor;
+		ow rr;
 		#if {$lvl > 39}{bgrow};
 		#if {$lvl > 14}{mysticveil};
 		#if {$lvl > 44}{vtwist};

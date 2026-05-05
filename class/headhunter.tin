@@ -87,8 +87,8 @@
 }
 
 #nop ------------------ RECON TRACKING ------------------
-#action {You are now tracking %*.} {tel $leader Currently tracking: %1} 
-#action {TARGET: %* | GPS LINK: ACTIVE | DIRECTION: %2} {tel $leader The target, %1, is %2.}
+#action {You are now tracking %*.} {whisper $leader Currently tracking: %1} 
+#action {TARGET: %* | GPS LINK: ACTIVE | DIRECTION: %2} {whisper $leader The target, %1, is %2.}
 
 #nop ------------------ SELFREPAIR + GROW SCAR: GMCP-BASED ------------------
 #variable {repair_cooldown} {0}
@@ -100,13 +100,13 @@
 	#if {$cmhp > 0} {
 		#math hp_pct {100 * $chp / $cmhp};
 		#if {$hp_pct < 85 && $repair_cooldown == 0 && $autoheal_on} {
-			tel $leader @-@C<< SELFREPAIR $me >> @n@c($chp/$cmhp HP, @+@C$hp_pct%@n@c);
+			whisper $leader @-@C<< SELFREPAIR $me >> @n@c($chp/$cmhp HP, @+@C$hp_pct%@n@c);
 			selfrepair;
 			#variable {repair_cooldown} {1};
 			#delay {3} {#variable {repair_cooldown} {0};};
 		};
 		#if {$hp_pct < 50 && $grows_cooldown == 0 && $autoheal_on} {
-			tel $leader @-@C<< GROW SCAR $me >> @n@c($chp/$cmhp HP, @+@C$hp_pct%@n@c);
+			whisper $leader @-@C<< GROW SCAR $me >> @n@c($chp/$cmhp HP, @+@C$hp_pct%@n@c);
 			grows;
 			#variable {grows_cooldown} {1};
 			#delay {5} {#variable {grows_cooldown} {0};};

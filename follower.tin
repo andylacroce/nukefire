@@ -96,6 +96,7 @@
 #nop ------------------ LEADER ACTIONS ------------------
 #action {${leader}'s form shimmers with eldritch power as he vanishes beyond mortal planes!} {recall}
 #action {${leader} telepaths to you, 'o %*'} {%1}
+#action {${leader} whispers to you, 'o %*'} {%1}
 
 #nop ------------------ STATUS REPORTING ------------------
 #action {[ Remorts:    %1 ]} {
@@ -110,7 +111,7 @@
 #action {[ Class Remorts:]\n%*\n} {
 	#variable {class_remorts} {%1};
 	#replace {class_remorts} {{ }} {};
-	#delay {.5} {tel ${leader} @BLvl: $lvl || $exp_to_level || Class Remorts: $class_remorts || Total Remorts: $total_remorts || DPS: $dps};
+	#delay {.5} {whisper ${leader} @BLvl: $lvl || $exp_to_level || Class Remorts: $class_remorts || Total Remorts: $total_remorts || DPS: $dps};
 }
 
 #nop ------------------ REMORT ACTIONS ------------------
