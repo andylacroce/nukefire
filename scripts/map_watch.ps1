@@ -241,7 +241,8 @@ function Format-GroupStats {
         if ($p.Count -lt 8) { continue }
         $raw    = if ($expMap.ContainsKey($p[1])) { $expMap[$p[1]] } else { '' }
         $tnlStr = if ($raw) { Format-Tnl $raw } else { '' }
-        $parsed.Add(@{ lvl=$p[0]; name=$p[1]; hp=$p[2]; mhp=$p[3]; mn=$p[4]; mmn=$p[5]; mv=$p[6]; mmv=$p[7]; tnlStr=$tnlStr })
+        $here   = if ($p.Count -ge 9) { $p[8] } else { '1' }
+        $parsed.Add(@{ lvl=$p[0]; name=$p[1]; hp=$p[2]; mhp=$p[3]; mn=$p[4]; mmn=$p[5]; mv=$p[6]; mmv=$p[7]; tnlStr=$tnlStr; here=$here })
         if ($p[1].Length -gt $nameWidth) { $nameWidth = $p[1].Length }
     }
     $wHp = $wMhp = $wMn = $wMmn = $wMv = $wMmv = $wTnl = 0
@@ -261,7 +262,7 @@ function Format-GroupStats {
         $hpA   = Get-StatAnsi $m.hp  $m.mhp
         $mnA   = Get-StatAnsi $m.mn  $m.mmn
         $mvA   = Get-StatAnsi $m.mv  $m.mmv
-        $nameA = if ((Get-NameColor $m.name) -eq 'Cyan') { "$ESC[96m" } else { "$ESC[37m" }
+        $nameA = if ($m.here -ne '1') { "$ESC[91m" } elseif ((Get-NameColor $m.name) -eq 'Cyan') { "$ESC[96m" } else { "$ESC[37m" }
         $hp  = $m.hp.PadLeft($wHp);   $mhp = $m.mhp.PadLeft($wMhp)
         $mn  = $m.mn.PadLeft($wMn);   $mmn = $m.mmn.PadLeft($wMmn)
         $mv  = $m.mv.PadLeft($wMv);   $mmv = $m.mmv.PadLeft($wMmv)
@@ -367,7 +368,7 @@ function Show-LastMap($reader) {
     }
 }
 
-function Render-MapAndStats {
+function Show-MapAndStats {
     if ($null -eq $script:lastMapLines) { return }
     Write-Host ($HIDE + (Format-ColorMap $script:lastMapLines) + (Format-GroupStats) + $SHOW) -NoNewline
 }
@@ -383,7 +384,7 @@ function Publish-MapBuffer {
 
     if ($buffer.Count -gt 0) {
         $script:lastMapLines = $buffer.ToArray()
-        Render-MapAndStats
+        Show-MapAndStats
     }
 }
 
@@ -419,10 +420,10 @@ $script:pendingRedraw = $false   # don't double-render on startup
 Show-LastMap $reader
 
 function Write-StatsOnly {
-    Render-MapAndStats
+    Show-MapAndStats
 }
 
-function Try-RefreshStats {
+function Invoke-RefreshStats {
     if (([DateTime]::Now - $script:lastStatsPoll).TotalMilliseconds -lt 250) { return }
     $script:lastStatsPoll = [DateTime]::Now
 
@@ -447,7 +448,7 @@ function Write-MapBuffer {
 }
 
 while ($true) {
-    Try-RefreshStats
+    Invoke-RefreshStats
 
     $line = $reader.ReadLine()
     if ($null -eq $line) {

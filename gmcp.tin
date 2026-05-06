@@ -40,7 +40,7 @@
     #if {$gcount > 0} {
         #local gi {1};
         #while {$gi <= $gcount} {
-            #if {$gmcp_debug} {#showme {GMCP member: $gmcp[group][members][$gi][name] lvl $gmcp[group][members][$gi][info][lvl] hp $gmcp[group][members][$gi][info][hp]/$gmcp[group][members][$gi][info][mhp] mn $gmcp[group][members][$gi][info][mn]/$gmcp[group][members][$gi][info][mmn] mv $gmcp[group][members][$gi][info][mv]/$gmcp[group][members][$gi][info][mmv]}};
+            #if {$gmcp_debug} {#showme {GMCP member: $gmcp[group][members][$gi][name] lvl $gmcp[group][members][$gi][info][lvl] hp $gmcp[group][members][$gi][info][hp]/$gmcp[group][members][$gi][info][mhp] mn $gmcp[group][members][$gi][info][mn]/$gmcp[group][members][$gi][info][mmn] mv $gmcp[group][members][$gi][info][mv]/$gmcp[group][members][$gi][info][mmv] here $gmcp[group][members][$gi][info][here]}};
             #math gi {$gi + 1};
         };
     };
@@ -105,7 +105,7 @@
         #line log {${_fn}} {---};
         #local _gi {1};
         #while {$_gi <= $_gc} {
-            #local _gs {$gmcp[group][members][$_gi][info][lvl]|$gmcp[group][members][$_gi][name]|$gmcp[group][members][$_gi][info][hp]|$gmcp[group][members][$_gi][info][mhp]|$gmcp[group][members][$_gi][info][mn]|$gmcp[group][members][$_gi][info][mmn]|$gmcp[group][members][$_gi][info][mv]|$gmcp[group][members][$_gi][info][mmv]};
+            #local _gs {$gmcp[group][members][$_gi][info][lvl]|$gmcp[group][members][$_gi][name]|$gmcp[group][members][$_gi][info][hp]|$gmcp[group][members][$_gi][info][mhp]|$gmcp[group][members][$_gi][info][mn]|$gmcp[group][members][$_gi][info][mmn]|$gmcp[group][members][$_gi][info][mv]|$gmcp[group][members][$_gi][info][mmv]|$gmcp[group][members][$_gi][info][here]};
             #line log {${_fn}} {${_gs}};
             #math _gi {$_gi + 1};
         };
