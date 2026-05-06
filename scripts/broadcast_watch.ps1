@@ -28,5 +28,10 @@ Get-Content broadcast.log -Wait -Tail 500 | ForEach-Object {
         Write-Host '[ DCC SYSTEM ] ' -ForegroundColor Red -NoNewline
         Write-Host $msg -ForegroundColor White
         Write-Host -NoNewline "`a"
+    } elseif ($line -match '^\[[\d/]+ [\d:]+\] Skynet\(TM\) (.+)$') {
+        $msg = $Matches[1].Trim()
+        Write-Host 'Skynet(TM) ' -ForegroundColor DarkYellow -NoNewline
+        Write-Host $msg -ForegroundColor White
+        Write-Host -NoNewline "`a"
     }
 }
