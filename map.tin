@@ -1,0 +1,120 @@
+#nop =====================================================
+#nop GMCP MAPPER — based on official TinTin++ GMCP script
+#nop https://tintin.mudhalla.net/scripts/gmcp.php
+#nop
+#nop MUD room vnums are used directly as TinTin++ room IDs.
+#nop #map goto {vnum} {dig} creates/navigates to that exact vnum.
+#nop #map dig {dir} {vnum}  links exits, creating dest rooms if new.
+#nop Only active for the leader (not $is_follower).
+#nop Map file: nukefire/maps/nukefire.map
+#nop =====================================================
+
+#variable map_enabled {1}
+#variable map_loaded  {0}
+#variable map_debug   {0}
+
+#nop ---- Initialization ----
+
+#alias _map_init {
+    #if {$is_follower} {
+        #showme {MAP: Follower — mapping disabled};
+        #return;
+    };
+    #map create {100000};
+    #nop Anchor cursor at room 1 before any rooms are visited;
+    #map goto {1};
+    _map_colors;
+    #line ignore {#map read {nukefire/maps/nukefire.map}};
+    #variable map_loaded {1};
+    #showme {MAP: Ready};
+}
+
+#alias _map_colors {
+    #nop <xyz>: x=attribute (1=bold), y=fg (0=blk 2=grn 3=yel 6=cya), z=bg (8=skip);
+    #map color {room}       {<168>};
+    #map color {exit}       {<108>};
+    #map color {path}       {<128>};
+    #map color {user}       {<138>};
+    #map color {background} {<088>};
+    #map color {fog}        {<108>};
+}
+
+#nop ---- Core mapping logic ----
+#nop  Called from room.info GMCP event in gmcp.tin.
+#nop  Follows the official TinTin++ GMCP automapper pattern exactly.
+
+#alias _map_on_room_info {
+    #if {$is_follower || !$map_enabled || !$map_loaded} {#return};
+
+    #local _vnum {$gmcp[room][info][num]};
+    #if {"$_vnum" == "" || $_vnum == -1} {#return};
+
+    #nop Go to room at this exact vnum, creating it if first visit;
+    #map goto {$_vnum} {dig};
+
+    #nop Only set properties on first visit (roomarea will be empty for new rooms);
+    #map get roomarea {_area_check};
+    #if {"$_area_check" == ""} {
+        #map set roomname  {$gmcp[room][info][name]};
+        #map set roomterr  {$gmcp[room][info][terrain]};
+        #map set roomarea  {$gmcp[room][info][area]};
+        #map set roomcolor {<168>};
+    };
+
+    #if {$map_debug} {
+        #showme {MAP room $_vnum: exits=$gmcp[room][info][exits]};
+    };
+
+    #nop Link exits — skip invalid destinations, only dig new exits;
+    #foreach {*gmcp[room][info][exits][]} {_exit} {
+        #local _dest {$gmcp[room][info][exits][$_exit]};
+        #nop Skip non-numeric or zero/negative destinations (closed doors, flags);
+        #if {$_dest <= 0} {#continue};
+        #map get {roomexit} {_existing};
+        #if {&_existing[$_exit] == 0} {
+            #map get {roomvnum} {_check} {$_dest};
+            #map dig {$_exit} {$_dest};
+            #if {$map_debug} {
+                #showme {MAP   dig $_exit→$_dest (known=$_check)};
+            };
+        };
+    };
+}
+
+#nop ---- Save ----
+
+#alias map_save {
+    #if {!$map_loaded} {#return};
+    #map write {nukefire/maps/nukefire.map};
+    #showme {MAP: Saved};
+}
+
+#nop ---- User commands ----
+
+#alias map_on    {#variable map_enabled {1}; #showme {MAP: enabled}}
+#alias map_off   {#variable map_enabled {0}; #showme {MAP: disabled}}
+#alias map_show  {#map map}
+#alias map_areas {#map list}
+#alias map_find  {#map find {%*}}
+#alias map_where {#showme {MAP: room $gmcp[room][info][num] — $gmcp[room][info][name]}}
+#alias map_debug_toggle {
+    #math map_debug {1 - $map_debug};
+    #if {$map_debug} {#showme {MAP debug: ON}} {#showme {MAP debug: OFF}};
+}
+
+#nop Navigate to a room by MUD vnum — vnums are used directly as TinTin++ room IDs;
+#alias map_goto  {#map run {%1}}
+
+#nop ---- Auto-save every 5 min and on disconnect ----
+
+#ticker {map_autosave} {
+    #if {!$is_follower && $map_enabled && $map_loaded} {
+        #map write {nukefire/maps/nukefire.map};
+    };
+} {300}
+
+#EVENT {SESSION DISCONNECTED} {
+    #if {!$is_follower && $map_enabled && $map_loaded} {
+        #map write {nukefire/maps/nukefire.map};
+    };
+}
