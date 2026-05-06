@@ -245,15 +245,12 @@ function Format-GroupStats {
         $parsed.Add(@{ lvl=$p[0]; name=$p[1]; hp=$p[2]; mhp=$p[3]; mn=$p[4]; mmn=$p[5]; mv=$p[6]; mmv=$p[7]; tnlStr=$tnlStr; here=$here })
         if ($p[1].Length -gt $nameWidth) { $nameWidth = $p[1].Length }
     }
-    $wHp = $wMhp = $wMn = $wMmn = $wMv = $wMmv = $wTnl = 0
+    $wTnl = 0
     foreach ($m in $parsed) {
-        if ($m.hp.Length     -gt $wHp)  { $wHp  = $m.hp.Length }
-        if ($m.mhp.Length    -gt $wMhp) { $wMhp = $m.mhp.Length }
-        if ($m.mn.Length     -gt $wMn)  { $wMn  = $m.mn.Length }
-        if ($m.mmn.Length    -gt $wMmn) { $wMmn = $m.mmn.Length }
-        if ($m.mv.Length     -gt $wMv)  { $wMv  = $m.mv.Length }
-        if ($m.mmv.Length    -gt $wMmv) { $wMmv = $m.mmv.Length }
         if ($m.tnlStr.Length -gt $wTnl) { $wTnl = $m.tnlStr.Length }
+        $m.hpPct = try { [int]([double]$m.hp / [double]$m.mhp * 100) } catch { 0 }
+        $m.mnPct = try { [int]([double]$m.mn / [double]$m.mmn * 100) } catch { 0 }
+        $m.mvPct = try { [int]([double]$m.mv / [double]$m.mmv * 100) } catch { 0 }
     }
     $sb     = [System.Text.StringBuilder]::new()
     $maxLen = 0
@@ -263,18 +260,18 @@ function Format-GroupStats {
         $mnA   = Get-StatAnsi $m.mn  $m.mmn
         $mvA   = Get-StatAnsi $m.mv  $m.mmv
         $nameA = if ($m.here -ne '1') { "$ESC[91m" } elseif ((Get-NameColor $m.name) -eq 'Cyan') { "$ESC[96m" } else { "$ESC[37m" }
-        $hp  = $m.hp.PadLeft($wHp);   $mhp = $m.mhp.PadLeft($wMhp)
-        $mn  = $m.mn.PadLeft($wMn);   $mmn = $m.mmn.PadLeft($wMmn)
-        $mv  = $m.mv.PadLeft($wMv);   $mmv = $m.mmv.PadLeft($wMmv)
+        $hpS   = "$($m.hpPct)%".PadLeft(4)
+        $mnS   = "$($m.mnPct)%".PadLeft(4)
+        $mvS   = "$($m.mvPct)%".PadLeft(4)
         $tnlStr        = $m.tnlStr.PadRight($wTnl)
         $tnlSuffix     = if ($wTnl -gt 0) { " [$tnlStr]T" }      else { '' }
         $tnlSuffixAnsi = if ($wTnl -gt 0) { " $ESC[90m[$ESC[36m$tnlStr$ESC[90m]$ESC[36mT$RESET" } else { '' }
         $pName = $m.name.PadRight($nameWidth)
-        $plain = "[$($m.lvl.PadLeft(2))] $pName : [$hp/$mhp]H [$mn/$mmn]M [$mv/$mmv]V$tnlSuffix"
+        $plain = "[$($m.lvl.PadLeft(2))] $pName : [$hpS]H [$mnS]M [$mvS]V$tnlSuffix"
         $rows.Add("$ESC[90m[$ESC[37m$($m.lvl.PadLeft(2))$ESC[90m] $nameA$pName$ESC[90m : " +
-                  "$ESC[90m[$hpA$hp$ESC[90m/$mhp]$ESC[90mH " +
-                  "$ESC[90m[$mnA$mn$ESC[90m/$mmn]$ESC[90mM " +
-                  "$ESC[90m[$mvA$mv$ESC[90m/$mmv]$ESC[90mV$tnlSuffixAnsi$RESET")
+                  "$ESC[90m[$hpA$hpS$ESC[90m]$ESC[90mH " +
+                  "$ESC[90m[$mnA$mnS$ESC[90m]$ESC[90mM " +
+                  "$ESC[90m[$mvA$mvS$ESC[90m]$ESC[90mV$tnlSuffixAnsi$RESET")
         if ($plain.Length -gt $maxLen) { $maxLen = $plain.Length }
     }
 
