@@ -16,7 +16,7 @@ function Get-NameColor($name) {
     if ($known -contains $name.ToLower()) { 'Cyan' } else { 'DarkGray' }
 }
 
-function Strip-Quotes($t) {
+function Remove-Quotes($t) {
     $t = $t.Trim()
     if ($t.StartsWith("'") -and $t.EndsWith("'")) { $t.Substring(1, $t.Length - 2) } else { $t }
 }
@@ -39,21 +39,21 @@ function Write-ChannelLine($file, $line) {
 
     if ($file -eq 'gossip.log') {
         if ($line -match '^\[[\d/]+ [\d:]+\] \[([^\]]+)\] You gossip, (.+)$') {
-            Write-Tag $tag $color; Write-Speaker $Matches[1].Trim("'"); Write-Host (Strip-Quotes $Matches[2]) -ForegroundColor White; return
+            Write-Tag $tag $color; Write-Speaker $Matches[1].Trim("'"); Write-Host (Remove-Quotes $Matches[2]) -ForegroundColor White; return
         }
         if ($line -match '^\[[\d/]+ [\d:]+\] (.+?) gossips, (.+)$') {
-            Write-Tag $tag $color; Write-Speaker $Matches[1].Trim("'"); Write-Host (Strip-Quotes $Matches[2]) -ForegroundColor White; return
+            Write-Tag $tag $color; Write-Speaker $Matches[1].Trim("'"); Write-Host (Remove-Quotes $Matches[2]) -ForegroundColor White; return
         }
     } elseif ($file -eq 'auction.log') {
         if ($line -match '^\[[\d/]+ [\d:]+\] \[([^\]]+)\] You auction, (.+)$') {
-            Write-Tag $tag $color; Write-Speaker $Matches[1].Trim("'"); Write-Host (Strip-Quotes $Matches[2]) -ForegroundColor White; return
+            Write-Tag $tag $color; Write-Speaker $Matches[1].Trim("'"); Write-Host (Remove-Quotes $Matches[2]) -ForegroundColor White; return
         }
         if ($line -match '^\[[\d/]+ [\d:]+\] (.+?) auctions, (.+)$') {
-            Write-Tag $tag $color; Write-Speaker $Matches[1].Trim("'"); Write-Host (Strip-Quotes $Matches[2]) -ForegroundColor White; return
+            Write-Tag $tag $color; Write-Speaker $Matches[1].Trim("'"); Write-Host (Remove-Quotes $Matches[2]) -ForegroundColor White; return
         }
     } elseif ($file -eq 'telepath.log') {
         if ($line -match '^\[[\d/]+ [\d:]+\] \[([^\]]+)\] You telepath ([^,]+), (.+)$') {
-            $from = $Matches[1].Trim().Trim("'"); $to = $Matches[2].Trim().Trim("'"); $text = Strip-Quotes $Matches[3]
+            $from = $Matches[1].Trim().Trim("'"); $to = $Matches[2].Trim().Trim("'"); $text = Remove-Quotes $Matches[3]
             Write-Tag $tag $color
             Write-Host '(' -ForegroundColor DarkGray -NoNewline
             Write-Host $from -ForegroundColor (Get-NameColor $from) -NoNewline
@@ -63,7 +63,7 @@ function Write-ChannelLine($file, $line) {
             Write-Host $text -ForegroundColor White; return
         }
         if ($line -match '^\[[\d/]+ [\d:]+\] \[([^\]]+)\] ([^,]+) telepaths to you, (.+)$') {
-            $from = $Matches[2].Trim().Trim("'"); $to = $Matches[1].Trim().Trim("'"); $text = Strip-Quotes $Matches[3]
+            $from = $Matches[2].Trim().Trim("'"); $to = $Matches[1].Trim().Trim("'"); $text = Remove-Quotes $Matches[3]
             Write-Tag $tag $color
             Write-Host '(' -ForegroundColor DarkGray -NoNewline
             Write-Host $from -ForegroundColor (Get-NameColor $from) -NoNewline
@@ -90,10 +90,10 @@ function Write-ChannelLine($file, $line) {
         }
     } elseif ($file -eq 'group.log') {
         if ($line -match '^\[[\d/]+ [\d:]+\] \[([^\]]+)\] You group-say, (.+)$') {
-            Write-Tag $tag $color; Write-Speaker $Matches[1].Trim("'"); Write-Host (Strip-Quotes $Matches[2]) -ForegroundColor White; return
+            Write-Tag $tag $color; Write-Speaker $Matches[1].Trim("'"); Write-Host (Remove-Quotes $Matches[2]) -ForegroundColor White; return
         }
         if ($line -match '^\[[\d/]+ [\d:]+\] \[Group\] (.+?) says, (.+)$') {
-            Write-Tag $tag $color; Write-Speaker $Matches[1].Trim("'"); Write-Host (Strip-Quotes $Matches[2]) -ForegroundColor White; return
+            Write-Tag $tag $color; Write-Speaker $Matches[1].Trim("'"); Write-Host (Remove-Quotes $Matches[2]) -ForegroundColor White; return
         }
     }
 }
