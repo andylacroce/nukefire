@@ -100,11 +100,18 @@ $TTExe = if ($NukeTinTinExe) { $NukeTinTinExe } else { Join-Path $BIN "tt++.exe"
 $startDelaySeconds = if ($null -ne $NukeStartDelaySeconds) { [int]$NukeStartDelaySeconds } else { 3 }
 
 $mapWatchScript      = Join-Path $NUKE "scripts\map_watch.ps1"
+$allWatchScript       = Join-Path $NUKE "scripts\all_watch.ps1"
 $gossipWatchScript    = Join-Path $NUKE "scripts\gossip_watch.ps1"
 $telepathWatchScript  = Join-Path $NUKE "scripts\telepath_watch.ps1"
 $auctionWatchScript   = Join-Path $NUKE "scripts\auction_watch.ps1"
 $groupWatchScript     = Join-Path $NUKE "scripts\group_watch.ps1"
 $broadcastWatchScript = Join-Path $NUKE "scripts\broadcast_watch.ps1"
+
+# Clear channel logs at session start so each run begins fresh
+foreach ($logFile in @('gossip.log', 'auction.log', 'telepath.log', 'broadcast.log', 'group.log')) {
+    $path = Join-Path $LOGS $logFile
+    if (Test-Path $path) { Clear-Content $path -ErrorAction SilentlyContinue }
+}
 
 if (-not (Test-Path $TTExe)) {
     throw "TinTin executable not found at '$TTExe'. Set NukeTinTinExe in config/local_machine.ps1."
@@ -196,7 +203,8 @@ Set-Position $mapWnd ($wa.X + $w1 - $sl) ($wa.Y - $st) ($w2 + $sl + $sr) ($h1 + 
 
 # --- Window 3: comms (bottom-right) ---
 $commsArgs = (
-    "-w new new-tab --title Gos  --tabColor `"#6B5C2E`" -d `"$LOGS`" $ShellExe -NoExit -File `"$gossipWatchScript`""    +
+    "-w new new-tab --title All  --tabColor `"#2A3048`" -d `"$LOGS`" $ShellExe -NoExit -File `"$allWatchScript`""     +
+    " ; new-tab --title Gos  --tabColor `"#6B5C2E`" -d `"$LOGS`" $ShellExe -NoExit -File `"$gossipWatchScript`""    +
     " ; new-tab --title Auc  --tabColor `"#7A5230`" -d `"$LOGS`" $ShellExe -NoExit -File `"$auctionWatchScript`""   +
     " ; new-tab --title Tel  --tabColor `"#2E6666`" -d `"$LOGS`" $ShellExe -NoExit -File `"$telepathWatchScript`""  +
     " ; new-tab --title Yay  --tabColor `"#5C4A00`" -d `"$LOGS`" $ShellExe -NoExit -File `"$broadcastWatchScript`"" +
