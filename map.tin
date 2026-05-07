@@ -1,0 +1,160 @@
+#nop =====================================================
+#nop GMCP MAPPER
+#nop
+#nop MUD room vnums are used directly as TinTin++ room IDs.
+#nop Leader-only. Map file: nukefire/maps/nukefire.map
+#nop
+#nop Pattern follows nf.lua reference (mapRoom function):
+#nop   1. #map goto {vnum} {dig}   -- ensure room exists, cursor there
+#nop   2. #map link {dir} {dest} both -- link exits (cursor-independent)
+#nop   3. #map goto {vnum}         -- position cursor for display
+#nop =====================================================
+
+#variable map_enabled    {1}
+#variable map_loaded     {0}
+#variable map_debug      {0}
+#variable map_origin_set {0}
+
+#nop ---- Logging helper ----
+#alias _map_log {
+    #line log {nukefire/logs/map_debug.log} {%0};
+    #if {$map_debug} {#showme {%0}};
+}
+
+#nop ---- Initialization ----
+
+#alias _map_init {
+    _map_log {MAP INIT: start is_follower=$is_follower loaded=$map_loaded};
+    #if {$is_follower} {
+        _map_log {MAP INIT: follower -- disabled};
+        #showme {MAP: Follower -- mapping disabled};
+        #return;
+    };
+    #map create {100000};
+    #map flag {static};
+    #map flag {quiet};
+    #nop TinTin++ has built-in offsets for north/south/east/west/up/down/ne/nw/se/sw;
+    #nop No #map direction needed -- full names are recognised natively;
+    #variable map_origin_set {0};
+    _map_colors;
+    #line ignore {#map read {nukefire/maps/nukefire.map}};
+    #variable map_loaded {1};
+    _map_log {MAP INIT: complete loaded=$map_loaded};
+    #showme {MAP: Ready};
+}
+
+#alias _map_colors {
+    #map color {room}       {<168>};
+    #map color {exit}       {<108>};
+    #map color {path}       {<128>};
+    #map color {user}       {<138>};
+    #map color {background} {<088>};
+    #map color {fog}        {<108>};
+}
+
+#nop ---- Core mapping logic ----
+#nop Called from room.info GMCP event in gmcp.tin.
+#nop
+#nop Mirrors mapRoom() from nf.lua reference, adapted to GMCP + pure TinTin++.
+#nop GMCP sends full direction names (north/east/etc); #map dig only recognises
+#nop short names (n/e/etc) for coordinate offset computation, so we normalise
+#nop before each dig. After each dig we #map goto back to source so the next
+#nop exit is dug from the correct room, not from the previous exit's dest.
+
+#alias _map_on_room_info {
+    #if {$is_follower || !$map_enabled || !$map_loaded} {#return};
+    #local _vnum {$gmcp[room][info][num]};
+    _map_log {MAP ROOM: vnum=$_vnum};
+    #if {"$_vnum" == "" || $_vnum == -1} {
+        _map_log {MAP ROOM: invalid vnum, skipping};
+        #return;
+    };
+    #map goto {$_vnum} {dig};
+    _map_log {MAP ROOM: goto done, cursor at $_vnum};
+    #if {!$map_origin_set} {
+        #map get roomarea {_a};
+        #if {"$_a" == ""} {
+            #map set roomcoords {0 0 0};
+            #variable map_origin_set {1};
+            _map_log {MAP ROOM: origin seeded at $_vnum};
+        };
+    };
+    #map set roomname {$gmcp[room][info][name]};
+    #map set roomarea {$gmcp[room][info][area]};
+    #map set roomterr {$gmcp[room][info][terrain]};
+    _map_log {MAP ROOM: props set $_vnum name=$gmcp[room][info][name]};
+    #foreach {*gmcp[room][info][exits][]} {_exit} {
+        #local _dest {$gmcp[room][info][exits][$_exit]};
+        #if {$_dest <= 0} {#continue};
+        #variable _mdir {$_exit};
+        #if {"$_mdir" == "north"}     {#variable _mdir {n}};
+        #if {"$_mdir" == "south"}     {#variable _mdir {s}};
+        #if {"$_mdir" == "east"}      {#variable _mdir {e}};
+        #if {"$_mdir" == "west"}      {#variable _mdir {w}};
+        #if {"$_mdir" == "up"}        {#variable _mdir {u}};
+        #if {"$_mdir" == "down"}      {#variable _mdir {d}};
+        #if {"$_mdir" == "northeast"} {#variable _mdir {ne}};
+        #if {"$_mdir" == "northwest"} {#variable _mdir {nw}};
+        #if {"$_mdir" == "southeast"} {#variable _mdir {se}};
+        #if {"$_mdir" == "southwest"} {#variable _mdir {sw}};
+        #map dig {$_mdir} {$_dest};
+        #map goto {$_vnum};
+        _map_log {MAP EXIT: dig $_mdir -> $_dest};
+    };
+    _map_log {MAP ROOM: complete $_vnum};
+}
+
+#nop ---- Save ----
+
+#alias map_save {
+    #if {!$map_loaded} {#return};
+    #map write {nukefire/maps/nukefire.map};
+    #showme {MAP: Saved};
+}
+
+#nop ---- User commands ----
+
+#alias map_on    {#variable map_enabled {1}; #showme {MAP: enabled}}
+#alias map_off   {#variable map_enabled {0}; #showme {MAP: disabled}}
+#alias map_show  {#map map}
+#alias map_areas {#map list}
+#alias map_find  {#map find {%*}}
+#alias map_where {#showme {MAP: room $gmcp[room][info][num] -- $gmcp[room][info][name]}}
+#alias map_debug_toggle {
+    #math map_debug {1 - $map_debug};
+    #if {$map_debug} {#showme {MAP debug: ON}} {#showme {MAP debug: OFF}};
+}
+#alias map_status {
+    #map get roomvnum {_cur_vnum};
+    #showme {MAP STATUS: enabled=$map_enabled loaded=$map_loaded debug=$map_debug origin_set=$map_origin_set};
+    #showme {MAP STATUS: gmcp vnum=$gmcp[room][info][num] name=$gmcp[room][info][name]};
+    #showme {MAP STATUS: tintin cursor at vnum=$_cur_vnum};
+    #showme {MAP STATUS: area list:};
+    #map list;
+}
+
+#alias map_goto  {#map run {%1}}
+
+#alias map_wipe {
+    #map create {100000};
+    #map flag {static};
+    #map flag {quiet};
+    #variable map_origin_set {0};
+    _map_colors;
+    #system {del "nukefire\\maps\\nukefire.map"};
+    #showme {MAP: Wiped -- map will rebuild from next room};
+}
+
+#nop ---- Auto-save every 5 min and on disconnect ----
+
+#ticker {map_autosave} {
+    #if {!$is_follower && $map_enabled && $map_loaded} {
+        #map write {nukefire/maps/nukefire.map};
+    };
+} {300}
+
+#event {SESSION DISCONNECTED} {
+    #if {!$is_follower && $map_enabled && $map_loaded} {
+        #map write {nukefire/maps/nukefire.map};
+    };
+}

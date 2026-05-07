@@ -4,6 +4,7 @@
 
 #nop ------------------ SESSION ------------------
 #read {nukefire/gmcp.tin};
+#read {nukefire/map.tin};
 #config {telnet} {on}
 
 #session nukefire tdome.nukefire.org 4000
@@ -17,6 +18,7 @@
     #split;
     #format {ME_UPPER} {%u} {${me}};
     #screen set title {${ME_UPPER}};
+    _map_init;
     #delay {1} {
         afx;
         snapeq;

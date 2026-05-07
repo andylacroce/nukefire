@@ -123,5 +123,6 @@
 #EVENT {IAC SB GMCP room.info IAC SE}
 {
     #variable gmcp[room][info] {%0};
-    _gmcp_show_room
+    _gmcp_show_room;
+    _map_on_room_info;
 }

@@ -80,6 +80,7 @@ $script:groupLines    = [System.Collections.Generic.List[string]]::new()
 $script:enemyLines    = [System.Collections.Generic.List[string]]::new()
 $script:pendingRedraw = $false
 $script:expMap        = @{}
+$script:remortMap     = @{}   # charName (lowercase) -> class_remorts string
 
 function Update-LogCache {
     param(
@@ -221,10 +222,32 @@ function Read-ExpToLevel {
     return $script:expMap
 }
 
+function Update-RemortCaches {
+    $files = Get-ChildItem "remorts_*.log" -ErrorAction SilentlyContinue
+    if (-not $files) { return }
+    foreach ($f in $files) {
+        $charName = ($f.BaseName -replace '^remorts_', '').ToLower()
+        $last = Get-Content $f.FullName -Tail 1 -ErrorAction SilentlyContinue
+        if ($last) { $script:remortMap[$charName] = $last }
+    }
+}
+
+function Get-CharRemorts($name) {
+    $raw = $script:remortMap[$name.ToLower()]
+    if (-not $raw) { return '' }
+    $parts = [System.Collections.Generic.List[string]]::new()
+    foreach ($pair in @('GYP', 'WLF', 'HEA', 'HRT')) {
+        if ($raw -match "$pair`:(\d+)" -and [int]$Matches[1] -gt 0) {
+            $parts.Add("$pair`:$($Matches[1])")
+        }
+    }
+    return $parts -join ' '
+}
+
 function Get-StatAnsi($cur, $max) {
     try {
         $m = [double]$max
-        if ($m -gt 0 -and [double]$cur / $m -lt 0.5) { return "$ESC[91m" }
+        if ($m -gt 0 -and [double]$cur / $m -lt 0.8) { return "$ESC[91m" }
     } catch {}
     return "$ESC[37m"
 }
@@ -266,12 +289,15 @@ function Format-GroupStats {
         $tnlStr        = $m.tnlStr.PadRight($wTnl)
         $tnlSuffix     = if ($wTnl -gt 0) { " [$tnlStr]T" }      else { '' }
         $tnlSuffixAnsi = if ($wTnl -gt 0) { " $ESC[90m[$ESC[36m$tnlStr$ESC[90m]$ESC[36mT$RESET" } else { '' }
+        $remorts       = Get-CharRemorts $m.name
+        $remortSuffix     = if ($remorts) { "  $remorts" }     else { '' }
+        $remortSuffixAnsi = if ($remorts) { "  $ESC[90m$($remorts -replace '(\d+)', "$ESC[37m`$1$ESC[90m")$RESET" } else { '' }
         $pName = $m.name.PadRight($nameWidth)
-        $plain = "[$($m.lvl.PadLeft(2))] $pName : [$hpS]H [$mnS]M [$mvS]V$tnlSuffix"
+        $plain = "[$($m.lvl.PadLeft(2))] $pName : [$hpS]H [$mnS]M [$mvS]V$tnlSuffix$remortSuffix"
         $rows.Add("$ESC[90m[$ESC[37m$($m.lvl.PadLeft(2))$ESC[90m] $nameA$pName$ESC[90m : " +
                   "$ESC[90m[$hpA$hpS$ESC[90m]$ESC[90mH " +
                   "$ESC[90m[$mnA$mnS$ESC[90m]$ESC[90mM " +
-                  "$ESC[90m[$mvA$mvS$ESC[90m]$ESC[90mV$tnlSuffixAnsi$RESET")
+                  "$ESC[90m[$mvA$mvS$ESC[90m]$ESC[90mV$tnlSuffixAnsi$remortSuffixAnsi$RESET")
         if ($plain.Length -gt $maxLen) { $maxLen = $plain.Length }
     }
 
@@ -412,6 +438,7 @@ $lastStatsPoll = [DateTime]::MinValue
 
 Update-AllCharCaches
 Update-ExpCache
+Update-RemortCaches
 $script:pendingRedraw = $false   # don't double-render on startup
 
 Show-LastMap $reader
@@ -420,12 +447,19 @@ function Write-StatsOnly {
     Show-MapAndStats
 }
 
+$script:lastRemortPoll = [DateTime]::MinValue
+
 function Invoke-RefreshStats {
     if (([DateTime]::Now - $script:lastStatsPoll).TotalMilliseconds -lt 250) { return }
     $script:lastStatsPoll = [DateTime]::Now
 
     # Drain new bytes from all char files; render only after +++ marks a complete snapshot.
     Update-AllCharCaches
+    # Remorts change rarely (only after sc); poll every 5 seconds.
+    if (([DateTime]::Now - $script:lastRemortPoll).TotalSeconds -ge 5) {
+        $script:lastRemortPoll = [DateTime]::Now
+        Update-RemortCaches
+    }
     if ($script:pendingRedraw) {
         $script:pendingRedraw = $false
         Write-StatsOnly
