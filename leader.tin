@@ -80,6 +80,7 @@
 #ALIAS {rec} {
     gam;
     #if {!$is_follower} {
+        map_save;
         #foreach {$followers[%*]} {follower} {
             #if {"$follower" != "$me"} {tel $follower o recall};
         };

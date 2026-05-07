@@ -332,9 +332,33 @@ Reads the most recently modified `nukefire_*.log` file in the `logs/`
 directory and parses the `[ Local Map ]` blocks that TinTin++ logs from GMCP.
 It auto-detects when a new session log starts and follows it.
 
+The leader session now includes a GMCP-driven automapper: `room.info` events
+are used to create rooms and exits automatically in TinTin++'s internal map,
+so the map builds itself as you move. Followers do not map, only the leader
+writes the live map data.
+
+The automapper now autosaves the map file every 2 minutes while enabled and
+also saves on disconnect from the leader session. Leaders also run `map_save`
+when using `rec`, so the map is written before recall whenever possible.
+
+Note that abruptly closing the window may not trigger a clean disconnect
+event, so `map_save` or the autosave interval are the safest ways to preserve
+the map.
+
 Map symbols are color-coded: `@` (you), `■` (room), `*` (GPS), `X`
 (destination), `!` (locked door), `=`/`:`/`/` (closed door), `|`/`-`
 (corridor link).
+
+The map module exposes a few useful commands from the leader session:
+
+- `map_on` / `map_off` — enable or disable automapping
+- `map_show` — display the current map followed by the terrain color key
+- `map_key` — print the terrain color/symbol legend on its own
+- `map_wipe` — erase the stored map and rebuild from the next room
+- `map_save` — write the current map graph to `nukefire/maps/nukefire.map`
+- `map_status` — show current automapper and map load state
+- `map_find`, `map_info`, `map_goto` — helper navigation/debug commands
+- `map_debug_toggle` — toggle detailed mapping debug output
 
 Group stats are displayed at the bottom of the map window, pinned to the last
 rows regardless of map height. Each member shows level, HP/MN/MV (current and
@@ -431,6 +455,9 @@ is not named `nukefire`. See [Step 2](#setup) in the setup guide.
 The map window needs a session log to exist before it can display anything.
 Launch a character, log in, and move around — TinTin writes the log on first
 movement. The map window will pick it up automatically once the log exists.
+
+If the automapper is not building a map, confirm GMCP is negotiated by the
+MUD and that the leader session has `room.info` updates enabled.
 
 **Prompt-based triggers not firing**
 The MUD prompt must be set to show all values so TinTin actions can match

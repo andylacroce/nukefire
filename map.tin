@@ -44,12 +44,11 @@
 }
 
 #alias _map_colors {
-    #map color {room}       {<168>};
-    #map color {exit}       {<108>};
-    #map color {path}       {<128>};
-    #map color {user}       {<138>};
-    #map color {background} {<088>};
-    #map color {fog}        {<108>};
+    #map color {room} {<108>};
+    #map color {exit} {<278>};
+    #map color {path} {<138>};
+    #map color {user} {<128>};
+    #format map_ansi_reset {\e[0m} {};
 }
 
 #nop ---- Core mapping logic ----
@@ -79,24 +78,62 @@
             _map_log {MAP ROOM: origin seeded at $_vnum};
         };
     };
-    #map set roomname {$gmcp[room][info][name]};
-    #map set roomarea {$gmcp[room][info][area]};
-    #map set roomterr {$gmcp[room][info][terrain]};
-    _map_log {MAP ROOM: props set $_vnum name=$gmcp[room][info][name]};
+    #local _roomname {$gmcp[room][info][name]};
+    #local _roomarea {$gmcp[room][info][area]};
+    #local _roomterr {$gmcp[room][info][terrain]};
+    #local _roomzone {$gmcp[room][info][zone]};
+    #local _terrlc {};
+    #format _terrlc {%l} {$_roomterr};
+    #local _maplabel {$_roomname};
+    #if {"$_roomarea" != "" || "$_roomterr" != "" || "$_roomzone" != ""} {
+        #local _meta {$_roomarea};
+        #if {"$_roomterr" != ""} {#local _meta {$_meta/$_roomterr}};
+        #if {"$_roomzone" != ""} {#local _meta {$_meta/$_roomzone}};
+        #if {"$_meta" != ""} {#local _maplabel {$_roomname ($_meta)}};
+    };
+    #map set roomname {$_maplabel};
+    #map set roomarea {$_roomarea};
+    #map set roomterr {$_roomterr};
+    #local _colornum {240};
+    #local _symbol   {■};
+    #if {"$_terrlc" == "inside"}          {#local _colornum {94}};
+    #if {"$_terrlc" == "city"}            {#local _colornum {102}};
+    #if {"$_terrlc" == "field"}           {#local _colornum {34}};
+    #if {"$_terrlc" == "forest"}          {#local _colornum {22}};
+    #if {"$_terrlc" == "hills"}           {#local _colornum {58};  #local _symbol {^}};
+    #if {"$_terrlc" == "mountains"}       {#local _colornum {250}; #local _symbol {^}};
+    #if {"$_terrlc" == "mountain"}        {#local _colornum {250}; #local _symbol {^}};
+    #if {"$_terrlc" == "water"}           {#local _colornum {39};  #local _symbol {~}};
+    #if {"$_terrlc" == "water (swim)"}    {#local _colornum {39};  #local _symbol {~}};
+    #if {"$_terrlc" == "water (no swim)"} {#local _colornum {39};  #local _symbol {~}};
+    #if {"$_terrlc" == "in flight"}       {#local _colornum {45};  #local _symbol {^}};
+    #if {"$_terrlc" == "underwater"}      {#local _colornum {33};  #local _symbol {~}};
+    #if {"$_terrlc" == "smooth"}          {#local _colornum {248}};
+    #if {"$_terrlc" == "swamp"}           {#local _colornum {22}};
+    #if {"$_terrlc" == "volcanic"}        {#local _colornum {124}};
+    #if {"$_terrlc" == "desert"}          {#local _colornum {136}};
+    #if {"$_terrlc" == "plains"}          {#local _colornum {70}};
+    #if {"$_terrlc" == "road"}            {#local _colornum {244}};
+    #local _color {};
+    #format _color {\e[38;5;%dm} {$_colornum};
+    #map set roomcolor {};
+    #map set roomsymbol {$map_ansi_reset$_color$_symbol$map_ansi_reset};
+    _map_log {MAP ROOM: props set $_vnum name=$_maplabel color=$_color};
     #foreach {*gmcp[room][info][exits][]} {_exit} {
         #local _dest {$gmcp[room][info][exits][$_exit]};
         #if {$_dest <= 0} {#continue};
-        #variable _mdir {$_exit};
-        #if {"$_mdir" == "north"}     {#variable _mdir {n}};
-        #if {"$_mdir" == "south"}     {#variable _mdir {s}};
-        #if {"$_mdir" == "east"}      {#variable _mdir {e}};
-        #if {"$_mdir" == "west"}      {#variable _mdir {w}};
-        #if {"$_mdir" == "up"}        {#variable _mdir {u}};
-        #if {"$_mdir" == "down"}      {#variable _mdir {d}};
-        #if {"$_mdir" == "northeast"} {#variable _mdir {ne}};
-        #if {"$_mdir" == "northwest"} {#variable _mdir {nw}};
-        #if {"$_mdir" == "southeast"} {#variable _mdir {se}};
-        #if {"$_mdir" == "southwest"} {#variable _mdir {sw}};
+        #local _mdir {$_exit};
+        #if {"$_mdir" == "north"}     {#local _mdir {n}};
+        #if {"$_mdir" == "south"}     {#local _mdir {s}};
+        #if {"$_mdir" == "east"}      {#local _mdir {e}};
+        #if {"$_mdir" == "west"}      {#local _mdir {w}};
+        #if {"$_mdir" == "up"}        {#local _mdir {u}};
+        #if {"$_mdir" == "down"}      {#local _mdir {d}};
+        #if {"$_mdir" == "northeast"} {#local _mdir {ne}};
+        #if {"$_mdir" == "northwest"} {#local _mdir {nw}};
+        #if {"$_mdir" == "southeast"} {#local _mdir {se}};
+        #if {"$_mdir" == "southwest"} {#local _mdir {sw}};
+        #if {"$_mdir" != "n" && "$_mdir" != "s" && "$_mdir" != "e" && "$_mdir" != "w" && "$_mdir" != "u" && "$_mdir" != "d" && "$_mdir" != "ne" && "$_mdir" != "nw" && "$_mdir" != "se" && "$_mdir" != "sw"} {#continue};
         #map dig {$_mdir} {$_dest};
         #map goto {$_vnum};
         _map_log {MAP EXIT: dig $_mdir -> $_dest};
@@ -116,10 +153,24 @@
 
 #alias map_on    {#variable map_enabled {1}; #showme {MAP: enabled}}
 #alias map_off   {#variable map_enabled {0}; #showme {MAP: disabled}}
-#alias map_show  {#map map}
+#alias map_show  {#map map; map_key}
+#alias map_key {
+    #showme {\e[38;5;240m■\e[0m Unknown  \e[38;5;94m■\e[0m Inside  \e[38;5;102m■\e[0m City     \e[38;5;34m■\e[0m Field    \e[38;5;22m■\e[0m Forest};
+    #showme {\e[38;5;58m^\e[0m Hills    \e[38;5;250m^\e[0m Mountains  \e[38;5;39m~\e[0m Water  \e[38;5;45m^\e[0m In Flight};
+    #showme {\e[38;5;33m~\e[0m Underwater  \e[38;5;248m■\e[0m Smooth  \e[38;5;124m■\e[0m Volcanic  \e[38;5;136m■\e[0m Desert};
+}
 #alias map_areas {#map list}
 #alias map_find  {#map find {%*}}
-#alias map_where {#showme {MAP: room $gmcp[room][info][num] -- $gmcp[room][info][name]}}
+#alias map_info {
+    #if {"$gmcp[room][info][num]" == ""} {#showme {MAP INFO: no room GMCP data available}; #return};
+    #local _exitInfo {};
+    #foreach {*gmcp[room][info][exits][]} {_exit} {
+        #local _dest {$gmcp[room][info][exits][$_exit]};
+        #if {$_dest > 0} {#local _exitInfo {$_exit($_dest) $_exitInfo}};
+    };
+    #showme {MAP INFO: vnum=$gmcp[room][info][num] name=$gmcp[room][info][name] area=$gmcp[room][info][area] terrain=$gmcp[room][info][terrain] zone=$gmcp[room][info][zone]};
+    #showme {MAP EXITS: $_exitInfo};
+}
 #alias map_debug_toggle {
     #math map_debug {1 - $map_debug};
     #if {$map_debug} {#showme {MAP debug: ON}} {#showme {MAP debug: OFF}};
@@ -145,13 +196,13 @@
     #showme {MAP: Wiped -- map will rebuild from next room};
 }
 
-#nop ---- Auto-save every 5 min and on disconnect ----
+#nop ---- Auto-save every 2 min and on disconnect ----
 
 #ticker {map_autosave} {
     #if {!$is_follower && $map_enabled && $map_loaded} {
         #map write {nukefire/maps/nukefire.map};
     };
-} {300}
+} {120}
 
 #event {SESSION DISCONNECTED} {
     #if {!$is_follower && $map_enabled && $map_loaded} {
