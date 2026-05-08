@@ -106,7 +106,7 @@
     #if {"$_terrlc" == "water"}           {#local _colornum {39};  #local _symbol {~}};
     #if {"$_terrlc" == "water (swim)"}    {#local _colornum {39};  #local _symbol {~}};
     #if {"$_terrlc" == "water (no swim)"} {#local _colornum {39};  #local _symbol {~}};
-    #if {"$_terrlc" == "in flight"}       {#local _colornum {45};  #local _symbol {^}};
+    #if {"$_terrlc" == "in flight" || "$_terrlc" == "flying"} {#local _colornum {45};  #local _symbol {^}};
     #if {"$_terrlc" == "underwater"}      {#local _colornum {33};  #local _symbol {~}};
     #if {"$_terrlc" == "smooth"}          {#local _colornum {248}};
     #if {"$_terrlc" == "swamp"}           {#local _colornum {22}};
@@ -119,9 +119,9 @@
     #map set roomcolor {};
     #map set roomsymbol {$map_ansi_reset$_color$_symbol$map_ansi_reset};
     _map_log {MAP ROOM: props set $_vnum name=$_maplabel color=$_color};
+    #local _seen_dirs {;};
     #foreach {*gmcp[room][info][exits][]} {_exit} {
         #local _dest {$gmcp[room][info][exits][$_exit]};
-        #if {$_dest <= 0} {#continue};
         #local _mdir {$_exit};
         #if {"$_mdir" == "north"}     {#local _mdir {n}};
         #if {"$_mdir" == "south"}     {#local _mdir {s}};
@@ -134,9 +134,18 @@
         #if {"$_mdir" == "southeast"} {#local _mdir {se}};
         #if {"$_mdir" == "southwest"} {#local _mdir {sw}};
         #if {"$_mdir" != "n" && "$_mdir" != "s" && "$_mdir" != "e" && "$_mdir" != "w" && "$_mdir" != "u" && "$_mdir" != "d" && "$_mdir" != "ne" && "$_mdir" != "nw" && "$_mdir" != "se" && "$_mdir" != "sw"} {#continue};
-        #map dig {$_mdir} {$_dest};
-        #map goto {$_vnum};
-        _map_log {MAP EXIT: dig $_mdir -> $_dest};
+        #local _seen_dirs {$_seen_dirs$_mdir;};
+        #regexp {$_dest} {[^0-9]} {_map_log {MAP EXIT: skip $_mdir -> $_dest (non-numeric)}} {
+            #if {$_dest > 0} {
+                #map dig {$_mdir} {$_dest};
+                #map goto {$_vnum};
+                _map_log {MAP EXIT: dig $_mdir -> $_dest};
+            };
+        };
+    };
+    #map get roomexits {_cur_exits};
+    #foreach {n;s;e;w;u;d;ne;nw;se;sw} {_clr} {
+        #if {"$_seen_dirs" !~ "*;$_clr;*" && ";$_cur_exits;" =~ "*;$_clr;*"} {#map unlink {$_clr}};
     };
     _map_log {MAP ROOM: complete $_vnum};
 }

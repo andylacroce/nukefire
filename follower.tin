@@ -128,6 +128,11 @@
 	whisper ${leader} remort complete
 }
 
+#nop ------------------ ITEM COMPARE ------------------
+#action {Compare: ↑} {
+    tel ${leader} Upgrade!;
+}
+
 #nop ------------------ CREDIT UTILITY ------------------
 #alias {cred} {
 	give $total_credits credits ${leader};
