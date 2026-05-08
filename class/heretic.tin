@@ -200,7 +200,7 @@
             };
             #math gi {$gi + 1};
         };
-        #if {$below_count > 1 && $lvl > 34} {
+        #if {$below_count > 1 && $lvl > 34 && $lowest_pct >= 50} {
             #variable heal_focus {};
             whisper $leader @-@G<< AURA OF REJUV ($below_count low) >> @n@g;
             sli 'aura of rejuv';

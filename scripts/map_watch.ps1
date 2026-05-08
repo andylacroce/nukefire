@@ -42,8 +42,10 @@ function Format-ColorMap($lines) {
     $out = [System.Text.StringBuilder]::new()
     [void]$out.Append($CLEAR)
     foreach ($line in $lines) {
-        if ($line -match '^\[ Local Map \](.*)$') {
-            [void]$out.AppendLine("$CYAN[ Local Map ]$RESET$DGRAY$($Matches[1])$RESET")
+        if ($line -match '^\[ BIGMAP \](.*)$') {
+            [void]$out.AppendLine("$CYAN[ BIGMAP ]$RESET$DGRAY$($Matches[1])$RESET")
+        } elseif ($line -match '^Route:') {
+            [void]$out.AppendLine("$DGRAY$line$RESET")
         } elseif ($line -match '<--\s*(Up|Down) Here\s*-->') {
             [void]$out.AppendLine("$DCYAN$line$RESET")
         } else {
@@ -375,7 +377,7 @@ function Show-LastMap($reader) {
 
     $mapStart = -1; $mapEnd = -1
     for ($i = 0; $i -lt $tail.Count; $i++) {
-        if ($tail[$i] -match '^\[ Local Map \]') {
+        if ($tail[$i] -match '^\[ BIGMAP \]') {
             $mapStart = $i
             $mapEnd   = -1
         } elseif ($mapStart -ge 0 -and $mapEnd -eq -1 -and $tail[$i] -match '^< \d+H') {
@@ -504,7 +506,7 @@ while ($true) {
 
     switch ($captureState) {
         0 {
-            if ($line -match '^\[ Local Map \]') {
+            if ($line -match '^\[ BIGMAP \]') {
                 $buffer.Clear()
                 $buffer.Add($line)
                 $captureState = 1

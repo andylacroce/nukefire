@@ -43,6 +43,14 @@
     whisper haenym o sum %1;
 }
 
+#alias {wran} {
+    #foreach {$followers[%*]} {follower} {
+        #if {"$follower" != "$me"} {wrangle $follower};
+    };
+}
+
+#alias {as} {aucst 1;otf aucstat 1}
+
 #alias {silv} {
     ow gather silver;
     ow give all.silver ${leader};
@@ -80,6 +88,7 @@
 #ALIAS {rec} {
     gam;
     #if {!$is_follower} {
+        map_save;
         #foreach {$followers[%*]} {follower} {
             #if {"$follower" != "$me"} {tel $follower o recall};
         };
