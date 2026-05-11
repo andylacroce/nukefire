@@ -146,4 +146,7 @@
 
 #action {[BANK] Your balance: %1 credits.} {
     #variable {bank_balance} {%1};
+    #line log {nukefire/logs/balance.log} {%1};
 }
+#action {[BANK] %*deposits %* credits.} {bal}
+#action {[BANK] You don't have any credits to deposit.} {bal}

@@ -12,13 +12,7 @@
 #alias {wyrm} {#if {$lvl > 49} {sli 'wyrm'}}
 #alias {sof} {#if {$lvl > 49} {sli 'shield of flames'}}
 #alias {hellquake} {#if {$lvl > 44 && $heretic_combat_cd == 0} {sli 'hellquake'; #variable heretic_combat_cd 1; #delay {10} {#variable heretic_combat_cd 0}}}
-#alias {heal %1} {
-    #format {__hl} {%l} {%1};
-    #format {__hm} {%l} {$me};
-    #if {"$__hl" == "$__hm" && $lvl > 25} {sli 'augury' $me};
-    #elseif {$lvl > 39} {sli 'demon' %1};
-    #elseif {$lvl > 24} {sli 'rejuvinate' %1};  
-}
+#alias {heal %1} {sli 'soul swell' %1}
 
 #nop ------------------ IMMOLATE TOGGLE ------------------
 #variable {immolate_on} {1};
@@ -121,26 +115,18 @@
     #if {$flames_on} {sof};
 }
 
-#nop ------------------ AUGURY + GROW SCAR: GMCP-BASED SELF-HEAL ------------------
+#nop ------------------ AUGURY: GMCP-BASED SELF-HEAL (100% restore) ------------------
 #variable {augury_cooldown} {0}
-#variable {grows_cooldown} {0}
 
 #alias {_on_gmcp_vitals} {
     #local chp  {$gmcp[char][vitals][hp]};
     #local cmhp {$gmcp[char][maxstats][maxhp]};
     #if {$cmhp > 0} {
         #math hp_pct {100 * $chp / $cmhp};
-        #if {$hp_pct < 85 && $autoheal_on} {
-            #if {$augury_cooldown == 0 && $lvl > 25} {
-                whisper $leader @-@Y<< HEALING $me >> @n@y($chp/$cmhp HP, @+@Y$hp_pct%@n@y);
-                sli 'augury' $me;
-                #variable augury_cooldown 1; #delay {3} {#variable augury_cooldown 0};
-            };
-            #elseif {$grows_cooldown == 0 && $lvl <= 25} {
-                whisper $leader @-@C<< GROW SCAR $me >> @n@c($chp/$cmhp HP, @+@C$hp_pct%@n@c);
-                grows;
-                #variable grows_cooldown 1; #delay {5} {#variable grows_cooldown 0};
-            };
+        #if {$hp_pct < 70 && $autoheal_on && $augury_cooldown == 0} {
+            whisper $leader @-@Y<< HEALING $me >> @n@y($chp/$cmhp HP, @+@Y$hp_pct%@n@y);
+            #if {$lvl >= 26} {sli 'augury' $me} {sli 'soul swell' $me};
+            #variable augury_cooldown 1; #delay {3} {#variable augury_cooldown 0};
         };
     };
 }
@@ -151,8 +137,9 @@
 #variable {sinvig_cooldown} {0}
 #variable {heal_cooldown} {0}
 #variable {heal_focus} {}
+#variable {heal_focus_pct_at_cast} {0}
 
-#nop Follow-up healer: re-checks heal_focus target after cooldown; chains until >= 80%
+#nop Follow-up healer: re-checks heal_focus target after cooldown -- chains until target >= 85%
 #alias {_maybe_followup_heal} {
     #if {"$heal_focus" == "" || !$autoheal_on} {#return};
     #local focus_pct {101};
@@ -168,7 +155,13 @@
         };
         #math gi {$gi + 1};
     };
-    #if {$focus_pct < 80} {
+    #if {$focus_pct < 85} {
+        #nop skip chain only if target is in safe zone AND visibly recovering (backlog guard) --;
+        #if {$focus_pct > 70 && $focus_pct > $heal_focus_pct_at_cast + 10} {
+            #variable heal_focus {};
+            #return;
+        };
+        #variable heal_focus_pct_at_cast {$focus_pct};
         whisper $leader @-@R<< FOCUS HEAL $heal_focus >> @n@r($focus_hp/$focus_mhp HP, @+@R$focus_pct%@n@r);
         heal $heal_focus;
         #variable heal_cooldown 1; #delay {3} {#variable heal_cooldown 0; _maybe_followup_heal};
@@ -178,6 +171,23 @@
 }
 
 #alias {_on_gmcp_group} {
+    #nop -- bail if followup chain is active, unless a new critical target has appeared --;
+    #if {"$heal_focus" != ""} {
+        #local gi {1};
+        #local found_critical {0};
+        #while {$gi <= $gmcp[group][count]} {
+            #local mname {$gmcp[group][members][$gi][name]};
+            #local mhp   {$gmcp[group][members][$gi][info][hp]};
+            #local mmhp  {$gmcp[group][members][$gi][info][mhp]};
+            #if {$mmhp > 0} {#math hp_pct {100 * $mhp / $mmhp}} {#local hp_pct {101}};
+            #if {"$mname" != "$me" && "$mname" != "$heal_focus" && $hp_pct < 40} {
+                #local found_critical {1};
+            };
+            #math gi {$gi + 1};
+        };
+        #if {!$found_critical} {#return};
+        #variable heal_focus {};
+    };
     #nop -- PASS 1: AoE if 2+ OTHER members below threshold, else single heal --;
     #if {$autoheal_on && $heal_cooldown == 0 && $lvl > 24} {
         #local below_count {0};
@@ -200,7 +210,7 @@
             };
             #math gi {$gi + 1};
         };
-        #if {$below_count > 1 && $lvl > 34 && $lowest_pct >= 50} {
+        #if {$below_count > 1 && $lvl > 34 && $lowest_pct >= 80} {
             #variable heal_focus {};
             whisper $leader @-@G<< AURA OF REJUV ($below_count low) >> @n@g;
             sli 'aura of rejuv';
@@ -208,6 +218,7 @@
         };
         #elseif {$lowest_pct < 85 && "$lowest_name" != ""} {
             #variable heal_focus {$lowest_name};
+            #variable heal_focus_pct_at_cast {$lowest_pct};
             whisper $leader @-@Y<< HEALING $lowest_name >> @n@y($lowest_hp/$lowest_mhp HP, @+@Y$lowest_pct%@n@y);
             heal $lowest_name;
             #variable heal_cooldown 1; #delay {3} {#variable heal_cooldown 0; _maybe_followup_heal};
@@ -220,7 +231,7 @@
         #local mmv   {$gmcp[group][members][$gi][info][mv]};
         #local mmmv  {$gmcp[group][members][$gi][info][mmv]};
         #if {$mmmv > 0} {#math mv_pct {100 * $mmv / $mmmv}};
-        #if {$mv_pct < 85 && $lvl > 17 && $autoheal_on && $sinvig_cooldown == 0} {
+        #if {$mv_pct < 85 && $lvl > 17 && $autoheal_on && $sinvig_cooldown == 0 && $heal_cooldown == 0} {
             whisper $leader @-@C<< INVIGORATING $mname >> @n@c($mmv/$mmmv MV, @+@C$mv_pct%@n@c);
             sli 'sinful vigor' $mname;
             #variable sinvig_cooldown 1; #delay {3} {#variable sinvig_cooldown 0};
@@ -244,17 +255,18 @@
 
 #NOP Allowed skills:
 #NOP   (25) Cleave
-#NOP   (14) Heal
-#NOP   (25) Rejuvinate
 #NOP   (45) HellQuake
 #NOP   (40) Demonglow
 #NOP   (25) Grouprejuv
-#NOP   (26) Augury
+#NOP   Soul Swell (no level restriction)
 #NOP   (25) Heretic Drain
 #NOP   Bash
 #NOP   (35) Torment
 #NOP   (40) Smite
 
+#NOP No level restriction:
+#NOP         soul swell (group heal / self-heal below lvl 26)
+#NOP
 #NOP Level   Skill
 #NOP 1       fortify
 #NOP         dual wield
@@ -265,18 +277,16 @@
 #NOP 11      unholyfist
 #NOP         swordplay
 #NOP 12      remove curse
-#NOP 14      heal
 #NOP 15      sanctuary
 #NOP 17      aura of escape
 #NOP 18      sinful vigor
 #NOP 22      aura of healing
 #NOP         aura of dark blessing
 #NOP 25      carnal cleave
-#NOP         rejuvenate
 #NOP         dark pact
 #NOP         heretic drain
 #NOP         dark covenant
-#NOP 26      augury
+#NOP 26      augury (self — restores to 100%)
 #NOP 30      aura of sinful vigor
 #NOP 35      tormenting visions
 #NOP         doom bringer's curse

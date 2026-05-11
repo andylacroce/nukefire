@@ -83,6 +83,7 @@ $script:enemyLines    = [System.Collections.Generic.List[string]]::new()
 $script:pendingRedraw = $false
 $script:expMap        = @{}
 $script:remortMap     = @{}   # charName (lowercase) -> class_remorts string
+$script:balanceStr    = ''
 
 function Update-LogCache {
     param(
@@ -208,6 +209,16 @@ function Format-Tnl($tnl) {
     } catch { return $tnl }
 }
 
+function Format-Balance($raw) {
+    try {
+        $n = [double]($raw -replace '[,\s]', '')
+        if ($n -ge 1e9) { return "Bal:{0:0.0}B" -f ($n / 1e9) }
+        if ($n -ge 1e6) { return "Bal:{0:0.0}M" -f ($n / 1e6) }
+        if ($n -ge 1e3) { return "Bal:{0:0}K"   -f ($n / 1e3) }
+        return "Bal:$([int]$n)"
+    } catch { return '' }
+}
+
 function Update-ExpCache {
     Update-LogCache -Cache $script:expCache -OnLine {
         param([string]$line)
@@ -232,6 +243,11 @@ function Update-RemortCaches {
         $last = Get-Content $f.FullName -Tail 1 -ErrorAction SilentlyContinue
         if ($last) { $script:remortMap[$charName] = $last }
     }
+}
+
+function Update-BalanceCache {
+    $last = Get-Content "balance.log" -Tail 1 -ErrorAction SilentlyContinue
+    if ($last) { $script:balanceStr = Format-Balance $last }
 }
 
 function Get-CharRemorts($name) {
@@ -294,12 +310,15 @@ function Format-GroupStats {
         $remorts       = Get-CharRemorts $m.name
         $remortSuffix     = if ($remorts) { "  $remorts" }     else { '' }
         $remortSuffixAnsi = if ($remorts) { "  $ESC[90m$($remorts -replace '(\d+)', "$ESC[37m`$1$ESC[90m")$RESET" } else { '' }
+        $isLeader         = $m.name -ieq 'Mutiny'
+        $balSuffix        = if ($isLeader -and $script:balanceStr) { "  $($script:balanceStr)" } else { '' }
+        $balSuffixAnsi    = if ($isLeader -and $script:balanceStr) { "  $ESC[33m$($script:balanceStr)$RESET" } else { '' }
         $pName = $m.name.PadRight($nameWidth)
-        $plain = "[$($m.lvl.PadLeft(2))] $pName : [$hpS]H [$mnS]M [$mvS]V$tnlSuffix$remortSuffix"
+        $plain = "[$($m.lvl.PadLeft(2))] $pName : [$hpS]H [$mnS]M [$mvS]V$tnlSuffix$remortSuffix$balSuffix"
         $rows.Add("$ESC[90m[$ESC[37m$($m.lvl.PadLeft(2))$ESC[90m] $nameA$pName$ESC[90m : " +
                   "$ESC[90m[$hpA$hpS$ESC[90m]$ESC[90mH " +
                   "$ESC[90m[$mnA$mnS$ESC[90m]$ESC[90mM " +
-                  "$ESC[90m[$mvA$mvS$ESC[90m]$ESC[90mV$tnlSuffixAnsi$remortSuffixAnsi$RESET")
+                  "$ESC[90m[$mvA$mvS$ESC[90m]$ESC[90mV$tnlSuffixAnsi$remortSuffixAnsi$balSuffixAnsi$RESET")
         if ($plain.Length -gt $maxLen) { $maxLen = $plain.Length }
     }
 
@@ -441,6 +460,7 @@ $lastStatsPoll = [DateTime]::MinValue
 Update-AllCharCaches
 Update-ExpCache
 Update-RemortCaches
+Update-BalanceCache
 $script:pendingRedraw = $false   # don't double-render on startup
 
 Show-LastMap $reader
@@ -461,6 +481,7 @@ function Invoke-RefreshStats {
     if (([DateTime]::Now - $script:lastRemortPoll).TotalSeconds -ge 5) {
         $script:lastRemortPoll = [DateTime]::Now
         Update-RemortCaches
+        Update-BalanceCache
     }
     if ($script:pendingRedraw) {
         $script:pendingRedraw = $false
