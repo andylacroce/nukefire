@@ -148,5 +148,13 @@
     #variable {bank_balance} {%1};
     #line log {nukefire/logs/balance.log} {%1};
 }
+#action {:    %1  (keyword: silverdisc)} {
+    #line log {nukefire/logs/silverdisc.log} {%1};
+}
 #action {[BANK] %*deposits %* credits.} {bal}
 #action {[BANK] You don't have any credits to deposit.} {bal}
+#alias {mat} {
+    #line log {nukefire/logs/silverdisc.log} {0};
+    mater;
+}
+#action {You have added materials:} {mat}

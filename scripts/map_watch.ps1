@@ -84,6 +84,9 @@ $script:pendingRedraw = $false
 $script:expMap        = @{}
 $script:remortMap     = @{}   # charName (lowercase) -> class_remorts string
 $script:balanceStr    = ''
+$script:silverDiscStr = ''
+$script:balanceCache    = New-LogCache "balance.log"
+$script:silverDiscCache = New-LogCache "silverdisc.log"
 
 function Update-LogCache {
     param(
@@ -246,8 +249,21 @@ function Update-RemortCaches {
 }
 
 function Update-BalanceCache {
-    $last = Get-Content "balance.log" -Tail 1 -ErrorAction SilentlyContinue
-    if ($last) { $script:balanceStr = Format-Balance $last }
+    Update-LogCache -Cache $script:balanceCache -OnLine {
+        param([string]$line)
+        $fmt = Format-Balance $line
+        if ($fmt) { $script:balanceStr = $fmt; $script:pendingRedraw = $true }
+    }
+}
+
+function Update-SilverDiscCache {
+    Update-LogCache -Cache $script:silverDiscCache -OnLine {
+        param([string]$line)
+        if ($line -match '^(\d+)$') {
+            $script:silverDiscStr = "Slv:$([int]$Matches[1])"
+            $script:pendingRedraw = $true
+        }
+    }
 }
 
 function Get-CharRemorts($name) {
@@ -293,9 +309,15 @@ function Format-GroupStats {
         $m.mnPct = try { [int]([double]$m.mn / [double]$m.mmn * 100) } catch { 0 }
         $m.mvPct = try { [int]([double]$m.mv / [double]$m.mmv * 100) } catch { 0 }
     }
+    $leaderParsedIdx = 0
+    for ($pi = 0; $pi -lt $parsed.Count; $pi++) {
+        if ($parsed[$pi].name -ieq 'Mutiny') { $leaderParsedIdx = $pi; break }
+    }
+
     $sb     = [System.Text.StringBuilder]::new()
     $maxLen = 0
     $rows   = [System.Collections.Generic.List[string]]::new()
+    $ri     = 0
     foreach ($m in $parsed) {
         $hpA   = Get-StatAnsi $m.hp  $m.mhp
         $mnA   = Get-StatAnsi $m.mn  $m.mmn
@@ -310,16 +332,23 @@ function Format-GroupStats {
         $remorts       = Get-CharRemorts $m.name
         $remortSuffix     = if ($remorts) { "  $remorts" }     else { '' }
         $remortSuffixAnsi = if ($remorts) { "  $ESC[90m$($remorts -replace '(\d+)', "$ESC[37m`$1$ESC[90m")$RESET" } else { '' }
-        $isLeader         = $m.name -ieq 'Mutiny'
-        $balSuffix        = if ($isLeader -and $script:balanceStr) { "  $($script:balanceStr)" } else { '' }
-        $balSuffixAnsi    = if ($isLeader -and $script:balanceStr) { "  $ESC[33m$($script:balanceStr)$RESET" } else { '' }
+        $miniPlain = '  ||'
+        $miniAnsi  = "  $ESC[90m||$RESET"
+        if ($ri -eq $leaderParsedIdx -and $script:balanceStr) {
+            $miniPlain = "  || $($script:balanceStr)"
+            $miniAnsi  = "  $ESC[90m|| $ESC[33m$($script:balanceStr)$RESET"
+        } elseif ($ri -eq ($leaderParsedIdx + 1) -and $script:silverDiscStr) {
+            $miniPlain = "  || $($script:silverDiscStr)"
+            $miniAnsi  = "  $ESC[90m|| $ESC[37m$($script:silverDiscStr)$RESET"
+        }
         $pName = $m.name.PadRight($nameWidth)
-        $plain = "[$($m.lvl.PadLeft(2))] $pName : [$hpS]H [$mnS]M [$mvS]V$tnlSuffix$remortSuffix$balSuffix"
+        $plain = "[$($m.lvl.PadLeft(2))] $pName : [$hpS]H [$mnS]M [$mvS]V$tnlSuffix$remortSuffix$miniPlain"
         $rows.Add("$ESC[90m[$ESC[37m$($m.lvl.PadLeft(2))$ESC[90m] $nameA$pName$ESC[90m : " +
                   "$ESC[90m[$hpA$hpS$ESC[90m]$ESC[90mH " +
                   "$ESC[90m[$mnA$mnS$ESC[90m]$ESC[90mM " +
-                  "$ESC[90m[$mvA$mvS$ESC[90m]$ESC[90mV$tnlSuffixAnsi$remortSuffixAnsi$balSuffixAnsi$RESET")
+                  "$ESC[90m[$mvA$mvS$ESC[90m]$ESC[90mV$tnlSuffixAnsi$remortSuffixAnsi$miniAnsi")
         if ($plain.Length -gt $maxLen) { $maxLen = $plain.Length }
+        $ri++
     }
 
     # Build enemy rows — Read-EnemyStats output: level|name|hp|mhp|reporters
@@ -369,6 +398,7 @@ function Format-GroupStats {
         if ($i -lt $allRows.Count - 1) { [void]$sb.AppendLine($allRows[$i]) }
         else                           { [void]$sb.Append($allRows[$i]) }
     }
+
     return $sb.ToString()
 }
 
@@ -461,6 +491,7 @@ Update-AllCharCaches
 Update-ExpCache
 Update-RemortCaches
 Update-BalanceCache
+Update-SilverDiscCache
 $script:pendingRedraw = $false   # don't double-render on startup
 
 Show-LastMap $reader
@@ -477,11 +508,12 @@ function Invoke-RefreshStats {
 
     # Drain new bytes from all char files; render only after +++ marks a complete snapshot.
     Update-AllCharCaches
+    Update-BalanceCache
+    Update-SilverDiscCache
     # Remorts change rarely (only after sc); poll every 5 seconds.
     if (([DateTime]::Now - $script:lastRemortPoll).TotalSeconds -ge 5) {
         $script:lastRemortPoll = [DateTime]::Now
         Update-RemortCaches
-        Update-BalanceCache
     }
     if ($script:pendingRedraw) {
         $script:pendingRedraw = $false

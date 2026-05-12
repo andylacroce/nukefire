@@ -112,6 +112,16 @@
         }
     }
 }
+#ACTION {\[CLASS REMORT EVENT\] %*} {
+    #if {!${is_follower}} {
+        #var {_log_this} {1};
+        #regexp {%1} {^\d} {#var {_log_this} {0}};
+        #if {${_log_this}} {
+            #format {_ts} {%t} {%m/%d %H:%M};
+            #line log {nukefire/logs/broadcast.log} {[${_ts}] %0}
+        }
+    }
+}
 #ACTION {Skynet\(TM\) %*} {
     #if {!${is_follower}} {
         #var {_log_this} {1};

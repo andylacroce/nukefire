@@ -18,7 +18,7 @@ F 1138701
 
 G 0
 
-I 17384
+I 3014
 
 L {ASCII NESW LINE} {NO EXITS} {x}
 L {ASCII NESW LINE} {N} {o}
@@ -1343,6 +1343,10 @@ R {2258}{0}{}{Portal to Urza's Workshop (Dominaria MTG/Inside/21)}{\e[0m\e[38;5;
 E {2255}{d}{d}{32}{0}{}{1.000}{}{0.00}
 E {2274}{n}{n}{1}{0}{}{1.000}{}{0.00}
 
+R {2259}{0}{}{Portal to Mirrodin (Dominaria MTG/Inside/21)}{\e[0m\e[38;5;94m■\e[0m}{}{Dominaria MTG}{}{Inside}{}{1.000}{}
+E {27774}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {2255}{u}{u}{16}{0}{}{1.000}{}{0.00}
+
 R {2260}{0}{}{Portal to Zendikar (Dominaria MTG/Inside/21)}{\e[0m\e[38;5;94m■\e[0m}{}{Dominaria MTG}{}{Inside}{}{1.000}{}
 E {2255}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {27852}{w}{w}{8}{0}{}{1.000}{}{0.00}
@@ -1581,7 +1585,9 @@ E {3012}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {3013}{u}{u}{16}{0}{}{1.000}{}{0.00}
 E {3010}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {3012}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+R {3012}{0}{}{Bag's Wrecked Lounge (Tek Angeles/Inside/28)}{\e[0m\e[38;5;94m■\e[0m}{}{Tek Angeles}{}{Inside}{}{1.000}{}
+E {3336}{d}{d}{32}{0}{}{1.000}{}{0.00}
+E {3011}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
 R {3013}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
@@ -2047,6 +2053,8 @@ E {3180}{u}{u}{16}{0}{}{1.000}{}{0.00}
 
 R {3335}{0}{}{Inscription Artisan's Workshop (Tek Angeles/Inside/28)}{\e[0m\e[38;5;94m■\e[0m}{}{Tek Angeles}{}{Inside}{}{1.000}{}
 E {3289}{u}{u}{16}{0}{}{1.000}{}{0.00}
+
+R {3336}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
 R {3401}{0}{}{A wide highway (Western Tek/Smooth/29)}{\e[0m\e[38;5;248m■\e[0m}{}{Western Tek}{}{Smooth}{}{1.000}{}
 E {3036}{e}{e}{2}{0}{}{1.000}{}{0.00}
@@ -3745,12 +3753,16 @@ R {5942}{0}{}{The Grim Antechamber (Dark Pleasures/Inside/42)}{\e[0m\e[38;5;94m�
 E {5943}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {5941}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {5943}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {5944}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
 R {5943}{0}{}{The Haunted Cellar (Dark Pleasures/Inside/42)}{\e[0m\e[38;5;94m■\e[0m}{}{Dark Pleasures}{}{Inside}{}{1.000}{}
 E {5942}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {5944}{s}{s}{4}{0}{}{1.000}{}{0.00}
 
 R {5944}{0}{}{The Enchanted Corridor (Dark Pleasures/Inside/42)}{\e[0m\e[38;5;94m■\e[0m}{}{Dark Pleasures}{}{Inside}{}{1.000}{}
 E {5943}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {5942}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {5941}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
 R {5945}{0}{}{A Windy Cavern (Dark Pleasures/Inside/42)}{\e[0m\e[38;5;94m■\e[0m}{}{Dark Pleasures}{}{Inside}{}{1.000}{}
 E {5905}{s}{s}{4}{0}{}{1.000}{}{0.00}
@@ -7133,9 +7145,15 @@ E {17219}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {17264}{s}{s}{4}{0}{}{1.000}{}{0.00}
 E {17217}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {17219}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+R {17219}{0}{}{The Quag (Vega Jane/Forest/102)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane}{}{Forest}{}{1.000}{}
+E {17220}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17263}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17218}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {17220}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+R {17220}{0}{}{The Quag (Vega Jane/Forest/102)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane}{}{Forest}{}{1.000}{}
+E {17214}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17262}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17219}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
 R {17221}{0}{}{End of the Road (Vega Jane/Forest/102)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane}{}{Forest}{}{1.000}{}
 E {17207}{n}{n}{1}{0}{}{1.000}{}{0.00}
@@ -7463,7 +7481,11 @@ E {17293}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {17283}{s}{s}{4}{0}{}{1.000}{}{0.00}
 E {17289}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {17289}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+R {17289}{0}{}{The Crooked Verge (Vega Jane/Forest/102)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane}{}{Forest}{}{1.000}{}
+E {17288}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17294}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17284}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17290}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
 R {17290}{0}{}{The Crooked Verge (Vega Jane/Forest/102)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane}{}{Forest}{}{1.000}{}
 E {17289}{e}{e}{2}{0}{}{1.000}{}{0.00}
@@ -7487,7 +7509,11 @@ E {17298}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {17288}{s}{s}{4}{0}{}{1.000}{}{0.00}
 E {17294}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {17294}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+R {17294}{0}{}{The Crooked Verge (Vega Jane/Forest/102)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane}{}{Forest}{}{1.000}{}
+E {17293}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17301}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17289}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17295}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
 R {17295}{0}{}{The Crooked Verge (Vega Jane/Forest/102)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane}{}{Forest}{}{1.000}{}
 E {17294}{e}{e}{2}{0}{}{1.000}{}{0.00}
@@ -7534,7 +7560,11 @@ E {17304}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {17296}{s}{s}{4}{0}{}{1.000}{}{0.00}
 E {17298}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {17303}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+R {17303}{0}{}{The Crooked Verge (Vega Jane II/Forest/103)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane II}{}{Forest}{}{1.000}{}
+E {17299}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17305}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17301}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17308}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
 R {17304}{0}{}{The Crooked Verge (Vega Jane II/Forest/103)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane II}{}{Forest}{}{1.000}{}
 E {17316}{e}{e}{2}{0}{}{1.000}{}{0.00}
@@ -7662,7 +7692,11 @@ E {17331}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {17329}{s}{s}{4}{0}{}{1.000}{}{0.00}
 E {17323}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {17331}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+R {17331}{0}{}{The Hollow Clearing (Vega Jane II/Forest/103)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane II}{}{Forest}{}{1.000}{}
+E {17336}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17332}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17330}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17326}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
 R {17332}{0}{}{The Hollow Clearing (Vega Jane II/Forest/103)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane II}{}{Forest}{}{1.000}{}
 E {17337}{e}{e}{2}{0}{}{1.000}{}{0.00}
@@ -7813,6 +7847,7 @@ E {17363}{s}{s}{4}{0}{}{1.000}{}{0.00}
 
 R {17365}{0}{}{Maladon Drawbridge (Vega Jane II/Field/103)}{\e[0m\e[38;5;34m■\e[0m}{}{Vega Jane II}{}{Field}{}{1.000}{}
 E {17364}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17366}{n}{n}{1}{0}{}{1.000}{}{0.00}
 
 R {17366}{0}{}{Maladon Gate Archway (Vega Jane II/Field/103)}{\e[0m\e[38;5;34m■\e[0m}{}{Vega Jane II}{}{Field}{}{1.000}{}
 E {17368}{e}{e}{2}{0}{}{1.000}{}{0.00}
@@ -7841,9 +7876,21 @@ R {17371}{0}{}{Maladon Courtyard — East (Vega Jane II/Smooth/103)}{\e[0m\e[38;
 E {17372}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {17370}{s}{s}{4}{0}{}{1.000}{}{0.00}
 
-R {17372}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+R {17372}{0}{}{Maladon Courtyard — Northeast (Vega Jane II/Smooth/103)}{\e[0m\e[38;5;248m■\e[0m}{}{Vega Jane II}{}{Smooth}{}{1.000}{}
+E {17371}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17373}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {17375}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+R {17373}{0}{}{Maladon Courtyard — North (Vega Jane II/Smooth/103)}{\e[0m\e[38;5;248m■\e[0m}{}{Vega Jane II}{}{Smooth}{}{1.000}{}
+E {17372}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17374}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17374}{0}{}{Maladon Courtyard — Northwest (Vega Jane II/Smooth/103)}{\e[0m\e[38;5;248m■\e[0m}{}{Vega Jane II}{}{Smooth}{}{1.000}{}
+E {17373}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17375}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {17375}{0}{}{Maladon Courtyard — West (Vega Jane II/Smooth/103)}{\e[0m\e[38;5;248m■\e[0m}{}{Vega Jane II}{}{Smooth}{}{1.000}{}
+E {17374}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17376}{s}{s}{4}{0}{}{1.000}{}{0.00}
 
 R {17376}{0}{}{Maladon Courtyard — Southwest (Vega Jane II/Smooth/103)}{\e[0m\e[38;5;248m■\e[0m}{}{Vega Jane II}{}{Smooth}{}{1.000}{}
 E {17369}{e}{e}{2}{0}{}{1.000}{}{0.00}
@@ -7958,7 +8005,8 @@ E {17399}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
 R {17403}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
-R {17404}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+R {17404}{0}{}{Maladon Keep — Whispering Cell (Vega Jane III/Smooth/104)}{\e[0m\e[38;5;248m■\e[0m}{}{Vega Jane III}{}{Smooth}{}{1.000}{}
+E {17400}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
 R {17405}{0}{}{Maladon Keep — Ossuary Vein (Vega Jane III/Smooth/104)}{\e[0m\e[38;5;248m■\e[0m}{}{Vega Jane III}{}{Smooth}{}{1.000}{}
 E {17406}{n}{n}{1}{0}{}{1.000}{}{0.00}
@@ -8027,13 +8075,1286 @@ R {17419}{0}{}{Necro’s Sanctum (Vega Jane III/Inside/104)}{\e[0m\e[38;5;94m■
 E {17416}{s}{s}{4}{0}{}{1.000}{}{0.00}
 E {17417}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {17420}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+R {17420}{0}{}{The Tangled Quag (Vega Jane III/Forest/104)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane III}{}{Forest}{}{1.000}{}
+E {17261}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17421}{s}{s}{4}{0}{}{1.000}{}{0.00}
 
-R {17600}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+R {17421}{0}{}{The Tangled Quag (Vega Jane III/Forest/104)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane III}{}{Forest}{}{1.000}{}
+E {17420}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17422}{s}{s}{4}{0}{}{1.000}{}{0.00}
 
-R {17601}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+R {17422}{0}{}{The Tangled Quag (Vega Jane III/Forest/104)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane III}{}{Forest}{}{1.000}{}
+E {17427}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17421}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17423}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {17602}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+R {17423}{0}{}{The Tangled Quag (Vega Jane III/Forest/104)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane III}{}{Forest}{}{1.000}{}
+E {17422}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17424}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {17424}{0}{}{The Tangled Quag (Vega Jane III/Forest/104)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane III}{}{Forest}{}{1.000}{}
+E {17423}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17425}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17425}{0}{}{The Tangled Quag (Vega Jane III/Forest/104)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane III}{}{Forest}{}{1.000}{}
+E {17424}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17426}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {17426}{0}{}{The Tangled Quag (Vega Jane III/Forest/104)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane III}{}{Forest}{}{1.000}{}
+E {17425}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17434}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {17427}{0}{}{The Tangled Quag (Vega Jane III/Forest/104)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane III}{}{Forest}{}{1.000}{}
+E {17428}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17422}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17428}{0}{}{The Tangled Quag (Vega Jane III/Forest/104)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane III}{}{Forest}{}{1.000}{}
+E {17429}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17427}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {17429}{0}{}{The Tangled Quag (Vega Jane III/Forest/104)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane III}{}{Forest}{}{1.000}{}
+E {17430}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17428}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17430}{0}{}{The Tangled Quag (Vega Jane III/Forest/104)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane III}{}{Forest}{}{1.000}{}
+E {17429}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17431}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {17431}{0}{}{The Tangled Quag (Vega Jane III/Forest/104)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane III}{}{Forest}{}{1.000}{}
+E {17430}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17432}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17432}{0}{}{The Tangled Quag (Vega Jane III/Forest/104)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane III}{}{Forest}{}{1.000}{}
+E {17431}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17433}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {17433}{0}{}{The Tangled Quag (Vega Jane III/Forest/104)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane III}{}{Forest}{}{1.000}{}
+E {17432}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17437}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17434}{0}{}{The Tangled Quag (Vega Jane III/Forest/104)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane III}{}{Forest}{}{1.000}{}
+E {17435}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17426}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {17435}{0}{}{The Tangled Quag (Vega Jane III/Forest/104)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane III}{}{Forest}{}{1.000}{}
+E {17436}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17434}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17436}{0}{}{The Tangled Quag (Vega Jane III/Forest/104)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane III}{}{Forest}{}{1.000}{}
+E {17437}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17435}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {17437}{0}{}{The Tangled Quag (Vega Jane III/Forest/104)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane III}{}{Forest}{}{1.000}{}
+E {17438}{d}{d}{32}{0}{}{1.000}{}{0.00}
+E {17433}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17436}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17438}{0}{}{Moss-Filled Crevasse (Vega Jane III/Forest/104)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane III}{}{Forest}{}{1.000}{}
+E {17439}{d}{d}{32}{0}{}{1.000}{}{0.00}
+E {17437}{u}{u}{16}{0}{}{1.000}{}{0.00}
+
+R {17439}{0}{}{Fungal Vault (Vega Jane III/Forest/104)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane III}{}{Forest}{}{1.000}{}
+E {17440}{d}{d}{32}{0}{}{1.000}{}{0.00}
+E {17438}{u}{u}{16}{0}{}{1.000}{}{0.00}
+
+R {17440}{0}{}{The Black Root Hollow (Vega Jane III/Inside/104)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane III}{}{Inside}{}{1.000}{}
+E {17441}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17439}{u}{u}{16}{0}{}{1.000}{}{0.00}
+
+R {17441}{0}{}{Ekos' Den (Vega Jane III/Inside/104)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane III}{}{Inside}{}{1.000}{}
+E {17440}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17442}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {17442}{0}{}{Ekos' Den (Vega Jane III/Inside/104)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane III}{}{Inside}{}{1.000}{}
+E {17441}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17443}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {17443}{0}{}{Ekos' Den (Vega Jane III/Inside/104)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane III}{}{Inside}{}{1.000}{}
+E {17444}{d}{d}{32}{0}{}{1.000}{}{0.00}
+E {17442}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {17444}{0}{}{The Lair of the Ekos Clan (Vega Jane III/Inside/104)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane III}{}{Inside}{}{1.000}{}
+E {17447}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17445}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17446}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17443}{u}{u}{16}{0}{}{1.000}{}{0.00}
+E {17448}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17445}{0}{}{The Lair of the Ekos Clan (Vega Jane III/Inside/104)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane III}{}{Inside}{}{1.000}{}
+E {17451}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17444}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {17446}{0}{}{The Lair of the Ekos Clan (Vega Jane III/Inside/104)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane III}{}{Inside}{}{1.000}{}
+E {17444}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17452}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {17447}{0}{}{The Lair of the Ekos Clan (Vega Jane III/Inside/104)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane III}{}{Inside}{}{1.000}{}
+E {17450}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17444}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17448}{0}{}{The Lair of the Ekos Clan (Vega Jane III/Inside/104)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane III}{}{Inside}{}{1.000}{}
+E {17444}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17449}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17449}{0}{}{The Lair of the Ekos Clan (Vega Jane III/Inside/104)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane III}{}{Inside}{}{1.000}{}
+E {17448}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17459}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17462}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {17450}{0}{}{The Lair of the Ekos Clan (Vega Jane III/Inside/104)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane III}{}{Inside}{}{1.000}{}
+E {17453}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17456}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17447}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17451}{0}{}{The Lair of the Ekos Clan (Vega Jane III/Inside/104)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane III}{}{Inside}{}{1.000}{}
+E {17445}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {17452}{0}{}{The Lair of the Ekos Clan (Vega Jane III/Inside/104)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane III}{}{Inside}{}{1.000}{}
+E {17466}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17446}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17467}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17465}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17453}{0}{}{The Lair of the Ekos Clan (Vega Jane III/Inside/104)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane III}{}{Inside}{}{1.000}{}
+E {17454}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17450}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17455}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17454}{0}{}{The Lair of the Ekos Clan (Vega Jane III/Inside/104)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane III}{}{Inside}{}{1.000}{}
+E {17453}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17455}{0}{}{The Lair of the Ekos Clan (Vega Jane III/Inside/104)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane III}{}{Inside}{}{1.000}{}
+E {17453}{e}{e}{2}{0}{}{1.000}{}{0.00}
+
+R {17456}{0}{}{The Lair of the Ekos Clan (Vega Jane III/Inside/104)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane III}{}{Inside}{}{1.000}{}
+E {17458}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17450}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17457}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17457}{0}{}{The Lair of the Ekos Clan (Vega Jane III/Inside/104)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane III}{}{Inside}{}{1.000}{}
+E {17456}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17466}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {17458}{0}{}{The Lair of the Ekos Clan (Vega Jane III/Inside/104)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane III}{}{Inside}{}{1.000}{}
+E {17456}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17459}{0}{}{The Lair of the Ekos Clan (Vega Jane III/Inside/104)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane III}{}{Inside}{}{1.000}{}
+E {17460}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17449}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17461}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17460}{0}{}{The Lair of the Ekos Clan (Vega Jane III/Inside/104)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane III}{}{Inside}{}{1.000}{}
+E {17459}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17461}{0}{}{The Lair of the Ekos Clan (Vega Jane III/Inside/104)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane III}{}{Inside}{}{1.000}{}
+E {17459}{e}{e}{2}{0}{}{1.000}{}{0.00}
+
+R {17462}{0}{}{The Lair of the Ekos Clan (Vega Jane III/Inside/104)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane III}{}{Inside}{}{1.000}{}
+E {17464}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17449}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17463}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17463}{0}{}{The Lair of the Ekos Clan (Vega Jane III/Inside/104)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane III}{}{Inside}{}{1.000}{}
+E {17462}{e}{e}{2}{0}{}{1.000}{}{0.00}
+
+R {17464}{0}{}{The Lair of the Ekos Clan (Vega Jane III/Inside/104)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane III}{}{Inside}{}{1.000}{}
+E {17465}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17462}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17465}{0}{}{The Lair of the Ekos Clan (Vega Jane III/Inside/104)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane III}{}{Inside}{}{1.000}{}
+E {17452}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17464}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {17466}{0}{}{The Lair of the Ekos Clan (Vega Jane III/Inside/104)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane III}{}{Inside}{}{1.000}{}
+E {17457}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17452}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17467}{0}{}{The Lair of the Ekos Clan (Vega Jane III/Inside/104)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane III}{}{Inside}{}{1.000}{}
+E {17452}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17468}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {17468}{0}{}{The Lair of the Ekos Clan (Vega Jane III/Inside/104)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane III}{}{Inside}{}{1.000}{}
+E {17467}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17469}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {17469}{0}{}{The Maw of Cataphile (Vega Jane III/Inside/104)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane III}{}{Inside}{}{1.000}{}
+E {17474}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17468}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17470}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17470}{0}{}{The Lair of the Ekos Clan (Vega Jane III/Inside/104)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane III}{}{Inside}{}{1.000}{}
+E {17469}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17471}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {17471}{0}{}{Whispershroud Hollow (Vega Jane III/Inside/104)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane III}{}{Inside}{}{1.000}{}
+E {17470}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17472}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17472}{0}{}{The Lair of the Ekos Clan (Vega Jane III/Inside/104)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane III}{}{Inside}{}{1.000}{}
+E {17471}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17473}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {17473}{0}{}{The Sprawl of Resin Bones (Vega Jane III/Inside/104)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane III}{}{Inside}{}{1.000}{}
+E {17472}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17483}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {17474}{0}{}{The Lair of the Ekos Clan (Vega Jane III/Inside/104)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane III}{}{Inside}{}{1.000}{}
+E {17475}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17469}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17475}{0}{}{Fleshweaver's Gallery (Vega Jane III/Inside/104)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane III}{}{Inside}{}{1.000}{}
+E {17476}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17474}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {17476}{0}{}{The Lair of the Ekos Clan (Vega Jane III/Inside/104)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane III}{}{Inside}{}{1.000}{}
+E {17477}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17475}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17477}{0}{}{Path of the Split-Tongues (Vega Jane III/Inside/104)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane III}{}{Inside}{}{1.000}{}
+E {17476}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17478}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {17478}{0}{}{The Murmuring Trench (Vega Jane III/Inside/104)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane III}{}{Inside}{}{1.000}{}
+E {17477}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17479}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17479}{0}{}{The Lair of the Ekos Clan (Vega Jane III/Inside/104)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane III}{}{Inside}{}{1.000}{}
+E {17478}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17480}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {17480}{0}{}{Shrine of the Hollow Echo (Vega Jane III/Inside/104)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane III}{}{Inside}{}{1.000}{}
+E {17479}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17481}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17481}{0}{}{Throne of the Hollow King (Vega Jane III/Inside/104)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane III}{}{Inside}{}{1.000}{}
+E {17480}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17482}{w}{w}{8}{0}{}{1.000}{}{0.00}
+E {17485}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {17482}{0}{}{The Maw's Antechamber (Vega Jane III/Inside/104)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane III}{}{Inside}{}{1.000}{}
+E {17481}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17484}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {17483}{0}{}{Thorne's Watch (Vega Jane III/Inside/104)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane III}{}{Inside}{}{1.000}{}
+E {17484}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17473}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {17484}{0}{}{Processional of the Chained (Vega Jane III/Inside/104)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane III}{}{Inside}{}{1.000}{}
+E {17482}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17483}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17485}{0}{}{The Lair of the Ekos Clan (Vega Jane III/Inside/104)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane III}{}{Inside}{}{1.000}{}
+E {17481}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17486}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {17486}{0}{}{The Lair of the Ekos Clan (Vega Jane III/Inside/104)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane III}{}{Inside}{}{1.000}{}
+E {17488}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17485}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17487}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17487}{0}{}{The Lair of the Ekos Clan (Vega Jane III/Inside/104)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane III}{}{Inside}{}{1.000}{}
+E {17486}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17489}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {17488}{0}{}{The Lair of the Ekos Clan (Vega Jane III/Inside/104)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane III}{}{Inside}{}{1.000}{}
+E {17490}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17486}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17489}{0}{}{The Lair of the Ekos Clan (Vega Jane III/Inside/104)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane III}{}{Inside}{}{1.000}{}
+E {17487}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17494}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17490}{0}{}{The Lair of the Ekos Clan (Vega Jane III/Inside/104)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane III}{}{Inside}{}{1.000}{}
+E {17491}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17488}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {17491}{0}{}{The Lair of the Ekos Clan (Vega Jane III/Inside/104)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane III}{}{Inside}{}{1.000}{}
+E {17492}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17490}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17492}{0}{}{The Lair of the Ekos Clan (Vega Jane III/Inside/104)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane III}{}{Inside}{}{1.000}{}
+E {17491}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17493}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {17493}{0}{}{The Lair of the Ekos Clan (Vega Jane III/Inside/104)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane III}{}{Inside}{}{1.000}{}
+E {17492}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17499}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17494}{0}{}{The Lair of the Ekos Clan (Vega Jane III/Inside/104)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane III}{}{Inside}{}{1.000}{}
+E {17489}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17495}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {17495}{0}{}{The Lair of the Ekos Clan (Vega Jane III/Inside/104)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane III}{}{Inside}{}{1.000}{}
+E {17494}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17496}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {17496}{0}{}{The Lair of the Ekos Clan (Vega Jane III/Inside/104)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane III}{}{Inside}{}{1.000}{}
+E {17497}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17495}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {17497}{0}{}{The Lair of the Ekos Clan (Vega Jane III/Inside/104)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane III}{}{Inside}{}{1.000}{}
+E {17498}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17496}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17498}{0}{}{The Lair of the Ekos Clan (Vega Jane III/Inside/104)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane III}{}{Inside}{}{1.000}{}
+E {17499}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17497}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17499}{0}{}{The Lair of the Ekos Clan (Vega Jane III/Inside/104)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane III}{}{Inside}{}{1.000}{}
+E {17493}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17498}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17600}{0}{}{The Tangled Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17601}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17358}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17605}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {17601}{0}{}{The Tangled Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17602}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17357}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17604}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17600}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17602}{0}{}{The Tangled Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17356}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17603}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17601}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17603}{0}{}{The Tangled Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17602}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17608}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17604}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17604}{0}{}{The Tangled Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17603}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17601}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17607}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17605}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17605}{0}{}{The Tangled Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17604}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17600}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17606}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {17606}{0}{}{The Tangled Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17607}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17605}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {17607}{0}{}{The Tangled Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17608}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17604}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17609}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17606}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17608}{0}{}{The Tangled Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17603}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17607}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17609}{0}{}{The Tangled Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17607}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17610}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {17610}{0}{}{The Tangled Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17609}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17611}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {17611}{0}{}{The Tangled Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17610}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17613}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {17612}{0}{}{The Tangled Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17623}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17613}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17613}{0}{}{The Tangled Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17612}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17611}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17622}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17614}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17614}{0}{}{The Tangled Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17613}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17621}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17615}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17615}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {17621}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {17622}{0}{}{The Tangled Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17623}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17613}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17621}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17623}{0}{}{The Tangled Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17612}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17624}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17622}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17624}{0}{}{The Tangled Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17623}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {17625}{0}{}{Cracked Stone Foyer (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17622}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17630}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {17630}{0}{}{Wood-Paneled Hallway (Vega Jane IV/Inside/106)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane IV}{}{Inside}{}{1.000}{}
+E {17625}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17631}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {17631}{0}{}{Wood-Paneled Hallway (Vega Jane IV/Inside/106)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane IV}{}{Inside}{}{1.000}{}
+E {17632}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17630}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17633}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {17632}{0}{}{Collapsed Storage Room (Vega Jane IV/Inside/106)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane IV}{}{Inside}{}{1.000}{}
+E {17631}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17633}{0}{}{Wood-Paneled Hallway (Vega Jane IV/Inside/106)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane IV}{}{Inside}{}{1.000}{}
+E {17631}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17635}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {17634}{0}{}{Grand Central Hall (Vega Jane IV/Inside/106)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane IV}{}{Inside}{}{1.000}{}
+E {17641}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17640}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17635}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17635}{0}{}{Southern Corridor (Vega Jane IV/Inside/106)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane IV}{}{Inside}{}{1.000}{}
+E {17634}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17633}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17639}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17636}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17636}{0}{}{Servants’ Passage (Vega Jane IV/Inside/106)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane IV}{}{Inside}{}{1.000}{}
+E {17635}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17638}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {17637}{0}{}{Jasper's Bedchamber (Vega Jane IV/Inside/106)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane IV}{}{Inside}{}{1.000}{}
+E {17638}{e}{e}{2}{0}{}{1.000}{}{0.00}
+
+R {17638}{0}{}{Back Hallway (Vega Jane IV/Inside/106)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane IV}{}{Inside}{}{1.000}{}
+E {17639}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17636}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17643}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17637}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17639}{0}{}{Guest Quarters (Vega Jane IV/Inside/106)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane IV}{}{Inside}{}{1.000}{}
+E {17640}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17635}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17644}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17638}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17640}{0}{}{A Tidy Bedroom (Vega Jane IV/Inside/106)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane IV}{}{Inside}{}{1.000}{}
+E {17634}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17645}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17639}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17641}{0}{}{Sitting Room of Echoes (Vega Jane IV/Inside/106)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane IV}{}{Inside}{}{1.000}{}
+E {17642}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17634}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17642}{0}{}{Narrow Stair Landing (Vega Jane IV/Inside/106)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane IV}{}{Inside}{}{1.000}{}
+E {17646}{u}{u}{16}{0}{}{1.000}{}{0.00}
+E {17641}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17643}{0}{}{Abandoned Reading Room (Vega Jane IV/Inside/106)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane IV}{}{Inside}{}{1.000}{}
+E {17644}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17638}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {17644}{0}{}{Hallway with Burnt Doors (Vega Jane IV/Inside/106)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane IV}{}{Inside}{}{1.000}{}
+E {17645}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17639}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17643}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17645}{0}{}{Hallway with Burnt Doors (Vega Jane IV/Inside/106)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane IV}{}{Inside}{}{1.000}{}
+E {17640}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17644}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17646}{0}{}{Upper Stair Hall (Vega Jane IV/Inside/106)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane IV}{}{Inside}{}{1.000}{}
+E {17642}{d}{d}{32}{0}{}{1.000}{}{0.00}
+E {17651}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {17647}{0}{}{Northern Wing Hall (Vega Jane IV/Inside/106)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane IV}{}{Inside}{}{1.000}{}
+E {17648}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17650}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {17648}{0}{}{Sealed Nursery (Vega Jane IV/Inside/106)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane IV}{}{Inside}{}{1.000}{}
+E {17649}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17647}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17649}{0}{}{Upper Chamber Vestibule (Vega Jane IV/Inside/106)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane IV}{}{Inside}{}{1.000}{}
+E {17653}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17648}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17650}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17650}{0}{}{Jasper Jane’s Study (Vega Jane IV/Inside/106)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane IV}{}{Inside}{}{1.000}{}
+E {17649}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17652}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17647}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17651}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17651}{0}{}{Upper Hall Walk-Through Closet (Vega Jane IV/Inside/106)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane IV}{}{Inside}{}{1.000}{}
+E {17650}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17646}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {17652}{0}{}{Moonlit Antechamber (Vega Jane IV/Inside/106)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane IV}{}{Inside}{}{1.000}{}
+E {17653}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17650}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {17653}{0}{}{The Guest Room (Vega Jane IV/Inside/106)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane IV}{}{Inside}{}{1.000}{}
+E {17649}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17652}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17654}{0}{}{Hidden Stairwell (Vega Jane IV/Inside/106)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane IV}{}{Inside}{}{1.000}{}
+E {17655}{d}{d}{32}{0}{}{1.000}{}{0.00}
+E {17653}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {17655}{0}{}{Sunken Vestibule (Vega Jane IV/Inside/106)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane IV}{}{Inside}{}{1.000}{}
+E {17657}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17654}{u}{u}{16}{0}{}{1.000}{}{0.00}
+
+R {17657}{0}{}{Dreadful Quag Hollow (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17658}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17655}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {17658}{0}{}{Dreadful Quag Hollow (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17659}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17663}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17657}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {17659}{0}{}{Dreadful Quag Hollow (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17660}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17662}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17658}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17660}{0}{}{Dreadful Quag Hollow (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17661}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17659}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17661}{0}{}{Dreadful Quag Hollow (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17668}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17660}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17662}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17662}{0}{}{Dreadful Quag Hollow (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17661}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17667}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17659}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17663}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17663}{0}{}{Dreadful Quag Hollow (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17662}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17666}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17658}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17664}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17664}{0}{}{Dreadful Quag Hollow (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17663}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17665}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {17665}{0}{}{Dreadful Quag Hollow (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17666}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17672}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17664}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {17666}{0}{}{Dreadful Quag Hollow (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17667}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17671}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17663}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17665}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17667}{0}{}{Dreadful Quag Hollow (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17668}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17670}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17662}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17666}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17668}{0}{}{Dreadful Quag Hollow (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17669}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17661}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17667}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17669}{0}{}{Dreadful Quag Hollow (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17675}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17668}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17670}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17670}{0}{}{Dreadful Quag Hollow (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17669}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17674}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17667}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17671}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17671}{0}{}{Dreadful Quag Hollow (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17670}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17673}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17666}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17672}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17672}{0}{}{Dreadful Quag Hollow (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17671}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17665}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {17673}{0}{}{Dreadful Quag Hollow (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17674}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17678}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17671}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {17674}{0}{}{Dreadful Quag Hollow (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17675}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17677}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17670}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17673}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17675}{0}{}{Dreadful Quag Hollow (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17676}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17669}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17674}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17676}{0}{}{Dreadful Quag Hollow (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17683}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17675}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17677}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17677}{0}{}{Dreadful Quag Hollow (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17676}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17682}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17674}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17678}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17678}{0}{}{Dreadful Quag Hollow (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17677}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17681}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17673}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {17679}{0}{}{Dreadful Quag Hollow (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17680}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17685}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {17680}{0}{}{Dreadful Quag Hollow (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17681}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17679}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17681}{0}{}{Dreadful Quag Hollow (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17682}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17678}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17680}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17682}{0}{}{Dreadful Quag Hollow (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17683}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17677}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17681}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17683}{0}{}{Dreadful Quag Hollow (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17676}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17682}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17685}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17698}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17679}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17686}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17686}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17685}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17697}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17687}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17687}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17686}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17696}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17688}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17688}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17687}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17695}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17689}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17689}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17688}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17694}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17690}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17690}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17689}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17693}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17691}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17691}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17690}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17692}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {17692}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17693}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17705}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17691}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {17693}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17694}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17704}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17690}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17692}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17694}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17695}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17703}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17689}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17693}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17695}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17696}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17702}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17688}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17694}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17696}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17697}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17701}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17687}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17695}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17697}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17698}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17700}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17686}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17696}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17698}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17699}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17685}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17697}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17699}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17714}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17698}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17700}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17700}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17699}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17713}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17697}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17701}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17701}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17700}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17712}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17696}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17702}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17702}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17701}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17711}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17695}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17703}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17703}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17702}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17710}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17694}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17704}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17704}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17703}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17709}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17693}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17705}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17705}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17704}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17708}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17692}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {17706}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {17707}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {17708}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17709}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17721}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17705}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17707}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17709}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17710}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17720}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17704}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17708}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17710}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17711}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17719}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17703}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17709}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17711}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17712}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17718}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17702}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17710}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17712}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17713}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17717}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17701}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17711}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17713}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17714}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17716}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17700}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17712}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17714}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17715}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17699}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17713}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17715}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17732}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17714}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17716}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17716}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17715}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17731}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17713}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17717}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17717}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17716}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17730}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17712}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17718}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17718}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17717}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17729}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17711}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17719}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17719}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17718}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17728}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17710}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17720}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17720}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17719}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17727}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17709}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17721}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17721}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17720}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17726}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17708}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17722}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17722}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17721}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17725}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17707}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17723}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17723}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17722}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17724}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17706}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {17724}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17725}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17741}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17723}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {17725}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17726}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17740}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17722}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17724}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17726}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17727}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17739}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17721}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17725}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17727}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17728}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17738}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17720}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17726}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17728}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17729}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17737}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17719}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17727}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17729}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17730}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17736}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17718}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17728}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17730}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17731}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17735}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17717}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17729}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17731}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17732}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17734}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17716}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17730}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17732}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17733}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17715}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17731}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17733}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17750}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17732}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17734}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17734}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17733}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17749}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17731}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17735}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17735}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17734}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17748}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17730}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17736}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17736}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17735}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17747}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17729}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17737}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17737}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17736}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17746}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17728}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17738}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17738}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17737}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17745}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17727}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17739}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17739}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17738}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17744}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17726}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17740}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17740}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17739}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17743}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17725}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17741}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17741}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17740}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17742}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17724}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {17742}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17743}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17759}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17741}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {17743}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17744}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17758}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17740}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17742}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17744}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17745}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17757}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17739}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17743}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17745}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17746}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17756}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17738}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17744}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17746}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17747}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17755}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17737}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17745}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17747}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17748}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17754}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17736}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17746}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17748}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17749}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17753}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17735}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17747}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17749}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17750}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17752}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17734}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17748}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17750}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17751}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17733}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17749}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17751}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17766}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17750}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17752}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17752}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17751}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17765}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17749}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17753}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17753}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17752}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17764}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17748}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17754}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17754}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17753}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17763}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17747}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17755}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17755}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17754}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17762}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17746}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17756}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17756}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17755}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17745}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17757}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17757}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17756}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17744}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17758}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17758}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17757}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17761}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17743}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17759}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17759}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17758}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17760}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17742}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {17760}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17761}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17773}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17759}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {17761}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17772}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17758}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17760}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17762}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17763}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17771}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17755}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {17763}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17764}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17770}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17754}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17762}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17764}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17765}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17769}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17753}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17763}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17765}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {17766}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17767}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17751}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17765}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17767}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17780}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17766}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17768}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17768}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {17769}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17768}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17778}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17764}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {17770}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17763}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17771}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {17771}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {17772}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17761}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17773}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17773}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17772}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17760}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {17776}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {17778}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17779}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17783}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17769}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {17779}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {17780}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17781}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17767}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17779}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17781}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17792}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17780}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17782}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17782}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {17783}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17782}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17778}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17784}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17784}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17783}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17785}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17785}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17784}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17790}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17776}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17786}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17786}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {17789}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {17790}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17797}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17785}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17789}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17791}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17792}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17794}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17782}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {17792}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17793}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17781}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17791}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17793}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17792}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17794}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17794}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17793}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17791}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17795}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17795}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17794}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17796}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17796}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17795}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17797}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17797}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17796}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17790}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17798}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17798}{0}{}{The Deadly, Unforgiving Quag (Vega Jane IV/Forest/106)}{\e[0m\e[38;5;22m■\e[0m}{}{Vega Jane IV}{}{Forest}{}{1.000}{}
+E {17800}{d}{d}{32}{0}{}{1.000}{}{0.00}
+E {17797}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17789}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17799}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17799}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {17800}{0}{}{The Boneward Passage (Vega Jane IV/Inside/106)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane IV}{}{Inside}{}{1.000}{}
+E {17804}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17798}{u}{u}{16}{0}{}{1.000}{}{0.00}
+
+R {17803}{0}{}{The Maladon Cells (Vega Jane IV/Inside/106)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane IV}{}{Inside}{}{1.000}{}
+E {17804}{e}{e}{2}{0}{}{1.000}{}{0.00}
+
+R {17804}{0}{}{The Boneward Passage (Vega Jane IV/Inside/106)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane IV}{}{Inside}{}{1.000}{}
+E {17805}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17800}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17818}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17803}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17805}{0}{}{The Boneward Passage (Vega Jane IV/Inside/106)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane IV}{}{Inside}{}{1.000}{}
+E {17806}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17804}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17806}{0}{}{The Boneward Passage (Vega Jane IV/Inside/106)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane IV}{}{Inside}{}{1.000}{}
+E {17807}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17805}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17807}{0}{}{The Boneward Passage (Vega Jane IV/Inside/106)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane IV}{}{Inside}{}{1.000}{}
+E {17816}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {17806}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17815}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {17816}{0}{}{The Boneward Passage (Vega Jane IV/Inside/106)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane IV}{}{Inside}{}{1.000}{}
+E {17815}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17807}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17827}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {17817}{0}{}{The Maladon Cells (Vega Jane IV/Inside/106)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane IV}{}{Inside}{}{1.000}{}
+E {17818}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17818}{0}{}{The Boneward Passage (Vega Jane IV/Inside/106)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane IV}{}{Inside}{}{1.000}{}
+E {17804}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {17817}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {17819}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {17819}{0}{}{The Maladon Cells (Vega Jane IV/Inside/106)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane IV}{}{Inside}{}{1.000}{}
+E {17818}{e}{e}{2}{0}{}{1.000}{}{0.00}
+
+R {17827}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
 R {17965}{0}{}{The Quag (Vega Jane IV/Inside/106)}{\e[0m\e[38;5;94m■\e[0m}{}{Vega Jane IV}{}{Inside}{}{1.000}{}
 E {8141}{e}{e}{2}{0}{}{1.000}{}{0.00}
@@ -11295,6 +12616,100 @@ R {27773}{0}{}{Hedron Drifts Flying Island [Zendikar] (Dominaria MTG/Forest/151)
 E {27772}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {27769}{s}{s}{4}{0}{}{1.000}{}{0.00}
 
+R {27774}{0}{}{Before the Ish Sah, Vault of Whispers [Mirrodin] (Dominaria MTG/Inside/151)}{\e[0m\e[38;5;94m■\e[0m}{}{Dominaria MTG}{}{Inside}{}{1.000}{}
+E {2259}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {27775}{0}{}{Ish Sah, Vault of Whispers Entryway [Mirrodin] (Dominaria MTG/Inside/151)}{\e[0m\e[38;5;94m■\e[0m}{}{Dominaria MTG}{}{Inside}{}{1.000}{}
+E {27774}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {27776}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {27776}{0}{}{Ish Sah, Vault of Whispers Corridor (Dominaria MTG/Inside/151)}{\e[0m\e[38;5;94m■\e[0m}{}{Dominaria MTG}{}{Inside}{}{1.000}{}
+E {27787}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {27775}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {27777}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {27777}{0}{}{Ish Sah, Vault of Whispers Corridor (Dominaria MTG/Inside/151)}{\e[0m\e[38;5;94m■\e[0m}{}{Dominaria MTG}{}{Inside}{}{1.000}{}
+E {27776}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {27778}{w}{w}{8}{0}{}{1.000}{}{0.00}
+E {27873}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {27778}{0}{}{Ish Sah, Vault of Whispers Corridor (Dominaria MTG/Inside/151)}{\e[0m\e[38;5;94m■\e[0m}{}{Dominaria MTG}{}{Inside}{}{1.000}{}
+E {27777}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {27779}{w}{w}{8}{0}{}{1.000}{}{0.00}
+E {27780}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {27781}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {27779}{0}{}{Ish Sah, Vault of Whispers Corridor (Dominaria MTG/Inside/151)}{\e[0m\e[38;5;94m■\e[0m}{}{Dominaria MTG}{}{Inside}{}{1.000}{}
+E {27778}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {27782}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {27780}{0}{}{Mirran Safehouse (Dominaria MTG/Inside/151)}{\e[0m\e[38;5;94m■\e[0m}{}{Dominaria MTG}{}{Inside}{}{1.000}{}
+E {27778}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {27781}{0}{}{Citadel of Steel (Dominaria MTG/Inside/151)}{\e[0m\e[38;5;94m■\e[0m}{}{Dominaria MTG}{}{Inside}{}{1.000}{}
+E {27778}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {27782}{0}{}{Ish Sah, Vault of Whispers Corridor (Dominaria MTG/Inside/151)}{\e[0m\e[38;5;94m■\e[0m}{}{Dominaria MTG}{}{Inside}{}{1.000}{}
+E {27779}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {27783}{u}{u}{16}{0}{}{1.000}{}{0.00}
+
+R {27783}{0}{}{Ish Sah, Vault of Whispers Stairway (Dominaria MTG/Inside/151)}{\e[0m\e[38;5;94m■\e[0m}{}{Dominaria MTG}{}{Inside}{}{1.000}{}
+E {27782}{d}{d}{32}{0}{}{1.000}{}{0.00}
+E {27784}{u}{u}{16}{0}{}{1.000}{}{0.00}
+
+R {27784}{0}{}{Ish Sah, Vault of Whispers Stairway (Dominaria MTG/Inside/151)}{\e[0m\e[38;5;94m■\e[0m}{}{Dominaria MTG}{}{Inside}{}{1.000}{}
+E {27783}{d}{d}{32}{0}{}{1.000}{}{0.00}
+E {27785}{u}{u}{16}{0}{}{1.000}{}{0.00}
+
+R {27785}{0}{}{Ish Sah, Vault of Whispers Stairway (Dominaria MTG/Inside/151)}{\e[0m\e[38;5;94m■\e[0m}{}{Dominaria MTG}{}{Inside}{}{1.000}{}
+E {27784}{d}{d}{32}{0}{}{1.000}{}{0.00}
+E {27786}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {27786}{0}{}{Blinkmoth Nexus (Dominaria MTG/Inside/151)}{\e[0m\e[38;5;94m■\e[0m}{}{Dominaria MTG}{}{Inside}{}{1.000}{}
+E {27785}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {27787}{0}{}{Ish Sah, Vault of Whispers Corridor (Dominaria MTG/Inside/151)}{\e[0m\e[38;5;94m■\e[0m}{}{Dominaria MTG}{}{Inside}{}{1.000}{}
+E {27788}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {27776}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {27788}{0}{}{Ish Sah, Vault of Whispers Corridor (Dominaria MTG/Inside/151)}{\e[0m\e[38;5;94m■\e[0m}{}{Dominaria MTG}{}{Inside}{}{1.000}{}
+E {27789}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {27787}{w}{w}{8}{0}{}{1.000}{}{0.00}
+E {27790}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {27791}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {27789}{0}{}{Ish Sah, Vault of Whispers Corridor (Dominaria MTG/Inside/151)}{\e[0m\e[38;5;94m■\e[0m}{}{Dominaria MTG}{}{Inside}{}{1.000}{}
+E {27792}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {27788}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {27790}{0}{}{Darksteel Forge (Dominaria MTG/Inside/151)}{\e[0m\e[38;5;94m■\e[0m}{}{Dominaria MTG}{}{Inside}{}{1.000}{}
+E {27788}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {27791}{0}{}{Mirrodin's Core (Dominaria MTG/Inside/151)}{\e[0m\e[38;5;94m■\e[0m}{}{Dominaria MTG}{}{Inside}{}{1.000}{}
+E {27788}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {27792}{0}{}{Ish Sah, Vault of Whispers Corridor (Dominaria MTG/Inside/151)}{\e[0m\e[38;5;94m■\e[0m}{}{Dominaria MTG}{}{Inside}{}{1.000}{}
+E {27796}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {27793}{u}{u}{16}{0}{}{1.000}{}{0.00}
+E {27789}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {27793}{0}{}{Ish Sah, Vault of Whispers Stairway (Dominaria MTG/Inside/151)}{\e[0m\e[38;5;94m■\e[0m}{}{Dominaria MTG}{}{Inside}{}{1.000}{}
+E {27792}{d}{d}{32}{0}{}{1.000}{}{0.00}
+E {27794}{u}{u}{16}{0}{}{1.000}{}{0.00}
+
+R {27794}{0}{}{Ish Sah, Vault of Whispers Stairway (Dominaria MTG/Inside/151)}{\e[0m\e[38;5;94m■\e[0m}{}{Dominaria MTG}{}{Inside}{}{1.000}{}
+E {27793}{d}{d}{32}{0}{}{1.000}{}{0.00}
+E {27795}{u}{u}{16}{0}{}{1.000}{}{0.00}
+
+R {27795}{0}{}{Ish Sah, Vault of Whispers Stairway (Dominaria MTG/Inside/151)}{\e[0m\e[38;5;94m■\e[0m}{}{Dominaria MTG}{}{Inside}{}{1.000}{}
+E {27794}{d}{d}{32}{0}{}{1.000}{}{0.00}
+
+R {27796}{0}{}{Ish Sah, Vault of Whispers Corridor (Dominaria MTG/Inside/151)}{\e[0m\e[38;5;94m■\e[0m}{}{Dominaria MTG}{}{Inside}{}{1.000}{}
+E {27797}{d}{d}{32}{0}{}{1.000}{}{0.00}
+E {27792}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {27797}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
 R {27817}{0}{}{In the Air [Zendikar] (Dominaria MTG/Flying/152)}{\e[0m\e[38;5;45m^\e[0m}{}{Dominaria MTG}{}{Flying}{}{1.000}{}
 E {27855}{d}{d}{32}{0}{}{1.000}{}{0.00}
 E {27852}{u}{u}{16}{0}{}{1.000}{}{0.00}
@@ -11385,6 +12800,12 @@ E {27869}{w}{w}{8}{0}{}{1.000}{}{0.00}
 R {27871}{0}{}{Eldrazi Crags [Zendikar] (Dominaria MTG/Forest/152)}{\e[0m\e[38;5;22m■\e[0m}{}{Dominaria MTG}{}{Forest}{}{1.000}{}
 E {27865}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {27870}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {27872}{0}{}{Great Furnace (Dominaria MTG/Inside/152)}{\e[0m\e[38;5;94m■\e[0m}{}{Dominaria MTG}{}{Inside}{}{1.000}{}
+E {27795}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {27873}{0}{}{Outside, Mirrodin Plane [Mirrodin] (Dominaria MTG/Smooth/152)}{\e[0m\e[38;5;248m■\e[0m}{}{Dominaria MTG}{}{Smooth}{}{1.000}{}
+E {27777}{n}{n}{1}{0}{}{1.000}{}{0.00}
 
 R {27874}{0}{}{Eldrazi Crags Trail [Zendikar] (Dominaria MTG/Forest/152)}{\e[0m\e[38;5;22m■\e[0m}{}{Dominaria MTG}{}{Forest}{}{1.000}{}
 E {27867}{e}{e}{2}{0}{}{1.000}{}{0.00}
@@ -15300,9 +16721,16 @@ E {40438}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {40436}{s}{s}{4}{0}{}{1.000}{}{0.00}
 E {40457}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {40438}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+R {40438}{0}{}{Outside of a Cabin (Evil Dead/Forest/216)}{\e[0m\e[38;5;22m■\e[0m}{}{Evil Dead}{}{Forest}{}{1.000}{}
+E {40439}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {40462}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {40437}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {40459}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {40439}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+R {40439}{0}{}{Outside of a Cabin (Evil Dead/Forest/216)}{\e[0m\e[38;5;22m■\e[0m}{}{Evil Dead}{}{Forest}{}{1.000}{}
+E {40440}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {40463}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {40438}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
 R {40440}{0}{}{Outside of a Cabin (Evil Dead/Forest/216)}{\e[0m\e[38;5;22m■\e[0m}{}{Evil Dead}{}{Forest}{}{1.000}{}
 E {40468}{e}{e}{2}{0}{}{1.000}{}{0.00}
