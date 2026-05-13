@@ -149,7 +149,9 @@
     #line log {nukefire/logs/balance.log} {%1};
 }
 #action {:    %1  (keyword: silverdisc)} {
-    #line log {nukefire/logs/silverdisc.log} {%1};
+    #var sd_tmp {%1};
+    #replace {sd_tmp} { } {};
+    #line log {nukefire/logs/silverdisc.log} {$sd_tmp};
 }
 #action {[BANK] %*deposits %* credits.} {bal}
 #action {[BANK] You don't have any credits to deposit.} {bal}

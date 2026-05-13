@@ -270,12 +270,18 @@ function Get-CharRemorts($name) {
     $raw = $script:remortMap[$name.ToLower()]
     if (-not $raw) { return '' }
     $parts = [System.Collections.Generic.List[string]]::new()
+    $total = 0
+    foreach ($m in [regex]::Matches($raw, '\[([A-Za-z]+):(\d+)\]')) {
+        $total += [int]$m.Groups[2].Value
+    }
     foreach ($pair in @('GYP', 'WLF', 'HEA', 'HRT')) {
-        if ($raw -match "$pair`:(\d+)" -and [int]$Matches[1] -gt 0) {
+        if ($raw -match "\[$pair`:(\d+)\]" -and [int]$Matches[1] -gt 0) {
             $parts.Add("$pair`:$($Matches[1])")
         }
     }
-    return $parts -join ' '
+    if ($total -eq 0) { return '' }
+    $classStr = if ($parts.Count -gt 0) { "$($parts -join ' ')" } else { '' }
+    return "$classStr($total)"
 }
 
 function Get-StatAnsi($cur, $max) {
@@ -331,7 +337,7 @@ function Format-GroupStats {
         $tnlSuffixAnsi = if ($wTnl -gt 0) { " $ESC[90m[$ESC[36m$tnlStr$ESC[90m]$ESC[36mT$RESET" } else { '' }
         $remorts       = Get-CharRemorts $m.name
         $remortSuffix     = if ($remorts) { "  $remorts" }     else { '' }
-        $remortSuffixAnsi = if ($remorts) { "  $ESC[90m$($remorts -replace '(\d+)', "$ESC[37m`$1$ESC[90m")$RESET" } else { '' }
+        $remortSuffixAnsi = if ($remorts) { "  $ESC[90m$($remorts -replace ':(\d+)', ":$ESC[37m`$1$ESC[90m")$RESET" } else { '' }
         $miniPlain = '  ||'
         $miniAnsi  = "  $ESC[90m||$RESET"
         if ($ri -eq $leaderParsedIdx -and $script:balanceStr) {
