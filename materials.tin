@@ -14,4 +14,4 @@
 #ACTION { gives you a cinderglass embercore.} {am}
 
 #nop ------------------ ALIASES ------------------
-#ALIAS {am} {addmat}
+#ALIAS {am} {addmat;mat}

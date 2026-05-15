@@ -33,9 +33,7 @@
 #read {nukefire/doors.tin}
 #read {nukefire/remort.tin}
 #read {nukefire/eq_mgmt.tin}
-#read {nukefire/channels.tin}
 #read {nukefire/group.tin}
-#read {nukefire/logging.tin}
 
 #nop ------------------ LOAD CLASS-SPECIFIC MODULES ------------------
 #nop Default no-op -- healer classes override with group heal logic
@@ -47,6 +45,11 @@
 #nop ------------------ LOAD ROLE-SPECIFIC MODULES ------------------
 #if {$is_follower} {#read {nukefire/follower.tin}}
 #if {!$is_follower} {#read {nukefire/leader.tin}}
+
+#nop ------------------ LOAD LOGGING/CHANNEL MODULES ------------------
+#nop Loaded last so class/role actions take priority over catch-all channel patterns
+#read {nukefire/channels.tin}
+#read {nukefire/logging.tin}
 
 #nop ------------------ AUTOSTART ------------------
 #read {nukefire/autostart.tin}

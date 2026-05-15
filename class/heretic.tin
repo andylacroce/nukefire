@@ -171,6 +171,25 @@
 }
 
 #alias {_on_gmcp_group} {
+    #nop -- EMERGENCY: bypass heal_cooldown for any member below 30% --;
+    #if {$autoheal_on && $lvl > 24} {
+        #local gi {1};
+        #while {$gi <= $gmcp[group][count]} {
+            #local mname {$gmcp[group][members][$gi][name]};
+            #local mhp   {$gmcp[group][members][$gi][info][hp]};
+            #local mmhp  {$gmcp[group][members][$gi][info][mhp]};
+            #if {$mmhp > 0} {#math hp_pct {100 * $mhp / $mmhp}} {#local hp_pct {101}};
+            #if {"$mname" != "$me" && $mhp > 0 && $hp_pct < 30} {
+                #variable heal_focus {$mname};
+                #variable heal_cooldown 0;
+                whisper $leader @-@R<< EMERGENCY $mname >> @n@r($mhp/$mmhp HP, @+@R$hp_pct%@n@r);
+                heal $mname;
+                #variable heal_cooldown 1; #delay {3} {#variable heal_cooldown 0; _maybe_followup_heal};
+                #return;
+            };
+            #math gi {$gi + 1};
+        };
+    };
     #nop -- bail if followup chain is active, unless a new critical target has appeared --;
     #if {"$heal_focus" != ""} {
         #local gi {1};
@@ -188,7 +207,7 @@
         #if {!$found_critical} {#return};
         #variable heal_focus {};
     };
-    #nop -- PASS 1: AoE if 2+ OTHER members below threshold, else single heal --;
+    #nop -- PASS 1: scan members, decide AoE top-off vs single focused heal --;
     #if {$autoheal_on && $heal_cooldown == 0 && $lvl > 24} {
         #local below_count {0};
         #local lowest_pct  {101};
@@ -201,8 +220,8 @@
             #local mhp   {$gmcp[group][members][$gi][info][hp]};
             #local mmhp  {$gmcp[group][members][$gi][info][mhp]};
             #if {$mmhp > 0} {#math hp_pct {100 * $mhp / $mmhp}} {#local hp_pct {101}};
-            #if {$hp_pct < 85} {#math below_count {$below_count + 1}};
-            #if {"$mname" != "$me" && $hp_pct < $lowest_pct} {
+            #if {$mhp > 0 && $hp_pct < 85} {#math below_count {$below_count + 1}};
+            #if {"$mname" != "$me" && $mhp > 0 && $hp_pct < $lowest_pct} {
                 #local lowest_pct  {$hp_pct};
                 #local lowest_name {$mname};
                 #local lowest_hp   {$mhp};
@@ -210,7 +229,8 @@
             };
             #math gi {$gi + 1};
         };
-        #if {$below_count > 1 && $lvl > 34 && $lowest_pct >= 80} {
+        #nop AoE only when 2+ need topping off and nobody is critically low (>=65%) -- below 65% gets individual attention --;
+        #if {$below_count > 1 && $lvl > 34 && $lowest_pct >= 65} {
             #variable heal_focus {};
             whisper $leader @-@G<< AURA OF REJUV ($below_count low) >> @n@g;
             sli 'aura of rejuv';
@@ -224,25 +244,37 @@
             #variable heal_cooldown 1; #delay {3} {#variable heal_cooldown 0; _maybe_followup_heal};
         };
     };
-    #nop -- PASS 2: MV restore for any member (lowest priority) --;
-    #local gi {1};
-    #while {$gi <= $gmcp[group][count]} {
-        #local mname {$gmcp[group][members][$gi][name]};
-        #local mmv   {$gmcp[group][members][$gi][info][mv]};
-        #local mmmv  {$gmcp[group][members][$gi][info][mmv]};
-        #if {$mmmv > 0} {#math mv_pct {100 * $mmv / $mmmv}};
-        #if {$mv_pct < 85 && $lvl > 17 && $autoheal_on && $sinvig_cooldown == 0 && $heal_cooldown == 0} {
-            whisper $leader @-@C<< INVIGORATING $mname >> @n@c($mmv/$mmmv MV, @+@C$mv_pct%@n@c);
-            sli 'sinful vigor' $mname;
+    #nop -- PASS 2: MV restore for lowest MV% member (lowest priority) --;
+    #if {$autoheal_on && $lvl > 17 && $sinvig_cooldown == 0 && $heal_cooldown == 0} {
+        #local lowest_mv_pct  {101};
+        #local lowest_mv_name {};
+        #local lowest_mv      {0};
+        #local lowest_mmv     {0};
+        #local gi {1};
+        #while {$gi <= $gmcp[group][count]} {
+            #local mname {$gmcp[group][members][$gi][name]};
+            #local mmv   {$gmcp[group][members][$gi][info][mv]};
+            #local mmmv  {$gmcp[group][members][$gi][info][mmv]};
+            #if {$mmmv > 0} {#math mv_pct {100 * $mmv / $mmmv}} {#local mv_pct {101}};
+            #if {$mv_pct < $lowest_mv_pct} {
+                #local lowest_mv_pct  {$mv_pct};
+                #local lowest_mv_name {$mname};
+                #local lowest_mv      {$mmv};
+                #local lowest_mmv     {$mmmv};
+            };
+            #math gi {$gi + 1};
+        };
+        #if {$lowest_mv_pct < 85 && "$lowest_mv_name" != ""} {
+            whisper $leader @-@C<< INVIGORATING $lowest_mv_name >> @n@c($lowest_mv/$lowest_mmv MV, @+@C$lowest_mv_pct%@n@c);
+            sli 'sinful vigor' $lowest_mv_name;
             #variable sinvig_cooldown 1; #delay {3} {#variable sinvig_cooldown 0};
         };
-        #math gi {$gi + 1};
     };
 }
 
-#action {%1 telepaths to you, 'summon'} {
-    sum %1;
-}
+#ACTION {%1 telepaths to you, 'summon'} {
+    #if {$lvl > 9} {whisper $leader @-@B<< SUMMONING %1 >>@n;sum %1};
+} {1}
 
 #ACTION {You rise a level!} {
     sc;

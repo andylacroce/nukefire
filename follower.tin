@@ -27,21 +27,7 @@
 }
 
 #nop After the room listing ends (when "Obvious exits:" is printed), act based on whether leader was seen
-#class leader_presence open
-	#var {leader_presence_on} {1}
-	#action {^Obvious exits:} {
-		#if ($leader_here) {
-			#variable {leader_here} {0};
-		};
-		#else {
-			tel ${leader} not here...;
-			#delay {10} {look};
-		}
-	}
-#class leader_presence close
-#if {!$leader_presence_on} {#class {leader_presence} {clear}}
-
-#alias {leader_presence_on} {
+#alias {_lp_register} {
 	#class {leader_presence} {clear};
 	#class {leader_presence} {open};
 	#action {^Obvious exits:} {
@@ -50,11 +36,17 @@
 		};
 		#else {
 			tel ${leader} not here...;
+			#if {"${me}" != "haenym"} {tel haenym summon};
 			#delay {10} {look};
 		}
 	};
 	#class {leader_presence} {close};
 	#var {leader_presence_on} {1};
+}
+_lp_register
+
+#alias {leader_presence_on} {
+	_lp_register;
 	#showme {Leader presence ON};
 	#send {}
 }
