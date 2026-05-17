@@ -172,7 +172,7 @@
 
 #alias {_on_gmcp_group} {
     #nop -- EMERGENCY: bypass heal_cooldown for any member below 30% --;
-    #if {$autoheal_on && $lvl > 24} {
+    #if {$autoheal_on} {
         #local gi {1};
         #while {$gi <= $gmcp[group][count]} {
             #local mname {$gmcp[group][members][$gi][name]};
@@ -208,7 +208,7 @@
         #variable heal_focus {};
     };
     #nop -- PASS 1: scan members, decide AoE top-off vs single focused heal --;
-    #if {$autoheal_on && $heal_cooldown == 0 && $lvl > 24} {
+    #if {$autoheal_on && $heal_cooldown == 0} {
         #local below_count {0};
         #local lowest_pct  {101};
         #local lowest_name {};
