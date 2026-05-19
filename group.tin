@@ -77,3 +77,8 @@
 
 #nop ------------------ GROWS ------------------
 #alias {grows} {grow scar}
+
+#nop ------------------ AUTO CURE-BLIND / REMOVE CURSE ------------------
+#ACTION {You have been blinded!} {sli 'cure blind' $me}
+#ACTION {Gore sprays into your eyes.*blinding you!} {sli 'cure blind' $me}
+#ACTION {^SPL: %* gruesome gnaw %* DAMROLL} {#delay {1} {sli 'remove curse' $me}}

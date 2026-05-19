@@ -138,10 +138,17 @@
 #variable {heal_cooldown} {0}
 #variable {heal_focus} {}
 #variable {heal_focus_pct_at_cast} {0}
+#variable {heal_focus_retries} {0}
 
 #nop Follow-up healer: re-checks heal_focus target after cooldown -- chains until target >= 85%
 #alias {_maybe_followup_heal} {
     #if {"$heal_focus" == "" || !$autoheal_on} {#return};
+    #nop bail after 10 attempts with no meaningful progress (target may be out of range or in combat elsewhere) --;
+    #if {$heal_focus_retries >= 10} {
+        #variable heal_focus {};
+        #variable heal_focus_retries {0};
+        #return;
+    };
     #local focus_pct {101};
     #local focus_hp  {0};
     #local focus_mhp {0};
@@ -159,14 +166,17 @@
         #nop skip chain only if target is in safe zone AND visibly recovering (backlog guard) --;
         #if {$focus_pct > 70 && $focus_pct > $heal_focus_pct_at_cast + 10} {
             #variable heal_focus {};
+            #variable heal_focus_retries {0};
             #return;
         };
+        #math heal_focus_retries {$heal_focus_retries + 1};
         #variable heal_focus_pct_at_cast {$focus_pct};
         whisper $leader @-@R<< FOCUS HEAL $heal_focus >> @n@r($focus_hp/$focus_mhp HP, @+@R$focus_pct%@n@r);
         heal $heal_focus;
         #variable heal_cooldown 1; #delay {3} {#variable heal_cooldown 0; _maybe_followup_heal};
     } {
         #variable heal_focus {};
+        #variable heal_focus_retries {0};
     };
 }
 
@@ -181,6 +191,7 @@
             #if {$mmhp > 0} {#math hp_pct {100 * $mhp / $mmhp}} {#local hp_pct {101}};
             #if {"$mname" != "$me" && $mhp > 0 && $hp_pct < 30} {
                 #variable heal_focus {$mname};
+                #variable heal_focus_retries {0};
                 #variable heal_cooldown 0;
                 whisper $leader @-@R<< EMERGENCY $mname >> @n@r($mhp/$mmhp HP, @+@R$hp_pct%@n@r);
                 heal $mname;
@@ -238,6 +249,7 @@
         };
         #elseif {$lowest_pct < 85 && "$lowest_name" != ""} {
             #variable heal_focus {$lowest_name};
+            #variable heal_focus_retries {0};
             #variable heal_focus_pct_at_cast {$lowest_pct};
             whisper $leader @-@Y<< HEALING $lowest_name >> @n@y($lowest_hp/$lowest_mhp HP, @+@Y$lowest_pct%@n@y);
             heal $lowest_name;

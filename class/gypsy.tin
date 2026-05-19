@@ -11,7 +11,7 @@
 	whisper rancor o stalk mob;
 	#delay {1} {
 		#if {$lvl > 44}{impale mob};
-    	#else {shackle mob};
+		#else {shackle mob};
 		#if {$lvl <= 44}{assist rancor;ow assist mutiny};
 		ow assist rancor;
 		ow rr;
@@ -65,7 +65,7 @@
 		#if {$has_fortune == 0 && $lvl > 39}{tarot_group};
 		#variable {has_voodoo} {0};
 		#variable {has_phantom} {0};
-		#variable {has_fortune} {0}
+		#nop has_fortune is NOT reset here -- fall-off handler and SPL trigger own its state
 	}
 }
 
@@ -74,12 +74,12 @@
 #ACTION {Fortune's blessing retreats from you.} {
 	#variable {has_fortune} {0};
 	#if {$lvl > 39}{tarot_group};
-} 
+}
 #ACTION {The shimmer of Fortune's blessing fades from around %1.} {
 	#var recaster %1;
 	is_group_member %1;
 	#if {$lvl > 39 && $igm_result == 1}{tarot_group};
-} 
+}
 
 #nop ------------------ GROW SCAR: GMCP-BASED ------------------
 #alias {_on_gmcp_vitals} {
