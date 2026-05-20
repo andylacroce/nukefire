@@ -19,14 +19,14 @@
     #format {ME_UPPER} {%u} {${me}};
     #screen set title {${ME_UPPER}};
     _map_init;
+    logging_on;
     #delay {1} {
         afx;
         snapeq;
         sc;
     };
     #if {!$is_follower} {
-        #delay {1} {group new};
-        logging_on
+        #delay {1} {group new}
     };
     #if {$is_follower} {
         #delay {2} {fol ${leader}}

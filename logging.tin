@@ -2,6 +2,32 @@
 #nop LOGGING
 #nop =====================================================
 
+#nop ------------------ CHANNEL LOG HELPERS ------------------
+#nop Write a timestamped line to a log file: _ch_log {file} {line}
+#alias {_ch_log} {
+    #local {_ts} {};
+    #format {_ts} {%t} {%m/%d %H:%M};
+    #line log {%1} {[${_ts}] %2}
+}
+
+#nop Leader-only log — skip if follower or first arg starts with a digit: _leader_log {file} {speaker} {line}
+#alias {_leader_log} {
+    #if {!${is_follower}} {
+        #variable {_chlog_ok} {1};
+        #regexp {%2} {^\d} {#variable {_chlog_ok} {0}};
+        #if {${_chlog_ok}} {_ch_log {%1} {%3}}
+    }
+}
+
+#nop Report class remort status — showme for leader, whisper for followers
+#alias {_report_status} {
+    #if {$is_follower} {
+        whisper ${leader} @BLvl: $lvl || $exp_to_level || Class Remorts: $class_remorts || Total Remorts: $total_remorts || DPS: $dps
+    } {
+        #showme {\e]P40000AA <048>Lvl: $lvl || $exp_to_level || Class Remorts: $class_remorts || Total Remorts: $total_remorts || DPS: $dps}
+    }
+}
+
 #nop ------------------ LOGGING CONTROL ------------------
 #variable {logging_on} {0}
 #alias {logging_on} {

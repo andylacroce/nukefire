@@ -4,133 +4,65 @@
 #nop =====================================================
 
 #nop ------------------ GOSSIP LOG ------------------
-#ACTION {%*gossips, %*} {
-    #if {!${is_follower}} {
-        #var {_log_this} {1};
-        #regexp {%1} {^\d} {#var {_log_this} {0}};
-        #if {${_log_this}} {
-            #format {_ts} {%t} {%m/%d %H:%M};
-            #line log {nukefire/logs/gossip.log} {[${_ts}] %0}
-        }
-    }
-}
+#ACTION {%*gossips, %*} {_leader_log {nukefire/logs/gossip.log} {%1} {%0}}
 #ACTION {%*You gossip, %*} {
     #if {!${is_follower}} {
-        #var {_log_this} {1};
-        #regexp {%1} {^\s*\d} {#var {_log_this} {0}};
-        #regexp {%0} {^\d} {#var {_log_this} {0}};
-        #if {${_log_this}} {
-            #format {_ts} {%t} {%m/%d %H:%M};
-            #line log {nukefire/logs/gossip.log} {[${_ts}] [${me}] %0}
-        }
+        #variable {_chlog_ok} {1};
+        #regexp {%1} {^\s*\d} {#variable {_chlog_ok} {0}};
+        #regexp {%0} {^\d} {#variable {_chlog_ok} {0}};
+        #if {${_chlog_ok}} {_ch_log {nukefire/logs/gossip.log} {[${me}] %0}}
     }
 }
 
 #nop ------------------ TELEPATH LOG ------------------
 #ACTION {You telepath %*, %*} {
-    #var {_log_this} {1};
-    #regexp {%0} {^\d} {#var {_log_this} {0}};
-    #if {${_log_this}} {#list {followers} {find} {%1} {_idx}};
-    #if {${_log_this} && ${_idx} > 0} {#var {_log_this} {0}};
-    #if {${_log_this} && "%1" == "${leader}"} {#var {_log_this} {0}};
-    #if {${_log_this}} {#format {_ts} {%t} {%m/%d %H:%M};
-        #line log {nukefire/logs/telepath.log} {[${_ts}] [${me}] %0}}
+    #variable {_chlog_ok} {1};
+    #regexp {%0} {^\d} {#variable {_chlog_ok} {0}};
+    #if {${_chlog_ok}} {#list {followers} {find} {%1} {_idx}};
+    #if {${_chlog_ok} && ${_idx} > 0} {#variable {_chlog_ok} {0}};
+    #if {${_chlog_ok} && "%1" == "${leader}"} {#variable {_chlog_ok} {0}};
+    #if {${_chlog_ok}} {_ch_log {nukefire/logs/telepath.log} {[${me}] %0}}
 }
 #ACTION {%* telepaths to you, %*} {
-    #var {_log_this} {1};
-    #regexp {%1} {^\d} {#var {_log_this} {0}};
-    #if {${_log_this}} {#list {followers} {find} {%1} {_idx}};
-    #if {${_log_this} && ${_idx} > 0} {#var {_log_this} {0}};
-    #if {${_log_this} && "%1" == "${leader}"} {#var {_log_this} {0}};
-    #if {${_log_this}} {#format {_ts} {%t} {%m/%d %H:%M};
-        #line log {nukefire/logs/telepath.log} {[${_ts}] [${me}] %0}}
+    #variable {_chlog_ok} {1};
+    #regexp {%1} {^\d} {#variable {_chlog_ok} {0}};
+    #if {${_chlog_ok}} {#list {followers} {find} {%1} {_idx}};
+    #if {${_chlog_ok} && ${_idx} > 0} {#variable {_chlog_ok} {0}};
+    #if {${_chlog_ok} && "%1" == "${leader}"} {#variable {_chlog_ok} {0}};
+    #if {${_chlog_ok}} {_ch_log {nukefire/logs/telepath.log} {[${me}] %0}}
 }
 
 #nop ------------------ AUCTION LOG ------------------
-#ACTION {%* auctions, %*} {
-    #if {!${is_follower}} {
-        #var {_log_this} {1};
-        #regexp {%1} {^\d} {#var {_log_this} {0}};
-        #if {${_log_this}} {
-            #format {_ts} {%t} {%m/%d %H:%M};
-            #line log {nukefire/logs/auction.log} {[${_ts}] %0}
-        }
-    }
-}
+#ACTION {%* auctions, %*} {_leader_log {nukefire/logs/auction.log} {%1} {%0}}
 #ACTION {You auction, %*} {
     #if {!${is_follower}} {
-        #var {_log_this} {1};
-        #regexp {%0} {^\d} {#var {_log_this} {0}};
-        #if {${_log_this}} {
-            #format {_ts} {%t} {%m/%d %H:%M};
-            #line log {nukefire/logs/auction.log} {[${_ts}] [${me}] %0}
-        }
+        #variable {_chlog_ok} {1};
+        #regexp {%0} {^\d} {#variable {_chlog_ok} {0}};
+        #if {${_chlog_ok}} {_ch_log {nukefire/logs/auction.log} {[${me}] %0}}
     }
 }
 
 #nop ------------------ GROUP LOG ------------------
-#ACTION {\[Group\] %* says, %*} {
-    #if {!${is_follower}} {
-        #var {_log_this} {1};
-        #regexp {%1} {^\d} {#var {_log_this} {0}};
-        #if {${_log_this}} {
-            #format {_ts} {%t} {%m/%d %H:%M};
-            #line log {nukefire/logs/group.log} {[${_ts}] %0}
-        }
-    }
-}
+#ACTION {\[Group\] %* says, %*} {_leader_log {nukefire/logs/group.log} {%1} {%0}}
 #ACTION {%*You group-say, %*} {
     #if {!${is_follower}} {
-        #var {_log_this} {1};
-        #regexp {%1} {^\s*\d} {#var {_log_this} {0}};
-        #regexp {%0} {^\d} {#var {_log_this} {0}};
-        #if {${_log_this}} {
-            #format {_ts} {%t} {%m/%d %H:%M};
-            #line log {nukefire/logs/group.log} {[${_ts}] [${me}] %0}
-        }
+        #variable {_chlog_ok} {1};
+        #regexp {%1} {^\s*\d} {#variable {_chlog_ok} {0}};
+        #regexp {%0} {^\d} {#variable {_chlog_ok} {0}};
+        #if {${_chlog_ok}} {_ch_log {nukefire/logs/group.log} {[${me}] %0}}
     }
 }
 
 #nop ------------------ BROADCAST LOG (Glory / New Item) ------------------
-#ACTION {\[GLORY\] %*} {
-    #if {!${is_follower}} {
-        #var {_log_this} {1};
-        #regexp {%1} {^\d} {#var {_log_this} {0}};
-        #if {${_log_this}} {
-            #format {_ts} {%t} {%m/%d %H:%M};
-            #line log {nukefire/logs/broadcast.log} {[${_ts}] %0}
-        }
-    }
-}
-#ACTION {\[ NEW ITEM EVENT \] %*} {
-    #if {!${is_follower}} {
-        #var {_log_this} {1};
-        #regexp {%1} {^\d} {#var {_log_this} {0}};
-        #if {${_log_this}} {
-            #format {_ts} {%t} {%m/%d %H:%M};
-            #line log {nukefire/logs/broadcast.log} {[${_ts}] %0}
-        }
-    }
-}
-#ACTION {\[CLASS REMORT EVENT\] %*} {
-    #if {!${is_follower}} {
-        #var {_log_this} {1};
-        #regexp {%1} {^\d} {#var {_log_this} {0}};
-        #if {${_log_this}} {
-            #format {_ts} {%t} {%m/%d %H:%M};
-            #line log {nukefire/logs/broadcast.log} {[${_ts}] %0}
-        }
-    }
-}
+#ACTION {\[GLORY\] %*} {_leader_log {nukefire/logs/broadcast.log} {%1} {%0}}
+#ACTION {\[ NEW ITEM EVENT \] %*} {_leader_log {nukefire/logs/broadcast.log} {%1} {%0}}
+#ACTION {\[CLASS REMORT EVENT\] %*} {_leader_log {nukefire/logs/broadcast.log} {%1} {%0}}
 #ACTION {Skynet\(TM\) %*} {
     #if {!${is_follower}} {
-        #var {_log_this} {1};
-        #regexp {%1} {^\d} {#var {_log_this} {0}};
-        #regexp {%1} {linked destinations} {#var {_log_this} {0}};
-        #if {${_log_this}} {
-            #format {_ts} {%t} {%m/%d %H:%M};
-            #line log {nukefire/logs/broadcast.log} {[${_ts}] %0}
-        }
+        #variable {_chlog_ok} {1};
+        #regexp {%1} {^\d} {#variable {_chlog_ok} {0}};
+        #regexp {%1} {linked destinations} {#variable {_chlog_ok} {0}};
+        #if {${_chlog_ok}} {_ch_log {nukefire/logs/broadcast.log} {%0}}
     }
 }
 
