@@ -14,11 +14,11 @@ CROOMS <178>
 CSYMBOLS <128>
 CUSER <128>
 
-F 1138701
+F 1122317
 
 G 0
 
-I 3335
+I 17378
 
 L {ASCII NESW LINE} {NO EXITS} {x}
 L {ASCII NESW LINE} {N} {o}
@@ -3016,7 +3016,12 @@ R {3809}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
 R {3811}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
-R {3820}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+R {3819}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {3820}{0}{}{Path in the light forest (Southern Forest/Field/31)}{\e[0m\e[38;5;34m■\e[0m}{}{Southern Forest}{}{Field}{}{1.000}{}
+E {3923}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {3924}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {3819}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
 R {3826}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
@@ -3084,6 +3089,8 @@ E {3903}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {3845}{s}{s}{4}{0}{}{1.000}{}{0.00}
 E {3904}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
+R {3911}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
 R {3916}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
 R {3917}{0}{}{}{ }{}{}{}{}{}{1.000}{}
@@ -3100,6 +3107,8 @@ E {3809}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {3917}{s}{s}{4}{0}{}{1.000}{}{0.00}
 E {3918}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
+R {3921}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
 R {3922}{0}{}{In the thick forest (Open zone/Forest/32)}{\e[0m\e[38;5;22m■\e[0m}{}{Open zone}{}{Forest}{}{1.000}{}
 E {3923}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {3811}{s}{s}{4}{0}{}{1.000}{}{0.00}
@@ -3111,12 +3120,73 @@ E {3983}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {3820}{s}{s}{4}{0}{}{1.000}{}{0.00}
 E {3922}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
+R {3924}{0}{}{In the thick forest (Open zone/Forest/32)}{\e[0m\e[38;5;22m■\e[0m}{}{Open zone}{}{Forest}{}{1.000}{}
+E {3820}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {3926}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {3921}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {3925}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {3926}{0}{}{In the thick forest (Open zone/Forest/32)}{\e[0m\e[38;5;22m■\e[0m}{}{Open zone}{}{Forest}{}{1.000}{}
+E {3924}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {3928}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {3925}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {3927}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {3928}{0}{}{Rocky hills (Open zone/Hills/32)}{\e[0m\e[38;5;58m^\e[0m}{}{Open zone}{}{Hills}{}{1.000}{}
+E {3926}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {3930}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {3927}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {3930}{0}{}{Rocky hills (Open zone/Hills/32)}{\e[0m\e[38;5;58m^\e[0m}{}{Open zone}{}{Hills}{}{1.000}{}
+E {3928}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {3965}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
 R {3931}{0}{}{The thick forest outside city walls (Open zone/Forest/32)}{\e[0m\e[38;5;22m■\e[0m}{}{Open zone}{}{Forest}{}{1.000}{}
 E {3801}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {3806}{s}{s}{4}{0}{}{1.000}{}{0.00}
 E {3899}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
 R {3937}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {3955}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {3957}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {3958}{0}{}{At the base of the mountains (Open zone/Smooth/32)}{\e[0m\e[38;5;248m■\e[0m}{}{Open zone}{}{Smooth}{}{1.000}{}
+E {3959}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {3975}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {3957}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {3959}{0}{}{Inside a dark hut (Open zone/Inside/32)}{\e[0m\e[38;5;94m■\e[0m}{}{Open zone}{}{Inside}{}{1.000}{}
+E {50000}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {3958}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {3964}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {3965}{0}{}{In the dark forest (Open zone/Forest/32)}{\e[0m\e[38;5;22m■\e[0m}{}{Open zone}{}{Forest}{}{1.000}{}
+E {3930}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {3911}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {3971}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {3964}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {3970}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {3971}{0}{}{Near the steep hills (Open zone/Hills/32)}{\e[0m\e[38;5;58m^\e[0m}{}{Open zone}{}{Hills}{}{1.000}{}
+E {3965}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {3976}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {3970}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {3975}{0}{}{Steep foothills (Open zone/Hills/32)}{\e[0m\e[38;5;58m^\e[0m}{}{Open zone}{}{Hills}{}{1.000}{}
+E {3976}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {3970}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {3958}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {3955}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {3976}{0}{}{Steep foothills (Open zone/Hills/32)}{\e[0m\e[38;5;58m^\e[0m}{}{Open zone}{}{Hills}{}{1.000}{}
+E {3971}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {3975}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
 R {3983}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
@@ -8188,7 +8258,9 @@ E {15123}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {15145}{s}{s}{4}{0}{}{1.000}{}{0.00}
 E {15133}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {15135}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+R {15135}{0}{}{On the high seas (OutsideSilicia/Water/89)}{\e[0m\e[38;5;39m~\e[0m}{}{OutsideSilicia}{}{Water}{}{1.000}{}
+E {16708}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {15134}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
 R {15136}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
@@ -8225,7 +8297,11 @@ R {15146}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
 R {15147}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
-R {15148}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+R {15148}{0}{}{On the high seas (OutsideSilicia/Water/89)}{\e[0m\e[38;5;39m~\e[0m}{}{OutsideSilicia}{}{Water}{}{1.000}{}
+E {15149}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {15137}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {15154}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {16709}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
 R {15149}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
@@ -8276,7 +8352,11 @@ E {15153}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {15165}{s}{s}{4}{0}{}{1.000}{}{0.00}
 E {15158}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {15160}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+R {15160}{0}{}{On the high seas (OutsideSilicia/Water/89)}{\e[0m\e[38;5;39m~\e[0m}{}{OutsideSilicia}{}{Water}{}{1.000}{}
+E {15161}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {15154}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {15166}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {16729}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
 R {15161}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
@@ -8288,7 +8368,13 @@ R {15164}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
 R {15165}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
-R {15166}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+R {15166}{0}{}{On the high seas (OutsideSilicia/Water/89)}{\e[0m\e[38;5;39m~\e[0m}{}{OutsideSilicia}{}{Water}{}{1.000}{}
+E {15167}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {15160}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {15172}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {16739}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {15167}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
 R {15172}{0}{}{On the high seas (OutsideSilicia/Water/89)}{\e[0m\e[38;5;39m~\e[0m}{}{OutsideSilicia}{}{Water}{}{1.000}{}
 E {15173}{e}{e}{2}{0}{}{1.000}{}{0.00}
@@ -8298,7 +8384,14 @@ E {16749}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
 R {15173}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
-R {15178}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+R {15178}{0}{}{On the high seas (OutsideSilicia/Water/89)}{\e[0m\e[38;5;39m~\e[0m}{}{OutsideSilicia}{}{Water}{}{1.000}{}
+E {15179}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {15172}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {15185}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {15179}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {15185}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
 R {15199}{0}{}{New BuildWalk Room (OutsideSilicia/Water/89)}{\e[0m\e[38;5;39m~\e[0m}{}{OutsideSilicia}{}{Water}{}{1.000}{}
 E {28804}{e}{e}{2}{0}{}{1.000}{}{0.00}
@@ -8883,26 +8976,39 @@ E {15145}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {16702}{w}{w}{8}{0}{}{1.000}{}{0.00}
 E {16713}{s}{s}{4}{0}{}{1.000}{}{0.00}
 
-R {16704}{0}{}{On the high seas (High Seas\/Witch Isle/Water/98)}{\e[0m\e[38;5;39m~\e[0m}{}{High Seas\/Witch Isle}{}{Water}{}{1.000}{}
+R {16704}{0}{}{Outer Witch-Sea (Witch Isle/Water/98)}{\e[0m\e[38;5;39m~\e[0m}{}{Witch Isle}{}{Water}{}{1.000}{}
 E {16705}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {15146}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {16703}{w}{w}{8}{0}{}{1.000}{}{0.00}
+E {16714}{s}{s}{4}{0}{}{1.000}{}{0.00}
 
-R {16705}{0}{}{On the high seas (High Seas\/Witch Isle/Water/98)}{\e[0m\e[38;5;39m~\e[0m}{}{High Seas\/Witch Isle}{}{Water}{}{1.000}{}
+R {16705}{0}{}{Outer Witch-Sea (Witch Isle/Water/98)}{\e[0m\e[38;5;39m~\e[0m}{}{Witch Isle}{}{Water}{}{1.000}{}
 E {15154}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {15147}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {16715}{s}{s}{4}{0}{}{1.000}{}{0.00}
 E {16704}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {16707}{0}{}{A driftwood hut (High Seas\/Witch Isle/Inside/98)}{\e[0m\e[38;5;94m■\e[0m}{}{High Seas\/Witch Isle}{}{Inside}{}{1.000}{}
+R {16706}{0}{}{Outer Witch-Sea (Witch Isle/Water/98)}{\e[0m\e[38;5;39m~\e[0m}{}{Witch Isle}{}{Water}{}{1.000}{}
+E {16707}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {16716}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {16705}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {16708}{0}{}{A sandy beach. (High Seas\/Witch Isle/Field/98)}{\e[0m\e[38;5;34m■\e[0m}{}{High Seas\/Witch Isle}{}{Field}{}{1.000}{}
+R {16707}{0}{}{Needle-Reef Channel (Witch Isle/Water/98)}{\e[0m\e[38;5;39m~\e[0m}{}{Witch Isle}{}{Water}{}{1.000}{}
+E {16716}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {16708}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {16706}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {16708}{0}{}{Outer Witch-Sea (Witch Isle/Water/98)}{\e[0m\e[38;5;39m~\e[0m}{}{Witch Isle}{}{Water}{}{1.000}{}
 E {16709}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {16702}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {16717}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {16707}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {16709}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+R {16709}{0}{}{Outer Witch-Sea (Witch Isle/Water/98)}{\e[0m\e[38;5;39m~\e[0m}{}{Witch Isle}{}{Water}{}{1.000}{}
+E {15148}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {15136}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {16719}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {16708}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
 R {16710}{0}{}{Driftwood Landing (Witch Isle/Field/98)}{\e[0m\e[38;5;34m■\e[0m}{}{Witch Isle}{}{Field}{}{1.000}{}
 E {16711}{e}{e}{2}{0}{}{1.000}{}{0.00}
@@ -25618,6 +25724,594 @@ R {48500}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
 R {49000}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
+R {50000}{0}{}{Blackroot Approach (Blackroot/Inside/275)}{\e[0m\e[38;5;94m■\e[0m}{}{Blackroot}{}{Inside}{}{1.000}{}
+E {50001}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {50010}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {3959}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {50001}{0}{}{Blackroot Approach (Blackroot/Inside/275)}{\e[0m\e[38;5;94m■\e[0m}{}{Blackroot}{}{Inside}{}{1.000}{}
+E {50002}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {50000}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {50002}{0}{}{Blackroot Approach (Blackroot/Inside/275)}{\e[0m\e[38;5;94m■\e[0m}{}{Blackroot}{}{Inside}{}{1.000}{}
+E {50003}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {50001}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {50003}{0}{}{Blackroot Approach (Blackroot/Inside/275)}{\e[0m\e[38;5;94m■\e[0m}{}{Blackroot}{}{Inside}{}{1.000}{}
+E {50013}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {50002}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {50004}{0}{}{Blackroot Approach (Blackroot/Inside/275)}{\e[0m\e[38;5;94m■\e[0m}{}{Blackroot}{}{Inside}{}{1.000}{}
+E {50005}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {50014}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {50005}{0}{}{Blackroot Approach (Blackroot/Inside/275)}{\e[0m\e[38;5;94m■\e[0m}{}{Blackroot}{}{Inside}{}{1.000}{}
+E {50006}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {50015}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {50004}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {50006}{0}{}{Blackroot Approach (Blackroot/Inside/275)}{\e[0m\e[38;5;94m■\e[0m}{}{Blackroot}{}{Inside}{}{1.000}{}
+E {50007}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {50005}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {50007}{0}{}{Blackroot Approach (Blackroot/Inside/275)}{\e[0m\e[38;5;94m■\e[0m}{}{Blackroot}{}{Inside}{}{1.000}{}
+E {50008}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {50017}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {50006}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {50008}{0}{}{Blackroot Approach (Blackroot/Inside/275)}{\e[0m\e[38;5;94m■\e[0m}{}{Blackroot}{}{Inside}{}{1.000}{}
+E {50009}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {50018}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {50007}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {50009}{0}{}{Blackroot Approach (Blackroot/Inside/275)}{\e[0m\e[38;5;94m■\e[0m}{}{Blackroot}{}{Inside}{}{1.000}{}
+E {50019}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {50008}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {50010}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {50012}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {50013}{0}{}{Blackroot Trail (Blackroot/Inside/275)}{\e[0m\e[38;5;94m■\e[0m}{}{Blackroot}{}{Inside}{}{1.000}{}
+E {50014}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {50003}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {50023}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {50012}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {50014}{0}{}{Blackroot Trail (Blackroot/Inside/275)}{\e[0m\e[38;5;94m■\e[0m}{}{Blackroot}{}{Inside}{}{1.000}{}
+E {50015}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {50004}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {50013}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {50015}{0}{}{Blackroot Trail (Blackroot/Inside/275)}{\e[0m\e[38;5;94m■\e[0m}{}{Blackroot}{}{Inside}{}{1.000}{}
+E {50016}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {50005}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {50025}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {50014}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {50016}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {50017}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {50018}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {50019}{0}{}{Blackroot Trail (Blackroot/Inside/275)}{\e[0m\e[38;5;94m■\e[0m}{}{Blackroot}{}{Inside}{}{1.000}{}
+E {50009}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {50029}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {50018}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {50023}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {50025}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {50029}{0}{}{Watchman's Rise (Blackroot/Inside/275)}{\e[0m\e[38;5;94m■\e[0m}{}{Blackroot}{}{Inside}{}{1.000}{}
+E {50019}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {50039}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {50038}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {50039}{0}{}{Ash Shelter (Blackroot/Inside/275)}{\e[0m\e[38;5;94m■\e[0m}{}{Blackroot}{}{Inside}{}{1.000}{}
+E {50029}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {50049}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {50038}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {50048}{0}{}{Splitrail Pass (Blackroot/Inside/275)}{\e[0m\e[38;5;94m■\e[0m}{}{Blackroot}{}{Inside}{}{1.000}{}
+E {50049}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {50058}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {50049}{0}{}{Splitrail Pass (Blackroot/Inside/275)}{\e[0m\e[38;5;94m■\e[0m}{}{Blackroot}{}{Inside}{}{1.000}{}
+E {50039}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {50048}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {50057}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {50058}{0}{}{Hushed Timber (Blackroot/Inside/275)}{\e[0m\e[38;5;94m■\e[0m}{}{Blackroot}{}{Inside}{}{1.000}{}
+E {50059}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {50048}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {50057}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {50059}{0}{}{Hushed Timber (Blackroot/Inside/275)}{\e[0m\e[38;5;94m■\e[0m}{}{Blackroot}{}{Inside}{}{1.000}{}
+E {50069}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {50058}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {50068}{0}{}{Rotbrook Hollow (Blackroot/Inside/275)}{\e[0m\e[38;5;94m■\e[0m}{}{Blackroot}{}{Inside}{}{1.000}{}
+E {50069}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {50078}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {50069}{0}{}{Rotbrook Hollow (Blackroot/Inside/275)}{\e[0m\e[38;5;94m■\e[0m}{}{Blackroot}{}{Inside}{}{1.000}{}
+E {50059}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {50068}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {50078}{0}{}{Dead Quarry Track (Blackroot/Inside/275)}{\e[0m\e[38;5;94m■\e[0m}{}{Blackroot}{}{Inside}{}{1.000}{}
+E {50079}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {50068}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {50088}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {50079}{0}{}{Dead Quarry Track (Blackroot/Inside/275)}{\e[0m\e[38;5;94m■\e[0m}{}{Blackroot}{}{Inside}{}{1.000}{}
+E {50089}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {50078}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {50088}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {50089}{0}{}{Grave Pine Ridge (Blackroot/Inside/275)}{\e[0m\e[38;5;94m■\e[0m}{}{Blackroot}{}{Inside}{}{1.000}{}
+E {50079}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {50099}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {50088}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {50097}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {50098}{0}{}{Coldwatch Clearing (Blackroot/Inside/275)}{\e[0m\e[38;5;94m■\e[0m}{}{Blackroot}{}{Inside}{}{1.000}{}
+E {50099}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {50097}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {50099}{0}{}{Coldwatch Lodge (Blackroot/Inside/275)}{\e[0m\e[38;5;94m■\e[0m}{}{Blackroot}{}{Inside}{}{1.000}{}
+E {50089}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {50098}{w}{w}{8}{0}{}{1.000}{}{0.00}
+E {50200}{e}{e}{2}{0}{}{1.000}{}{0.00}
+
+R {50100}{0}{}{Paleglass Deepworks - Seal Lift (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50105}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {50099}{u}{u}{16}{0}{}{1.000}{}{0.00}
+
+R {50101}{0}{}{Paleglass Deepworks - Seal Lift (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50102}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {50106}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {50102}{0}{}{Paleglass Deepworks - Seal Lift (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50107}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {50101}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {50103}{0}{}{Paleglass Deepworks - Seal Lift (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50104}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {50108}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {50104}{0}{}{Paleglass Deepworks - Seal Lift (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50109}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {50103}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {50105}{0}{}{Paleglass Deepworks - Conversion Vestibule (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50100}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {50110}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {50106}{0}{}{Paleglass Deepworks - Conversion Vestibule (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50101}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {50111}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {50107}{0}{}{Paleglass Deepworks - Conversion Vestibule (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50102}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {50112}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {50108}{0}{}{Paleglass Deepworks - Conversion Vestibule (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50103}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {50113}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {50109}{0}{}{Paleglass Deepworks - Conversion Vestibule (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50104}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {50114}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {50110}{0}{}{Paleglass Deepworks - Revision Causeway (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50111}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {50105}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {50111}{0}{}{Paleglass Deepworks - Revision Causeway (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50106}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {50110}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {50112}{0}{}{Paleglass Deepworks - Revision Causeway (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50113}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {50107}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {50113}{0}{}{Paleglass Deepworks - Revision Causeway (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50108}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {50112}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {50114}{0}{}{Paleglass Deepworks - Revision Causeway (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50115}{d}{d}{32}{0}{}{1.000}{}{0.00}
+E {50109}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {50115}{0}{}{Paleglass Deepworks - Brine Galleries (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50116}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {50114}{u}{u}{16}{0}{}{1.000}{}{0.00}
+
+R {50116}{0}{}{Paleglass Deepworks - Brine Galleries (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50121}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {50115}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {50117}{0}{}{Paleglass Deepworks - Brine Galleries (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50118}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {50122}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {50118}{0}{}{Paleglass Deepworks - Brine Galleries (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50119}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {50117}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {50119}{0}{}{Paleglass Deepworks - Brine Galleries (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50124}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {50118}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {50120}{0}{}{Paleglass Deepworks - Brine Galleries (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50121}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {50125}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {50121}{0}{}{Paleglass Deepworks - Brine Galleries (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50116}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {50120}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {50122}{0}{}{Paleglass Deepworks - Brine Galleries (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50117}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {50127}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {50123}{0}{}{Paleglass Deepworks - Brine Galleries (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50124}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {50128}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {50124}{0}{}{Paleglass Deepworks - Brine Galleries (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50119}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {50123}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {50125}{0}{}{Paleglass Deepworks - Compliance Baths (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50126}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {50120}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {50126}{0}{}{Paleglass Deepworks - Compliance Baths (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50131}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {50125}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {50127}{0}{}{Paleglass Deepworks - Compliance Baths (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50122}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {50132}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {50128}{0}{}{Paleglass Deepworks - Compliance Baths (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50129}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {50123}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {50129}{0}{}{Paleglass Deepworks - Compliance Baths (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50134}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {50128}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {50130}{0}{}{Paleglass Deepworks - Compliance Baths (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50131}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {50135}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {50131}{0}{}{Paleglass Deepworks - Compliance Baths (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50126}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {50130}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {50132}{0}{}{Paleglass Deepworks - Compliance Baths (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50127}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {50137}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {50133}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {50134}{0}{}{Paleglass Deepworks - Compliance Baths (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50129}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {50139}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {50135}{0}{}{Paleglass Deepworks - Strip Clinics (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50136}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {50130}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {50136}{0}{}{Paleglass Deepworks - Strip Clinics (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50137}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {50135}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {50137}{0}{}{Paleglass Deepworks - Strip Clinics (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50132}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {50136}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {50138}{0}{}{Paleglass Deepworks - Strip Clinics (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50139}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {50133}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {50139}{0}{}{Paleglass Deepworks - Strip Clinics (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50140}{d}{d}{32}{0}{}{1.000}{}{0.00}
+E {50134}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {50138}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {50140}{0}{}{Paleglass Deepworks - Identity Furnaces (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50146}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {50139}{u}{u}{16}{0}{}{1.000}{}{0.00}
+
+R {50141}{0}{}{Paleglass Deepworks - Identity Furnaces (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50142}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {50147}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {50142}{0}{}{Paleglass Deepworks - Identity Furnaces (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50148}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {50141}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {50143}{0}{}{Paleglass Deepworks - Identity Furnaces (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50144}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {50149}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {50144}{0}{}{Paleglass Deepworks - Identity Furnaces (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50145}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {50143}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {50145}{0}{}{Paleglass Deepworks - Identity Furnaces (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50151}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {50144}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {50146}{0}{}{Paleglass Deepworks - Identity Furnaces (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50140}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {50152}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {50147}{0}{}{Paleglass Deepworks - Identity Furnaces (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50141}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {50153}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {50148}{0}{}{Paleglass Deepworks - Identity Furnaces (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50149}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {50142}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {50154}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {50149}{0}{}{Paleglass Deepworks - Identity Furnaces (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50143}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {50155}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {50148}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {50150}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {50151}{0}{}{Paleglass Deepworks - Graft Rails (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50145}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {50157}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {50152}{0}{}{Paleglass Deepworks - Graft Rails (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50153}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {50146}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {50158}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {50153}{0}{}{Paleglass Deepworks - Graft Rails (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50147}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {50152}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {50154}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {50155}{0}{}{Paleglass Deepworks - Graft Rails (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50156}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {50149}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {50161}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {50156}{0}{}{Paleglass Deepworks - Graft Rails (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50150}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {50162}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {50155}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {50157}{0}{}{Paleglass Deepworks - Graft Rails (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50151}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {50163}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {50158}{0}{}{Paleglass Deepworks - Graft Rails (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50152}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {50164}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {50160}{0}{}{Paleglass Deepworks - Rescript Chambers (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50161}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {50154}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {50166}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {50161}{0}{}{Paleglass Deepworks - Rescript Chambers (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50155}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {50167}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {50160}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {50162}{0}{}{Paleglass Deepworks - Rescript Chambers (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50163}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {50156}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {50163}{0}{}{Paleglass Deepworks - Rescript Chambers (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50157}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {50169}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {50162}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {50164}{0}{}{Paleglass Deepworks - Rescript Chambers (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50165}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {50158}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {50165}{0}{}{Paleglass Deepworks - Rescript Chambers (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50166}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {50164}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {50166}{0}{}{Paleglass Deepworks - Rescript Chambers (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50160}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {50165}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {50167}{0}{}{Paleglass Deepworks - Rescript Chambers (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50161}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {50168}{0}{}{Paleglass Deepworks - Rescript Chambers (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50169}{e}{e}{2}{0}{}{1.000}{}{0.00}
+
+R {50169}{0}{}{Paleglass Deepworks - Rescript Chambers (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50170}{d}{d}{32}{0}{}{1.000}{}{0.00}
+E {50163}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {50168}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {50170}{0}{}{Paleglass Deepworks - Witness Vaults (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50176}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {50169}{u}{u}{16}{0}{}{1.000}{}{0.00}
+
+R {50171}{0}{}{Paleglass Deepworks - Witness Vaults (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50177}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {50172}{0}{}{Paleglass Deepworks - Witness Vaults (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50178}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {50173}{0}{}{Paleglass Deepworks - Witness Vaults (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50179}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {50174}{0}{}{Paleglass Deepworks - Witness Vaults (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50180}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {50175}{0}{}{Paleglass Deepworks - Witness Vaults (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50181}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {50176}{0}{}{Paleglass Deepworks - Witness Vaults (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50177}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {50170}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {50177}{0}{}{Paleglass Deepworks - Witness Vaults (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50178}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {50171}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {50183}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {50176}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {50178}{0}{}{Paleglass Deepworks - Witness Vaults (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50179}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {50172}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {50184}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {50177}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {50179}{0}{}{Paleglass Deepworks - Witness Vaults (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50180}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {50173}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {50178}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {50180}{0}{}{Paleglass Deepworks - Seal Halls (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50181}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {50174}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {50186}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {50179}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {50181}{0}{}{Paleglass Deepworks - Seal Halls (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50175}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {50180}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {50182}{0}{}{Paleglass Deepworks - Seal Halls (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50183}{e}{e}{2}{0}{}{1.000}{}{0.00}
+
+R {50183}{0}{}{Paleglass Deepworks - Seal Halls (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50177}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {50189}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {50182}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {50184}{0}{}{Paleglass Deepworks - Seal Halls (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50178}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {50190}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {50185}{0}{}{Paleglass Deepworks - Seal Halls (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50191}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {50186}{0}{}{Paleglass Deepworks - Seal Halls (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50187}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {50180}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {50192}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {50187}{0}{}{Paleglass Deepworks - Seal Halls (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50186}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {50188}{0}{}{Paleglass Deepworks - Seal Halls (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50189}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {50194}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {50189}{0}{}{Paleglass Deepworks - Seal Halls (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50190}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {50183}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {50195}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {50188}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {50190}{0}{}{Paleglass Deepworks - Authority Wells (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50191}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {50184}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {50196}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {50189}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {50191}{0}{}{Paleglass Deepworks - Authority Wells (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50192}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {50185}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {50197}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {50190}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {50192}{0}{}{Paleglass Deepworks - Authority Wells (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50193}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {50186}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {50198}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {50191}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {50193}{0}{}{Paleglass Deepworks - Authority Wells (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50192}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {50194}{0}{}{Paleglass Deepworks - Authority Wells (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50188}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {50195}{0}{}{Paleglass Deepworks - Authority Wells (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50189}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {50196}{0}{}{Paleglass Deepworks - Authority Wells (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50190}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {50197}{0}{}{Paleglass Deepworks - Authority Wells (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50191}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {50198}{0}{}{Paleglass Deepworks - Authority Wells (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50199}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {50192}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {50199}{0}{}{Paleglass Deepworks - The Sealed Chair (Lowerdark/Inside/276)}{\e[0m\e[38;5;94m■\e[0m}{}{Lowerdark}{}{Inside}{}{1.000}{}
+E {50198}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {50200}{0}{}{Houndthorn Verge (Houndthorn/Inside/277)}{\e[0m\e[38;5;94m■\e[0m}{}{Houndthorn}{}{Inside}{}{1.000}{}
+E {50205}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {50099}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {50205}{0}{}{Houndthorn Verge (Houndthorn/Inside/277)}{\e[0m\e[38;5;94m■\e[0m}{}{Houndthorn}{}{Inside}{}{1.000}{}
+E {50200}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {50210}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {50210}{0}{}{Houndthorn Verge (Houndthorn/Inside/277)}{\e[0m\e[38;5;94m■\e[0m}{}{Houndthorn}{}{Inside}{}{1.000}{}
+E {50205}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {50215}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {50212}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {50213}{0}{}{Houndthorn Verge (Houndthorn/Inside/277)}{\e[0m\e[38;5;94m■\e[0m}{}{Houndthorn}{}{Inside}{}{1.000}{}
+E {50214}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {50212}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {50214}{0}{}{Houndthorn Verge (Houndthorn/Inside/277)}{\e[0m\e[38;5;94m■\e[0m}{}{Houndthorn}{}{Inside}{}{1.000}{}
+E {50219}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {50213}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {50215}{0}{}{Houndthorn Verge (Houndthorn/Inside/277)}{\e[0m\e[38;5;94m■\e[0m}{}{Houndthorn}{}{Inside}{}{1.000}{}
+E {50216}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {50210}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {50216}{0}{}{Houndthorn Verge (Houndthorn/Inside/277)}{\e[0m\e[38;5;94m■\e[0m}{}{Houndthorn}{}{Inside}{}{1.000}{}
+E {50217}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {50215}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {50217}{0}{}{Houndthorn Verge (Houndthorn/Inside/277)}{\e[0m\e[38;5;94m■\e[0m}{}{Houndthorn}{}{Inside}{}{1.000}{}
+E {50218}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {50216}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {50218}{0}{}{Houndthorn Verge (Houndthorn/Inside/277)}{\e[0m\e[38;5;94m■\e[0m}{}{Houndthorn}{}{Inside}{}{1.000}{}
+E {50219}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {50217}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {50219}{0}{}{Houndthorn Verge (Houndthorn/Inside/277)}{\e[0m\e[38;5;94m■\e[0m}{}{Houndthorn}{}{Inside}{}{1.000}{}
+E {50214}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {50218}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
 R {50300}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
 R {56000}{0}{}{Terminated By Power Lines (Jurassic Park II/Inside/298)}{\e[0m\e[38;5;94m■\e[0m}{}{Jurassic Park II}{}{Inside}{}{1.000}{}
@@ -25873,15 +26567,790 @@ R {59702}{0}{}{The Beggar's Circuit (The Crimson Hospice/Inside/330)}{\e[0m\e[38
 E {59705}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {59700}{s}{s}{4}{0}{}{1.000}{}{0.00}
 
+R {59703}{0}{}{The Ashen Switchback (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
+E {59704}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59706}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {59704}{0}{}{The Ashen Switchback (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
+E {59758}{d}{d}{32}{0}{}{1.000}{}{0.00}
+E {59703}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
 R {59705}{0}{}{The Beggar's Circuit (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
 E {59707}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {59702}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {59706}{0}{}{The Ashen Switchback (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
+E {59703}{s}{s}{4}{0}{}{1.000}{}{0.00}
 
 R {59707}{0}{}{The Beggar's Circuit (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
 E {59708}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {59705}{s}{s}{4}{0}{}{1.000}{}{0.00}
 
-R {59708}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+R {59708}{0}{}{The Beggar's Circuit (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
+E {59709}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59707}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59709}{0}{}{The Beggar's Circuit (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
+E {59710}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59708}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59710}{0}{}{The Beggar's Circuit (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
+E {59711}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59709}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59711}{0}{}{The Beggar's Circuit (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
+E {59712}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {59710}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59712}{0}{}{The Beggar's Circuit (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
+E {59714}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {59711}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {59713}{0}{}{The Ashen Switchback (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
+E {59715}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {59714}{0}{}{The Beggar's Circuit (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
+E {59719}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {59712}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {59715}{0}{}{The Ashen Switchback (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
+E {59745}{d}{d}{32}{0}{}{1.000}{}{0.00}
+E {59713}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {59716}{0}{}{The Beggar's Circuit (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
+E {59717}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59720}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {59717}{0}{}{The Beggar's Circuit (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
+E {59718}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59716}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59718}{0}{}{The Beggar's Circuit (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
+E {59719}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59717}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59719}{0}{}{The Beggar's Circuit (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
+E {59714}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {59718}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59720}{0}{}{The Beggar's Circuit (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
+E {59722}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {59716}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {59721}{0}{}{The Beggar's Circuit (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
+E {59722}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59728}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {59722}{0}{}{The Beggar's Circuit (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
+E {59723}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59729}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {59720}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {59721}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59723}{0}{}{The Beggar's Circuit (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
+E {59730}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {59722}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59724}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {59728}{0}{}{The Beggar's Circuit (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
+E {59729}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59732}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {59721}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {59729}{0}{}{The Beggar's Circuit (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
+E {59730}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59733}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {59722}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {59728}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59730}{0}{}{The Beggar's Circuit (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
+E {59734}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {59723}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {59729}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59732}{0}{}{The Beggar's Circuit (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
+E {59733}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59728}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {59759}{u}{u}{16}{0}{}{1.000}{}{0.00}
+
+R {59733}{0}{}{The Beggar's Circuit (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
+E {59734}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59729}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {59732}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59734}{0}{}{The Beggar's Circuit (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
+E {59730}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {59733}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59735}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {59736}{0}{}{The Litany Court (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
+E {59737}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59741}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {59735}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59737}{0}{}{The Litany Court (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
+E {59738}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59742}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {59724}{u}{u}{16}{0}{}{1.000}{}{0.00}
+E {59736}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59738}{0}{}{The Litany Court (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
+E {59743}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {59737}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59739}{0}{}{The Litany Court (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
+E {59740}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59744}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {59740}{0}{}{The Litany Court (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
+E {59745}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {59739}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59741}{0}{}{The Litany Court (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
+E {59742}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59747}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {59736}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {59742}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {59743}{0}{}{The Litany Court (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
+E {59749}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {59738}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {59742}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59744}{0}{}{The Litany Court (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
+E {59745}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59751}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {59739}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {59745}{0}{}{The Litany Court (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
+E {59752}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {59740}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {59715}{u}{u}{16}{0}{}{1.000}{}{0.00}
+E {59744}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59747}{0}{}{The Litany Court (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
+E {59748}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59741}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {59748}{0}{}{The Litany Court (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
+E {59749}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59757}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {59742}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {59747}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59749}{0}{}{The Litany Court (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
+E {59750}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59743}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {59748}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59750}{0}{}{The Litany Court (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
+E {59751}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59749}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59751}{0}{}{The Litany Court (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
+E {59752}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59744}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {59750}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59752}{0}{}{The Litany Court (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
+E {59753}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59745}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {59751}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59753}{0}{}{The Litany Court (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
+E {59754}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59752}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59754}{0}{}{The Litany Court (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
+E {59755}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59753}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59755}{0}{}{The Litany Court (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
+E {59758}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {59754}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59756}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {59757}{0}{}{The Litany Court (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
+E {59763}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {59748}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {59758}{0}{}{The Litany Court (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
+E {59755}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {59704}{u}{u}{16}{0}{}{1.000}{}{0.00}
+
+R {59759}{0}{}{The Widow Steps (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
+E {59732}{d}{d}{32}{0}{}{1.000}{}{0.00}
+E {59760}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59765}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {59760}{0}{}{The Widow Steps (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
+E {59761}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59766}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {59759}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59761}{0}{}{The Widow Steps (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
+E {59762}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59767}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {59760}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59762}{0}{}{The Widow Steps (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
+E {59768}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {59756}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {59761}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59763}{0}{}{The Ashen Switchback (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
+E {59769}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {59757}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {59764}{0}{}{The Widow Steps (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
+E {59765}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59770}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {59765}{0}{}{The Widow Steps (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
+E {59766}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59759}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {59764}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59766}{0}{}{The Widow Steps (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
+E {59767}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59760}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {59765}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59767}{0}{}{The Widow Steps (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
+E {59768}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59761}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {59766}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59768}{0}{}{The Widow Steps (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
+E {59762}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {59767}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59769}{0}{}{The Ashen Switchback (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
+E {59775}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {59763}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {59770}{0}{}{The Widow Steps (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
+E {59777}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {59764}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {59771}{0}{}{The Widow Steps (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
+E {59772}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59778}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {59772}{0}{}{The Rose Archive (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
+E {59773}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59771}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59773}{0}{}{The Rose Archive (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
+E {59774}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59772}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59774}{0}{}{The Rose Archive (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
+E {59775}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59773}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59775}{0}{}{The Rose Archive (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
+E {59779}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {59769}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {59774}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59776}{0}{}{The Widow Steps (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
+E {59777}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59783}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {59777}{0}{}{The Widow Steps (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
+E {59784}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {59770}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {59776}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59778}{0}{}{The Widow Steps (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
+E {59785}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {59771}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {59779}{0}{}{The Rose Archive (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
+E {59787}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {59775}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {59782}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {59783}{0}{}{The Widow Steps (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
+E {59784}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59792}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {59776}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {59784}{0}{}{The Widow Steps (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
+E {59793}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {59777}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {59783}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59785}{0}{}{The Widow Steps (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
+E {59796}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {59778}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {59786}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {59787}{0}{}{The Rose Archive (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
+E {59788}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59798}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {59779}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {59786}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59788}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {59792}{0}{}{The Widow Steps (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
+E {59793}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59783}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {59794}{u}{u}{16}{0}{}{1.000}{}{0.00}
+
+R {59793}{0}{}{The Widow Steps (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
+E {59784}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {59792}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59794}{0}{}{The Widow Steps (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
+E {59792}{d}{d}{32}{0}{}{1.000}{}{0.00}
+E {59795}{e}{e}{2}{0}{}{1.000}{}{0.00}
+
+R {59795}{0}{}{The Widow Steps (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
+E {59796}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59794}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59796}{0}{}{The Widow Steps (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
+E {59785}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {59795}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59797}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {59798}{0}{}{The Rose Archive (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
+E {59787}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {59782}{u}{u}{16}{0}{}{1.000}{}{0.00}
+E {59797}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59799}{0}{}{The Pitward (The Crimson Hospice/Inside/330)}{\e[0m\e[38;5;94m■\e[0m}{}{The Crimson Hospice}{}{Inside}{}{1.000}{}
+E {59798}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59800}{0}{}{The Gullet Stairs (The House of Quiet Teeth/Inside/331)}{\e[0m\e[38;5;94m■\e[0m}{}{The House of Quiet Teeth}{}{Inside}{}{1.000}{}
+E {59801}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59805}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {59879}{u}{u}{16}{0}{}{1.000}{}{0.00}
+
+R {59801}{0}{}{The Gullet Stairs (The House of Quiet Teeth/Inside/331)}{\e[0m\e[38;5;94m■\e[0m}{}{The House of Quiet Teeth}{}{Inside}{}{1.000}{}
+E {59799}{d}{d}{32}{0}{}{1.000}{}{0.00}
+E {59806}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {59800}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59804}{0}{}{The Gullet Stairs (The House of Quiet Teeth/Inside/331)}{\e[0m\e[38;5;94m■\e[0m}{}{The House of Quiet Teeth}{}{Inside}{}{1.000}{}
+E {59805}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59812}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {59805}{0}{}{The Gullet Stairs (The House of Quiet Teeth/Inside/331)}{\e[0m\e[38;5;94m■\e[0m}{}{The House of Quiet Teeth}{}{Inside}{}{1.000}{}
+E {59806}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59800}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {59804}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59806}{0}{}{The Gullet Stairs (The House of Quiet Teeth/Inside/331)}{\e[0m\e[38;5;94m■\e[0m}{}{The House of Quiet Teeth}{}{Inside}{}{1.000}{}
+E {59807}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59801}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {59805}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59807}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {59812}{0}{}{The Gullet Stairs (The House of Quiet Teeth/Inside/331)}{\e[0m\e[38;5;94m■\e[0m}{}{The House of Quiet Teeth}{}{Inside}{}{1.000}{}
+E {59820}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {59804}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {59820}{0}{}{The Saintless Circuit (The House of Quiet Teeth/Inside/331)}{\e[0m\e[38;5;94m■\e[0m}{}{The House of Quiet Teeth}{}{Inside}{}{1.000}{}
+E {59821}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59812}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {59821}{0}{}{The Saintless Circuit (The House of Quiet Teeth/Inside/331)}{\e[0m\e[38;5;94m■\e[0m}{}{The House of Quiet Teeth}{}{Inside}{}{1.000}{}
+E {59822}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59820}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59822}{0}{}{The Saintless Circuit (The House of Quiet Teeth/Inside/331)}{\e[0m\e[38;5;94m■\e[0m}{}{The House of Quiet Teeth}{}{Inside}{}{1.000}{}
+E {59823}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59828}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {59821}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59823}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {59828}{0}{}{The Saintless Circuit (The House of Quiet Teeth/Inside/331)}{\e[0m\e[38;5;94m■\e[0m}{}{The House of Quiet Teeth}{}{Inside}{}{1.000}{}
+E {59829}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59836}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {59822}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {59829}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {59834}{0}{}{The Quiet Teeth (The House of Quiet Teeth/Inside/331)}{\e[0m\e[38;5;94m■\e[0m}{}{The House of Quiet Teeth}{}{Inside}{}{1.000}{}
+E {59835}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59844}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {59893}{u}{u}{16}{0}{}{1.000}{}{0.00}
+
+R {59835}{0}{}{The Quiet Teeth (The House of Quiet Teeth/Inside/331)}{\e[0m\e[38;5;94m■\e[0m}{}{The House of Quiet Teeth}{}{Inside}{}{1.000}{}
+E {59836}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59834}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59836}{0}{}{The Quiet Teeth (The House of Quiet Teeth/Inside/331)}{\e[0m\e[38;5;94m■\e[0m}{}{The House of Quiet Teeth}{}{Inside}{}{1.000}{}
+E {59837}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59828}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {59835}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59837}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {59844}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {59846}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {59879}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {59881}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {59883}{0}{}{The Maw Reliquary (The House of Quiet Teeth/Inside/331)}{\e[0m\e[38;5;94m■\e[0m}{}{The House of Quiet Teeth}{}{Inside}{}{1.000}{}
+E {59884}{e}{e}{2}{0}{}{1.000}{}{0.00}
+
+R {59884}{0}{}{The Maw Reliquary (The House of Quiet Teeth/Inside/331)}{\e[0m\e[38;5;94m■\e[0m}{}{The House of Quiet Teeth}{}{Inside}{}{1.000}{}
+E {59885}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59891}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {59883}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59885}{0}{}{The Maw Reliquary (The House of Quiet Teeth/Inside/331)}{\e[0m\e[38;5;94m■\e[0m}{}{The House of Quiet Teeth}{}{Inside}{}{1.000}{}
+E {59892}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {59881}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {59884}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59886}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {59887}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {59891}{0}{}{The Maw Reliquary (The House of Quiet Teeth/Inside/331)}{\e[0m\e[38;5;94m■\e[0m}{}{The House of Quiet Teeth}{}{Inside}{}{1.000}{}
+E {59892}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59884}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {59892}{0}{}{The Maw Reliquary (The House of Quiet Teeth/Inside/331)}{\e[0m\e[38;5;94m■\e[0m}{}{The House of Quiet Teeth}{}{Inside}{}{1.000}{}
+E {59893}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59897}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {59885}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {59891}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59893}{0}{}{The Maw Reliquary (The House of Quiet Teeth/Inside/331)}{\e[0m\e[38;5;94m■\e[0m}{}{The House of Quiet Teeth}{}{Inside}{}{1.000}{}
+E {59834}{d}{d}{32}{0}{}{1.000}{}{0.00}
+E {59894}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59892}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59894}{0}{}{The Maw Reliquary (The House of Quiet Teeth/Inside/331)}{\e[0m\e[38;5;94m■\e[0m}{}{The House of Quiet Teeth}{}{Inside}{}{1.000}{}
+E {59895}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59893}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59895}{0}{}{The Maw Reliquary (The House of Quiet Teeth/Inside/331)}{\e[0m\e[38;5;94m■\e[0m}{}{The House of Quiet Teeth}{}{Inside}{}{1.000}{}
+E {59896}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59886}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {59894}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59896}{0}{}{The Maw Reliquary (The House of Quiet Teeth/Inside/331)}{\e[0m\e[38;5;94m■\e[0m}{}{The House of Quiet Teeth}{}{Inside}{}{1.000}{}
+E {59898}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {59887}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {59895}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59897}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {59898}{0}{}{The Maw Reliquary (The House of Quiet Teeth/Inside/331)}{\e[0m\e[38;5;94m■\e[0m}{}{The House of Quiet Teeth}{}{Inside}{}{1.000}{}
+E {59846}{d}{d}{32}{0}{}{1.000}{}{0.00}
+E {59896}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {59899}{0}{}{The Red Mother's Throne (The House of Quiet Teeth/Inside/331)}{\e[0m\e[38;5;94m■\e[0m}{}{The House of Quiet Teeth}{}{Inside}{}{1.000}{}
+E {59898}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59900}{0}{}{The Ash Intake (The Chapel of the Last Mouth/Inside/332)}{\e[0m\e[38;5;94m■\e[0m}{}{The Chapel of the Last Mouth}{}{Inside}{}{1.000}{}
+E {59901}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59907}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {59901}{0}{}{The Ash Intake (The Chapel of the Last Mouth/Inside/332)}{\e[0m\e[38;5;94m■\e[0m}{}{The Chapel of the Last Mouth}{}{Inside}{}{1.000}{}
+E {59902}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59908}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {59973}{u}{u}{16}{0}{}{1.000}{}{0.00}
+E {59900}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59902}{0}{}{The Ash Intake (The Chapel of the Last Mouth/Inside/332)}{\e[0m\e[38;5;94m■\e[0m}{}{The Chapel of the Last Mouth}{}{Inside}{}{1.000}{}
+E {59899}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {59901}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59903}{0}{}{The Ash Intake (The Chapel of the Last Mouth/Inside/332)}{\e[0m\e[38;5;94m■\e[0m}{}{The Chapel of the Last Mouth}{}{Inside}{}{1.000}{}
+E {59904}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59909}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {59904}{0}{}{The Ash Intake (The Chapel of the Last Mouth/Inside/332)}{\e[0m\e[38;5;94m■\e[0m}{}{The Chapel of the Last Mouth}{}{Inside}{}{1.000}{}
+E {59905}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59910}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {59903}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59905}{0}{}{The Ash Intake (The Chapel of the Last Mouth/Inside/332)}{\e[0m\e[38;5;94m■\e[0m}{}{The Chapel of the Last Mouth}{}{Inside}{}{1.000}{}
+E {59911}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {59904}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59906}{0}{}{The Ash Intake (The Chapel of the Last Mouth/Inside/332)}{\e[0m\e[38;5;94m■\e[0m}{}{The Chapel of the Last Mouth}{}{Inside}{}{1.000}{}
+E {59907}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59913}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {59907}{0}{}{The Ash Intake (The Chapel of the Last Mouth/Inside/332)}{\e[0m\e[38;5;94m■\e[0m}{}{The Chapel of the Last Mouth}{}{Inside}{}{1.000}{}
+E {59908}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59900}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {59906}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59908}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {59909}{0}{}{The Ash Intake (The Chapel of the Last Mouth/Inside/332)}{\e[0m\e[38;5;94m■\e[0m}{}{The Chapel of the Last Mouth}{}{Inside}{}{1.000}{}
+E {59910}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59919}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {59903}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {59910}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {59911}{0}{}{The Ash Intake (The Chapel of the Last Mouth/Inside/332)}{\e[0m\e[38;5;94m■\e[0m}{}{The Chapel of the Last Mouth}{}{Inside}{}{1.000}{}
+E {59912}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59905}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {59910}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59912}{0}{}{The Ash Intake (The Chapel of the Last Mouth/Inside/332)}{\e[0m\e[38;5;94m■\e[0m}{}{The Chapel of the Last Mouth}{}{Inside}{}{1.000}{}
+E {59920}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {59911}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59913}{0}{}{The Ash Intake (The Chapel of the Last Mouth/Inside/332)}{\e[0m\e[38;5;94m■\e[0m}{}{The Chapel of the Last Mouth}{}{Inside}{}{1.000}{}
+E {59921}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {59906}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {59914}{0}{}{The Ash Intake (The Chapel of the Last Mouth/Inside/332)}{\e[0m\e[38;5;94m■\e[0m}{}{The Chapel of the Last Mouth}{}{Inside}{}{1.000}{}
+E {59915}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59923}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {59908}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {59915}{0}{}{The Ash Intake (The Chapel of the Last Mouth/Inside/332)}{\e[0m\e[38;5;94m■\e[0m}{}{The Chapel of the Last Mouth}{}{Inside}{}{1.000}{}
+E {59916}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59914}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59916}{0}{}{The Ash Intake (The Chapel of the Last Mouth/Inside/332)}{\e[0m\e[38;5;94m■\e[0m}{}{The Chapel of the Last Mouth}{}{Inside}{}{1.000}{}
+E {59917}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59915}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59917}{0}{}{The Ash Intake (The Chapel of the Last Mouth/Inside/332)}{\e[0m\e[38;5;94m■\e[0m}{}{The Chapel of the Last Mouth}{}{Inside}{}{1.000}{}
+E {59918}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59916}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59918}{0}{}{The Ash Intake (The Chapel of the Last Mouth/Inside/332)}{\e[0m\e[38;5;94m■\e[0m}{}{The Chapel of the Last Mouth}{}{Inside}{}{1.000}{}
+E {59919}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59917}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59919}{0}{}{The Ash Intake (The Chapel of the Last Mouth/Inside/332)}{\e[0m\e[38;5;94m■\e[0m}{}{The Chapel of the Last Mouth}{}{Inside}{}{1.000}{}
+E {59924}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {59909}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {59918}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59920}{0}{}{The Needle Galleries (The Chapel of the Last Mouth/Inside/332)}{\e[0m\e[38;5;94m■\e[0m}{}{The Chapel of the Last Mouth}{}{Inside}{}{1.000}{}
+E {59927}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {59912}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {59991}{u}{u}{16}{0}{}{1.000}{}{0.00}
+
+R {59921}{0}{}{The Needle Galleries (The Chapel of the Last Mouth/Inside/332)}{\e[0m\e[38;5;94m■\e[0m}{}{The Chapel of the Last Mouth}{}{Inside}{}{1.000}{}
+E {59922}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59913}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {59922}{0}{}{The Needle Galleries (The Chapel of the Last Mouth/Inside/332)}{\e[0m\e[38;5;94m■\e[0m}{}{The Chapel of the Last Mouth}{}{Inside}{}{1.000}{}
+E {59923}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59928}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {59921}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59923}{0}{}{The Needle Galleries (The Chapel of the Last Mouth/Inside/332)}{\e[0m\e[38;5;94m■\e[0m}{}{The Chapel of the Last Mouth}{}{Inside}{}{1.000}{}
+E {59914}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {59922}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59924}{0}{}{The Needle Galleries (The Chapel of the Last Mouth/Inside/332)}{\e[0m\e[38;5;94m■\e[0m}{}{The Chapel of the Last Mouth}{}{Inside}{}{1.000}{}
+E {59925}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59932}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {59919}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {59925}{0}{}{The Needle Galleries (The Chapel of the Last Mouth/Inside/332)}{\e[0m\e[38;5;94m■\e[0m}{}{The Chapel of the Last Mouth}{}{Inside}{}{1.000}{}
+E {59926}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59933}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {59924}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59926}{0}{}{The Needle Galleries (The Chapel of the Last Mouth/Inside/332)}{\e[0m\e[38;5;94m■\e[0m}{}{The Chapel of the Last Mouth}{}{Inside}{}{1.000}{}
+E {59927}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59925}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59927}{0}{}{The Needle Galleries (The Chapel of the Last Mouth/Inside/332)}{\e[0m\e[38;5;94m■\e[0m}{}{The Chapel of the Last Mouth}{}{Inside}{}{1.000}{}
+E {59920}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {59926}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59928}{0}{}{The Needle Galleries (The Chapel of the Last Mouth/Inside/332)}{\e[0m\e[38;5;94m■\e[0m}{}{The Chapel of the Last Mouth}{}{Inside}{}{1.000}{}
+E {59936}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {59922}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {59929}{0}{}{The Needle Galleries (The Chapel of the Last Mouth/Inside/332)}{\e[0m\e[38;5;94m■\e[0m}{}{The Chapel of the Last Mouth}{}{Inside}{}{1.000}{}
+E {59930}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59938}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {59930}{0}{}{The Needle Galleries (The Chapel of the Last Mouth/Inside/332)}{\e[0m\e[38;5;94m■\e[0m}{}{The Chapel of the Last Mouth}{}{Inside}{}{1.000}{}
+E {59931}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59939}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {59996}{u}{u}{16}{0}{}{1.000}{}{0.00}
+E {59929}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59931}{0}{}{The Needle Galleries (The Chapel of the Last Mouth/Inside/332)}{\e[0m\e[38;5;94m■\e[0m}{}{The Chapel of the Last Mouth}{}{Inside}{}{1.000}{}
+E {59932}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59930}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59932}{0}{}{The Needle Galleries (The Chapel of the Last Mouth/Inside/332)}{\e[0m\e[38;5;94m■\e[0m}{}{The Chapel of the Last Mouth}{}{Inside}{}{1.000}{}
+E {59933}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59940}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {59924}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {59931}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59933}{0}{}{The Needle Galleries (The Chapel of the Last Mouth/Inside/332)}{\e[0m\e[38;5;94m■\e[0m}{}{The Chapel of the Last Mouth}{}{Inside}{}{1.000}{}
+E {59941}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {59925}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {59932}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59934}{0}{}{The Needle Galleries (The Chapel of the Last Mouth/Inside/332)}{\e[0m\e[38;5;94m■\e[0m}{}{The Chapel of the Last Mouth}{}{Inside}{}{1.000}{}
+E {59935}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59944}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {59935}{0}{}{The Needle Galleries (The Chapel of the Last Mouth/Inside/332)}{\e[0m\e[38;5;94m■\e[0m}{}{The Chapel of the Last Mouth}{}{Inside}{}{1.000}{}
+E {59936}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59934}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59936}{0}{}{The Needle Galleries (The Chapel of the Last Mouth/Inside/332)}{\e[0m\e[38;5;94m■\e[0m}{}{The Chapel of the Last Mouth}{}{Inside}{}{1.000}{}
+E {59937}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59928}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {59935}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59937}{0}{}{The Needle Galleries (The Chapel of the Last Mouth/Inside/332)}{\e[0m\e[38;5;94m■\e[0m}{}{The Chapel of the Last Mouth}{}{Inside}{}{1.000}{}
+E {59936}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59938}{0}{}{The Needle Galleries (The Chapel of the Last Mouth/Inside/332)}{\e[0m\e[38;5;94m■\e[0m}{}{The Chapel of the Last Mouth}{}{Inside}{}{1.000}{}
+E {59939}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59929}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {59939}{0}{}{The Needle Galleries (The Chapel of the Last Mouth/Inside/332)}{\e[0m\e[38;5;94m■\e[0m}{}{The Chapel of the Last Mouth}{}{Inside}{}{1.000}{}
+E {59930}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {59938}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59940}{0}{}{The Black Reliquary (The Chapel of the Last Mouth/Inside/332)}{\e[0m\e[38;5;94m■\e[0m}{}{The Chapel of the Last Mouth}{}{Inside}{}{1.000}{}
+E {59941}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59932}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {59941}{0}{}{The Black Reliquary (The Chapel of the Last Mouth/Inside/332)}{\e[0m\e[38;5;94m■\e[0m}{}{The Chapel of the Last Mouth}{}{Inside}{}{1.000}{}
+E {59942}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59933}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {59998}{u}{u}{16}{0}{}{1.000}{}{0.00}
+E {59940}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59942}{0}{}{The Black Reliquary (The Chapel of the Last Mouth/Inside/332)}{\e[0m\e[38;5;94m■\e[0m}{}{The Chapel of the Last Mouth}{}{Inside}{}{1.000}{}
+E {59943}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59941}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59943}{0}{}{The Black Reliquary (The Chapel of the Last Mouth/Inside/332)}{\e[0m\e[38;5;94m■\e[0m}{}{The Chapel of the Last Mouth}{}{Inside}{}{1.000}{}
+E {59945}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {59942}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59944}{0}{}{The Black Reliquary (The Chapel of the Last Mouth/Inside/332)}{\e[0m\e[38;5;94m■\e[0m}{}{The Chapel of the Last Mouth}{}{Inside}{}{1.000}{}
+E {59934}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {59945}{0}{}{The Black Reliquary (The Chapel of the Last Mouth/Inside/332)}{\e[0m\e[38;5;94m■\e[0m}{}{The Chapel of the Last Mouth}{}{Inside}{}{1.000}{}
+E {59952}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {59943}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {59952}{0}{}{The Black Reliquary (The Chapel of the Last Mouth/Inside/332)}{\e[0m\e[38;5;94m■\e[0m}{}{The Chapel of the Last Mouth}{}{Inside}{}{1.000}{}
+E {59959}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {59945}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {59956}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {59959}{0}{}{The Black Reliquary (The Chapel of the Last Mouth/Inside/332)}{\e[0m\e[38;5;94m■\e[0m}{}{The Chapel of the Last Mouth}{}{Inside}{}{1.000}{}
+E {59967}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {59952}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {59967}{0}{}{The Beam Crypt (The Chapel of the Last Mouth/Inside/332)}{\e[0m\e[38;5;94m■\e[0m}{}{The Chapel of the Last Mouth}{}{Inside}{}{1.000}{}
+E {59971}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {59959}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {59970}{0}{}{The Beam Crypt (The Chapel of the Last Mouth/Inside/332)}{\e[0m\e[38;5;94m■\e[0m}{}{The Chapel of the Last Mouth}{}{Inside}{}{1.000}{}
+E {59971}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59981}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {59971}{0}{}{The Beam Crypt (The Chapel of the Last Mouth/Inside/332)}{\e[0m\e[38;5;94m■\e[0m}{}{The Chapel of the Last Mouth}{}{Inside}{}{1.000}{}
+E {59982}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {59967}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {59970}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59973}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {59980}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {59981}{0}{}{The Last Mouth (The Chapel of the Last Mouth/Inside/332)}{\e[0m\e[38;5;94m■\e[0m}{}{The Chapel of the Last Mouth}{}{Inside}{}{1.000}{}
+E {59982}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59986}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {59970}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {59980}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59982}{0}{}{The Last Mouth (The Chapel of the Last Mouth/Inside/332)}{\e[0m\e[38;5;94m■\e[0m}{}{The Chapel of the Last Mouth}{}{Inside}{}{1.000}{}
+E {59971}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {59981}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59985}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {59986}{0}{}{The Last Mouth (The Chapel of the Last Mouth/Inside/332)}{\e[0m\e[38;5;94m■\e[0m}{}{The Chapel of the Last Mouth}{}{Inside}{}{1.000}{}
+E {59992}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {59981}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {59985}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59989}{0}{}{The Last Mouth (The Chapel of the Last Mouth/Inside/332)}{\e[0m\e[38;5;94m■\e[0m}{}{The Chapel of the Last Mouth}{}{Inside}{}{1.000}{}
+E {59990}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59993}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {59990}{0}{}{The Last Mouth (The Chapel of the Last Mouth/Inside/332)}{\e[0m\e[38;5;94m■\e[0m}{}{The Chapel of the Last Mouth}{}{Inside}{}{1.000}{}
+E {59994}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {59989}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59991}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {59992}{0}{}{The Last Mouth (The Chapel of the Last Mouth/Inside/332)}{\e[0m\e[38;5;94m■\e[0m}{}{The Chapel of the Last Mouth}{}{Inside}{}{1.000}{}
+E {59998}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {59986}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {59991}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59993}{0}{}{The Last Mouth (The Chapel of the Last Mouth/Inside/332)}{\e[0m\e[38;5;94m■\e[0m}{}{The Chapel of the Last Mouth}{}{Inside}{}{1.000}{}
+E {59956}{d}{d}{32}{0}{}{1.000}{}{0.00}
+E {59994}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59989}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {59994}{0}{}{The Last Mouth (The Chapel of the Last Mouth/Inside/332)}{\e[0m\e[38;5;94m■\e[0m}{}{The Chapel of the Last Mouth}{}{Inside}{}{1.000}{}
+E {59995}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59990}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {59993}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59995}{0}{}{The Last Mouth (The Chapel of the Last Mouth/Inside/332)}{\e[0m\e[38;5;94m■\e[0m}{}{The Chapel of the Last Mouth}{}{Inside}{}{1.000}{}
+E {59996}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59994}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59996}{0}{}{The Last Mouth (The Chapel of the Last Mouth/Inside/332)}{\e[0m\e[38;5;94m■\e[0m}{}{The Chapel of the Last Mouth}{}{Inside}{}{1.000}{}
+E {59930}{d}{d}{32}{0}{}{1.000}{}{0.00}
+E {59997}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59995}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59997}{0}{}{The Last Mouth (The Chapel of the Last Mouth/Inside/332)}{\e[0m\e[38;5;94m■\e[0m}{}{The Chapel of the Last Mouth}{}{Inside}{}{1.000}{}
+E {59998}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {59991}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {59996}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59998}{0}{}{The Last Mouth (The Chapel of the Last Mouth/Inside/332)}{\e[0m\e[38;5;94m■\e[0m}{}{The Chapel of the Last Mouth}{}{Inside}{}{1.000}{}
+E {59941}{d}{d}{32}{0}{}{1.000}{}{0.00}
+E {59992}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {59997}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {59999}{0}{}{The Last Mouth (The Chapel of the Last Mouth/Inside/332)}{\e[0m\e[38;5;94m■\e[0m}{}{The Chapel of the Last Mouth}{}{Inside}{}{1.000}{}
+E {59993}{s}{s}{4}{0}{}{1.000}{}{0.00}
 
 R {60000}{0}{}{Ash and Black Sand (Night Lands \/ Caldera/Desert/333)}{\e[0m\e[38;5;136m■\e[0m}{}{Night Lands \/ Caldera}{}{Desert}{}{1.000}{}
 E {60001}{n}{n}{1}{0}{}{1.000}{}{0.00}

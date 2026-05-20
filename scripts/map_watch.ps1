@@ -409,7 +409,7 @@ function Format-GroupStats {
 }
 
 function Find-LatestLog {
-    Get-ChildItem "nukefire_*.log" -ErrorAction SilentlyContinue |
+    Get-ChildItem "nukefire_Mutiny_*.log" -ErrorAction SilentlyContinue |
         Sort-Object LastWriteTime -Descending |
         Select-Object -First 1
 }
@@ -435,7 +435,7 @@ function Show-LastMap($reader) {
         if ($tail[$i] -match '^\[ BIGMAP \]') {
             $mapStart = $i
             $mapEnd   = -1
-        } elseif ($mapStart -ge 0 -and $mapEnd -eq -1 -and ($tail[$i] -match '^< \d+H' -or $tail[$i] -eq 'bigmap_end')) {
+        } elseif ($mapStart -ge 0 -and $mapEnd -eq -1 -and $tail[$i] -match '^< \d+H') {
             $mapEnd = $i
         }
     }
@@ -590,7 +590,7 @@ while ($true) {
         }
         4 {
             # In graphical rows. Blank lines may be internal row spacing, so defer them.
-            if ($line -match '^<\s*\d+H' -or $line -eq 'bigmap_end') {
+            if ($line -match '^<\s*\d+H') {
                 $captureState = 0
                 Publish-MapBuffer
             } elseif ([string]::IsNullOrWhiteSpace($line)) {
