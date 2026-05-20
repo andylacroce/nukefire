@@ -435,7 +435,7 @@ function Show-LastMap($reader) {
         if ($tail[$i] -match '^\[ BIGMAP \]') {
             $mapStart = $i
             $mapEnd   = -1
-        } elseif ($mapStart -ge 0 -and $mapEnd -eq -1 -and $tail[$i] -match '^< \d+H') {
+        } elseif ($mapStart -ge 0 -and $mapEnd -eq -1 -and ($tail[$i] -match '^< \d+H' -or $tail[$i] -eq 'bigmap_end')) {
             $mapEnd = $i
         }
     }
@@ -590,7 +590,7 @@ while ($true) {
         }
         4 {
             # In graphical rows. Blank lines may be internal row spacing, so defer them.
-            if ($line -match '^<\s*\d+H') {
+            if ($line -match '^<\s*\d+H' -or $line -eq 'bigmap_end') {
                 $captureState = 0
                 Publish-MapBuffer
             } elseif ([string]::IsNullOrWhiteSpace($line)) {

@@ -18,7 +18,7 @@ F 1138701
 
 G 0
 
-I 3001
+I 3335
 
 L {ASCII NESW LINE} {NO EXITS} {x}
 L {ASCII NESW LINE} {N} {o}
@@ -23934,16 +23934,27 @@ E {45231}{n}{n}{1}{0}{}{1.000}{}{0.00}
 
 R {45243}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
-R {45245}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+R {45244}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {45245}{0}{}{The Windy Track Pit (Ocp MetroPlex Underground/Inside/247)}{\e[0m\e[38;5;94m■\e[0m}{}{Ocp MetroPlex Underground}{}{Inside}{}{1.000}{}
+E {45235}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {45255}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {45244}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
 R {45246}{0}{}{The Carriage Bay (Ocp MetroPlex Underground/Inside/247)}{\e[0m\e[38;5;94m■\e[0m}{}{Ocp MetroPlex Underground}{}{Inside}{}{1.000}{}
 E {45247}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {45236}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {45256}{s}{s}{4}{0}{}{1.000}{}{0.00}
 
-R {45247}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+R {45247}{0}{}{The Graffiti Shrine (Ocp MetroPlex Underground/Inside/247)}{\e[0m\e[38;5;94m■\e[0m}{}{Ocp MetroPlex Underground}{}{Inside}{}{1.000}{}
+E {45248}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {45237}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {45246}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {45248}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+R {45248}{0}{}{The Metro Control Booth (Ocp MetroPlex Underground/Inside/247)}{\e[0m\e[38;5;94m■\e[0m}{}{Ocp MetroPlex Underground}{}{Inside}{}{1.000}{}
+E {45249}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {45238}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {45247}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
 R {45249}{0}{}{The Exit Blockade (Ocp MetroPlex Underground/Inside/247)}{\e[0m\e[38;5;94m■\e[0m}{}{Ocp MetroPlex Underground}{}{Inside}{}{1.000}{}
 E {45239}{n}{n}{1}{0}{}{1.000}{}{0.00}
@@ -23955,7 +23966,11 @@ E {45251}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {45240}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {45260}{s}{s}{4}{0}{}{1.000}{}{0.00}
 
-R {45251}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+R {45251}{0}{}{The Sterile Hall Corner (Ocp MetroPlex Underground/Inside/247)}{\e[0m\e[38;5;94m■\e[0m}{}{Ocp MetroPlex Underground}{}{Inside}{}{1.000}{}
+E {45261}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {45250}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {45252}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
 R {45255}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
@@ -23983,7 +23998,16 @@ E {45261}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {45250}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {45270}{s}{s}{4}{0}{}{1.000}{}{0.00}
 
-R {45261}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+R {45261}{0}{}{The Diagnostic Prep Room (Ocp MetroPlex Underground/Inside/247)}{\e[0m\e[38;5;94m■\e[0m}{}{Ocp MetroPlex Underground}{}{Inside}{}{1.000}{}
+E {45262}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {45251}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {45271}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {45260}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {45262}{0}{}{The Clean Bench Row (Ocp MetroPlex Underground/Inside/247)}{\e[0m\e[38;5;94m■\e[0m}{}{Ocp MetroPlex Underground}{}{Inside}{}{1.000}{}
+E {45252}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {45272}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {45261}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
 R {45267}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
@@ -24004,7 +24028,9 @@ E {45280}{s}{s}{4}{0}{}{1.000}{}{0.00}
 
 R {45271}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
-R {45272}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+R {45272}{0}{}{The Hydraulic Pit (Ocp MetroPlex Underground/Inside/247)}{\e[0m\e[38;5;94m■\e[0m}{}{Ocp MetroPlex Underground}{}{Inside}{}{1.000}{}
+E {45262}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {45282}{s}{s}{4}{0}{}{1.000}{}{0.00}
 
 R {45273}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
@@ -25221,18 +25247,18 @@ E {46336}{u}{u}{16}{0}{}{1.000}{}{0.00}
 R {46336}{0}{}{General Tonpat’s Command Dais (SST - Federation Station/Inside/252)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - Federation Station}{}{Inside}{}{1.000}{}
 E {46335}{d}{d}{32}{0}{}{1.000}{}{0.00}
 
-R {46400}{0}{}{The Resin Drop (SST - The Nest/Inside/253)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - The Nest}{}{Inside}{}{1.000}{}
+R {46400}{0}{}{The Resin Drop (SST - The Nest/Inside/254)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - The Nest}{}{Inside}{}{1.000}{}
 E {46401}{n}{n}{1}{0}{}{1.000}{}{0.00}
 
-R {46401}{0}{}{The Vein Hall (SST - The Nest/Inside/253)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - The Nest}{}{Inside}{}{1.000}{}
+R {46401}{0}{}{The Vein Hall (SST - The Nest/Inside/254)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - The Nest}{}{Inside}{}{1.000}{}
 E {46402}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {46400}{s}{s}{4}{0}{}{1.000}{}{0.00}
 
-R {46402}{0}{}{The Hollow Chord (SST - The Nest/Inside/253)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - The Nest}{}{Inside}{}{1.000}{}
+R {46402}{0}{}{The Hollow Chord (SST - The Nest/Inside/254)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - The Nest}{}{Inside}{}{1.000}{}
 E {46403}{s}{s}{4}{0}{}{1.000}{}{0.00}
 E {46401}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {46403}{0}{}{The Shifting Passage (SST - The Nest/Inside/253)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - The Nest}{}{Inside}{}{1.000}{}
+R {46403}{0}{}{The Shifting Passage (SST - The Nest/Inside/254)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - The Nest}{}{Inside}{}{1.000}{}
 E {46402}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {46404}{s}{s}{4}{0}{}{1.000}{}{0.00}
 

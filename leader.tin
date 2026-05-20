@@ -9,7 +9,8 @@
 }
 
 #nop ------------------ ALIASES ------------------
-#macro {[} {
+#alias {_kill_engage} {
+    #variable {_ak_fn} {_kill_engage};
     hyp mob;
     whisper rancor o stalk mob;
     #if {$lvl > 49} {sli 'rot'};
@@ -18,6 +19,12 @@
     whisper prodigy o chain;
     whisper haenym o hellquake;
     #if {$lvl > 39} {shred};
+}
+
+#macro {[} {_kill_engage}
+
+#macro {=} {
+    rr;
 }
 
 #macro {]} {
@@ -161,3 +168,45 @@
     mater;
 }
 #action {You have added materials:} {mat}
+
+#nop ------------------ AUTO-KILL LOOP ------------------
+#variable {autokill_on}          {0}
+#variable {_ak_fn}               {_kill_engage}
+#variable {_ak_last_enemy_count} {0}
+#variable {_ak_pending}          {0}
+
+#alias {autokill_on} {
+    #variable {autokill_on}          {1};
+    #variable {_ak_last_enemy_count} {0};
+    #variable {_ak_pending}          {0};
+    #showme {Autokill ON};
+    #send {}
+}
+#alias {autokill_off} {
+    #variable {autokill_on} {0};
+    #variable {_ak_pending} {0};
+    #showme {Autokill OFF};
+    #send {}
+}
+#alias {autokill} {#if {$autokill_on} {autokill_off} {autokill_on}}
+#alias {ak} {autokill}
+
+#alias {_on_gmcp_group} {
+    #if {!$autokill_on} {#return};
+    #local _ec {0};
+    #local _ei {1};
+    #while {"$gmcp[group][enemies][$_ei][name]" != ""} {
+        #math _ec {$_ec + 1};
+        #math _ei {$_ei + 1};
+    };
+    #if {$_ak_last_enemy_count > 0 && $_ec == 0 && !$_ak_pending} {
+        #variable {_ak_pending} {1};
+        #delay {1.5} {
+            #variable {_ak_pending} {0};
+            #if {$_ak_last_enemy_count == 0} {
+                $_ak_fn;
+            };
+        };
+    };
+    #variable {_ak_last_enemy_count} {$_ec};
+}
