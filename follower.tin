@@ -121,7 +121,7 @@ _lp_register
 }
 
 #nop ------------------ ITEM COMPARE ------------------
-#action {Compare: ↑} {
+#action {Compare:↑} {
     tel ${leader} Upgrade!;
 }
 
