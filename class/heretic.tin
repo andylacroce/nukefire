@@ -124,7 +124,7 @@
     #if {$cmhp > 0} {
         #math hp_pct {100 * $chp / $cmhp};
         #if {$hp_pct < 70 && $autoheal_on && $augury_cooldown == 0} {
-            whisper $leader @-@Y<< HEALING $me >> @n@y($chp/$cmhp HP, @+@Y$hp_pct%@n@y);
+            tel $leader @-@Y<< HEALING $me >> @n@y($chp/$cmhp HP, @+@Y$hp_pct%@n@y);
             #if {$lvl >= 26} {sli 'augury' $me} {sli 'soul swell' $me};
             #variable augury_cooldown 1; #delay {3} {#variable augury_cooldown 0};
         };
@@ -173,7 +173,7 @@
         };
         #math heal_focus_retries {$heal_focus_retries + 1};
         #variable heal_focus_pct_at_cast {$focus_pct};
-        whisper $leader @-@R<< FOCUS HEAL $heal_focus >> @n@r($focus_hp/$focus_mhp HP, @+@R$focus_pct%@n@r);
+        tel $leader @-@R<< FOCUS HEAL $heal_focus >> @n@r($focus_hp/$focus_mhp HP, @+@R$focus_pct%@n@r);
         heal $heal_focus;
         #variable heal_cooldown 1; #delay {3} {#variable heal_cooldown 0; _maybe_followup_heal};
     } {
@@ -195,7 +195,7 @@
                 #if {"$heal_focus" != "$mname"} {#variable heal_focus_retries {0}};
                 #variable heal_focus {$mname};
                 #variable emergency_cooldown {1};
-                whisper $leader @-@R<< EMERGENCY $mname >> @n@r($mhp/$mmhp HP, @+@R$hp_pct%@n@r);
+                tel $leader @-@R<< EMERGENCY $mname >> @n@r($mhp/$mmhp HP, @+@R$hp_pct%@n@r);
                 heal $mname;
                 #variable heal_cooldown 1; #delay {5} {#variable heal_cooldown 0; #variable emergency_cooldown 0; _maybe_followup_heal};
                 #return;
@@ -245,7 +245,7 @@
         #nop AoE only when 2+ need topping off and nobody is critically low (>=55%) -- below 55% gets individual attention --;
         #if {$below_count > 1 && $lvl > 34 && $lowest_pct >= 55} {
             #variable heal_focus {};
-            whisper $leader @-@G<< AURA OF REJUV ($below_count low) >> @n@g;
+            tel $leader @-@G<< AURA OF REJUV ($below_count low) >> @n@g;
             sli 'aura of rejuv';
             #variable heal_cooldown 1; #delay {3} {#variable heal_cooldown 0};
         };
@@ -253,7 +253,7 @@
             #variable heal_focus {$lowest_name};
             #variable heal_focus_retries {0};
             #variable heal_focus_pct_at_cast {$lowest_pct};
-            whisper $leader @-@Y<< HEALING $lowest_name >> @n@y($lowest_hp/$lowest_mhp HP, @+@Y$lowest_pct%@n@y);
+            tel $leader @-@Y<< HEALING $lowest_name >> @n@y($lowest_hp/$lowest_mhp HP, @+@Y$lowest_pct%@n@y);
             heal $lowest_name;
             #variable heal_cooldown 1; #delay {5} {#variable heal_cooldown 0; _maybe_followup_heal};
         };
@@ -279,7 +279,7 @@
             #math gi {$gi + 1};
         };
         #if {$lowest_mv_pct < 85 && "$lowest_mv_name" != ""} {
-            whisper $leader @-@C<< INVIGORATING $lowest_mv_name >> @n@c($lowest_mv/$lowest_mmv MV, @+@C$lowest_mv_pct%@n@c);
+            tel $leader @-@C<< INVIGORATING $lowest_mv_name >> @n@c($lowest_mv/$lowest_mmv MV, @+@C$lowest_mv_pct%@n@c);
             sli 'sinful vigor' $lowest_mv_name;
             #variable sinvig_cooldown 1; #delay {3} {#variable sinvig_cooldown 0};
         };
@@ -287,7 +287,7 @@
 }
 
 #ACTION {%1 telepaths to you, 'summon'} {
-    #if {$lvl > 9} {whisper $leader @-@B<< SUMMONING %1 >>@n;sum %1};
+    #if {$lvl > 9} {tel $leader @-@B<< SUMMONING %1 >>@n;sum %1};
 } {1}
 
 #ACTION {You rise a level!} {

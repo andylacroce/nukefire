@@ -87,8 +87,7 @@ _lp_register
 
 #nop ------------------ LEADER ACTIONS ------------------
 #action {${leader}'s form shimmers with eldritch power as he vanishes beyond mortal planes!} {recall}
-#action {${leader} telepaths to you, 'o %*'} {%1}
-#action {${leader} whispers to you, 'o %*'} {%1}
+#action {${leader} telepaths to you, 'o %*'} {%1} {2}
 
 #nop ------------------ STATUS REPORTING ------------------
 #action {[ Remorts:    %1 ]} {
@@ -109,15 +108,15 @@ _lp_register
 
 #nop ------------------ REMORT ACTIONS ------------------
 #action {But this will cost you %1 credits!!} {
-	whisper ${leader} remort cost: %1 credits
+	tel ${leader} remort cost: %1 credits
 }
 
 #action {The Remorter tells you, 'You need %1 silver discs in order to remort now.'} {
-	whisper ${leader} remort needs: %1 silver discs
+	tel ${leader} remort needs: %1 silver discs
 }
 
 #action {The Remorter tells you, 'There you are, kid.'} {
-	whisper ${leader} remort complete
+	tel ${leader} remort complete
 }
 
 #nop ------------------ ITEM COMPARE ------------------

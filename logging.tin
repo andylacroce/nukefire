@@ -19,10 +19,10 @@
     }
 }
 
-#nop Report class remort status — showme for leader, whisper for followers
+#nop Report class remort status — showme for leader, tel for followers
 #alias {_report_status} {
     #if {$is_follower} {
-        whisper ${leader} @BLvl: $lvl || $exp_to_level || Class Remorts: $class_remorts || Total Remorts: $total_remorts || DPS: $dps
+        tel ${leader} @BLvl: $lvl || $exp_to_level || Class Remorts: $class_remorts || Total Remorts: $total_remorts || DPS: $dps
     } {
         #showme {\e]P40000AA <048>Lvl: $lvl || $exp_to_level || Class Remorts: $class_remorts || Total Remorts: $total_remorts || DPS: $dps}
     }

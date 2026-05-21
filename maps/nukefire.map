@@ -14,11 +14,11 @@ CROOMS <178>
 CSYMBOLS <128>
 CUSER <128>
 
-F 1122317
+F 1138701
 
 G 0
 
-I 17378
+I 3180
 
 L {ASCII NESW LINE} {NO EXITS} {x}
 L {ASCII NESW LINE} {N} {o}
@@ -4999,9 +4999,27 @@ R {6701}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
 R {7001}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
-R {7021}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+R {7003}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
-R {7022}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+R {7004}{0}{}{A trail through the salt flats (NwDesert/Field/49)}{\e[0m\e[38;5;34m■\e[0m}{}{NwDesert}{}{Field}{}{1.000}{}
+E {7005}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {7022}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {7043}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {7003}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {7005}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {7021}{0}{}{Salt flats (NwDesert/Desert/49)}{\e[0m\e[38;5;136m■\e[0m}{}{NwDesert}{}{Desert}{}{1.000}{}
+E {7022}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {7029}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {7001}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {8146}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {7022}{0}{}{Salt flats (NwDesert/Desert/49)}{\e[0m\e[38;5;136m■\e[0m}{}{NwDesert}{}{Desert}{}{1.000}{}
+E {7023}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {7030}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {7004}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {7021}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
 R {7023}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
@@ -5074,7 +5092,33 @@ R {7041}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
 R {7042}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
+R {7043}{0}{}{Dry salt flats (NwDesert/Desert/49)}{\e[0m\e[38;5;136m■\e[0m}{}{NwDesert}{}{Desert}{}{1.000}{}
+E {7044}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {7004}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {7051}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {7042}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {7044}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {7049}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
 R {7050}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {7051}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {7055}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {7056}{0}{}{Dry dusty desert (NwDesert/Desert/49)}{\e[0m\e[38;5;136m■\e[0m}{}{NwDesert}{}{Desert}{}{1.000}{}
+E {7057}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {7043}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {7064}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {7055}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {7057}{0}{}{Dry dusty desert (NwDesert/Desert/49)}{\e[0m\e[38;5;136m■\e[0m}{}{NwDesert}{}{Desert}{}{1.000}{}
+E {7629}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {7049}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {7065}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {7056}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
 R {7058}{0}{}{The dry dusty desert (NwDesert/Desert/49)}{\e[0m\e[38;5;136m■\e[0m}{}{NwDesert}{}{Desert}{}{1.000}{}
 E {7131}{d}{d}{32}{0}{}{1.000}{}{0.00}
@@ -5083,7 +5127,13 @@ E {7050}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {7076}{s}{s}{4}{0}{}{1.000}{}{0.00}
 E {8151}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {7065}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+R {7064}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {7065}{0}{}{Dry dusty desert (NwDesert/Desert/49)}{\e[0m\e[38;5;136m■\e[0m}{}{NwDesert}{}{Desert}{}{1.000}{}
+E {27001}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {7057}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {7070}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {7064}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
 R {7066}{0}{}{Dry dusty desert (NwDesert/Desert/49)}{\e[0m\e[38;5;136m■\e[0m}{}{NwDesert}{}{Desert}{}{1.000}{}
 E {7067}{e}{e}{2}{0}{}{1.000}{}{0.00}
@@ -5251,6 +5301,7 @@ R {7577}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 R {7593}{0}{}{A shabby yard (WilderZone/Field/50)}{\e[0m\e[38;5;34m■\e[0m}{}{WilderZone}{}{Field}{}{1.000}{}
 E {7656}{s}{s}{4}{0}{}{1.000}{}{0.00}
 E {7594}{w}{w}{8}{0}{}{1.000}{}{0.00}
+E {7679}{n}{n}{1}{0}{}{1.000}{}{0.00}
 
 R {7594}{0}{}{A narrow alley (WilderZone/Field/50)}{\e[0m\e[38;5;34m■\e[0m}{}{WilderZone}{}{Field}{}{1.000}{}
 E {7593}{e}{e}{2}{0}{}{1.000}{}{0.00}
@@ -5299,7 +5350,17 @@ E {7036}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
 R {7615}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
-R {7617}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+R {7616}{0}{}{Desert (WilderZone/Desert/50)}{\e[0m\e[38;5;136m■\e[0m}{}{WilderZone}{}{Desert}{}{1.000}{}
+E {7615}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {7617}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {7656}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {7627}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {7617}{0}{}{Desert (WilderZone/Desert/50)}{\e[0m\e[38;5;136m■\e[0m}{}{WilderZone}{}{Desert}{}{1.000}{}
+E {7674}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {7619}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {7616}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {7627}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
 R {7618}{0}{}{Desert (WilderZone/Desert/50)}{\e[0m\e[38;5;136m■\e[0m}{}{WilderZone}{}{Desert}{}{1.000}{}
 E {7596}{e}{e}{2}{0}{}{1.000}{}{0.00}
@@ -5321,9 +5382,27 @@ E {7622}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
 R {7622}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
+R {7625}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
 R {7626}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
-R {7627}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+R {7627}{0}{}{Desert (WilderZone/Desert/50)}{\e[0m\e[38;5;136m■\e[0m}{}{WilderZone}{}{Desert}{}{1.000}{}
+E {7616}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {7625}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {7628}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {7630}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {7628}{0}{}{Desert (WilderZone/Desert/50)}{\e[0m\e[38;5;136m■\e[0m}{}{WilderZone}{}{Desert}{}{1.000}{}
+E {7656}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {7627}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {27002}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {7629}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {7629}{0}{}{Desert (WilderZone/Desert/50)}{\e[0m\e[38;5;136m■\e[0m}{}{WilderZone}{}{Desert}{}{1.000}{}
+E {7628}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {7630}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {27001}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {7057}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
 R {7630}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
@@ -5377,6 +5456,8 @@ E {7502}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
 R {7656}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
+R {7674}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
 R {7679}{0}{}{Charred House Foyer (WilderZone/Inside/50)}{\e[0m\e[38;5;94m■\e[0m}{}{WilderZone}{}{Inside}{}{1.000}{}
 E {7680}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {7593}{s}{s}{4}{0}{}{1.000}{}{0.00}
@@ -5387,6 +5468,7 @@ E {7679}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
 R {7681}{0}{}{Abandoned House Bedroom (WilderZone/Inside/50)}{\e[0m\e[38;5;94m■\e[0m}{}{WilderZone}{}{Inside}{}{1.000}{}
 E {7680}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {15800}{d}{d}{32}{0}{}{1.000}{}{0.00}
 
 R {7731}{0}{}{Desert (WilderZone/Desert/50)}{\e[0m\e[38;5;136m■\e[0m}{}{WilderZone}{}{Desert}{}{1.000}{}
 E {12659}{e}{e}{2}{0}{}{1.000}{}{0.00}
@@ -5447,6 +5529,16 @@ R {8059}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
 R {8061}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
+R {8062}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {8063}{0}{}{Slimey water. (Swamp of Sadness/Swamp/51)}{\e[0m\e[38;5;22m■\e[0m}{}{Swamp of Sadness}{}{Swamp}{}{1.000}{}
+E {8076}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {8064}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {8139}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {8062}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {8064}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
 R {8065}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
 R {8066}{0}{}{}{ }{}{}{}{}{}{1.000}{}
@@ -5479,7 +5571,12 @@ E {8057}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
 R {8074}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
-R {8077}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+R {8076}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {8077}{0}{}{Slimy putrid water. (Swamp of Sadness/Swamp/51)}{\e[0m\e[38;5;22m■\e[0m}{}{Swamp of Sadness}{}{Swamp}{}{1.000}{}
+E {8076}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {8086}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {8063}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
 R {8078}{0}{}{Slimy putrid scummy water. (Swamp of Sadness/Swamp/51)}{\e[0m\e[38;5;22m■\e[0m}{}{Swamp of Sadness}{}{Swamp}{}{1.000}{}
 E {8089}{e}{e}{2}{0}{}{1.000}{}{0.00}
@@ -5505,13 +5602,19 @@ R {8086}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
 R {8087}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
-R {8088}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+R {8088}{0}{}{Cleaner water. (Swamp of Sadness/Swamp/51)}{\e[0m\e[38;5;22m■\e[0m}{}{Swamp of Sadness}{}{Swamp}{}{1.000}{}
+E {8137}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {8089}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {8087}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {8077}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
 R {8089}{0}{}{Cleaner water. (Swamp of Sadness/Swamp/51)}{\e[0m\e[38;5;22m■\e[0m}{}{Swamp of Sadness}{}{Swamp}{}{1.000}{}
 E {8138}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {8087}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {8088}{s}{s}{4}{0}{}{1.000}{}{0.00}
 E {8078}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {8121}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
 R {8125}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
@@ -5553,7 +5656,11 @@ E {8069}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
 R {8136}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
-R {8137}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+R {8137}{0}{}{In the bog (Swamp of Sadness/Swamp/51)}{\e[0m\e[38;5;22m■\e[0m}{}{Swamp of Sadness}{}{Swamp}{}{1.000}{}
+E {8121}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {8138}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {8087}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {8088}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
 R {8138}{0}{}{In the bog (Swamp of Sadness/Swamp/51)}{\e[0m\e[38;5;22m■\e[0m}{}{Swamp of Sadness}{}{Swamp}{}{1.000}{}
 E {8145}{e}{e}{2}{0}{}{1.000}{}{0.00}
@@ -16009,7 +16116,13 @@ R {26999}{0}{}{A Moss-covered Trail (Bandit Caves/Forest/148)}{\e[0m\e[38;5;22m�
 E {26900}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {3767}{s}{s}{4}{0}{}{1.000}{}{0.00}
 
-R {27001}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+R {27001}{0}{}{Desert (Canyons S. of the Wilder Zone/Desert/149)}{\e[0m\e[38;5;136m■\e[0m}{}{Canyons S. of the Wilder Zone}{}{Desert}{}{1.000}{}
+E {27002}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {7629}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {27007}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {7065}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {27002}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
 R {27004}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
@@ -24368,12 +24481,12 @@ E {46009}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {46025}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {46023}{s}{s}{4}{0}{}{1.000}{}{0.00}
 
-R {46025}{0}{}{Sub-Surface Breach Entrances (SST/Inside/249)}{\e[0m\e[38;5;94m■\e[0m}{}{SST}{}{Inside}{}{1.000}{}
+R {46025}{0}{}{Sub-Surface Breach Entrances (SST/Inside/250)}{\e[0m\e[38;5;94m■\e[0m}{}{SST}{}{Inside}{}{1.000}{}
 E {46026}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {46024}{s}{s}{4}{0}{}{1.000}{}{0.00}
 E {46281}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {46026}{0}{}{Sub-Surface Breach Entrances (SST/Inside/249)}{\e[0m\e[38;5;94m■\e[0m}{}{SST}{}{Inside}{}{1.000}{}
+R {46026}{0}{}{Sub-Surface Breach Entrances (SST/Inside/250)}{\e[0m\e[38;5;94m■\e[0m}{}{SST}{}{Inside}{}{1.000}{}
 E {46027}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {46009}{s}{s}{4}{0}{}{1.000}{}{0.00}
 E {46025}{w}{w}{8}{0}{}{1.000}{}{0.00}
@@ -25049,35 +25162,35 @@ E {46185}{e}{e}{2}{0}{}{1.000}{}{0.00}
 
 R {46200}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
-R {46261}{0}{}{Federation Station Entry (SST/Inside/251)}{\e[0m\e[38;5;94m■\e[0m}{}{SST}{}{Inside}{}{1.000}{}
+R {46261}{0}{}{Federation Station Entry (SST/Inside/252)}{\e[0m\e[38;5;94m■\e[0m}{}{SST}{}{Inside}{}{1.000}{}
 E {46281}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {46262}{s}{s}{4}{0}{}{1.000}{}{0.00}
 
-R {46262}{0}{}{Transit Security Checkpoint (SST/Inside/251)}{\e[0m\e[38;5;94m■\e[0m}{}{SST}{}{Inside}{}{1.000}{}
+R {46262}{0}{}{Transit Security Checkpoint (SST/Inside/252)}{\e[0m\e[38;5;94m■\e[0m}{}{SST}{}{Inside}{}{1.000}{}
 E {46261}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {46263}{s}{s}{4}{0}{}{1.000}{}{0.00}
 
-R {46263}{0}{}{Personnel Intake Hall (SST/Inside/251)}{\e[0m\e[38;5;94m■\e[0m}{}{SST}{}{Inside}{}{1.000}{}
+R {46263}{0}{}{Personnel Intake Hall (SST/Inside/252)}{\e[0m\e[38;5;94m■\e[0m}{}{SST}{}{Inside}{}{1.000}{}
 E {46262}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {46264}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {46264}{0}{}{Federation Registry Corridor (SST/Inside/251)}{\e[0m\e[38;5;94m■\e[0m}{}{SST}{}{Inside}{}{1.000}{}
+R {46264}{0}{}{Federation Registry Corridor (SST/Inside/252)}{\e[0m\e[38;5;94m■\e[0m}{}{SST}{}{Inside}{}{1.000}{}
 E {46263}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {46265}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {46265}{0}{}{Logistics Accessway (SST/Inside/251)}{\e[0m\e[38;5;94m■\e[0m}{}{SST}{}{Inside}{}{1.000}{}
+R {46265}{0}{}{Logistics Accessway (SST/Inside/252)}{\e[0m\e[38;5;94m■\e[0m}{}{SST}{}{Inside}{}{1.000}{}
 E {46264}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {46266}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {46266}{0}{}{Maintenance Junction (SST/Inside/251)}{\e[0m\e[38;5;94m■\e[0m}{}{SST}{}{Inside}{}{1.000}{}
+R {46266}{0}{}{Maintenance Junction (SST/Inside/252)}{\e[0m\e[38;5;94m■\e[0m}{}{SST}{}{Inside}{}{1.000}{}
 E {46265}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {46267}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {46267}{0}{}{Federation Access Tunnel (SST/Inside/251)}{\e[0m\e[38;5;94m■\e[0m}{}{SST}{}{Inside}{}{1.000}{}
+R {46267}{0}{}{Federation Access Tunnel (SST/Inside/252)}{\e[0m\e[38;5;94m■\e[0m}{}{SST}{}{Inside}{}{1.000}{}
 E {46266}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {46268}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {46268}{0}{}{Outer Command Concourse (SST/Inside/251)}{\e[0m\e[38;5;94m■\e[0m}{}{SST}{}{Inside}{}{1.000}{}
+R {46268}{0}{}{Outer Command Concourse (SST/Inside/252)}{\e[0m\e[38;5;94m■\e[0m}{}{SST}{}{Inside}{}{1.000}{}
 E {46267}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {46282}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
@@ -25130,227 +25243,227 @@ R {46280}{0}{}{Before the Citadel (SST/Desert/252)}{\e[0m\e[38;5;136m■\e[0m}{}
 E {46279}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {46100}{s}{s}{4}{0}{}{1.000}{}{0.00}
 
-R {46281}{0}{}{Federation Access Lift (SST/Inside/251)}{\e[0m\e[38;5;94m■\e[0m}{}{SST}{}{Inside}{}{1.000}{}
+R {46281}{0}{}{Federation Access Lift (SST/Inside/252)}{\e[0m\e[38;5;94m■\e[0m}{}{SST}{}{Inside}{}{1.000}{}
 E {46025}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {46261}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {46282}{0}{}{Transit Control Node (SST/Inside/251)}{\e[0m\e[38;5;94m■\e[0m}{}{SST}{}{Inside}{}{1.000}{}
+R {46282}{0}{}{Transit Control Node (SST/Inside/252)}{\e[0m\e[38;5;94m■\e[0m}{}{SST}{}{Inside}{}{1.000}{}
 E {46268}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {46283}{n}{n}{1}{0}{}{1.000}{}{0.00}
 
-R {46283}{0}{}{Fleet Access Passage (SST/Inside/251)}{\e[0m\e[38;5;94m■\e[0m}{}{SST}{}{Inside}{}{1.000}{}
+R {46283}{0}{}{Fleet Access Passage (SST/Inside/252)}{\e[0m\e[38;5;94m■\e[0m}{}{SST}{}{Inside}{}{1.000}{}
 E {46284}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {46282}{s}{s}{4}{0}{}{1.000}{}{0.00}
 
-R {46284}{0}{}{Observation Junction (SST/Inside/251)}{\e[0m\e[38;5;94m■\e[0m}{}{SST}{}{Inside}{}{1.000}{}
+R {46284}{0}{}{Observation Junction (SST/Inside/252)}{\e[0m\e[38;5;94m■\e[0m}{}{SST}{}{Inside}{}{1.000}{}
 E {46285}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {46283}{s}{s}{4}{0}{}{1.000}{}{0.00}
 
-R {46285}{0}{}{Officer Transfer Hall (SST/Inside/251)}{\e[0m\e[38;5;94m■\e[0m}{}{SST}{}{Inside}{}{1.000}{}
+R {46285}{0}{}{Officer Transfer Hall (SST/Inside/252)}{\e[0m\e[38;5;94m■\e[0m}{}{SST}{}{Inside}{}{1.000}{}
 E {46286}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {46284}{s}{s}{4}{0}{}{1.000}{}{0.00}
 
-R {46286}{0}{}{Central Supply Channel (SST/Inside/251)}{\e[0m\e[38;5;94m■\e[0m}{}{SST}{}{Inside}{}{1.000}{}
+R {46286}{0}{}{Central Supply Channel (SST/Inside/252)}{\e[0m\e[38;5;94m■\e[0m}{}{SST}{}{Inside}{}{1.000}{}
 E {46287}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {46285}{s}{s}{4}{0}{}{1.000}{}{0.00}
 
-R {46287}{0}{}{Maintenance Spine (SST/Inside/251)}{\e[0m\e[38;5;94m■\e[0m}{}{SST}{}{Inside}{}{1.000}{}
+R {46287}{0}{}{Maintenance Spine (SST/Inside/252)}{\e[0m\e[38;5;94m■\e[0m}{}{SST}{}{Inside}{}{1.000}{}
 E {46288}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {46286}{s}{s}{4}{0}{}{1.000}{}{0.00}
 
-R {46288}{0}{}{Auxiliary Control Deck (SST/Inside/251)}{\e[0m\e[38;5;94m■\e[0m}{}{SST}{}{Inside}{}{1.000}{}
+R {46288}{0}{}{Auxiliary Control Deck (SST/Inside/252)}{\e[0m\e[38;5;94m■\e[0m}{}{SST}{}{Inside}{}{1.000}{}
 E {46289}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {46287}{s}{s}{4}{0}{}{1.000}{}{0.00}
 
-R {46289}{0}{}{Fleet Coordination Level (SST/Inside/251)}{\e[0m\e[38;5;94m■\e[0m}{}{SST}{}{Inside}{}{1.000}{}
+R {46289}{0}{}{Fleet Coordination Level (SST/Inside/252)}{\e[0m\e[38;5;94m■\e[0m}{}{SST}{}{Inside}{}{1.000}{}
 E {46290}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {46288}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {46290}{0}{}{Communications Array (SST/Inside/251)}{\e[0m\e[38;5;94m■\e[0m}{}{SST}{}{Inside}{}{1.000}{}
+R {46290}{0}{}{Communications Array (SST/Inside/252)}{\e[0m\e[38;5;94m■\e[0m}{}{SST}{}{Inside}{}{1.000}{}
 E {46291}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {46289}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {46291}{0}{}{Psi-Ops Observation Bay (SST/Inside/251)}{\e[0m\e[38;5;94m■\e[0m}{}{SST}{}{Inside}{}{1.000}{}
+R {46291}{0}{}{Psi-Ops Observation Bay (SST/Inside/252)}{\e[0m\e[38;5;94m■\e[0m}{}{SST}{}{Inside}{}{1.000}{}
 E {46292}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {46290}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {46292}{0}{}{Neural Research Corridor (SST/Inside/251)}{\e[0m\e[38;5;94m■\e[0m}{}{SST}{}{Inside}{}{1.000}{}
+R {46292}{0}{}{Neural Research Corridor (SST/Inside/252)}{\e[0m\e[38;5;94m■\e[0m}{}{SST}{}{Inside}{}{1.000}{}
 E {46293}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {46291}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {46293}{0}{}{Containment Lab Vestibule (SST/Inside/251)}{\e[0m\e[38;5;94m■\e[0m}{}{SST}{}{Inside}{}{1.000}{}
+R {46293}{0}{}{Containment Lab Vestibule (SST/Inside/252)}{\e[0m\e[38;5;94m■\e[0m}{}{SST}{}{Inside}{}{1.000}{}
 E {46294}{s}{s}{4}{0}{}{1.000}{}{0.00}
 E {46292}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {46294}{0}{}{Research Access Hall (SST/Inside/251)}{\e[0m\e[38;5;94m■\e[0m}{}{SST}{}{Inside}{}{1.000}{}
+R {46294}{0}{}{Research Access Hall (SST/Inside/252)}{\e[0m\e[38;5;94m■\e[0m}{}{SST}{}{Inside}{}{1.000}{}
 E {46293}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {46295}{s}{s}{4}{0}{}{1.000}{}{0.00}
 
-R {46295}{0}{}{Power Relay Node (SST/Inside/251)}{\e[0m\e[38;5;94m■\e[0m}{}{SST}{}{Inside}{}{1.000}{}
+R {46295}{0}{}{Power Relay Node (SST/Inside/252)}{\e[0m\e[38;5;94m■\e[0m}{}{SST}{}{Inside}{}{1.000}{}
 E {46294}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {46296}{s}{s}{4}{0}{}{1.000}{}{0.00}
 
-R {46296}{0}{}{Engineering Lift Access (SST/Inside/251)}{\e[0m\e[38;5;94m■\e[0m}{}{SST}{}{Inside}{}{1.000}{}
+R {46296}{0}{}{Engineering Lift Access (SST/Inside/252)}{\e[0m\e[38;5;94m■\e[0m}{}{SST}{}{Inside}{}{1.000}{}
 E {46295}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {46297}{s}{s}{4}{0}{}{1.000}{}{0.00}
 
-R {46297}{0}{}{Upper Maintenance Platform (SST/Inside/251)}{\e[0m\e[38;5;94m■\e[0m}{}{SST}{}{Inside}{}{1.000}{}
+R {46297}{0}{}{Upper Maintenance Platform (SST/Inside/252)}{\e[0m\e[38;5;94m■\e[0m}{}{SST}{}{Inside}{}{1.000}{}
 E {46296}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {46298}{s}{s}{4}{0}{}{1.000}{}{0.00}
 
-R {46298}{0}{}{Command Lift Junction (SST/Inside/251)}{\e[0m\e[38;5;94m■\e[0m}{}{SST}{}{Inside}{}{1.000}{}
+R {46298}{0}{}{Command Lift Junction (SST/Inside/252)}{\e[0m\e[38;5;94m■\e[0m}{}{SST}{}{Inside}{}{1.000}{}
 E {46297}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {46299}{u}{u}{16}{0}{}{1.000}{}{0.00}
 
-R {46299}{0}{}{Federation Command Platform (SST/Inside/251)}{\e[0m\e[38;5;94m■\e[0m}{}{SST}{}{Inside}{}{1.000}{}
+R {46299}{0}{}{Federation Command Platform (SST/Inside/252)}{\e[0m\e[38;5;94m■\e[0m}{}{SST}{}{Inside}{}{1.000}{}
 E {46298}{d}{d}{32}{0}{}{1.000}{}{0.00}
 E {46300}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {46300}{0}{}{Central Transit Node (SST - Federation Station/Inside/252)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - Federation Station}{}{Inside}{}{1.000}{}
+R {46300}{0}{}{Central Transit Node (SST - Federation Station/Inside/253)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - Federation Station}{}{Inside}{}{1.000}{}
 E {46299}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {46301}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {46301}{0}{}{Operations Causeway (SST - Federation Station/Inside/252)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - Federation Station}{}{Inside}{}{1.000}{}
+R {46301}{0}{}{Operations Causeway (SST - Federation Station/Inside/253)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - Federation Station}{}{Inside}{}{1.000}{}
 E {46300}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {46302}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {46302}{0}{}{Fleet Administration Hall (SST - Federation Station/Inside/252)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - Federation Station}{}{Inside}{}{1.000}{}
+R {46302}{0}{}{Fleet Administration Hall (SST - Federation Station/Inside/253)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - Federation Station}{}{Inside}{}{1.000}{}
 E {46301}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {46303}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {46303}{0}{}{Logistics Records Vault (SST - Federation Station/Inside/252)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - Federation Station}{}{Inside}{}{1.000}{}
+R {46303}{0}{}{Logistics Records Vault (SST - Federation Station/Inside/253)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - Federation Station}{}{Inside}{}{1.000}{}
 E {46302}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {46304}{n}{n}{1}{0}{}{1.000}{}{0.00}
 
-R {46304}{0}{}{Engineering Support Passage (SST - Federation Station/Inside/252)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - Federation Station}{}{Inside}{}{1.000}{}
+R {46304}{0}{}{Engineering Support Passage (SST - Federation Station/Inside/253)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - Federation Station}{}{Inside}{}{1.000}{}
 E {46305}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {46303}{s}{s}{4}{0}{}{1.000}{}{0.00}
 
-R {46305}{0}{}{Reactor Control Junction (SST - Federation Station/Inside/252)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - Federation Station}{}{Inside}{}{1.000}{}
+R {46305}{0}{}{Reactor Control Junction (SST - Federation Station/Inside/253)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - Federation Station}{}{Inside}{}{1.000}{}
 E {46306}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {46304}{s}{s}{4}{0}{}{1.000}{}{0.00}
 
-R {46306}{0}{}{Upper Engineering Corridor (SST - Federation Station/Inside/252)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - Federation Station}{}{Inside}{}{1.000}{}
+R {46306}{0}{}{Upper Engineering Corridor (SST - Federation Station/Inside/253)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - Federation Station}{}{Inside}{}{1.000}{}
 E {46307}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {46305}{s}{s}{4}{0}{}{1.000}{}{0.00}
 
-R {46307}{0}{}{Security Interlock (SST - Federation Station/Inside/252)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - Federation Station}{}{Inside}{}{1.000}{}
+R {46307}{0}{}{Security Interlock (SST - Federation Station/Inside/253)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - Federation Station}{}{Inside}{}{1.000}{}
 E {46308}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {46306}{s}{s}{4}{0}{}{1.000}{}{0.00}
 
-R {46308}{0}{}{Fleet Officers’ Gallery (SST - Federation Station/Inside/252)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - Federation Station}{}{Inside}{}{1.000}{}
+R {46308}{0}{}{Fleet Officers’ Gallery (SST - Federation Station/Inside/253)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - Federation Station}{}{Inside}{}{1.000}{}
 E {46309}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {46307}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {46309}{0}{}{Hall of Citations (SST - Federation Station/Inside/252)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - Federation Station}{}{Inside}{}{1.000}{}
+R {46309}{0}{}{Hall of Citations (SST - Federation Station/Inside/253)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - Federation Station}{}{Inside}{}{1.000}{}
 E {46310}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {46308}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {46310}{0}{}{Officer Assembly Foyer (SST - Federation Station/Inside/252)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - Federation Station}{}{Inside}{}{1.000}{}
+R {46310}{0}{}{Officer Assembly Foyer (SST - Federation Station/Inside/253)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - Federation Station}{}{Inside}{}{1.000}{}
 E {46311}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {46309}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {46311}{0}{}{Command Hall Entry (SST - Federation Station/Inside/252)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - Federation Station}{}{Inside}{}{1.000}{}
+R {46311}{0}{}{Command Hall Entry (SST - Federation Station/Inside/253)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - Federation Station}{}{Inside}{}{1.000}{}
 E {46312}{s}{s}{4}{0}{}{1.000}{}{0.00}
 E {46310}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {46312}{0}{}{Outer Council Passage (SST - Federation Station/Inside/252)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - Federation Station}{}{Inside}{}{1.000}{}
+R {46312}{0}{}{Outer Council Passage (SST - Federation Station/Inside/253)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - Federation Station}{}{Inside}{}{1.000}{}
 E {46311}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {46313}{s}{s}{4}{0}{}{1.000}{}{0.00}
 
-R {46313}{0}{}{Grand Approach (SST - Federation Station/Inside/252)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - Federation Station}{}{Inside}{}{1.000}{}
+R {46313}{0}{}{Grand Approach (SST - Federation Station/Inside/253)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - Federation Station}{}{Inside}{}{1.000}{}
 E {46312}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {46314}{s}{s}{4}{0}{}{1.000}{}{0.00}
 
-R {46314}{0}{}{Council Lift Antechamber (SST - Federation Station/Inside/252)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - Federation Station}{}{Inside}{}{1.000}{}
+R {46314}{0}{}{Council Lift Antechamber (SST - Federation Station/Inside/253)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - Federation Station}{}{Inside}{}{1.000}{}
 E {46313}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {46315}{u}{u}{16}{0}{}{1.000}{}{0.00}
 
-R {46315}{0}{}{Council Reception Hall (SST - Federation Station/Inside/252)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - Federation Station}{}{Inside}{}{1.000}{}
+R {46315}{0}{}{Council Reception Hall (SST - Federation Station/Inside/253)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - Federation Station}{}{Inside}{}{1.000}{}
 E {46314}{d}{d}{32}{0}{}{1.000}{}{0.00}
 E {46316}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {46316}{0}{}{Administrative Promenade (SST - Federation Station/Inside/252)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - Federation Station}{}{Inside}{}{1.000}{}
+R {46316}{0}{}{Administrative Promenade (SST - Federation Station/Inside/253)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - Federation Station}{}{Inside}{}{1.000}{}
 E {46315}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {46317}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {46317}{0}{}{Federation Hallway (SST - Federation Station/Inside/252)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - Federation Station}{}{Inside}{}{1.000}{}
+R {46317}{0}{}{Federation Hallway (SST - Federation Station/Inside/253)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - Federation Station}{}{Inside}{}{1.000}{}
 E {46316}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {46318}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {46318}{0}{}{Strategic Planning Room (SST - Federation Station/Inside/252)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - Federation Station}{}{Inside}{}{1.000}{}
+R {46318}{0}{}{Strategic Planning Room (SST - Federation Station/Inside/253)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - Federation Station}{}{Inside}{}{1.000}{}
 E {46317}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {46319}{n}{n}{1}{0}{}{1.000}{}{0.00}
 
-R {46319}{0}{}{War-Council Passage (SST - Federation Station/Inside/252)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - Federation Station}{}{Inside}{}{1.000}{}
+R {46319}{0}{}{War-Council Passage (SST - Federation Station/Inside/253)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - Federation Station}{}{Inside}{}{1.000}{}
 E {46320}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {46318}{s}{s}{4}{0}{}{1.000}{}{0.00}
 
-R {46320}{0}{}{Outer Council Chamber (SST - Federation Station/Inside/252)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - Federation Station}{}{Inside}{}{1.000}{}
+R {46320}{0}{}{Outer Council Chamber (SST - Federation Station/Inside/253)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - Federation Station}{}{Inside}{}{1.000}{}
 E {46321}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {46319}{s}{s}{4}{0}{}{1.000}{}{0.00}
 
-R {46321}{0}{}{Council Atrium (SST - Federation Station/Inside/252)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - Federation Station}{}{Inside}{}{1.000}{}
+R {46321}{0}{}{Council Atrium (SST - Federation Station/Inside/253)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - Federation Station}{}{Inside}{}{1.000}{}
 E {46322}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {46320}{s}{s}{4}{0}{}{1.000}{}{0.00}
 
-R {46322}{0}{}{High-Council Hall (SST - Federation Station/Inside/252)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - Federation Station}{}{Inside}{}{1.000}{}
+R {46322}{0}{}{High-Council Hall (SST - Federation Station/Inside/253)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - Federation Station}{}{Inside}{}{1.000}{}
 E {46323}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {46321}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {46323}{0}{}{Council Chamber Access (SST - Federation Station/Inside/252)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - Federation Station}{}{Inside}{}{1.000}{}
+R {46323}{0}{}{Council Chamber Access (SST - Federation Station/Inside/253)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - Federation Station}{}{Inside}{}{1.000}{}
 E {46324}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {46322}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {46324}{0}{}{Pre-Council Vestibule (SST - Federation Station/Inside/252)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - Federation Station}{}{Inside}{}{1.000}{}
+R {46324}{0}{}{Pre-Council Vestibule (SST - Federation Station/Inside/253)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - Federation Station}{}{Inside}{}{1.000}{}
 E {46325}{s}{s}{4}{0}{}{1.000}{}{0.00}
 E {46323}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {46325}{0}{}{Honor Hall (SST - Federation Station/Inside/252)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - Federation Station}{}{Inside}{}{1.000}{}
+R {46325}{0}{}{Honor Hall (SST - Federation Station/Inside/253)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - Federation Station}{}{Inside}{}{1.000}{}
 E {46324}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {46326}{s}{s}{4}{0}{}{1.000}{}{0.00}
 
-R {46326}{0}{}{Council Lift Junction (SST - Federation Station/Inside/252)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - Federation Station}{}{Inside}{}{1.000}{}
+R {46326}{0}{}{Council Lift Junction (SST - Federation Station/Inside/253)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - Federation Station}{}{Inside}{}{1.000}{}
 E {46325}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {46327}{u}{u}{16}{0}{}{1.000}{}{0.00}
 
-R {46327}{0}{}{Council Lift Shaft (SST - Federation Station/Inside/252)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - Federation Station}{}{Inside}{}{1.000}{}
+R {46327}{0}{}{Council Lift Shaft (SST - Federation Station/Inside/253)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - Federation Station}{}{Inside}{}{1.000}{}
 E {46326}{d}{d}{32}{0}{}{1.000}{}{0.00}
 E {46328}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {46328}{0}{}{Outer Command Balcony (SST - Federation Station/Inside/252)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - Federation Station}{}{Inside}{}{1.000}{}
+R {46328}{0}{}{Outer Command Balcony (SST - Federation Station/Inside/253)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - Federation Station}{}{Inside}{}{1.000}{}
 E {46327}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {46329}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {46329}{0}{}{Grand Officer Walk (SST - Federation Station/Inside/252)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - Federation Station}{}{Inside}{}{1.000}{}
+R {46329}{0}{}{Grand Officer Walk (SST - Federation Station/Inside/253)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - Federation Station}{}{Inside}{}{1.000}{}
 E {46328}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {46330}{n}{n}{1}{0}{}{1.000}{}{0.00}
 
-R {46330}{0}{}{Ante-Chamber of Command (SST - Federation Station/Inside/252)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - Federation Station}{}{Inside}{}{1.000}{}
+R {46330}{0}{}{Ante-Chamber of Command (SST - Federation Station/Inside/253)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - Federation Station}{}{Inside}{}{1.000}{}
 E {46331}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {46329}{s}{s}{4}{0}{}{1.000}{}{0.00}
 
-R {46331}{0}{}{Hall of the Five Stars (SST - Federation Station/Inside/252)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - Federation Station}{}{Inside}{}{1.000}{}
+R {46331}{0}{}{Hall of the Five Stars (SST - Federation Station/Inside/253)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - Federation Station}{}{Inside}{}{1.000}{}
 E {46332}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {46330}{s}{s}{4}{0}{}{1.000}{}{0.00}
 
-R {46332}{0}{}{Command Promenade (SST - Federation Station/Inside/252)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - Federation Station}{}{Inside}{}{1.000}{}
+R {46332}{0}{}{Command Promenade (SST - Federation Station/Inside/253)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - Federation Station}{}{Inside}{}{1.000}{}
 E {46333}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {46331}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {46333}{0}{}{Grand Strategium (SST - Federation Station/Inside/252)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - Federation Station}{}{Inside}{}{1.000}{}
+R {46333}{0}{}{Grand Strategium (SST - Federation Station/Inside/253)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - Federation Station}{}{Inside}{}{1.000}{}
 E {46334}{s}{s}{4}{0}{}{1.000}{}{0.00}
 E {46332}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {46334}{0}{}{Pre-Throne Corridor (SST - Federation Station/Inside/252)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - Federation Station}{}{Inside}{}{1.000}{}
+R {46334}{0}{}{Pre-Throne Corridor (SST - Federation Station/Inside/253)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - Federation Station}{}{Inside}{}{1.000}{}
 E {46333}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {46335}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {46335}{0}{}{High Command Vestibule (SST - Federation Station/Inside/252)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - Federation Station}{}{Inside}{}{1.000}{}
+R {46335}{0}{}{High Command Vestibule (SST - Federation Station/Inside/253)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - Federation Station}{}{Inside}{}{1.000}{}
 E {46334}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {46336}{u}{u}{16}{0}{}{1.000}{}{0.00}
 
-R {46336}{0}{}{General Tonpat’s Command Dais (SST - Federation Station/Inside/252)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - Federation Station}{}{Inside}{}{1.000}{}
+R {46336}{0}{}{General Tonpat’s Command Dais (SST - Federation Station/Inside/253)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - Federation Station}{}{Inside}{}{1.000}{}
 E {46335}{d}{d}{32}{0}{}{1.000}{}{0.00}
 
 R {46400}{0}{}{The Resin Drop (SST - The Nest/Inside/254)}{\e[0m\e[38;5;94m■\e[0m}{}{SST - The Nest}{}{Inside}{}{1.000}{}
