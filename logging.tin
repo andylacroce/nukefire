@@ -22,7 +22,7 @@
 #nop ------------------ EXP RUN TRACKING ------------------
 #variable {exp_run_total} {0}
 
-#action {You receive %1 experience points.} {
+#alias {_track_xp} {
     #local {_xp} {%1};
     #replace {_xp} {,} {};
     #math {exp_run_total} {$exp_run_total + $_xp};

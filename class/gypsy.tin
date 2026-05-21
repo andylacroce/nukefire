@@ -50,7 +50,7 @@
 	#if {$lvl > 39 && $tarot_cd == 0} {tarot_group; #var tarot_cd 1; #delay {20} {#var tarot_cd 0};};
 }
 
-#action {You receive %1 experience points.} {_gypsy_on_xp}
+#action {You receive %1 experience points.} {_gypsy_on_xp; _track_xp %1}
 #action {You can't gain anymore experience.} {_gypsy_on_xp}
 
 #ACTION {^SPL: %* voodoo contract} {#variable {has_voodoo} {1}}

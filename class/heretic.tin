@@ -20,6 +20,7 @@
 #class immolate open
     #action {You receive %1 experience points.} {
         immo corpse;
+        _track_xp %1;
     }
     #action {You can't gain anymore experience.} {
         immo corpse;
@@ -29,7 +30,7 @@
 
 #alias {immolate_on} {
     #class {immolate} {open};
-    #action {You receive %%1 experience points.} {immo corpse;};
+    #action {You receive %%1 experience points.} {immo corpse; _track_xp %%1;};
     #action {You can't gain anymore experience.} {immo corpse;};
     #class {immolate} {close};
     #variable {immolate_on} {1};

@@ -432,17 +432,16 @@ function Show-LastMap($reader) {
 
     $mapStart = -1; $mapEnd = -1
     for ($i = 0; $i -lt $tail.Count; $i++) {
-        if ($tail[$i] -match '^\[ BIGMAP \]') {
-            $mapStart = $i
+        if ($tail[$i] -eq 'bigmap_start') {
+            $mapStart = $i + 1
             $mapEnd   = -1
-        } elseif ($mapStart -ge 0 -and $mapEnd -eq -1 -and $tail[$i] -match '^< \d+H') {
-            $mapEnd = $i
+        } elseif ($mapStart -ge 0 -and $tail[$i] -eq 'bigmap_end') {
+            $mapEnd = $i - 1
         }
     }
-    if ($mapStart -ge 0 -and $mapEnd -gt $mapStart) {
-        # Trim trailing blank lines and game-text lines (start with a letter) before the prompt
-        $end = $mapEnd - 1
-        while ($end -gt $mapStart -and ([string]::IsNullOrWhiteSpace($tail[$end]) -or $tail[$end] -match '^[a-zA-Z]')) { $end-- }
+    if ($mapStart -ge 0 -and $mapEnd -ge $mapStart) {
+        $end = $mapEnd
+        while ($end -gt $mapStart -and [string]::IsNullOrWhiteSpace($tail[$end])) { $end-- }
         $script:lastMapLines = $tail[$mapStart..$end]
         Write-Host ($HIDE + (Format-ColorMap $script:lastMapLines) + (Format-GroupStats) + $SHOW) -NoNewline
     }
@@ -481,14 +480,9 @@ while (-not $logFile) {
 
 $reader        = Open-LogReader $logFile.FullName
 $buffer        = [System.Collections.Generic.List[string]]::new()
-$pendingBlanks = [System.Collections.Generic.List[string]]::new()
 # Capture states:
-#   0 = idle
-#   1 = header seen, waiting for legend (line starting with '@')
-#   2 = legend seen, waiting for separator blank
-#   3 = separator blank seen, waiting for first graphical row
-#   4 = in graphical rows — blank deferred to state 5
-#   5 = saw a blank mid-map — waiting to see if more map rows follow
+#   0 = idle, waiting for bigmap_start
+#   1 = inside map, collecting until bigmap_end
 $captureState  = 0
 $lastCheck     = [DateTime]::Now
 $lastStatsPoll = [DateTime]::MinValue
@@ -528,11 +522,8 @@ function Invoke-RefreshStats {
 }
 
 function Test-ShouldTrimLine {
-    param(
-        [string]$Line
-    )
-
-    return [string]::IsNullOrWhiteSpace($Line) -or $Line -match '^[a-zA-Z]'
+    param([string]$Line)
+    return [string]::IsNullOrWhiteSpace($Line)
 }
 
 function Write-MapBuffer {
@@ -554,7 +545,6 @@ while ($true) {
                 $logFile      = $newer
                 $reader       = Open-LogReader $logFile.FullName
                 $buffer.Clear()
-                $pendingBlanks.Clear()
                 $captureState = 0
                 Show-LastMap $reader
             }
@@ -565,56 +555,17 @@ while ($true) {
 
     switch ($captureState) {
         0 {
-            if ($line -match '^\[ BIGMAP \]') {
+            if ($line -eq 'bigmap_start') {
                 $buffer.Clear()
-                $buffer.Add($line)
                 $captureState = 1
             }
         }
         1 {
-            # Waiting for legend line (starts with '@')
-            $buffer.Add($line)
-            if ($line -match '^@') { $captureState = 2 }
-        }
-        2 {
-            # Waiting for separator blank between legend and graphical rows
-            $buffer.Add($line)
-            if ([string]::IsNullOrWhiteSpace($line)) { $captureState = 3 }
-        }
-        3 {
-            # Waiting for first real graphical row; skip Up/Down Here markers and blank lines
-            $buffer.Add($line)
-            if (-not [string]::IsNullOrWhiteSpace($line) -and $line -notmatch '<--\s*(Up|Down) Here\s*-->') {
-                $captureState = 4
-            }
-        }
-        4 {
-            # In graphical rows. Blank lines may be internal row spacing, so defer them.
-            if ($line -match '^<\s*\d+H') {
-                $captureState = 0
-                Publish-MapBuffer
-            } elseif ([string]::IsNullOrWhiteSpace($line)) {
-                $pendingBlanks.Clear()
-                $pendingBlanks.Add($line)
-                $captureState = 5
-            } else {
-                $buffer.Add($line)
-            }
-        }
-        5 {
-            # Deferred blank — decide if it's internal spacing or end of map.
-            if ([string]::IsNullOrWhiteSpace($line)) {
-                # Additional blank — keep accumulating.
-                $pendingBlanks.Add($line)
-            } elseif ($line -match '^<\s*\d+H' -or $line -match '[a-zA-Z]{2,}') {
-                # Prompt or non-map text — map ended before the blank(s); publish and reset.
+            if ($line -eq 'bigmap_end') {
                 $captureState = 0
                 Publish-MapBuffer
             } else {
-                # Another map row — the blank(s) were internal spacing; flush and continue.
-                foreach ($b in $pendingBlanks) { $buffer.Add($b) }
                 $buffer.Add($line)
-                $captureState = 4
             }
         }
     }

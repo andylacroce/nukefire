@@ -63,7 +63,7 @@
 #nop ------------------ EXPERIENCE TRIGGERS ------------------
 #alias {_wolfman_on_xp} {#if {$lvl > 39} {frenzy}}
 
-#action {You receive %1 experience points.} {_wolfman_on_xp}
+#action {You receive %1 experience points.} {_wolfman_on_xp; _track_xp %1}
 #action {You can't gain anymore experience.} {_wolfman_on_xp}
 
 #nop ------------------ FEAST TOGGLE ------------------
@@ -72,6 +72,7 @@
 #class feast open
 	#action {You receive %1 experience points.} {
 		#send {feast corpse};
+		_track_xp %1;
 	}
 	#action {You can't gain anymore experience.} {
 		#send {feast corpse};
@@ -81,7 +82,7 @@
 
 #alias {feast_on} {
 	#class {feast} {open};
-	#action {You receive %%1 experience points.} {#send {feast corpse};};
+	#action {You receive %%1 experience points.} {#send {feast corpse}; _track_xp %%1;};
 	#action {You can't gain anymore experience.} {#send {feast corpse};};
 	#class {feast} {close};
 	#variable {feast_on} {1};
