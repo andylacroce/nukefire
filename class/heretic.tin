@@ -286,8 +286,17 @@
     };
 }
 
+#variable {_sum_cd} {0}
+
 #ACTION {%1 telepaths to you, 'sum'} {
-    sum %1;
+    #if {"%1" == "${leader}"} {
+        sum %1;
+    };
+    #elseif {!$_sum_cd} {
+        sum %1;
+        #variable {_sum_cd} {1};
+        #delay {_sum_cd} {20} {#variable {_sum_cd} {0}};
+    };
 } {1}
 
 #ACTION {You rise a level!} {

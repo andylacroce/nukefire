@@ -27,6 +27,18 @@
 }
 
 #nop After the room listing ends (when "Obvious exits:" is printed), act based on whether leader was seen
+#alias {_haenym_here} {
+	#local _gi {1};
+	#local _found {0};
+	#while {"$gmcp[group][members][$_gi][name]" != ""} {
+		#if {"$gmcp[group][members][$_gi][name]" == "Haenym"} {
+			#local _found {$gmcp[group][members][$_gi][info][here]};
+		};
+		#math _gi {$_gi + 1};
+	};
+	#return {$_found};
+}
+
 #alias {_lp_register} {
 	#class {leader_presence} {clear};
 	#class {leader_presence} {open};
@@ -36,7 +48,11 @@
 		};
 		#else {
 			tel ${leader} not here...;
-			#if {"${me}" != "haenym"} {tel haenym sum};
+			#if {"${me}" != "haenym"} {
+				#if {!@_haenym_here()} {
+					tel haenym sum;
+				};
+			};
 			#delay {10} {look};
 		}
 	};
@@ -86,7 +102,17 @@ _lp_register
 #TICKER {group_check} {l;gr} {15}
 
 #nop ------------------ LEADER ACTIONS ------------------
-#action {${leader}'s form shimmers with eldritch power as he vanishes beyond mortal planes!} {recall}
+#variable {_recall_cd} {0}
+
+#nop Set cooldown when this character recalls, preventing the shimmers trigger from double-firing
+#action {^An ethereal darkness envelops you as the eldritch forces take hold!} {
+    #variable {_recall_cd} {1};
+    #delay {_recall_cd} {15} {#variable {_recall_cd} {0}};
+}
+
+#action {${leader}'s form shimmers with eldritch power as he vanishes beyond mortal planes!} {
+    #if {!$_recall_cd} {recall};
+}
 #action {${leader} telepaths to you, 'o %*'} {%1} {2}
 
 #nop ------------------ STATUS REPORTING ------------------
