@@ -98,6 +98,8 @@
     recall;
     #delay {1} {
         bal;
+        exp_reset;
+        otf exp_reset;
         #delay {1} {#math run_total {$bank_balance - $last_balance}; #showme {Run Total: \$$run_total}};
     }
 }

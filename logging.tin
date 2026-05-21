@@ -19,12 +19,25 @@
     }
 }
 
+#nop ------------------ EXP RUN TRACKING ------------------
+#variable {exp_run_total} {0}
+
+#action {You receive %1 experience points.} {
+    #local {_xp} {%1};
+    #replace {_xp} {,} {};
+    #math {exp_run_total} {$exp_run_total + $_xp};
+}
+
+#alias {exp_reset} {
+    #variable {exp_run_total} {0};
+}
+
 #nop Report class remort status — showme for leader, tel for followers
 #alias {_report_status} {
     #if {$is_follower} {
-        tel ${leader} @BLvl: $lvl || $exp_to_level || Class Remorts: $class_remorts || Total Remorts: $total_remorts || DPS: $dps
+        tel ${leader} @BLvl: $lvl || $exp_to_level || Class Remorts: $class_remorts || Total Remorts: $total_remorts || DPS: $dps || Run EXP: $exp_run_total
     } {
-        #showme {\e]P40000AA <048>Lvl: $lvl || $exp_to_level || Class Remorts: $class_remorts || Total Remorts: $total_remorts || DPS: $dps}
+        #showme {\e]P40000AA <048>Lvl: $lvl || $exp_to_level || Class Remorts: $class_remorts || Total Remorts: $total_remorts || DPS: $dps || Run EXP: $exp_run_total}
     }
 }
 

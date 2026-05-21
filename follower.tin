@@ -36,7 +36,7 @@
 		};
 		#else {
 			tel ${leader} not here...;
-			#if {"${me}" != "haenym"} {tel haenym summon};
+			#if {"${me}" != "haenym"} {tel haenym sum};
 			#delay {10} {look};
 		}
 	};
