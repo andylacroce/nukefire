@@ -30,7 +30,7 @@
         #showme {MAP: Follower -- mapping disabled};
         #return;
     };
-    #map create {100000};
+    #map create {1000000};
 
     #nop TinTin++ has built-in offsets for north/south/east/west/up/down/ne/nw/se/sw;
     #nop No #map direction needed -- full names are recognised natively;
@@ -201,7 +201,7 @@
 #alias map_goto  {#map run {%1}}
 
 #alias map_wipe {
-    #map create {100000};
+    #map create {1000000};
     #map flag {static};
     #map flag {quiet};
     #variable map_origin_set {0};
