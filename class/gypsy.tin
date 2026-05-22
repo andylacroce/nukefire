@@ -9,10 +9,11 @@
 #ALIAS {rr} {
 	hyp mob;
 	tel rancor o stalk mob;
-	#delay {1} {
+	#delay {.5} {
+		resc rancor;
 		#if {$lvl > 44}{impale mob};
 		#else {shackle mob};
-		#if {$lvl <= 44}{assist rancor;otf assist mutiny};
+		otf assist mutiny;
 		otf assist rancor;
 		otf rr;
 		#if {$lvl > 39}{bgrow};
