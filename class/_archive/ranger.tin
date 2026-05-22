@@ -35,7 +35,6 @@
 }
 
 #nop ------------------ LEVEL-DRIVEN ACTIONS ------------------
-#ACTION {[Regen]} {#if {$lvl > 14}{afx}}
 
 #nop ------------------ GMCP GROUP AUTOINVIG ------------------
 #nop Event-driven: fires on every GMCP group update from server

@@ -26,17 +26,8 @@
 	#variable {leader_here} {1};
 }
 
-#nop After the room listing ends (when "Obvious exits:" is printed), act based on whether leader was seen
-#alias {_haenym_here} {
-	#local _gi {1};
-	#local _found {0};
-	#while {"$gmcp[group][members][$_gi][name]" != ""} {
-		#if {"$gmcp[group][members][$_gi][name]" == "Haenym"} {
-			#local _found {$gmcp[group][members][$_gi][info][here]};
-		};
-		#math _gi {$_gi + 1};
-	};
-	#return {$_found};
+#action {^You see nothing special about her.} {
+	#variable {haenym_here} {1};
 }
 
 #alias {_lp_register} {
@@ -49,8 +40,12 @@
 		#else {
 			tel ${leader} not here...;
 			#if {"${me}" != "haenym"} {
-				#if {!@_haenym_here()} {
-					tel haenym sum;
+				#variable {haenym_here} {0};
+				look haenym;
+				#delay {2} {
+					#if {!$haenym_here} {
+						tel haenym sum;
+					};
 				};
 			};
 			#delay {10} {look};

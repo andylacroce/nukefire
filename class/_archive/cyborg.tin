@@ -4,7 +4,6 @@
 #nop =====================================================
 
 #nop ------------------ LEVEL-DRIVEN ACTIONS ------------------
-#ACTION {[Regen]} {afx}
 
 #nop ------------------ DAMCON ------------------
 #nop Toggle and listeners for damcon

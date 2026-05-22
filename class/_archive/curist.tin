@@ -42,7 +42,6 @@
 
 
 #nop ------------------ LEVEL-DRIVEN ACTIONS ------------------
-#ACTION {[Regen]} {#if {$lvl > 8}{afx}}
 
 #nop ------------------ GMCP GROUP AUTOHEAL ------------------
 #nop Event-driven: fires on every GMCP group update from server

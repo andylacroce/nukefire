@@ -95,7 +95,6 @@
 	#if {$lvl > 39} {oath};
 };
 #nop ------------------ LEVEL-DRIVEN ACTIONS ------------------
-#ACTION {[Regen]} {#if {$lvl > 4}{afx}}
 
 
 #nop ------------------ GMCP GROUP AUTOHEAL ------------------

@@ -6,6 +6,8 @@
 #nop ------------------ REPORT COMMAND ------------------
 #ALIAS {rep} {report}
 
+#ACTION {[Regen]} {afx}
+
 #nop Helper: test if a name is the leader or a follower
 #alias {is_group_member %1} {
 	#var _igm_name %1;
