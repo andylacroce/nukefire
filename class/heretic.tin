@@ -124,7 +124,7 @@
     #local cmhp {$gmcp[char][maxstats][maxhp]};
     #if {$cmhp > 0} {
         #math hp_pct {100 * $chp / $cmhp};
-        #if {$hp_pct < 70 && $autoheal_on && $augury_cooldown == 0} {
+        #if {$hp_pct < 80 && $autoheal_on && $augury_cooldown == 0} {
             tel $leader @-@Y<< HEALING $me >> @n@y($chp/$cmhp HP, @+@Y$hp_pct%@n@y);
             #if {$lvl >= 26} {sli 'augury' $me} {sli 'soul swell' $me};
             #variable augury_cooldown 1; #delay {3} {#variable augury_cooldown 0};
@@ -165,9 +165,9 @@
         };
         #math gi {$gi + 1};
     };
-    #if {$focus_pct < 75} {
-        #nop bail if target improved above 65% -- upward movement means the heal landed, close enough --;
-        #if {$focus_pct > 65 && $focus_pct > $heal_focus_pct_at_cast} {
+    #if {$focus_pct < 80} {
+        #nop bail if target improved above 70% -- upward movement means the heal landed, close enough --;
+        #if {$focus_pct > 70 && $focus_pct > $heal_focus_pct_at_cast} {
             #variable heal_focus {};
             #variable heal_focus_retries {0};
             #return;
@@ -192,7 +192,7 @@
             #local mhp   {$gmcp[group][members][$gi][info][hp]};
             #local mmhp  {$gmcp[group][members][$gi][info][mhp]};
             #if {$mmhp > 0} {#math hp_pct {100 * $mhp / $mmhp}} {#local hp_pct {101}};
-            #if {"$mname" != "$me" && $mhp > 0 && $hp_pct < 30 && !$emergency_cooldown} {
+            #if {"$mname" != "$me" && $mhp > 0 && $hp_pct < 40 && !$emergency_cooldown} {
                 #if {"$heal_focus" != "$mname"} {#variable heal_focus_retries {0}};
                 #variable heal_focus {$mname};
                 #variable emergency_cooldown {1};
@@ -213,7 +213,7 @@
             #local mhp   {$gmcp[group][members][$gi][info][hp]};
             #local mmhp  {$gmcp[group][members][$gi][info][mhp]};
             #if {$mmhp > 0} {#math hp_pct {100 * $mhp / $mmhp}} {#local hp_pct {101}};
-            #if {"$mname" != "$me" && "$mname" != "$heal_focus" && $hp_pct < 40} {
+            #if {"$mname" != "$me" && "$mname" != "$heal_focus" && $hp_pct < 50} {
                 #local found_critical {1};
             };
             #math gi {$gi + 1};
@@ -234,7 +234,7 @@
             #local mhp   {$gmcp[group][members][$gi][info][hp]};
             #local mmhp  {$gmcp[group][members][$gi][info][mhp]};
             #if {$mmhp > 0} {#math hp_pct {100 * $mhp / $mmhp}} {#local hp_pct {101}};
-            #if {$mhp > 0 && $hp_pct < 75} {#math below_count {$below_count + 1}};
+            #if {$mhp > 0 && $hp_pct < 80} {#math below_count {$below_count + 1}};
             #if {"$mname" != "$me" && $mhp > 0 && $hp_pct < $lowest_pct} {
                 #local lowest_pct  {$hp_pct};
                 #local lowest_name {$mname};
@@ -244,19 +244,19 @@
             #math gi {$gi + 1};
         };
         #nop AoE only when 2+ need topping off and nobody is critically low (>=55%) -- below 55% gets individual attention --;
-        #if {$below_count > 1 && $lvl > 34 && $lowest_pct >= 55} {
+        #if {$below_count > 1 && $lvl > 34 && $lowest_pct >= 60} {
             #variable heal_focus {};
             tel $leader @-@G<< AURA OF REJUV ($below_count low) >> @n@g;
             sli 'aura of rejuv';
             #variable heal_cooldown 1; #delay {3} {#variable heal_cooldown 0};
         };
-        #elseif {$lowest_pct < 75 && "$lowest_name" != ""} {
+        #elseif {$lowest_pct < 80 && "$lowest_name" != ""} {
             #variable heal_focus {$lowest_name};
             #variable heal_focus_retries {0};
             #variable heal_focus_pct_at_cast {$lowest_pct};
             tel $leader @-@Y<< HEALING $lowest_name >> @n@y($lowest_hp/$lowest_mhp HP, @+@Y$lowest_pct%@n@y);
             heal $lowest_name;
-            #variable heal_cooldown 1; #delay {5} {#variable heal_cooldown 0; _maybe_followup_heal};
+            #variable heal_cooldown 1; #delay {4} {#variable heal_cooldown 0; _maybe_followup_heal};
         };
     };
     #nop -- PASS 2: MV restore for lowest MV% member (lowest priority) --;
@@ -279,7 +279,7 @@
             };
             #math gi {$gi + 1};
         };
-        #if {$lowest_mv_pct < 85 && "$lowest_mv_name" != ""} {
+        #if {$lowest_mv_pct < 90 && "$lowest_mv_name" != ""} {
             tel $leader @-@C<< INVIGORATING $lowest_mv_name >> @n@c($lowest_mv/$lowest_mmv MV, @+@C$lowest_mv_pct%@n@c);
             sli 'sinful vigor' $lowest_mv_name;
             #variable sinvig_cooldown 1; #delay {3} {#variable sinvig_cooldown 0};

@@ -20,7 +20,7 @@
         junk corpse;junk corpse;
         conceal dirk;conceal knife;conceal dirk;
         group new;
-        n;u;eq;
+        recall;eq;
     };
     #if {"$me" == "Haenym"} {
         retrieve;
@@ -34,7 +34,7 @@
         get all corpse;
         rewear;
         junk corpse;
-        n;u;eq;
+        recall;eq;
     };
     #if {"$me" == "Prodigy"} {
         retrieve;
@@ -48,7 +48,7 @@
         get all corpse;
         rewear;
         junk corpse;
-        n;u;eq;
+        recall;eq;
     };
     #if {"$me" == "Rancor"} {
         retrieve;
@@ -62,7 +62,7 @@
         get all corpse;
         rewear;
         junk corpse;
-        n;u;eq;
+        recall;eq;
     };
 }
 #ALIAS {gcr %1 %2} {
