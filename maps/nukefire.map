@@ -1989,6 +1989,753 @@ E {25609}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {2439}{s}{s}{4}{0}{}{1.000}{}{0.00}
 E {25611}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
+R {2500}{0}{}{Interface Threshold (Shadowspire/Forest/24)}{\e[0m\e[38;5;22m■\e[0m}{}{Shadowspire}{}{Forest}{}{1.000}{}
+E {2508}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {40363}{u}{u}{16}{0}{}{1.000}{}{0.00}
+
+R {2501}{0}{}{Signal Chasm (Shadowspire/Forest/24)}{\e[0m\e[38;5;22m■\e[0m}{}{Shadowspire}{}{Forest}{}{1.000}{}
+E {2502}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2507}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {2504}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {2503}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2502}{0}{}{Synapse Grove (Shadowspire/Forest/24)}{\e[0m\e[38;5;22m■\e[0m}{}{Shadowspire}{}{Forest}{}{1.000}{}
+E {2503}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2511}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {2505}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {2501}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2503}{0}{}{Coherence Fracture (Shadowspire/Forest/24)}{\e[0m\e[38;5;22m■\e[0m}{}{Shadowspire}{}{Forest}{}{1.000}{}
+E {2501}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2509}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {2506}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {2502}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2504}{0}{}{Obsolete Grove Core (Shadowspire/Forest/24)}{\e[0m\e[38;5;22m■\e[0m}{}{Shadowspire}{}{Forest}{}{1.000}{}
+E {2505}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2501}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {2507}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {2503}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2505}{0}{}{Thorned Circuit Grove (Shadowspire/Forest/24)}{\e[0m\e[38;5;22m■\e[0m}{}{Shadowspire}{}{Forest}{}{1.000}{}
+E {2506}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2502}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {2508}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {2504}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2506}{0}{}{Glade of Static Rot (Shadowspire/Forest/24)}{\e[0m\e[38;5;22m■\e[0m}{}{Shadowspire}{}{Forest}{}{1.000}{}
+E {2510}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2503}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {2509}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {2511}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2507}{0}{}{Disruption Nest (Shadowspire/Forest/24)}{\e[0m\e[38;5;22m■\e[0m}{}{Shadowspire}{}{Forest}{}{1.000}{}
+E {2508}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2504}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {2501}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {2509}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2508}{0}{}{Core of the Rot Branch (Shadowspire/Forest/24)}{\e[0m\e[38;5;22m■\e[0m}{}{Shadowspire}{}{Forest}{}{1.000}{}
+E {2509}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2505}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {2506}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {2507}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2509}{0}{}{Nerve Grove Sinkpoint (Shadowspire/Forest/24)}{\e[0m\e[38;5;22m■\e[0m}{}{Shadowspire}{}{Forest}{}{1.000}{}
+E {2507}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2506}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {2503}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {2508}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2510}{0}{}{Grove of Null Bark (Shadowspire/Forest/24)}{\e[0m\e[38;5;22m■\e[0m}{}{Shadowspire}{}{Forest}{}{1.000}{}
+E {2511}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2507}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {2509}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {2502}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2511}{0}{}{Signal Interruption Field (Shadowspire/Forest/24)}{\e[0m\e[38;5;22m■\e[0m}{}{Shadowspire}{}{Forest}{}{1.000}{}
+E {2506}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2512}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {2502}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {2510}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2512}{0}{}{Threshold of the Null Tower (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2511}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {2513}{0}{}{Antechamber of Broken Protocols (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2515}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2514}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {2512}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {2516}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2514}{0}{}{The Locus of Memory Bleed (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2518}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2517}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {2513}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {2519}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2515}{0}{}{Defragmented Hall (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2530}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2518}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {2513}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2516}{0}{}{Echo-Infusion Chamber (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2513}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2520}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2517}{0}{}{The Forgotten Conduit (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2514}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {2592}{u}{u}{16}{0}{}{1.000}{}{0.00}
+
+R {2518}{0}{}{Whispered Alcove (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2532}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2515}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {2514}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2519}{0}{}{The Null Archive Chamber (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2514}{e}{e}{2}{0}{}{1.000}{}{0.00}
+
+R {2520}{0}{}{The Corroded Maintenance Bay (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2516}{e}{e}{2}{0}{}{1.000}{}{0.00}
+
+R {2530}{0}{}{The Flickering Hall of Residual Thought (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2531}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2515}{w}{w}{8}{0}{}{1.000}{}{0.00}
+E {2532}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {2533}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {2531}{0}{}{Crux of Broken Wards (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2535}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {2530}{w}{w}{8}{0}{}{1.000}{}{0.00}
+E {2536}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2534}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {2532}{0}{}{Cache Node (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2534}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2530}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {2518}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2533}{0}{}{Archivist Storage (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2535}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2530}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {2534}{0}{}{Corrupted Corridor (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2538}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {2531}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {2532}{w}{w}{8}{0}{}{1.000}{}{0.00}
+E {2537}{e}{e}{2}{0}{}{1.000}{}{0.00}
+
+R {2535}{0}{}{Threshold of the Silent Watchers (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2533}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2536}{0}{}{Refraction Core (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2531}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2537}{0}{}{Dormant Watchpost (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2534}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2538}{0}{}{Luminescent Corridor (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2534}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {2540}{u}{u}{16}{0}{}{1.000}{}{0.00}
+E {2539}{e}{e}{2}{0}{}{1.000}{}{0.00}
+
+R {2539}{0}{}{Ash Vault (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2538}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2540}{0}{}{Signal-Washed Corridor (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2538}{d}{d}{32}{0}{}{1.000}{}{0.00}
+E {2541}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2543}{w}{w}{8}{0}{}{1.000}{}{0.00}
+E {2542}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {2541}{0}{}{Data Nexus Chamber (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2568}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2540}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2542}{0}{}{The Data Veil (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2544}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2543}{0}{}{Spectral Record Vault (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2540}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2545}{w}{w}{8}{0}{}{1.000}{}{0.00}
+E {2544}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {2544}{0}{}{The Shadowspire Archives (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2542}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2543}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {2545}{0}{}{Azure Corridor (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2543}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2547}{w}{w}{8}{0}{}{1.000}{}{0.00}
+E {2546}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {2546}{0}{}{Neurospire Workshop — The Forbidden Core (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2545}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {2547}{0}{}{A Bent Silicon Hallway (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2545}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2548}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {2548}{0}{}{Corrupted Data Extraction Bay (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2545}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2547}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {2549}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {2549}{0}{}{The Synthetic Training Chamber (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2548}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {2550}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {2550}{0}{}{Corridor of Echoing Steps (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2549}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {2551}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {2552}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2551}{0}{}{The Hollow Passage (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2550}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {2553}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {2554}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2552}{0}{}{Combat Simulation Room (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2550}{e}{e}{2}{0}{}{1.000}{}{0.00}
+
+R {2553}{0}{}{A Shrouded Bend (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2555}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2551}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {2554}{0}{}{The Ironclad Training Hall (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2551}{e}{e}{2}{0}{}{1.000}{}{0.00}
+
+R {2555}{0}{}{The Narrow Corridor (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2556}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2553}{w}{w}{8}{0}{}{1.000}{}{0.00}
+E {2557}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {2556}{0}{}{The Hollow Hall (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2558}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2555}{w}{w}{8}{0}{}{1.000}{}{0.00}
+E {2559}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {2557}{0}{}{The Digital Evil Den (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2555}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {2558}{0}{}{The Narrow Passage (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2560}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2556}{w}{w}{8}{0}{}{1.000}{}{0.00}
+E {2561}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {2559}{0}{}{The Crematory (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2556}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {2560}{0}{}{Bent Silicon Corridor (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2562}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {2558}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2561}{0}{}{Dueling Arena of Code and Flame (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2558}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {2562}{0}{}{Voltage Spine Hall (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2563}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {2560}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {2564}{e}{e}{2}{0}{}{1.000}{}{0.00}
+
+R {2563}{0}{}{Breached Memory Trunk (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2566}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {2562}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {2565}{e}{e}{2}{0}{}{1.000}{}{0.00}
+
+R {2564}{0}{}{The Datamasters’ Lounge (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2562}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2565}{0}{}{The Dataweaver's Niche (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2563}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2566}{0}{}{Static-Scorched Hall (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2568}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {2563}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {2567}{e}{e}{2}{0}{}{1.000}{}{0.00}
+
+R {2567}{0}{}{Cachemaster’s Den (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2566}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2568}{0}{}{Below The Stairs (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2566}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {2569}{u}{u}{16}{0}{}{1.000}{}{0.00}
+E {2541}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2569}{0}{}{Atop The Stairway (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2568}{d}{d}{32}{0}{}{1.000}{}{0.00}
+E {2598}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2570}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2570}{0}{}{Conductive Spire Vein (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2569}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2572}{w}{w}{8}{0}{}{1.000}{}{0.00}
+E {2571}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {2571}{0}{}{Cognitive Compression Cell (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2570}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {2573}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2572}{0}{}{Neural Collapse Corridor (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2570}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2574}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2573}{0}{}{The Master Scribe’s Interface (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2571}{e}{e}{2}{0}{}{1.000}{}{0.00}
+
+R {2574}{0}{}{Silicon Fault Passage (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2572}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2576}{w}{w}{8}{0}{}{1.000}{}{0.00}
+E {2575}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {2575}{0}{}{The Microcipher's Vault (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2574}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {2576}{0}{}{Bent Silicon Hallway (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2574}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2577}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {2577}{0}{}{Silicon Corridor — Threshold Node (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2576}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {2578}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {2579}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2578}{0}{}{Silicon Passage Conduit (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2577}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {2580}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {2581}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2579}{0}{}{The Memory Crucible (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2577}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2581}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {2580}{0}{}{Insulation Spine Corridor (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2578}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {2583}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {2581}{0}{}{The Superheat Chamber (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2578}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2582}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {2612}{u}{u}{16}{0}{}{1.000}{}{0.00}
+
+R {2582}{0}{}{The Data Miner’s Nexus (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2581}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {2583}{0}{}{Circuit-Bent Passage (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2584}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2580}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {2584}{0}{}{Neuroconduit Spine (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2585}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2583}{w}{w}{8}{0}{}{1.000}{}{0.00}
+E {2586}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {2585}{0}{}{Subconductive Threadway (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2587}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2584}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2586}{0}{}{Anomalous Core Vault (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2588}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2584}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {2587}{0}{}{Crossthread Hallway Spine (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2589}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2585}{w}{w}{8}{0}{}{1.000}{}{0.00}
+E {2590}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {2588}{0}{}{The Mad Solderist’s Workroom (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2586}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2589}{0}{}{Bent Silicon Hallway (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2591}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {2587}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2590}{0}{}{The Ferrofluid Chamber (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2587}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {2592}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {2591}{0}{}{A Silicon Hallway (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2593}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {2589}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {2594}{e}{e}{2}{0}{}{1.000}{}{0.00}
+
+R {2592}{0}{}{Inside The Shadowspire (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2517}{d}{d}{32}{0}{}{1.000}{}{0.00}
+E {2590}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {2593}{0}{}{A Silicon Hallway (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2596}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {2591}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {2595}{e}{e}{2}{0}{}{1.000}{}{0.00}
+
+R {2594}{0}{}{A Splice in Time (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2591}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2595}{0}{}{The Solid State Nightmare (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2593}{w}{w}{8}{0}{}{1.000}{}{0.00}
+E {2597}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {2596}{0}{}{A Silicon Hallway (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2598}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {2593}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {2597}{0}{}{The VR Pens (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2595}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {2598}{0}{}{The End Of The Silicon Hallway (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2596}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {2599}{u}{u}{16}{0}{}{1.000}{}{0.00}
+E {2569}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2599}{0}{}{Atop The Silicon Stairway (Shadowspire/Inside/24)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire}{}{Inside}{}{1.000}{}
+E {2598}{d}{d}{32}{0}{}{1.000}{}{0.00}
+E {2628}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2600}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2600}{0}{}{A Silicon Hallway (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2599}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2604}{w}{w}{8}{0}{}{1.000}{}{0.00}
+E {2601}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {2601}{0}{}{The Situation Room (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2600}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {2602}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2602}{0}{}{The ROMbinder’s Chamber (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2601}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2603}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2603}{0}{}{The Cache (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2602}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2605}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {2604}{0}{}{A Silicon Hallway (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2600}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2605}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2605}{0}{}{Fracture Node (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2604}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2603}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {2606}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2606}{0}{}{Bent Silicon Corridor (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2605}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2607}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {2607}{0}{}{Vein-Crunched Passage (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2606}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {2608}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {2608}{0}{}{Pre-Access Shaft (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2607}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {2613}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {2609}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2609}{0}{}{The Partmaster’s Workshop (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2612}{d}{d}{32}{0}{}{1.000}{}{0.00}
+E {2610}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {2611}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {2608}{e}{e}{2}{0}{}{1.000}{}{0.00}
+
+R {2610}{0}{}{Forgotten Supply Vault (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2609}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {2611}{0}{}{The Assembly Crypt (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2609}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {2612}{0}{}{Obsidian Blindspot (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2581}{d}{d}{32}{0}{}{1.000}{}{0.00}
+
+R {2613}{0}{}{A Silicon Hallway (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2608}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {2614}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {2614}{0}{}{Fractured Synapse Bend (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2615}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2613}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {2615}{0}{}{Neuroflare Conduit (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2616}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2614}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2616}{0}{}{Corrosion Channel (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2619}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2615}{w}{w}{8}{0}{}{1.000}{}{0.00}
+E {2617}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {2617}{0}{}{Chamber of the Mirage (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2616}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {2618}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2618}{0}{}{The Dissection Vault (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2617}{e}{e}{2}{0}{}{1.000}{}{0.00}
+
+R {2619}{0}{}{Corridor of Fading Protocols (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2621}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2616}{w}{w}{8}{0}{}{1.000}{}{0.00}
+E {2620}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {2620}{0}{}{The Meditation Chamber (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2619}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {2621}{0}{}{Bent Silicon Hallway (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2622}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {2619}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2622}{0}{}{Conduit Overrun (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2626}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {2621}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {2623}{e}{e}{2}{0}{}{1.000}{}{0.00}
+
+R {2623}{0}{}{Chamber of Corrupted Code (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2624}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {2622}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2624}{0}{}{Cradle of Ruin (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2623}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {2625}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {2625}{0}{}{The Machinist's Core Node (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2624}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {2626}{0}{}{Narrow Silicon Channel (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2627}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {2622}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {2627}{0}{}{The Whispered Bend (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2628}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {2626}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {2628}{0}{}{Terminus of the Silicon Vein (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2627}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {2629}{u}{u}{16}{0}{}{1.000}{}{0.00}
+E {2599}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2629}{0}{}{The Silicon Corridor (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2628}{d}{d}{32}{0}{}{1.000}{}{0.00}
+E {2630}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2630}{0}{}{Pulseflow Artery (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2629}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2631}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2631}{0}{}{The Silicon Bend (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2630}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2632}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {2632}{0}{}{Encoded Pulsehall (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2631}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {2633}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {2633}{0}{}{The Silicon Nexus (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2634}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2632}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {2646}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {2636}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2634}{0}{}{Silicon Corridor (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2633}{w}{w}{8}{0}{}{1.000}{}{0.00}
+E {2635}{e}{e}{2}{0}{}{1.000}{}{0.00}
+
+R {2635}{0}{}{The RAM Scrying Chamber (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2634}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2636}{0}{}{Silicon Corridor (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2633}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2637}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2637}{0}{}{The Digital Library (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2636}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2639}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {2640}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {2638}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2638}{0}{}{The Digital Library (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2637}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2641}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {2642}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {2643}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2639}{0}{}{The Digital Library (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2642}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2640}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {2637}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {2641}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2640}{0}{}{The Digital Library (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2641}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2637}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {2639}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {2642}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2641}{0}{}{The Digital Library (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2639}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2642}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {2638}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {2640}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2642}{0}{}{The Digital Library (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2640}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2638}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {2641}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {2639}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2643}{0}{}{The Digital Library (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2638}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2644}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2644}{0}{}{Between The Monitors (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2643}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2645}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {2645}{0}{}{A Heated VR Room (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2644}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {2646}{0}{}{Silicon Corridor (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2633}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {2647}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {2647}{0}{}{The End Of The Silicon Corridor (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2646}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {2648}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {2648}{0}{}{The Arched Entrance (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2647}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {2649}{u}{u}{16}{0}{}{1.000}{}{0.00}
+
+R {2649}{0}{}{The Data Hub (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2648}{d}{d}{32}{0}{}{1.000}{}{0.00}
+E {2650}{u}{u}{16}{0}{}{1.000}{}{0.00}
+
+R {2650}{0}{}{Silicon Node Intersection (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2649}{d}{d}{32}{0}{}{1.000}{}{0.00}
+E {2658}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2673}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {2651}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {2665}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2651}{0}{}{A Microchip-Tiled Hallway (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2650}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {2652}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {2652}{0}{}{A Microchip-Tiled Hallway (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2651}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {2653}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {2653}{0}{}{The Hexcode Antechamber (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2652}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {2654}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {2654}{0}{}{The Main Chamber (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2656}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2653}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {2657}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {2655}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2655}{0}{}{The NukeFire Legend Vault (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2654}{e}{e}{2}{0}{}{1.000}{}{0.00}
+
+R {2656}{0}{}{A Storage Nook (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2654}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2657}{0}{}{A Private Chamber (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2654}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {2658}{0}{}{A Dark Silicon Hallway (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2659}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2650}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2659}{0}{}{A Dark Silicon Hallway (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2660}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2658}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2660}{0}{}{The End Of The Hallway (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2659}{w}{w}{8}{0}{}{1.000}{}{0.00}
+E {2661}{e}{e}{2}{0}{}{1.000}{}{0.00}
+
+R {2661}{0}{}{The Chamber of Darkness (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2664}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2662}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {2663}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {2660}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2662}{0}{}{Darkness (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2661}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {2663}{0}{}{A Torture Chamber (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2661}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {2664}{0}{}{The Motherboard Chamber (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2661}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2665}{0}{}{A Heavily Soldered Hallway (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2650}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2666}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2666}{0}{}{A Heavily Soldered Hallway (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2665}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2667}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2667}{0}{}{A Code-Etched Chamber (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2666}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2669}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2669}{0}{}{The Solid State Nightmare (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2667}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2670}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {2671}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {2672}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2670}{0}{}{The MetaDeath Chamber (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2669}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {2671}{0}{}{The Archive Nexus (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2669}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {2672}{0}{}{A Storage Niche (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2669}{e}{e}{2}{0}{}{1.000}{}{0.00}
+
+R {2673}{0}{}{A Soldered Hallway (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2650}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {2674}{0}{}{A Soldered Hallway (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2673}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {2675}{0}{}{A Soldered Hallway (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2674}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {2676}{0}{}{A Soldered Hallway (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2677}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {2675}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {2677}{0}{}{The Reality Chamber (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2678}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2680}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {2676}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {2679}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2678}{0}{}{The Assembly Bay (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2677}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2679}{0}{}{The Data Archive (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2677}{e}{e}{2}{0}{}{1.000}{}{0.00}
+
+R {2680}{0}{}{The Core Nexus Altar (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2677}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {2681}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2682}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2681}{0}{}{The Vault Chamber (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2680}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2682}{0}{}{A Narrow Passage (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2680}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2683}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {2683}{0}{}{Within the Radiant Field (Shadowspire II/Inside/25)}{\e[0m\e[38;5;94m■\e[0m}{}{Shadowspire II}{}{Inside}{}{1.000}{}
+E {2682}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {3001}{u}{u}{16}{0}{}{1.000}{}{0.00}
+
 R {2684}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
 R {2701}{0}{}{The Mouth of an Obscured Cave (Enslaved Nymph Caverns/Inside/26)}{\e[0m\e[38;5;94m■\e[0m}{}{Enslaved Nymph Caverns}{}{Inside}{}{1.000}{}
@@ -2040,6 +2787,23 @@ R {2798}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
 R {2801}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
+R {2831}{0}{}{Cryo Chamber (Hall of the Ancients and Fun House/Inside/27)}{\e[0m\e[38;5;94m■\e[0m}{}{Hall of the Ancients and Fun House}{}{Inside}{}{1.000}{}
+E {2832}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {2832}{0}{}{Cryo Chamber (Hall of the Ancients and Fun House/Inside/27)}{\e[0m\e[38;5;94m■\e[0m}{}{Hall of the Ancients and Fun House}{}{Inside}{}{1.000}{}
+E {2831}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {2833}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {2833}{0}{}{Cryo Chamber (Hall of the Ancients and Fun House/Inside/27)}{\e[0m\e[38;5;94m■\e[0m}{}{Hall of the Ancients and Fun House}{}{Inside}{}{1.000}{}
+E {2832}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {2834}{0}{}{Control Room (Hall of the Ancients and Fun House/Inside/27)}{\e[0m\e[38;5;94m■\e[0m}{}{Hall of the Ancients and Fun House}{}{Inside}{}{1.000}{}
+E {2835}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2833}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {2835}{0}{}{Cryo Prep (Hall of the Ancients and Fun House/Inside/27)}{\e[0m\e[38;5;94m■\e[0m}{}{Hall of the Ancients and Fun House}{}{Inside}{}{1.000}{}
+E {2834}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
 R {2901}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
 R {3001}{0}{}{The Temple of Technology (Tek Angeles/Inside/28)}{\e[0m\e[38;5;94m■\e[0m}{}{Tek Angeles}{}{Inside}{}{1.000}{}
@@ -2076,7 +2840,9 @@ E {3010}{s}{s}{4}{0}{}{1.000}{}{0.00}
 E {2801}{u}{u}{16}{0}{}{1.000}{}{0.00}
 E {3008}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {3008}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+R {3008}{0}{}{The Decaying Information Hub (Tek Angeles/Smooth/28)}{\e[0m\e[38;5;248m■\e[0m}{}{Tek Angeles}{}{Smooth}{}{1.000}{}
+E {3007}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {2831}{n}{n}{1}{0}{}{1.000}{}{0.00}
 
 R {3009}{0}{}{The House of Commerce (Tek Angeles/Smooth/28)}{\e[0m\e[38;5;248m■\e[0m}{}{Tek Angeles}{}{Smooth}{}{1.000}{}
 E {2901}{d}{d}{32}{0}{}{1.000}{}{0.00}
@@ -2424,7 +3190,9 @@ R {3093}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
 R {3096}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
-R {3100}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+R {3100}{0}{}{A pier (Tek Angeles/Inside/28)}{\e[0m\e[38;5;94m■\e[0m}{}{Tek Angeles}{}{Inside}{}{1.000}{}
+E {3115}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {3090}{s}{s}{4}{0}{}{1.000}{}{0.00}
 
 R {3101}{0}{}{Skid Row (Tek Angeles/Inside/28)}{\e[0m\e[38;5;94m■\e[0m}{}{Tek Angeles}{}{Inside}{}{1.000}{}
 E {3090}{e}{e}{2}{0}{}{1.000}{}{0.00}
@@ -2432,7 +3200,9 @@ E {3102}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {3190}{s}{s}{4}{0}{}{1.000}{}{0.00}
 E {3103}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {3102}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+R {3102}{0}{}{Entrance to the Vagrants' Hangout (Tek Angeles/Smooth/28)}{\e[0m\e[38;5;248m■\e[0m}{}{Tek Angeles}{}{Smooth}{}{1.000}{}
+E {3123}{d}{d}{32}{0}{}{1.000}{}{0.00}
+E {3101}{s}{s}{4}{0}{}{1.000}{}{0.00}
 
 R {3103}{0}{}{Skid Row (Tek Angeles/Inside/28)}{\e[0m\e[38;5;94m■\e[0m}{}{Tek Angeles}{}{Inside}{}{1.000}{}
 E {3101}{e}{e}{2}{0}{}{1.000}{}{0.00}
@@ -2440,7 +3210,8 @@ E {3104}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {3215}{s}{s}{4}{0}{}{1.000}{}{0.00}
 E {3105}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {3104}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+R {3104}{0}{}{The Grungy Bar (Tek Angeles/Smooth/28)}{\e[0m\e[38;5;248m■\e[0m}{}{Tek Angeles}{}{Smooth}{}{1.000}{}
+E {3103}{s}{s}{4}{0}{}{1.000}{}{0.00}
 
 R {3105}{0}{}{Skid Row (Tek Angeles/Inside/28)}{\e[0m\e[38;5;94m■\e[0m}{}{Tek Angeles}{}{Inside}{}{1.000}{}
 E {3103}{e}{e}{2}{0}{}{1.000}{}{0.00}
@@ -2448,7 +3219,8 @@ E {3106}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {3166}{s}{s}{4}{0}{}{1.000}{}{0.00}
 E {3107}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {3106}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+R {3106}{0}{}{Captain Bligh's Seafood Joint (Tek Angeles/Smooth/28)}{\e[0m\e[38;5;248m■\e[0m}{}{Tek Angeles}{}{Smooth}{}{1.000}{}
+E {3105}{s}{s}{4}{0}{}{1.000}{}{0.00}
 
 R {3107}{0}{}{The Broken Drum (Tek Angeles/Smooth/28)}{\e[0m\e[38;5;248m■\e[0m}{}{Tek Angeles}{}{Smooth}{}{1.000}{}
 E {3105}{e}{e}{2}{0}{}{1.000}{}{0.00}
@@ -2459,7 +3231,8 @@ R {3108}{0}{}{The back room (Tek Angeles/Smooth/28)}{\e[0m\e[38;5;248m■\e[0m}{
 E {3173}{d}{d}{32}{0}{}{1.000}{}{0.00}
 E {3107}{e}{e}{2}{0}{}{1.000}{}{0.00}
 
-R {3109}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+R {3109}{0}{}{The upper level (Tek Angeles/Smooth/28)}{\e[0m\e[38;5;248m■\e[0m}{}{Tek Angeles}{}{Smooth}{}{1.000}{}
+E {3107}{d}{d}{32}{0}{}{1.000}{}{0.00}
 
 R {3110}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
@@ -2467,12 +3240,16 @@ R {3111}{0}{}{Outside the South Gate (Tek Angeles/Field/28)}{\e[0m\e[38;5;34m■
 E {3089}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {3801}{s}{s}{4}{0}{}{1.000}{}{0.00}
 
+R {3115}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
 R {3119}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
 R {3120}{0}{}{The Great River (Tek Angeles/Water/28)}{\e[0m\e[38;5;39m~\e[0m}{}{Tek Angeles}{}{Water}{}{1.000}{}
 E {3728}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {3061}{u}{u}{16}{0}{}{1.000}{}{0.00}
 E {3119}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {3123}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
 R {3128}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
@@ -2504,7 +3281,12 @@ R {3163}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 R {3164}{0}{}{The Morgue (Tek Angeles/Inside/28)}{\e[0m\e[38;5;94m■\e[0m}{}{Tek Angeles}{}{Inside}{}{1.000}{}
 E {3175}{n}{n}{1}{0}{}{1.000}{}{0.00}
 
-R {3166}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+R {3165}{0}{}{The Shinto Temple (Tek Angeles/Inside/28)}{\e[0m\e[38;5;94m■\e[0m}{}{Tek Angeles}{}{Inside}{}{1.000}{}
+E {3166}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {3166}{0}{}{The outer temple (Tek Angeles/Inside/28)}{\e[0m\e[38;5;94m■\e[0m}{}{Tek Angeles}{}{Inside}{}{1.000}{}
+E {3105}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {3165}{s}{s}{4}{0}{}{1.000}{}{0.00}
 
 R {3169}{0}{}{Sanctorum Obscurum (Tek Angeles/Inside/28)}{\e[0m\e[38;5;94m■\e[0m}{}{Tek Angeles}{}{Inside}{}{1.000}{}
 E {3170}{d}{d}{32}{0}{}{1.000}{}{0.00}
@@ -2560,9 +3342,15 @@ E {3101}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {3191}{s}{s}{4}{0}{}{1.000}{}{0.00}
 E {3333}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {3191}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+R {3191}{0}{}{Joe's Back Room (Tek Angeles/Inside/28)}{\e[0m\e[38;5;94m■\e[0m}{}{Tek Angeles}{}{Inside}{}{1.000}{}
+E {3190}{n}{n}{1}{0}{}{1.000}{}{0.00}
 
-R {3215}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+R {3215}{0}{}{A dark building (Tek Angeles/Inside/28)}{\e[0m\e[38;5;94m■\e[0m}{}{Tek Angeles}{}{Inside}{}{1.000}{}
+E {3216}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {3103}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {3216}{0}{}{Inner office (Tek Angeles/Inside/28)}{\e[0m\e[38;5;94m■\e[0m}{}{Tek Angeles}{}{Inside}{}{1.000}{}
+E {3215}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
 R {3233}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
@@ -2693,7 +3481,8 @@ R {3322}{0}{}{A back room (Tek Angeles/Inside/28)}{\e[0m\e[38;5;94m■\e[0m}{}{T
 E {3187}{d}{d}{32}{0}{}{1.000}{}{0.00}
 E {3190}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {3333}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+R {3333}{0}{}{Repossession Internment & Services (Tek Angeles/Inside/28)}{\e[0m\e[38;5;94m■\e[0m}{}{Tek Angeles}{}{Inside}{}{1.000}{}
+E {3190}{e}{e}{2}{0}{}{1.000}{}{0.00}
 
 R {3334}{0}{}{Longwalking Room (Tek Angeles/Inside/28)}{\e[0m\e[38;5;94m■\e[0m}{}{Tek Angeles}{}{Inside}{}{1.000}{}
 E {3180}{u}{u}{16}{0}{}{1.000}{}{0.00}
@@ -7310,7 +8099,36 @@ R {6603}{0}{}{A dusty road (Hllraiser Mineshaft/Field/45)}{\e[0m\e[38;5;34m■\e
 E {6602}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {7501}{s}{s}{4}{0}{}{1.000}{}{0.00}
 
-R {6701}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+R {6701}{0}{}{Inside the Fun House (Fun House/Inside/46)}{\e[0m\e[38;5;94m■\e[0m}{}{Fun House}{}{Inside}{}{1.000}{}
+E {6702}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {3130}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {6702}{0}{}{Inside the Fun House (Fun House/Inside/46)}{\e[0m\e[38;5;94m■\e[0m}{}{Fun House}{}{Inside}{}{1.000}{}
+E {6703}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {6705}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {6701}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {6704}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {6703}{0}{}{A Clown room (Fun House/Inside/46)}{\e[0m\e[38;5;94m■\e[0m}{}{Fun House}{}{Inside}{}{1.000}{}
+E {6702}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {6704}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {6705}{0}{}{Inside the Fun House (Fun House/Inside/46)}{\e[0m\e[38;5;94m■\e[0m}{}{Fun House}{}{Inside}{}{1.000}{}
+E {6706}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {6702}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {6706}{0}{}{Inside the Fun House (Fun House/Inside/46)}{\e[0m\e[38;5;94m■\e[0m}{}{Fun House}{}{Inside}{}{1.000}{}
+E {6707}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {6708}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {6705}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {6709}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {6707}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {6708}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {6709}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
 R {7001}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
@@ -12143,7 +12961,12 @@ E {12719}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {12710}{s}{s}{4}{0}{}{1.000}{}{0.00}
 E {12717}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {12719}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+R {12719}{0}{}{Desert foothills (Sloth\/desert\/New Deathlands/Desert/79)}{\e[0m\e[38;5;136m■\e[0m}{}{Sloth\/desert\/New Deathlands}{}{Desert}{}{1.000}{}
+E {30521}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {12721}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {12711}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {12721}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
 R {12722}{0}{}{River valley (Sloth\/desert\/New Deathlands/Desert/79)}{\e[0m\e[38;5;136m■\e[0m}{}{Sloth\/desert\/New Deathlands}{}{Desert}{}{1.000}{}
 E {12723}{e}{e}{2}{0}{}{1.000}{}{0.00}
@@ -26844,11 +27667,30 @@ E {30502}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
 R {30504}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
+R {30520}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {30521}{0}{}{Desert (LostWages/Desert/167)}{\e[0m\e[38;5;136m■\e[0m}{}{LostWages}{}{Desert}{}{1.000}{}
+E {30530}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {30520}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {30522}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {12719}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {30522}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
 R {30524}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
 R {30526}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
 R {30527}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {30529}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+
+R {30530}{0}{}{Desert (LostWages/Desert/167)}{\e[0m\e[38;5;136m■\e[0m}{}{LostWages}{}{Desert}{}{1.000}{}
+E {30531}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {30529}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {30521}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {30531}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
 R {30541}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
@@ -32065,7 +32907,216 @@ R {40310}{0}{}{Reactor Overflow Causeway (Neurospire/Inside/215)}{\e[0m\e[38;5;9
 E {40311}{d}{d}{32}{0}{}{1.000}{}{0.00}
 E {40309}{s}{s}{4}{0}{}{1.000}{}{0.00}
 
-R {40311}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+R {40311}{0}{}{Containment Rupture Hall (Neurospire/Inside/215)}{\e[0m\e[38;5;94m■\e[0m}{}{Neurospire}{}{Inside}{}{1.000}{}
+E {40312}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {40310}{u}{u}{16}{0}{}{1.000}{}{0.00}
+
+R {40312}{0}{}{Observation Deck Theta (Neurospire/Inside/215)}{\e[0m\e[38;5;94m■\e[0m}{}{Neurospire}{}{Inside}{}{1.000}{}
+E {40311}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {40313}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {40313}{0}{}{Neural Echo Spine (Neurospire/Inside/215)}{\e[0m\e[38;5;94m■\e[0m}{}{Neurospire}{}{Inside}{}{1.000}{}
+E {40312}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {40314}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {40314}{0}{}{Exile Threshold (Neurospire/Inside/215)}{\e[0m\e[38;5;94m■\e[0m}{}{Neurospire}{}{Inside}{}{1.000}{}
+E {40313}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {40315}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {40315}{0}{}{Stasis Grave (Neurospire/Inside/215)}{\e[0m\e[38;5;94m■\e[0m}{}{Neurospire}{}{Inside}{}{1.000}{}
+E {40314}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {40316}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {40316}{0}{}{Unlinked Sector Gate (Neurospire/Inside/215)}{\e[0m\e[38;5;94m■\e[0m}{}{Neurospire}{}{Inside}{}{1.000}{}
+E {40317}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {40315}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {40317}{0}{}{Unlinked Sector Entry (Neurospire/Inside/215)}{\e[0m\e[38;5;94m■\e[0m}{}{Neurospire}{}{Inside}{}{1.000}{}
+E {40318}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {40316}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {40318}{0}{}{Observation Slab (Neurospire/Inside/215)}{\e[0m\e[38;5;94m■\e[0m}{}{Neurospire}{}{Inside}{}{1.000}{}
+E {40319}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {40317}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {40319}{0}{}{Decontamination Antechamber (Neurospire/Inside/215)}{\e[0m\e[38;5;94m■\e[0m}{}{Neurospire}{}{Inside}{}{1.000}{}
+E {40320}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {40318}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {40320}{0}{}{Quarantine Lockdown Zone (Neurospire/Inside/215)}{\e[0m\e[38;5;94m■\e[0m}{}{Neurospire}{}{Inside}{}{1.000}{}
+E {40321}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {40319}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {40321}{0}{}{Biohazard Containment Hall (Neurospire/Inside/215)}{\e[0m\e[38;5;94m■\e[0m}{}{Neurospire}{}{Inside}{}{1.000}{}
+E {40322}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {40320}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {40322}{0}{}{Viral Sample Storage (Neurospire/Inside/215)}{\e[0m\e[38;5;94m■\e[0m}{}{Neurospire}{}{Inside}{}{1.000}{}
+E {40321}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {40323}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {40323}{0}{}{Unknown Sector Access (Neurospire/Inside/215)}{\e[0m\e[38;5;94m■\e[0m}{}{Neurospire}{}{Inside}{}{1.000}{}
+E {40322}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {40324}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {40324}{0}{}{Neurospire Entry Chamber (Neurospire/Inside/215)}{\e[0m\e[38;5;94m■\e[0m}{}{Neurospire}{}{Inside}{}{1.000}{}
+E {40323}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {40325}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {40325}{0}{}{Synaptic Relay Hall (Neurospire/Inside/215)}{\e[0m\e[38;5;94m■\e[0m}{}{Neurospire}{}{Inside}{}{1.000}{}
+E {40324}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {40326}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {40326}{0}{}{Neural Nexus Core (Neurospire/Inside/215)}{\e[0m\e[38;5;94m■\e[0m}{}{Neurospire}{}{Inside}{}{1.000}{}
+E {40325}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {40327}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {40327}{0}{}{Fragmented Mind Lab (Neurospire/Inside/215)}{\e[0m\e[38;5;94m■\e[0m}{}{Neurospire}{}{Inside}{}{1.000}{}
+E {40326}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {40328}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {40328}{0}{}{Disrupted Synapse Vault (Neurospire/Inside/215)}{\e[0m\e[38;5;94m■\e[0m}{}{Neurospire}{}{Inside}{}{1.000}{}
+E {40327}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {40329}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {40329}{0}{}{The Void Chamber (Neurospire/Inside/215)}{\e[0m\e[38;5;94m■\e[0m}{}{Neurospire}{}{Inside}{}{1.000}{}
+E {40328}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {40330}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {40330}{0}{}{Neural Collapse Nexus (Neurospire/Inside/215)}{\e[0m\e[38;5;94m■\e[0m}{}{Neurospire}{}{Inside}{}{1.000}{}
+E {40329}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {40331}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {40331}{0}{}{Resonant Overspill Chamber (Neurospire/Inside/215)}{\e[0m\e[38;5;94m■\e[0m}{}{Neurospire}{}{Inside}{}{1.000}{}
+E {40330}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {40332}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {40332}{0}{}{Final Containment Vault (Neurospire/Inside/215)}{\e[0m\e[38;5;94m■\e[0m}{}{Neurospire}{}{Inside}{}{1.000}{}
+E {40331}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {40333}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {40333}{0}{}{Echo Chamber of Lost Voices (Neurospire/Inside/215)}{\e[0m\e[38;5;94m■\e[0m}{}{Neurospire}{}{Inside}{}{1.000}{}
+E {40332}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {40334}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {40334}{0}{}{Hall of Fractured Realities (Neurospire/Inside/215)}{\e[0m\e[38;5;94m■\e[0m}{}{Neurospire}{}{Inside}{}{1.000}{}
+E {40333}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {40335}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {40335}{0}{}{The Sleeper’s Tomb (Neurospire/Inside/215)}{\e[0m\e[38;5;94m■\e[0m}{}{Neurospire}{}{Inside}{}{1.000}{}
+E {40334}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {40336}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {40336}{0}{}{Chamber of Broken Minds (Neurospire/Inside/215)}{\e[0m\e[38;5;94m■\e[0m}{}{Neurospire}{}{Inside}{}{1.000}{}
+E {40335}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {40337}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {40337}{0}{}{The Whispering Archive (Neurospire/Inside/215)}{\e[0m\e[38;5;94m■\e[0m}{}{Neurospire}{}{Inside}{}{1.000}{}
+E {40336}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {40338}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {40338}{0}{}{Neurospire Core Nexus (Neurospire/Inside/215)}{\e[0m\e[38;5;94m■\e[0m}{}{Neurospire}{}{Inside}{}{1.000}{}
+E {40337}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {40339}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {40339}{0}{}{The Fractured Memory Vault (Neurospire/Inside/215)}{\e[0m\e[38;5;94m■\e[0m}{}{Neurospire}{}{Inside}{}{1.000}{}
+E {40338}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {40340}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {40340}{0}{}{Hall of Echoes (Neurospire/Inside/215)}{\e[0m\e[38;5;94m■\e[0m}{}{Neurospire}{}{Inside}{}{1.000}{}
+E {40339}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {40341}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {40341}{0}{}{The Null Conduit (Neurospire/Inside/215)}{\e[0m\e[38;5;94m■\e[0m}{}{Neurospire}{}{Inside}{}{1.000}{}
+E {40340}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {40342}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {40342}{0}{}{The Forsaken Labyrinth (Neurospire/Inside/215)}{\e[0m\e[38;5;94m■\e[0m}{}{Neurospire}{}{Inside}{}{1.000}{}
+E {40341}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {40343}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {40343}{0}{}{The Synaptic Rift (Neurospire/Inside/215)}{\e[0m\e[38;5;94m■\e[0m}{}{Neurospire}{}{Inside}{}{1.000}{}
+E {40342}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {40344}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {40344}{0}{}{Chamber of Lost Echoes (Neurospire/Inside/215)}{\e[0m\e[38;5;94m■\e[0m}{}{Neurospire}{}{Inside}{}{1.000}{}
+E {40343}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {40345}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {40345}{0}{}{The Mindflare Crater (Neurospire/Inside/215)}{\e[0m\e[38;5;94m■\e[0m}{}{Neurospire}{}{Inside}{}{1.000}{}
+E {40344}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {40346}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {40346}{0}{}{The Cortex (Neurospire/Inside/215)}{\e[0m\e[38;5;94m■\e[0m}{}{Neurospire}{}{Inside}{}{1.000}{}
+E {40345}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {40347}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {40347}{0}{}{Neural Drip Core (Neurospire/Inside/215)}{\e[0m\e[38;5;94m■\e[0m}{}{Neurospire}{}{Inside}{}{1.000}{}
+E {40346}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {40348}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {40348}{0}{}{Organic Descent Tunnel (Neurospire/Inside/215)}{\e[0m\e[38;5;94m■\e[0m}{}{Neurospire}{}{Inside}{}{1.000}{}
+E {40349}{d}{d}{32}{0}{}{1.000}{}{0.00}
+E {40347}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {40349}{0}{}{Pulse Chamber (Neurospire/Inside/215)}{\e[0m\e[38;5;94m■\e[0m}{}{Neurospire}{}{Inside}{}{1.000}{}
+E {40350}{d}{d}{32}{0}{}{1.000}{}{0.00}
+E {40348}{u}{u}{16}{0}{}{1.000}{}{0.00}
+
+R {40350}{0}{}{The Cradle of Thought (Neurospire/Inside/215)}{\e[0m\e[38;5;94m■\e[0m}{}{Neurospire}{}{Inside}{}{1.000}{}
+E {40353}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {40351}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {40357}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {40349}{u}{u}{16}{0}{}{1.000}{}{0.00}
+E {40355}{w}{w}{8}{0}{}{1.000}{}{0.00}
+E {40363}{d}{d}{32}{0}{}{1.000}{}{0.00}
+
+R {40351}{0}{}{Hall of Frozen Echoes (Neurospire/Inside/215)}{\e[0m\e[38;5;94m■\e[0m}{}{Neurospire}{}{Inside}{}{1.000}{}
+E {40352}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {40350}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {40352}{0}{}{Door of Eternal Return (Neurospire/Inside/215)}{\e[0m\e[38;5;94m■\e[0m}{}{Neurospire}{}{Inside}{}{1.000}{}
+E {40351}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {40359}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {40353}{0}{}{Corridor of Static Thought (Neurospire/Inside/215)}{\e[0m\e[38;5;94m■\e[0m}{}{Neurospire}{}{Inside}{}{1.000}{}
+E {40354}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {40350}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {40354}{0}{}{Locked Access: Cognition Vault (Neurospire/Inside/215)}{\e[0m\e[38;5;94m■\e[0m}{}{Neurospire}{}{Inside}{}{1.000}{}
+E {40353}{w}{w}{8}{0}{}{1.000}{}{0.00}
+E {40360}{e}{e}{2}{0}{}{1.000}{}{0.00}
+
+R {40355}{0}{}{The Control Spine (Neurospire/Inside/215)}{\e[0m\e[38;5;94m■\e[0m}{}{Neurospire}{}{Inside}{}{1.000}{}
+E {40350}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {40356}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {40356}{0}{}{Door of the Overseer (Neurospire/Inside/215)}{\e[0m\e[38;5;94m■\e[0m}{}{Neurospire}{}{Inside}{}{1.000}{}
+E {40355}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {40362}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {40357}{0}{}{Chamber of Regrets (Neurospire/Inside/215)}{\e[0m\e[38;5;94m■\e[0m}{}{Neurospire}{}{Inside}{}{1.000}{}
+E {40350}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {40358}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {40358}{0}{}{Sealed Door: Project Null (Neurospire/Inside/215)}{\e[0m\e[38;5;94m■\e[0m}{}{Neurospire}{}{Inside}{}{1.000}{}
+E {40357}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {40361}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {40359}{0}{}{The Recursive Maw (Neurospire/Inside/215)}{\e[0m\e[38;5;94m■\e[0m}{}{Neurospire}{}{Inside}{}{1.000}{}
+E {40352}{s}{s}{4}{0}{}{1.000}{}{0.00}
+
+R {40360}{0}{}{Mindcrush Engine (Neurospire/Inside/215)}{\e[0m\e[38;5;94m■\e[0m}{}{Neurospire}{}{Inside}{}{1.000}{}
+E {40354}{w}{w}{8}{0}{}{1.000}{}{0.00}
+
+R {40361}{0}{}{The Dreaming Cage (Neurospire/Inside/215)}{\e[0m\e[38;5;94m■\e[0m}{}{Neurospire}{}{Inside}{}{1.000}{}
+E {40358}{n}{n}{1}{0}{}{1.000}{}{0.00}
+
+R {40362}{0}{}{Overwatch Spire (Neurospire/Inside/215)}{\e[0m\e[38;5;94m■\e[0m}{}{Neurospire}{}{Inside}{}{1.000}{}
+E {40356}{e}{e}{2}{0}{}{1.000}{}{0.00}
+
+R {40363}{0}{}{Neurospire Core Access (Neurospire/Inside/215)}{\e[0m\e[38;5;94m■\e[0m}{}{Neurospire}{}{Inside}{}{1.000}{}
+E {2500}{d}{d}{32}{0}{}{1.000}{}{0.00}
 
 R {40400}{0}{}{Behind the Blackened Hearth (Evil Dead/Inside/216)}{\e[0m\e[38;5;94m■\e[0m}{}{Evil Dead}{}{Inside}{}{1.000}{}
 E {40406}{n}{n}{1}{0}{}{1.000}{}{0.00}

@@ -167,7 +167,7 @@
 #alias map_on    {#variable map_enabled {1}; #showme {MAP: enabled}}
 #alias map_off   {#variable map_enabled {0}; #showme {MAP: disabled}}
 #alias map_show  {#map map; map_key}
-#alias ms        {map_show}
+#alias m         {map_show}
 #alias map_key {
     #showme {\e[38;5;240m■\e[0m Unknown  \e[38;5;94m■\e[0m Inside  \e[38;5;102m■\e[0m City     \e[38;5;34m■\e[0m Field    \e[38;5;22m■\e[0m Forest};
     #showme {\e[38;5;58m^\e[0m Hills    \e[38;5;250m^\e[0m Mountains  \e[38;5;39m~\e[0m Water  \e[38;5;45m^\e[0m In Flight};
