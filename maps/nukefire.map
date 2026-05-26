@@ -18,7 +18,7 @@ F 1139075
 
 G 0
 
-I 3048
+I 3088
 
 L {ASCII NESW LINE} {NO EXITS} {x}
 L {ASCII NESW LINE} {N} {o}
@@ -2963,7 +2963,7 @@ R {3025}{0}{}{Outside Eastgate (Tek Angeles/Inside/28)}{\e[0m\e[38;5;94m■\e[0m
 E {3601}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {3024}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {3026}{0}{}{West Tool Street (Tek Angeles/Inside/28)}{\e[0m\e[38;5;94m■\e[0m}{}{Tek Angeles}{}{Inside}{}{1.000}{}
+R {3026}{0}{}{West Tool Street (Tek Angeles/Inside/29)}{\e[0m\e[38;5;94m■\e[0m}{}{Tek Angeles}{}{Inside}{}{1.000}{}
 E {3014}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {3027}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {3028}{s}{s}{4}{0}{}{1.000}{}{0.00}
@@ -2971,7 +2971,7 @@ E {3029}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
 R {3027}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
-R {3028}{0}{}{Hoby's Armory (Tek Angeles/Smooth/28)}{\e[0m\e[38;5;248m■\e[0m}{}{Tek Angeles}{}{Smooth}{}{1.000}{}
+R {3028}{0}{}{Hoby's Armory (Tek Angeles/Smooth/29)}{\e[0m\e[38;5;248m■\e[0m}{}{Tek Angeles}{}{Smooth}{}{1.000}{}
 E {3026}{n}{n}{1}{0}{}{1.000}{}{0.00}
 
 R {3029}{0}{}{West Tool Street (Tek Angeles/Inside/28)}{\e[0m\e[38;5;94m■\e[0m}{}{Tek Angeles}{}{Inside}{}{1.000}{}
@@ -3126,13 +3126,14 @@ R {3066}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
 R {3067}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
-R {3068}{0}{}{Waterfront Street (Tek Angeles/Smooth/28)}{\e[0m\e[38;5;248m■\e[0m}{}{Tek Angeles}{}{Smooth}{}{1.000}{}
+R {3068}{0}{}{Waterfront Street (Tek Angeles/Smooth/29)}{\e[0m\e[38;5;248m■\e[0m}{}{Tek Angeles}{}{Smooth}{}{1.000}{}
 E {3065}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {3069}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {3070}{s}{s}{4}{0}{}{1.000}{}{0.00}
 E {3071}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {3069}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+R {3069}{0}{}{The Pirate's Training Center (Tek Angeles/Smooth/29)}{\e[0m\e[38;5;248m■\e[0m}{}{Tek Angeles}{}{Smooth}{}{1.000}{}
+E {3068}{s}{s}{4}{0}{}{1.000}{}{0.00}
 
 R {3070}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
@@ -3143,7 +3144,7 @@ E {3048}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {3085}{s}{s}{4}{0}{}{1.000}{}{0.00}
 E {3072}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {3072}{0}{}{Waterfront Street (Tek Angeles/Smooth/28)}{\e[0m\e[38;5;248m■\e[0m}{}{Tek Angeles}{}{Smooth}{}{1.000}{}
+R {3072}{0}{}{Waterfront Street (Tek Angeles/Smooth/29)}{\e[0m\e[38;5;248m■\e[0m}{}{Tek Angeles}{}{Smooth}{}{1.000}{}
 E {3071}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {3073}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {3074}{s}{s}{4}{0}{}{1.000}{}{0.00}
@@ -3153,7 +3154,7 @@ R {3073}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
 R {3074}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
-R {3075}{0}{}{Waterfront Street (Tek Angeles/Smooth/28)}{\e[0m\e[38;5;248m■\e[0m}{}{Tek Angeles}{}{Smooth}{}{1.000}{}
+R {3075}{0}{}{Waterfront Street (Tek Angeles/Smooth/29)}{\e[0m\e[38;5;248m■\e[0m}{}{Tek Angeles}{}{Smooth}{}{1.000}{}
 E {3072}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {3076}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {3077}{s}{s}{4}{0}{}{1.000}{}{0.00}
@@ -3163,13 +3164,13 @@ R {3076}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
 R {3077}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
-R {3078}{0}{}{Waterfront Street (Tek Angeles/Smooth/28)}{\e[0m\e[38;5;248m■\e[0m}{}{Tek Angeles}{}{Smooth}{}{1.000}{}
+R {3078}{0}{}{Waterfront Street (Tek Angeles/Smooth/29)}{\e[0m\e[38;5;248m■\e[0m}{}{Tek Angeles}{}{Smooth}{}{1.000}{}
 E {3075}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {3079}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {3081}{s}{s}{4}{0}{}{1.000}{}{0.00}
 E {3082}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {3079}{0}{}{The Sleepy Inn (Tek Angeles/Smooth/28)}{\e[0m\e[38;5;248m■\e[0m}{}{Tek Angeles}{}{Smooth}{}{1.000}{}
+R {3079}{0}{}{The Sleepy Inn (Tek Angeles/Smooth/29)}{\e[0m\e[38;5;248m■\e[0m}{}{Tek Angeles}{}{Smooth}{}{1.000}{}
 E {3080}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {3078}{s}{s}{4}{0}{}{1.000}{}{0.00}
 
@@ -3177,7 +3178,7 @@ R {3080}{0}{}{The Park Cafe (Tek Angeles/Smooth/28)}{\e[0m\e[38;5;248m■\e[0m}{
 E {3041}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {3079}{s}{s}{4}{0}{}{1.000}{}{0.00}
 
-R {3081}{0}{}{Madame Sarvucci's Massage Parlor (Tek Angeles/Smooth/28)}{\e[0m\e[38;5;248m■\e[0m}{}{Tek Angeles}{}{Smooth}{}{1.000}{}
+R {3081}{0}{}{Madame Sarvucci's Massage Parlor (Tek Angeles/Smooth/29)}{\e[0m\e[38;5;248m■\e[0m}{}{Tek Angeles}{}{Smooth}{}{1.000}{}
 E {3078}{n}{n}{1}{0}{}{1.000}{}{0.00}
 
 R {3082}{0}{}{Western Wall Road (Tek Angeles/Smooth/28)}{\e[0m\e[38;5;248m■\e[0m}{}{Tek Angeles}{}{Smooth}{}{1.000}{}

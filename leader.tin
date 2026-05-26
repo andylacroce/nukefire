@@ -115,6 +115,10 @@
     };
 }
 
+#alias {rc} {
+    rally clear;
+}
+
 #nop ------------------ REMORT ACTIONS ------------------
 #action {%1 telepaths to you, 'remort cost: %2 credits'} {
 	gcr %2 %1;

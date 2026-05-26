@@ -7,26 +7,25 @@
 #alias {at %1} {tel prodigy o autotrack %1}
 #action {Prodigy telepaths to you, 'The target, %*, is %2.'} {%2} {2}
 
-#nop ------------------ RECON TRACKING CLASS ------------------
-#class tracking open
-	#ALIAS {trk %1} {#variable trackee %1;track $trackee}
-	#ALIAS {untrk} {#variable trackee $me}
-	#ACTION {You sense a trail %1 from here!} {%1;track $trackee}
-#class tracking close
+#nop ------------------ RECON TRACKING ALIASES ------------------
+#ALIAS {trk %1} {#variable trackee %1;track $trackee}
+#ALIAS {untrk} {#variable trackee $me}
+
+#nop ------------------ RECON TRACKING ACTIONS ------------------
+#nop Guard: only fire when tracking is on and trackee is not self
+#ACTION {%* trail leads %1.} {#if {$tracking_on && "$trackee" != "$me"} {%1;track $trackee}}
+#action {%* trail seems to lead %*} {#if {$tracking_on && "$trackee" != "$me"} {track $trackee}}
+#ACTION {You are already with} {#if {$tracking_on && "$trackee" != "$me"} {untrk}}
 
 #nop ------------------ TRACKING CONTROL ------------------
+#variable {tracking_on} {1}
+
 #alias {tracking_on} {
-    #class {tracking} {open};
-    #ALIAS {trk %1} {#variable trackee %1;track $trackee};
-    #ALIAS {untrk} {#variable trackee $me};
-    #ACTION {You sense a trail %1 from here!} {%1;track $trackee};
-    #class {tracking} {close};
     #var {tracking_on} {1};
     #showme {Tracking ON};
     #send {}
 }
 #alias {tracking_off} {
-    #class {tracking} {clear};
     #var {tracking_on} {0};
     #showme {Tracking OFF};
     #send {}
