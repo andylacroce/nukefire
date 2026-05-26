@@ -1,0 +1,1849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NukeFire — Dungeon Cartography</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Share+Tech+Mono&display=swap');
+
+:root {
+  --bg:      #16141c;
+  --parch:   #d6c9a0;
+  --gold:    #c8a55a;
+  --border:  #6e5a3a;
+  --panel:   rgba(10,8,16,0.93);
+  --sw:      220px;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  background:var(--bg); color:var(--parch);
+  font-family:'Share Tech Mono',monospace;
+  overflow:hidden; width:100vw; height:100vh; cursor:crosshair;
+}
+
+/* ─── TOP BAR ─────────────────────────────────────────────────────────── */
+#bar {
+  position:fixed; top:0; left:0; right:0; z-index:30; height:36px;
+  background:var(--panel); border-bottom:1px solid var(--border);
+  display:flex; align-items:center; gap:7px; padding:0 12px;
+  backdrop-filter:blur(4px);
+}
+#title {
+  font-family:'IM Fell English',serif; font-size:15px; color:var(--gold);
+  letter-spacing:3px; text-shadow:0 0 12px rgba(200,165,90,.5); white-space:nowrap;
+}
+.sep { width:1px; height:18px; background:var(--border); flex-shrink:0; }
+#live-dot {
+  width:7px; height:7px; border-radius:50%; background:#2a2030;
+  flex-shrink:0; transition:background .4s,box-shadow .4s;
+  title:"Server connection";
+}
+#live-dot.on { background:#3ea860; box-shadow:0 0 6px #3ea860; }
+#stats { font-size:9px; color:#7a6a4a; letter-spacing:.8px; white-space:nowrap; }
+.bar-btn {
+  padding:3px 9px; flex-shrink:0;
+  font-family:'Share Tech Mono',monospace; font-size:9px; letter-spacing:1.5px;
+  background:transparent; border:1px solid var(--border); color:var(--gold);
+  cursor:pointer; transition:background .12s,border-color .12s;
+}
+.bar-btn:hover { background:rgba(200,165,90,.12); border-color:var(--gold); }
+.bar-btn.active { background:rgba(200,165,90,.16); border-color:var(--gold); color:#e8c870; }
+.zoom-btn {
+  padding:0 8px; height:22px; flex-shrink:0; line-height:22px; font-size:15px;
+  font-family:'Share Tech Mono',monospace;
+  background:transparent; border:1px solid var(--border); color:var(--gold);
+  cursor:pointer; transition:background .12s;
+}
+.zoom-btn:hover { background:rgba(200,165,90,.12); }
+#zoom-info { font-size:9px; color:#5a4a2a; min-width:56px; text-align:center; white-space:nowrap; }
+#search-wrap { display:flex; align-items:center; gap:5px; flex:1; min-width:0; }
+#search-input {
+  flex:1; min-width:40px; max-width:210px;
+  background:rgba(200,165,90,.05); border:1px solid var(--border);
+  color:var(--parch); font-family:'Share Tech Mono',monospace;
+  font-size:9px; padding:3px 7px; letter-spacing:.8px; outline:none;
+}
+#search-input::placeholder { color:#3a2a12; }
+#search-input:focus { border-color:var(--gold); }
+#search-count { font-size:9px; color:#5a4a2a; white-space:nowrap; flex-shrink:0; min-width:70px; }
+
+/* ─── ZONE PANEL ──────────────────────────────────────────────────────── */
+#zone-panel {
+  position:fixed; left:0; top:36px; bottom:0; z-index:25;
+  width:var(--sw);
+  background:var(--panel); border-right:1px solid var(--border);
+  display:flex; flex-direction:column;
+  transform:translateX(calc(-1 * var(--sw))); transition:transform .22s ease;
+  backdrop-filter:blur(6px);
+}
+#zone-panel.open { transform:translateX(0); }
+#zp-hdr {
+  padding:9px 12px 6px; flex-shrink:0;
+  font-family:'IM Fell English',serif; font-size:11px; color:var(--gold);
+  letter-spacing:2px; border-bottom:1px solid var(--border);
+  display:flex; justify-content:space-between; align-items:baseline;
+}
+#zp-hdr span { font-family:'Share Tech Mono',monospace; font-size:9px; color:#5a4a2a; }
+#zone-filter {
+  margin:6px 8px 4px; flex-shrink:0;
+  background:rgba(200,165,90,.05); border:1px solid var(--border);
+  color:var(--parch); font-family:'Share Tech Mono',monospace;
+  font-size:9px; padding:3px 7px; letter-spacing:.8px; outline:none;
+}
+#zone-filter:focus { border-color:var(--gold); }
+#zone-sort { margin:0 8px 4px; flex-shrink:0; display:flex; gap:4px; }
+.zsort {
+  font-size:8px; color:#5a4a2a; cursor:pointer; padding:2px 5px;
+  border:1px solid transparent; letter-spacing:.5px;
+}
+.zsort.active { border-color:var(--border); color:var(--gold); }
+#zone-list { flex:1; overflow-y:auto; overflow-x:hidden; }
+#zone-list::-webkit-scrollbar { width:3px; }
+#zone-list::-webkit-scrollbar-thumb { background:var(--border); }
+.zi {
+  padding:4px 10px; font-size:9px;
+  cursor:pointer; display:flex; align-items:center; gap:6px;
+  border-left:2px solid transparent; transition:background .1s;
+}
+.zi:hover { background:rgba(200,165,90,.07); }
+.zi.active { border-left-color:var(--gold); background:rgba(200,165,90,.11); }
+.zi-dot { width:7px; height:7px; border-radius:50%; flex-shrink:0; }
+.zi-name { color:var(--parch); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; flex:1; }
+.zi-cnt { color:#5a4a2a; flex-shrink:0; font-size:8px; }
+
+/* ─── CANVAS ──────────────────────────────────────────────────────────── */
+#map-canvas { display:block; position:absolute; top:0; left:0; }
+
+/* ─── MINIMAP ─────────────────────────────────────────────────────────── */
+#minimap-wrap {
+  position:fixed; top:46px; right:12px; z-index:28;
+  background:rgba(10,8,16,.88); border:1px solid var(--border);
+  padding:2px; backdrop-filter:blur(4px); cursor:crosshair;
+  user-select:none;
+}
+#minimap-title { font-size:8px; color:#5a4a2a; letter-spacing:1px; text-align:center; padding:2px 0 1px; }
+#minimap-canvas { display:block; }
+
+/* ─── TOOLTIP ─────────────────────────────────────────────────────────── */
+#tip {
+  position:fixed; z-index:40; pointer-events:none;
+  background:var(--panel); border:1px solid var(--border);
+  border-left:3px solid var(--gold); padding:7px 11px;
+  font-size:10px; line-height:1.65; display:none; max-width:300px;
+  backdrop-filter:blur(4px);
+}
+#tip-zone { font-family:'IM Fell English',serif; font-size:11px; color:var(--gold); }
+#tip-name { color:var(--parch); }
+#tip-extra { color:#7a6a4a; font-size:9px; margin-top:1px; }
+#tip-exits { color:#9a8050; font-size:8px; margin-top:3px; line-height:1.5; letter-spacing:.3px; }
+
+/* ─── LEGEND ──────────────────────────────────────────────────────────── */
+#legend {
+  position:fixed; bottom:12px; right:12px; z-index:27;
+  background:var(--panel); border:1px solid var(--border);
+  padding:7px 11px 9px; backdrop-filter:blur(4px); min-width:148px;
+}
+#leg-title {
+  font-family:'IM Fell English',serif; font-size:10px; color:var(--gold);
+  letter-spacing:2px; border-bottom:1px solid var(--border);
+  padding-bottom:4px; margin-bottom:4px;
+  display:flex; justify-content:space-between; align-items:center;
+}
+#leg-toggle { font-family:'Share Tech Mono',monospace; cursor:pointer; font-size:9px; }
+.lr { display:flex; align-items:center; gap:6px; padding:1px 0; }
+.ls { width:12px; height:8px; border:1px solid rgba(0,0,0,.3); flex-shrink:0; }
+.ls.dash { border:1px dashed rgba(180,140,60,.55); background:transparent !important; width:20px; }
+.ll { font-size:9px; color:#a89870; }
+
+/* ─── ZONE POPUP (satellite / dungeon zones) ──────────────────────────── */
+#zone-popup {
+  position:fixed; z-index:35;
+  background:var(--panel); border:1px solid var(--border);
+  border-top:3px solid var(--gold);
+  display:none; flex-direction:column;
+  backdrop-filter:blur(8px);
+  box-shadow:0 8px 32px rgba(0,0,0,.76);
+  user-select:none;
+}
+#zone-popup.open { display:flex; }
+#zpu-hdr {
+  padding:7px 12px 6px; flex-shrink:0; height:36px;
+  display:flex; align-items:center; justify-content:space-between; gap:8px;
+  border-bottom:1px solid var(--border);
+}
+#zpu-title {
+  font-family:'IM Fell English',serif; font-size:12px;
+  color:var(--gold); letter-spacing:2px;
+}
+#zpu-sub { font-size:8px; color:#5a4a2a; letter-spacing:.8px; }
+#zpu-close {
+  background:none; border:none; color:#5a4a2a; flex-shrink:0;
+  font-size:15px; cursor:pointer; line-height:1; padding:0 4px;
+  font-family:monospace;
+}
+#zpu-close:hover { color:var(--gold); }
+#zpu-canvas-wrap {
+  flex:1; overflow:hidden; position:relative; cursor:crosshair; min-height:0;
+}
+#zpu-canvas { display:block; }
+#zpu-tip {
+  position:absolute; z-index:5; pointer-events:none;
+  background:var(--panel); border:1px solid var(--border);
+  border-left:3px solid var(--gold); padding:5px 9px;
+  font-size:9px; line-height:1.65; display:none; max-width:230px;
+}
+
+/* ─── HINTS ───────────────────────────────────────────────────────────── */
+#hints {
+  position:fixed; bottom:12px; left:12px; z-index:27;
+  font-size:8px; color:#3a2812; line-height:1.9; letter-spacing:.8px;
+}
+
+/* ─── SPLASH / LOADING ────────────────────────────────────────────────── */
+#splash {
+  position:fixed; inset:0; z-index:50; background:var(--bg);
+  display:flex; flex-direction:column; align-items:center;
+  justify-content:center; gap:14px; transition:opacity .4s;
+}
+#splash h1 {
+  font-family:'IM Fell English',serif; font-size:32px; color:var(--gold);
+  letter-spacing:8px; text-shadow:0 0 28px rgba(200,165,90,.5);
+}
+#splash p { font-size:11px; color:#7a6a4a; letter-spacing:2px; }
+.sp-btn {
+  padding:8px 24px; font-family:'Share Tech Mono',monospace;
+  font-size:10px; letter-spacing:3px; background:transparent;
+  border:1px solid var(--border); color:var(--gold); cursor:pointer;
+  transition:background .15s,border-color .15s;
+}
+.sp-btn:hover { background:rgba(200,165,90,.1); border-color:var(--gold); }
+#sp-status { font-size:10px; color:#7a6a4a; letter-spacing:1px; }
+#sp-err { font-size:10px; color:#b04040; display:none; }
+</style>
+</head>
+<body>
+
+<!-- Splash / Loading -->
+<div id="splash">
+  <h1>NUKEFIRE</h1>
+  <p>DUNGEON CARTOGRAPHY SYSTEM</p>
+  <div id="sp-status">Connecting to server…</div>
+  <button class="sp-btn" id="sp-btn" style="display:none">LOAD FILE</button>
+  <div id="sp-err"></div>
+  <p style="font-size:8px;color:#2a1a08;max-width:260px;text-align:center;margin-top:4px">
+    Run <code style="color:#5a4020">python serve.py</code> in the maps/ folder for live reload.
+  </p>
+</div>
+
+<!-- Top bar -->
+<div id="bar">
+  <div id="title">NUKEFIRE · CARTOGRAPHY</div>
+  <div class="sep"></div>
+  <div id="live-dot"></div>
+  <div id="stats">—</div>
+  <div class="sep"></div>
+  <button class="bar-btn" id="zones-btn">ZONES ▸</button>
+  <div class="sep"></div>
+  <div id="search-wrap">
+    <input id="search-input" type="text" placeholder="SEARCH ROOMS / ZONES…" autocomplete="off" spellcheck="false">
+    <span id="search-count"></span>
+  </div>
+  <button class="zoom-btn" id="zoom-out-btn">−</button>
+  <div id="zoom-info">1.00×</div>
+  <button class="zoom-btn" id="zoom-in-btn">+</button>
+  <button class="bar-btn" id="fit-btn">FIT</button>
+  <button class="bar-btn" id="load-btn">LOAD FILE</button>
+</div>
+
+<!-- Zone panel -->
+<div id="zone-panel">
+  <div id="zp-hdr">ZONES <span id="zone-count"></span></div>
+  <input id="zone-filter" type="text" placeholder="filter zones…" autocomplete="off" spellcheck="false">
+  <div id="zone-sort">
+    <span class="zsort active" data-sort="count">BY COUNT</span>
+    <span class="zsort" data-sort="alpha">A–Z</span>
+  </div>
+  <div id="zone-list"></div>
+</div>
+
+<!-- Main canvas -->
+<canvas id="map-canvas"></canvas>
+
+<!-- Minimap -->
+<div id="minimap-wrap">
+  <div id="minimap-title">OVERVIEW</div>
+  <canvas id="minimap-canvas"></canvas>
+</div>
+
+<!-- Tooltip -->
+<div id="tip">
+  <div id="tip-zone"></div>
+  <div id="tip-name"></div>
+  <div id="tip-extra"></div>
+  <div id="tip-exits"></div>
+</div>
+
+<!-- Zone pop-out panel (satellite / dungeon zones) -->
+<div id="zone-popup">
+  <div id="zpu-hdr">
+    <div>
+      <div id="zpu-title">—</div>
+      <div id="zpu-sub"></div>
+    </div>
+    <button id="zpu-close" title="Close (Esc)">✕</button>
+  </div>
+  <div id="zpu-canvas-wrap">
+    <canvas id="zpu-canvas"></canvas>
+    <div id="zpu-tip"></div>
+  </div>
+</div>
+
+<!-- Legend -->
+<div id="legend">
+  <div id="leg-title">TERRAIN <span id="leg-toggle" onclick="toggleLegend()">▾</span></div>
+  <div id="leg-rows"></div>
+</div>
+
+<!-- Hints -->
+<div id="hints">
+  SCROLL / +− · zoom &nbsp;·&nbsp; DRAG · pan &nbsp;·&nbsp; HOVER · inspect<br>
+  CLICK ⬡ · open dungeon &nbsp;·&nbsp; 0/F · fit &nbsp;·&nbsp; Z · zones &nbsp;·&nbsp; / · search
+</div>
+
+<script>
+'use strict';
+
+// ── TERRAIN DEFS ──────────────────────────────────────────────────────────────
+const TC = {
+  'Forest':             '#2d5f2d',
+  'Field':              '#6e9b41',
+  'Water':              '#376ea5',
+  'Desert':             '#c8a55a',
+  'Tundra':             '#b9c8d7',
+  'Mountains':          '#6e645c',
+  'Hills':              '#877855',
+  'Smooth':             '#9b9484',
+  'Desert road / path': '#af9664',
+  'Inside':             '#55412d',
+  'Swamp':              '#375032',
+  'Jungle':             '#144114',
+  'Flying':             '#739ecd',
+  'Underwater':         '#143773',
+  '':                   '#282830',
+};
+const TL = {
+  'Forest':'Forest','Field':'Field / Grassland','Water':'Water',
+  'Desert':'Desert','Tundra':'Tundra / Ice','Mountains':'Mountains',
+  'Hills':'Hills','Smooth':'Smooth / Road','Desert road / path':'Desert Road',
+  'Inside':'Interior / Dungeon','Swamp':'Swamp','Jungle':'Jungle',
+  'Flying':'Flying / Sky','Underwater':'Underwater','':'Unknown',
+};
+const TORDER = ['Forest','Field','Water','Desert','Tundra','Mountains','Hills',
+  'Smooth','Desert road / path','Inside','Swamp','Jungle','Flying','Underwater',''];
+
+function tint(hex, a) {
+  const r=parseInt(hex.slice(1,3),16), g=parseInt(hex.slice(3,5),16), b=parseInt(hex.slice(5,7),16);
+  return `rgb(${Math.min(255,r+a)},${Math.min(255,g+a)},${Math.min(255,b+a)})`;
+}
+function shade(hex, a) { return tint(hex, -a); }
+
+// ── ZONE COLORS ───────────────────────────────────────────────────────────────
+function zoneHue(name) {
+  let h = 5381;
+  for (let i = 0; i < name.length; i++) h = ((h << 5) + h + name.charCodeAt(i)) | 0;
+  return (h >>> 0) % 360;
+}
+
+// ── ZONE NAME NORMALIZATION ───────────────────────────────────────────────────
+// Strip trailing roman numerals so "Vega Jane", "Vega Jane II", "Vega Jane III"
+// are all treated as one logical zone.
+const ROMAN_SUFFIX = /\s+(II|III|IV|V|VI|VII|VIII|IX|X|XI|XII|XIII|XIV|XV|XVI|XVII|XVIII|XIX|XX)$/;
+function normalizeZone(name) {
+  if (!name) return name;
+  return name.replace(ROMAN_SUFFIX, '').trim();
+}
+
+// ── PARSER ────────────────────────────────────────────────────────────────────
+const R_RE = /^R \{(\d+)\}\{[^}]*\}\{[^}]*\}\{([^}]*)\}\{[^}]*\}\{[^}]*\}\{([^}]*)\}\{[^}]*\}\{([^}]*)\}/;
+const E_RE = /^E \{(\d+)\}\{([^}]*)\}/;
+const DIRS = { n:[0,1], s:[0,-1], e:[1,0], w:[-1,0] };
+
+function parseMap(text) {
+  const lines = text.split('\n');
+  const roomMap = {};
+  let curId = null;
+
+  for (const raw of lines) {
+    const line = raw.trimEnd();
+    if (line.startsWith('R ')) {
+      const m = R_RE.exec(line);
+      if (m) {
+        curId = +m[1];
+        roomMap[curId] = { id:curId, name:m[2].trim(), zone:m[3].trim(), terrain:m[4].trim(), exits:{} };
+      }
+    } else if (line.startsWith('E ') && curId !== null) {
+      const m = E_RE.exec(line);
+      if (m) roomMap[curId].exits[m[2].trim()] = +m[1];
+    }
+  }
+
+  // BFS connected components (cardinal exits only for graph)
+  const visited = new Set();
+  const components = [];
+  for (const start of Object.keys(roomMap).map(Number).sort((a,b) => a - b)) {
+    if (visited.has(start)) continue;
+    const comp = [];
+    const q = [start]; visited.add(start);
+    for (let i = 0; i < q.length; i++) {
+      const rid = q[i]; comp.push(rid);
+      for (const [d, t] of Object.entries(roomMap[rid].exits)) {
+        if (DIRS[d] && roomMap[t] && !visited.has(t)) { visited.add(t); q.push(t); }
+      }
+    }
+    components.push(comp);
+  }
+  components.sort((a, b) => b.length - a.length);
+
+  function layoutComp(comp) {
+    const start = comp.find(r => Object.keys(roomMap[r].exits).some(d => DIRS[d])) ?? comp[0];
+    const coords = { [start]: [0, 0] };
+    const q = [start]; const seen2 = new Set([start]);
+    for (let i = 0; i < q.length; i++) {
+      const rid = q[i]; const [cx, cy] = coords[rid];
+      for (const [d, t] of Object.entries(roomMap[rid].exits)) {
+        if (!DIRS[d] || !roomMap[t]) continue;
+        if (!coords[t]) coords[t] = [cx + DIRS[d][0], cy + DIRS[d][1]];
+        if (!seen2.has(t)) { seen2.add(t); q.push(t); }
+      }
+    }
+    return coords;
+  }
+
+  function bbox(coords) {
+    const xs = Object.values(coords).map(v => v[0]);
+    const ys = Object.values(coords).map(v => v[1]);
+    return [Math.min(...xs), Math.min(...ys), Math.max(...xs), Math.max(...ys)];
+  }
+
+  const usable = components.filter(c => c.length >= 5);
+  const layouts = usable.map(comp => {
+    const lc = layoutComp(comp);
+    const [mnx, mny, mxx, mxy] = bbox(lc);
+    const w = mxx - mnx + 1, h = mxy - mny + 1;
+    const norm = {};
+    for (const [rid, [x, y]] of Object.entries(lc))
+      norm[rid] = [x - mnx, h - 1 - (y - mny)];   // Y-flip: north = up
+    return { coords: norm, w, h };
+  });
+
+  // Main world component only — satellites become pop-out panels
+  const allCoords = {};
+  for (const [rid, [x, y]] of Object.entries(layouts[0].coords))
+    allCoords[rid] = [x, y];
+
+  // roomId → component index (0 = world, 1+ = satellite)
+  const roomToComp = {};
+  for (let ci = 0; ci < usable.length; ci++)
+    for (const rid of usable[ci]) roomToComp[rid] = ci;
+
+  // Build satellite zone data for disconnected components
+  const satData = [];
+  for (let ci = 1; ci < layouts.length; ci++) {
+    const lay = layouts[ci];
+    if (lay.w * lay.h < 4) continue;
+    const satRooms = [];
+    for (const [rid, [x, y]] of Object.entries(lay.coords)) {
+      const r = roomMap[+rid];
+      satRooms.push({ id:+rid, x, y, terrain:r.terrain, zone:normalizeZone(r.zone), origZone:r.zone, name:r.name, exits:r.exits });
+    }
+    const satZones = {};
+    for (const r of satRooms) {
+      if (!r.zone) continue;
+      if (!satZones[r.zone]) satZones[r.zone] = { count:0, hue:zoneHue(r.zone) };
+      satZones[r.zone].count++;
+    }
+    const dominant = Object.entries(satZones).sort((a,b) => b[1].count - a[1].count)[0];
+    satData.push({ idx: ci, rooms: satRooms, zones: satZones,
+                   name: dominant?.[0] || `Zone ${ci}`, w: lay.w, h: lay.h, offscreen: null });
+  }
+
+  // ── Instance zone detection ────────────────────────────────────────────────
+  // Zones where n/s/e/w navigation collapses to an extremely small grid
+  // footprint (<5% unique coords) are likely vertical-only (u/d) dungeons
+  // whose staircase structure got squeezed to near a single world point.
+  // Promote them to pop-out panels. All exits including u/d for layout.
+  const EXTDIRS = { n:[0,1], s:[0,-1], e:[1,0], w:[-1,0], u:[0,-1], d:[0,1] };
+
+  const zoneStats = {};
+  for (const [rid, [x, y]] of Object.entries(allCoords)) {
+    const zone = normalizeZone(roomMap[+rid].zone);
+    if (!zone) continue;
+    if (!zoneStats[zone]) zoneStats[zone] = { rids: [], coords: new Set() };
+    zoneStats[zone].rids.push(+rid);
+    zoneStats[zone].coords.add(`${x},${y}`);
+  }
+
+  const instanceZoneNames = new Set();
+  for (const [zone, st] of Object.entries(zoneStats)) {
+    if (st.rids.length > 12 && st.coords.size / st.rids.length < 0.05)
+      instanceZoneNames.add(zone);
+  }
+
+  // Layout helper: BFS using all exits (u/d treated as north/south)
+  function layoutInstance(ridSet) {
+    let start = [...ridSet].find(r =>
+      Object.keys(roomMap[r].exits).some(d => EXTDIRS[d] && ridSet.has(roomMap[r].exits[d]))
+    ) ?? [...ridSet][0];
+    const ic = { [start]: [0, 0] };
+    const q = [start]; const seen = new Set([start]);
+    for (let i = 0; i < q.length; i++) {
+      const rid = q[i]; const [cx, cy] = ic[rid];
+      for (const [d, t] of Object.entries(roomMap[rid].exits)) {
+        if (!EXTDIRS[d] || !ridSet.has(t) || ic[t]) continue;
+        ic[t] = [cx + EXTDIRS[d][0], cy + EXTDIRS[d][1]];
+        if (!seen.has(t)) { seen.add(t); q.push(t); }
+      }
+    }
+    return ic;
+  }
+
+  const instanceRidToSat = {};
+  let instanceIdx = usable.length + 100;
+
+  for (const [zone, st] of Object.entries(zoneStats)) {
+    if (!instanceZoneNames.has(zone)) continue;
+    const ridSet = new Set(st.rids);
+
+    const ic = layoutInstance(ridSet);
+    const ixs = Object.values(ic).map(v => v[0]);
+    const iys = Object.values(ic).map(v => v[1]);
+    const iminX = Math.min(...ixs), iminY = Math.min(...iys);
+    const iw = Math.max(...ixs) - iminX + 1;
+    const ih = Math.max(...iys) - iminY + 1;
+
+    const satRooms = [];
+    for (const [rid, [x, y]] of Object.entries(ic)) {
+      const r = roomMap[+rid];
+      satRooms.push({ id:+rid,
+        x: x - iminX, y: ih - 1 - (y - iminY), // Y-flip
+        terrain:r.terrain, zone:normalizeZone(r.zone), origZone:r.zone, name:r.name, exits:r.exits });
+    }
+    const satZones = {};
+    for (const r of satRooms) {
+      if (!r.zone) continue;
+      if (!satZones[r.zone]) satZones[r.zone] = { count:0, hue:zoneHue(r.zone) };
+      satZones[r.zone].count++;
+    }
+    const dominant = Object.entries(satZones).sort((a,b)=>b[1].count-a[1].count)[0];
+    const sat = { idx:instanceIdx++, rooms:satRooms, zones:satZones,
+                  name:dominant?.[0]||zone, w:iw, h:ih, offscreen:null };
+    satData.push(sat);
+    for (const rid of ridSet) { instanceRidToSat[rid] = sat; delete allCoords[rid]; }
+  }
+
+  // ── Coordinate conflict resolution ────────────────────────────────────────
+  // BFS graph cycles can assign identical grid coordinates to multiple rooms.
+  // Give every room a unique cell so nothing overlaps on the 2D world map:
+  //   1) Lowest room-ID at each contested coord keeps its position.
+  //   2) All others are displaced to the nearest empty adjacent cell (BFS).
+  {
+    const used = new Set();
+    const conflicts = []; // [rid, ox, oy] — rooms that need a new cell
+    for (const [rid, [x, y]] of Object.entries(allCoords).sort((a, b) => +a[0] - +b[0])) {
+      const k = `${x},${y}`;
+      if (used.has(k)) conflicts.push([+rid, x, y]);
+      else used.add(k);
+    }
+    if (conflicts.length) {
+      console.info(`[ConflictRes] ${conflicts.length} rooms displaced to unique cells`);
+      for (const [rid, ox, oy] of conflicts) {
+        const bfsQ = [[ox, oy]];
+        const bfsSeen = new Set([`${ox},${oy}`]);
+        let placed = false;
+        for (let bi = 0; bi < bfsQ.length && !placed; bi++) {
+          const [bx, by] = bfsQ[bi];
+          for (const [dx, dy] of [[0,1],[0,-1],[1,0],[-1,0],[1,1],[1,-1],[-1,1],[-1,-1]]) {
+            const nx = bx + dx, ny = by + dy;
+            const nk = `${nx},${ny}`;
+            if (!used.has(nk)) { used.add(nk); allCoords[rid] = [nx, ny]; placed = true; break; }
+            if (!bfsSeen.has(nk)) { bfsSeen.add(nk); bfsQ.push([nx, ny]); }
+          }
+        }
+      }
+    }
+  }
+
+  // satByIdx for quick lookup
+  const satByIdx = {};
+  for (const s of satData) satByIdx[s.idx] = s;
+
+  // Portal links: world rooms → satellite panels
+  // Covers both disconnected components (n/s/e/w links) and instance zones (any exit)
+  const portalLinks = {};
+  for (const rid of Object.keys(allCoords)) {
+    const seen = new Set();
+    for (const tid of Object.values(roomMap[+rid].exits)) {
+      const ci = roomToComp[tid];
+      if (ci !== undefined && ci > 0 && satByIdx[ci] && !seen.has(ci)) {
+        seen.add(ci);
+        if (!portalLinks[+rid]) portalLinks[+rid] = [];
+        portalLinks[+rid].push(satByIdx[ci]);
+      }
+      const isat = instanceRidToSat[tid];
+      if (isat && !seen.has(isat.idx)) {
+        seen.add(isat.idx);
+        if (!portalLinks[+rid]) portalLinks[+rid] = [];
+        portalLinks[+rid].push(isat);
+      }
+    }
+  }
+
+  // Rooms array — world rooms only (instance zones stripped out)
+  const rooms = [];
+  for (const [rid, [x, y]] of Object.entries(allCoords)) {
+    const r = roomMap[+rid];
+    rooms.push({ id:+rid, x, y, terrain:r.terrain, zone:normalizeZone(r.zone), origZone:r.zone,
+                 name:r.name, exits:r.exits, portals: portalLinks[+rid] || null });
+  }
+
+  // Zone metadata: bbox + room count + hue
+  const zones = {};
+  for (const r of rooms) {
+    if (!r.zone) continue;
+    if (!zones[r.zone]) zones[r.zone] = { minX:r.x, minY:r.y, maxX:r.x, maxY:r.y, count:0, hue:zoneHue(r.zone) };
+    const z = zones[r.zone];
+    z.minX = Math.min(z.minX, r.x); z.minY = Math.min(z.minY, r.y);
+    z.maxX = Math.max(z.maxX, r.x); z.maxY = Math.max(z.maxY, r.y);
+    z.count++;
+  }
+
+  // Cross-zone rooms: any exit (any direction) leading to a different zone
+  const crossZoneRooms = new Set();
+  for (const r of rooms) {
+    for (const tid of Object.values(r.exits)) {
+      if (roomMap[tid] && roomMap[tid].zone !== r.zone) { crossZoneRooms.add(r.id); break; }
+    }
+  }
+
+  // Exit lines for rendering (cardinal only, deduplicated)
+  const exitLines = [];
+  const drawnEdges = new Set();
+  for (const [rid, [gx, gy]] of Object.entries(allCoords)) {
+    for (const [dir, tid] of Object.entries(roomMap[+rid].exits)) {
+      if (!DIRS[dir] || !allCoords[tid]) continue;
+      const key = Math.min(+rid, tid) + ',' + Math.max(+rid, tid);
+      if (drawnEdges.has(key)) continue;
+      drawnEdges.add(key);
+      const [gx2, gy2] = allCoords[tid];
+      const cross = roomMap[+rid].zone !== roomMap[tid].zone;
+      exitLines.push({ x1: +gx, y1: +gy, x2: gx2, y2: gy2, cross });
+    }
+  }
+
+  const allX = rooms.map(r => r.x), allY = rooms.map(r => r.y);
+  return {
+    rooms, zones, crossZoneRooms, exitLines, satData,
+    xrange: [Math.min(...allX), Math.max(...allX)],
+    yrange: [Math.min(...allY), Math.max(...allY)],
+  };
+}
+
+// ── GLOBALS ───────────────────────────────────────────────────────────────────
+const canvas   = document.getElementById('map-canvas');
+const ctx      = canvas.getContext('2d');
+const mmCanvas = document.getElementById('minimap-canvas');
+const mmCtx    = mmCanvas.getContext('2d');
+const statsEl  = document.getElementById('stats');
+const zoomEl   = document.getElementById('zoom-info');
+const splash   = document.getElementById('splash');
+const tip      = document.getElementById('tip');
+
+let mapData = null, offscreen = null, offW = 0, offH = 0;
+let zoneCentroids = null; // grid-space centroids, computed once per load
+let CELL = 10, PAD_PX = 50;
+let viewX = 0, viewY = 0, zoom = 1;
+let drag = false, didDrag = false, dragX0 = 0, dragY0 = 0, vX0 = 0, vY0 = 0;
+const coordIdx = {}, idIdx = {};
+let searchMatches = [], activeZone = null, legendOpen = true;
+let zoneSortMode = 'count';
+
+function srand(n) {
+  let s = (n ^ 0xdeadbeef) >>> 0;
+  return () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; };
+}
+
+// ── TERRAIN TEXTURE RENDERER (reusable at any cell size) ─────────────────────
+function renderTerrainTexture(g, r, bx, by, cs) {
+  const cx = bx + cs * 0.5, cy = by + cs * 0.5;
+  const rng = srand(r.id * 2654435761);
+  g.lineWidth = Math.max(0.5, cs * 0.08);
+  switch (r.terrain) {
+    case 'Forest':
+      g.fillStyle = 'rgba(20,55,22,0.85)';
+      for (let i = 0; i < (cs > 12 ? 3 : 2); i++) {
+        g.beginPath();
+        g.arc(bx + cs*0.15 + rng()*cs*0.7, by + cs*0.15 + rng()*cs*0.7,
+              Math.max(0.5, cs*0.09), 0, Math.PI*2);
+        g.fill();
+      } break;
+    case 'Mountains':
+      g.fillStyle = tint(TC['Mountains'], 28); g.strokeStyle = shade(TC['Mountains'], 20);
+      g.beginPath(); g.moveTo(cx, by+cs*0.1); g.lineTo(bx+cs*0.1, by+cs*0.88); g.lineTo(bx+cs*0.9, by+cs*0.88); g.closePath();
+      g.fill(); g.stroke(); break;
+    case 'Hills':
+      g.strokeStyle = tint(TC['Hills'], 22);
+      g.beginPath(); g.arc(cx, by+cs, cs*0.55, Math.PI, 0); g.stroke(); break;
+    case 'Water':
+      g.strokeStyle = tint(TC['Water'], 25);
+      for (const yw of [by+cs*0.33, by+cs*0.66]) {
+        g.beginPath(); g.moveTo(bx+cs*0.1, yw); g.lineTo(cx, yw-cs*0.1); g.lineTo(bx+cs*0.9, yw); g.stroke();
+      } break;
+    case 'Swamp':
+      g.strokeStyle = shade(TC['Swamp'], 15);
+      g.beginPath(); g.moveTo(bx+cs*0.2, by+cs*0.2); g.lineTo(bx+cs*0.8, by+cs*0.8); g.stroke();
+      g.beginPath(); g.moveTo(bx+cs*0.8, by+cs*0.2); g.lineTo(bx+cs*0.2, by+cs*0.8); g.stroke(); break;
+    case 'Desert':
+      g.fillStyle = tint(TC['Desert'], 20);
+      for (let i = 0; i < 3; i++) g.fillRect(bx+cs*0.1+rng()*cs*0.8, by+cs*0.1+rng()*cs*0.8, 1, 1); break;
+    case 'Tundra':
+      g.strokeStyle = tint(TC['Tundra'], 18);
+      g.beginPath(); g.moveTo(bx+cs*0.2, cy); g.lineTo(bx+cs*0.8, cy); g.stroke();
+      g.beginPath(); g.moveTo(cx, by+cs*0.2); g.lineTo(cx, by+cs*0.8); g.stroke(); break;
+    case 'Field':
+      g.strokeStyle = shade(TC['Field'], 18);
+      for (let ry2 = by+cs*0.2; ry2 < by+cs*0.85; ry2 += Math.max(2, cs*0.3)) {
+        g.beginPath(); g.moveTo(bx+cs*0.15, ry2); g.lineTo(bx+cs*0.85, ry2); g.stroke();
+      } break;
+    case 'Inside':
+      g.strokeStyle = tint(TC['Inside'], 25);
+      g.strokeRect(bx+cs*0.2, by+cs*0.2, cs*0.6, cs*0.6); break;
+  }
+}
+
+// ── OFFSCREEN BUILD ───────────────────────────────────────────────────────────
+function buildOffscreen() {
+  const { rooms, zones, crossZoneRooms, exitLines, xrange, yrange } = mapData;
+  const [xmin, xmax] = xrange, [ymin, ymax] = yrange;
+  offW = (xmax - xmin + 1) * CELL + PAD_PX * 2;
+  offH = (ymax - ymin + 1) * CELL + PAD_PX * 2;
+
+  const oc = document.createElement('canvas');
+  oc.width = offW; oc.height = offH;
+  const g = oc.getContext('2d');
+
+  function px(rx, ry) { return [PAD_PX + (rx - xmin) * CELL, PAD_PX + (ymax - ry) * CELL]; }
+  function pxC(rx, ry) { const [x, y] = px(rx, ry); return [x + CELL / 2, y + CELL / 2]; }
+
+  // Local coord index for zone-edge neighbor lookups
+  const lIdx = {};
+  for (const r of rooms) lIdx[`${r.x},${r.y}`] = r;
+
+  // Pass 0: dark background
+  g.fillStyle = '#16141c'; g.fillRect(0, 0, offW, offH);
+
+  // Pass 1: room terrain fills — sharp, no blur (blur baked at offscreen level
+  //         looks terrible when the user zooms in)
+  for (const r of rooms) {
+    const [x, y] = px(r.x, r.y);
+    g.fillStyle = TC[r.terrain] ?? TC[''];
+    g.fillRect(x, y, CELL, CELL);
+  }
+
+  // Pass 2: terrain textures
+  for (const r of rooms) {
+    const [bx, by] = px(r.x, r.y);
+    const cx = bx + CELL / 2, cy2 = by + CELL / 2;
+    const rng = srand(r.id * 2654435761);
+    g.lineWidth = 1;
+    switch (r.terrain) {
+      case 'Forest':
+        g.fillStyle = 'rgba(20,55,22,0.85)';
+        for (let i = 0; i < 2; i++) {
+          const tx = bx + 1 + rng() * (CELL - 3), ty = by + 1 + rng() * (CELL - 3);
+          g.beginPath(); g.arc(tx, ty, 0.8, 0, Math.PI * 2); g.fill();
+        }
+        break;
+      case 'Mountains':
+        g.fillStyle = tint(TC['Mountains'], 28); g.strokeStyle = shade(TC['Mountains'], 20);
+        g.beginPath(); g.moveTo(cx, by + 1); g.lineTo(bx + 1, by + CELL - 2); g.lineTo(bx + CELL - 1, by + CELL - 2); g.closePath();
+        g.fill(); g.stroke();
+        break;
+      case 'Hills':
+        g.strokeStyle = tint(TC['Hills'], 22);
+        g.beginPath(); g.arc(cx, by + CELL, CELL * 0.55, Math.PI, 0); g.stroke();
+        break;
+      case 'Water':
+        g.strokeStyle = tint(TC['Water'], 25);
+        for (const yw of [by + Math.floor(CELL / 3), by + Math.floor(2 * CELL / 3)]) {
+          g.beginPath(); g.moveTo(bx + 1, yw); g.lineTo(cx, yw - 1); g.lineTo(bx + CELL - 1, yw); g.stroke();
+        }
+        break;
+      case 'Swamp':
+        g.strokeStyle = shade(TC['Swamp'], 15);
+        g.beginPath(); g.moveTo(bx + 2, by + 2); g.lineTo(bx + CELL - 2, by + CELL - 2); g.stroke();
+        g.beginPath(); g.moveTo(bx + CELL - 2, by + 2); g.lineTo(bx + 2, by + CELL - 2); g.stroke();
+        break;
+      case 'Desert':
+        g.fillStyle = tint(TC['Desert'], 20);
+        for (let i = 0; i < 3; i++) g.fillRect(bx + 1 + rng() * (CELL - 2), by + 1 + rng() * (CELL - 2), 1, 1);
+        break;
+      case 'Tundra':
+        g.strokeStyle = tint(TC['Tundra'], 18);
+        g.beginPath(); g.moveTo(bx + 2, cy2); g.lineTo(bx + CELL - 2, cy2); g.stroke();
+        g.beginPath(); g.moveTo(cx, by + 2); g.lineTo(cx, by + CELL - 2); g.stroke();
+        break;
+      case 'Field':
+        g.strokeStyle = shade(TC['Field'], 18);
+        for (let ry2 = by + 2; ry2 < by + CELL - 1; ry2 += 3) {
+          g.beginPath(); g.moveTo(bx + 2, ry2); g.lineTo(bx + CELL - 2, ry2); g.stroke();
+        }
+        break;
+      case 'Inside':
+        g.strokeStyle = tint(TC['Inside'], 25);
+        g.strokeRect(bx + 2, by + 2, CELL - 4, CELL - 4);
+        break;
+    }
+  }
+
+  // Pass 3: exit connection lines (over terrain)
+  g.lineWidth = Math.max(0.5, CELL * 0.07);
+  for (const el of exitLines) {
+    const [cx1, cy1] = pxC(el.x1, el.y1);
+    const [cx2, cy2] = pxC(el.x2, el.y2);
+    g.strokeStyle = el.cross ? 'rgba(180,135,55,0.55)' : 'rgba(80,62,45,0.28)';
+    g.beginPath(); g.moveTo(cx1, cy1); g.lineTo(cx2, cy2); g.stroke();
+  }
+
+  // Pass 4: zone edge borders — draw a coloured line on every cell edge where
+  //         the neighbour is absent or belongs to a different zone. This traces
+  //         the actual shape of each zone cluster instead of a bounding box.
+  {
+    const zEdges = {}; // zoneName → flat segment array [x1,y1,x2,y2,…]
+    for (const r of rooms) {
+      if (!r.zone || !zones[r.zone]) continue;
+      if (!zEdges[r.zone]) zEdges[r.zone] = [];
+      const segs = zEdges[r.zone];
+      const [bx, by] = px(r.x, r.y);
+      // North (top edge) — neighbour is one step up in grid, one step up on screen
+      const nbN = lIdx[`${r.x},${r.y + 1}`];
+      if (!nbN || nbN.zone !== r.zone) segs.push(bx, by, bx + CELL, by);
+      // South (bottom edge)
+      const nbS = lIdx[`${r.x},${r.y - 1}`];
+      if (!nbS || nbS.zone !== r.zone) segs.push(bx, by + CELL, bx + CELL, by + CELL);
+      // East (right edge)
+      const nbE = lIdx[`${r.x + 1},${r.y}`];
+      if (!nbE || nbE.zone !== r.zone) segs.push(bx + CELL, by, bx + CELL, by + CELL);
+      // West (left edge)
+      const nbW = lIdx[`${r.x - 1},${r.y}`];
+      if (!nbW || nbW.zone !== r.zone) segs.push(bx, by, bx, by + CELL);
+    }
+    g.lineWidth = Math.max(1.5, CELL * 0.22);
+    for (const [zname, segs] of Object.entries(zEdges)) {
+      const z = zones[zname]; if (!z) continue;
+      g.strokeStyle = `hsla(${z.hue},60%,50%,0.72)`;
+      g.beginPath();
+      for (let i = 0; i < segs.length; i += 4) { g.moveTo(segs[i], segs[i+1]); g.lineTo(segs[i+2], segs[i+3]); }
+      g.stroke();
+    }
+  }
+
+  // Pass 5: cross-zone portal markers (gold corner pip)
+  if (CELL >= 6) {
+    const ms = Math.max(2, CELL * 0.3);
+    for (const r of rooms) {
+      if (!crossZoneRooms.has(r.id)) continue;
+      const [bx, by] = px(r.x, r.y);
+      g.fillStyle = 'rgba(210,168,65,0.88)';
+      g.fillRect(bx + CELL - ms - 0.5, by + 0.5, ms, ms);
+    }
+    // Satellite dungeon entrance markers (teal pip, bottom-left)
+    for (const r of rooms) {
+      if (!r.portals) continue;
+      const [bx, by] = px(r.x, r.y);
+      g.fillStyle = 'rgba(45,195,175,0.92)';
+      g.fillRect(bx + 0.5, by + CELL - ms - 0.5, ms, ms);
+    }
+  }
+
+  // Pass 6: (zone labels moved to dynamic overlay — drawZoneLabels — so they
+  //          don't blow up when the user zooms in on the offscreen canvas)
+
+  // Pass 8: map decorations
+  g.strokeStyle = '#6e5a3a'; g.lineWidth = 2; g.strokeRect(2, 2, offW - 4, offH - 4);
+  g.strokeStyle = '#46382a'; g.lineWidth = 1; g.strokeRect(6, 6, offW - 12, offH - 12);
+
+  g.fillStyle = 'rgba(10,8,16,0.92)'; g.fillRect(PAD_PX - 4, 4, 375, 26);
+  g.font = 'bold 14px "IM Fell English",serif';
+  g.textAlign = 'left'; g.textBaseline = 'middle';
+  g.fillStyle = '#c8a55a';
+  g.fillText('NUKEFIRE  ·  DUNGEON CARTOGRAPHY', PAD_PX + 2, 17);
+
+  // Compass rose
+  const crx = offW - 34, cry = 40;
+  g.font = '9px "Share Tech Mono",monospace'; g.textAlign = 'center'; g.textBaseline = 'middle';
+  g.fillStyle = '#c8a55a'; g.fillText('N', crx, cry - 16);
+  g.fillStyle = '#5a4a2a'; g.fillText('S', crx, cry + 16); g.fillText('W', crx - 16, cry); g.fillText('E', crx + 16, cry);
+  g.strokeStyle = '#c8a55a'; g.lineWidth = 1;
+  g.beginPath(); g.moveTo(crx, cry - 12); g.lineTo(crx, cry + 12); g.stroke();
+  g.beginPath(); g.moveTo(crx - 12, cry); g.lineTo(crx + 12, cry); g.stroke();
+  g.fillStyle = '#c8a55a';
+  g.beginPath(); g.moveTo(crx, cry - 12); g.lineTo(crx - 3, cry - 6); g.lineTo(crx + 3, cry - 6); g.closePath(); g.fill();
+
+  offscreen = oc;
+
+  // Size minimap to match map aspect ratio
+  const mmH = 110, mmW = Math.max(80, Math.round(mmH * offW / offH));
+  mmCanvas.width = mmW; mmCanvas.height = mmH;
+}
+
+// ── ZONE OVERVIEW LABELS (dynamic, screen-space) ──────────────────────────────
+function buildZoneCentroids() {
+  const { rooms } = mapData;
+  const acc = {};
+  for (const r of rooms) {
+    if (!r.zone) continue;
+    if (!acc[r.zone]) acc[r.zone] = { gx: 0, gy: 0, n: 0 };
+    acc[r.zone].gx += r.x; acc[r.zone].gy += r.y; acc[r.zone].n++;
+  }
+  zoneCentroids = {};
+  for (const [z, v] of Object.entries(acc)) zoneCentroids[z] = { gx: v.gx / v.n, gy: v.gy / v.n };
+}
+
+function drawZoneLabels(W, H) {
+  if (!mapData || !zoneCentroids) return;
+  const eff = zoom * CELL;
+  // Only show labels when cells are large enough that labels don't collide
+  if (eff < 18 || eff > 90) return;
+
+  const { zones, xrange, yrange } = mapData;
+  const [xmin] = xrange, [, ymax] = yrange;
+
+  const fSz = Math.max(9, Math.min(13, eff * 0.55));
+  ctx.font = `bold ${fSz}px "Share Tech Mono",monospace`;
+  ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+
+  // Build candidate list sorted largest-zone-first so big zones always win
+  const candidates = [];
+  for (const [zname, z] of Object.entries(zones)) {
+    if (z.count < 35) continue;
+    const c = zoneCentroids[zname]; if (!c) continue;
+    const lx = viewX + (PAD_PX + (c.gx - xmin) * CELL + CELL / 2) * zoom;
+    const ly = viewY + (PAD_PX + (ymax - c.gy) * CELL + CELL / 2) * zoom;
+    if (lx < 4 || lx > W - 4 || ly < 40 || ly > H - 4) continue;
+    candidates.push({ zname, z, lx, ly });
+  }
+  candidates.sort((a, b) => b.z.count - a.z.count);
+
+  // Place labels with collision detection — skip any that would overlap
+  const placed = [];
+  for (const { zname, z, lx, ly } of candidates) {
+    const label = zname.length > 22 ? zname.slice(0, 20) + '…' : zname;
+    const tw = ctx.measureText(label).width;
+    const rx = lx - tw / 2 - 3, ry = ly - fSz / 2 - 3;
+    const rw = tw + 6, rh = fSz + 6;
+    if (placed.some(p => rx < p.x+p.w && rx+rw > p.x && ry < p.y+p.h && ry+rh > p.y)) continue;
+    placed.push({ x: rx, y: ry, w: rw, h: rh });
+    ctx.fillStyle = 'rgba(0,0,0,0.78)';
+    ctx.fillRect(rx, ry, rw, rh);
+    ctx.fillStyle = `hsl(${z.hue},60%,70%)`;
+    ctx.fillText(label, lx, ly);
+  }
+}
+
+// ── LOD ROOM LABELS ───────────────────────────────────────────────────────────
+function drawLodLabels(W, H) {
+  if (!mapData) return;
+  const eff = zoom * CELL;     // effective cell size on screen (pixels)
+  if (eff < 20) return;        // only show room labels when cells are large enough
+
+  const [xmin] = mapData.xrange, [, ymax] = mapData.yrange;
+
+  // Viewport culling with correct PAD_PX offset
+  const visX0 = Math.floor(xmin + (-viewX / zoom - PAD_PX) / CELL) - 1;
+  const visX1 = Math.ceil( xmin + ((W - viewX) / zoom - PAD_PX) / CELL) + 1;
+  const visY0 = Math.floor(ymax - ((H - viewY) / zoom - PAD_PX) / CELL) - 1;
+  const visY1 = Math.ceil( ymax - (-viewY / zoom - PAD_PX) / CELL) + 1;
+
+  // Two modes:
+  //   "inside"  (eff > 45) — name centered inside cell, ID sub-line at very high zoom
+  //   "outside" (eff ≤ 45) — small name floating below cell
+  const inside = eff > 45;
+  const fSz = inside
+    ? Math.min(16, eff * 0.18)    // scales with cell, cap 16px
+    : Math.min(9,  eff * 0.32);   // small floating label, cap 9px
+
+  ctx.textAlign = 'center';
+
+  for (const r of mapData.rooms) {
+    if (r.x < visX0 || r.x > visX1 || r.y < visY0 || r.y > visY1) continue;
+    const raw = r.name.replace(/\s*\([^)]+\)\s*$/, '');
+    const label = raw.slice(0, inside ? 32 : 20);
+    if (!label) continue;
+
+    const mx = PAD_PX + (r.x - xmin) * CELL + CELL / 2;
+
+    if (inside) {
+      // Centre label vertically inside the cell
+      const my = PAD_PX + (ymax - r.y) * CELL + CELL / 2;
+      const sx = viewX + mx * zoom, sy = viewY + my * zoom;
+      ctx.font = `bold ${fSz}px "Share Tech Mono",monospace`;
+      ctx.textBaseline = 'middle';
+      const tw = ctx.measureText(label).width;
+      ctx.fillStyle = 'rgba(0,0,0,0.72)';
+      ctx.fillRect(sx - tw / 2 - 2, sy - fSz / 2 - 2, tw + 4, fSz + 4);
+      ctx.fillStyle = 'rgba(235,222,192,0.96)';
+      ctx.fillText(label, sx, sy);
+
+      // Sub-line: #id · zone at extreme zoom only
+      if (eff > 150) {
+        const sfSz = Math.min(11, fSz * 0.68);
+        ctx.font = `${sfSz}px "Share Tech Mono",monospace`;
+        const sub = `#${r.id}  ${r.origZone || r.zone || r.terrain || ''}`;
+        const stw = ctx.measureText(sub).width;
+        const subY = sy + fSz / 2 + sfSz / 2 + 2;
+        ctx.fillStyle = 'rgba(0,0,0,0.6)';
+        ctx.fillRect(sx - stw / 2 - 2, subY - sfSz / 2 - 1, stw + 4, sfSz + 2);
+        ctx.fillStyle = `hsl(${zoneHue(r.zone || '')},55%,68%)`;
+        ctx.fillText(sub, sx, subY);
+      }
+    } else {
+      // Label floats just below the cell
+      const my = PAD_PX + (ymax - r.y) * CELL + CELL;
+      const sx = viewX + mx * zoom, sy = viewY + my * zoom + 1;
+      ctx.font = `${fSz}px "Share Tech Mono",monospace`;
+      ctx.textBaseline = 'top';
+      const tw = ctx.measureText(label).width;
+      ctx.fillStyle = 'rgba(0,0,0,0.65)';
+      ctx.fillRect(sx - tw / 2 - 2, sy - 1, tw + 4, fSz + 2);
+      ctx.fillStyle = 'rgba(218,208,182,0.92)';
+      ctx.fillText(label, sx, sy);
+    }
+  }
+}
+
+// ── SEARCH HIGHLIGHT ──────────────────────────────────────────────────────────
+function drawSearchHighlight() {
+  if (!searchMatches.length || !mapData) return;
+  const [xmin] = mapData.xrange, [, ymax] = mapData.yrange;
+  ctx.save(); ctx.translate(viewX, viewY); ctx.scale(zoom, zoom);
+  ctx.strokeStyle = 'rgba(255,218,65,0.9)';
+  ctx.lineWidth = Math.max(1, CELL * 0.24) / zoom;
+  for (const r of searchMatches) {
+    const bx = PAD_PX + (r.x - xmin) * CELL, by = PAD_PX + (ymax - r.y) * CELL;
+    ctx.strokeRect(bx + 0.5, by + 0.5, CELL - 1, CELL - 1);
+  }
+  ctx.restore();
+}
+
+// ── MINIMAP ───────────────────────────────────────────────────────────────────
+function drawMinimap(W, H) {
+  if (!offscreen) return;
+  const mmW = mmCanvas.width, mmH = mmCanvas.height;
+  mmCtx.clearRect(0, 0, mmW, mmH);
+  mmCtx.drawImage(offscreen, 0, 0, mmW, mmH);
+  const scX = mmW / offW, scY = mmH / offH;
+  const vpX = Math.max(0, (-viewX / zoom) * scX);
+  const vpY = Math.max(0, (-viewY / zoom) * scY);
+  const vpW = Math.min(mmW - vpX, (W / zoom) * scX);
+  const vpH = Math.min(mmH - vpY, (H / zoom) * scY);
+  mmCtx.fillStyle = 'rgba(200,165,90,0.09)'; mmCtx.fillRect(vpX, vpY, vpW, vpH);
+  mmCtx.strokeStyle = 'rgba(200,165,90,0.78)'; mmCtx.lineWidth = 1.5;
+  mmCtx.strokeRect(vpX, vpY, vpW, vpH);
+}
+
+// ── ZONE POPUP (satellite / dungeon zones) ────────────────────────────────────
+const popup     = document.getElementById('zone-popup');
+const zpuCanvas = document.getElementById('zpu-canvas');
+const zpuCtx    = zpuCanvas.getContext('2d');
+const zpuTip    = document.getElementById('zpu-tip');
+
+const ZPU_CELL = 18;
+const ZPU_PAD  = 28;
+
+let popupSat   = null;
+let zpuViewX   = 0, zpuViewY   = 0, zpuZoom = 1;
+let zpuDrag    = false, zpuDragX0 = 0, zpuDragY0 = 0, zpuVX0 = 0, zpuVY0 = 0;
+let zpuDidDrag = false;
+
+function buildSatCanvas(sat) {
+  if (sat.offscreen) return sat.offscreen;
+  const { rooms, zones, w, h } = sat;
+  const pxW = w * ZPU_CELL + ZPU_PAD * 2;
+  const pxH = h * ZPU_CELL + ZPU_PAD * 2;
+  const oc = document.createElement('canvas');
+  oc.width = pxW; oc.height = pxH;
+  const g = oc.getContext('2d');
+
+  function pxr(rx, ry)  { return [ZPU_PAD + rx * ZPU_CELL, ZPU_PAD + ry * ZPU_CELL]; }
+  function pxrC(rx, ry) { const [x, y] = pxr(rx, ry); return [x + ZPU_CELL / 2, y + ZPU_CELL / 2]; }
+
+  // sat coords: small y = north (top of screen) — already Y-flipped in layoutComp
+  const lIdx   = {};  for (const r of rooms) lIdx[`${r.x},${r.y}`] = r;
+  const satById = {}; for (const r of rooms) satById[r.id] = r;
+
+  // Pass 0: background
+  g.fillStyle = '#0e0c14'; g.fillRect(0, 0, pxW, pxH);
+
+  // Pass 1: terrain fills
+  for (const r of rooms) {
+    const [x, y] = pxr(r.x, r.y);
+    g.fillStyle = TC[r.terrain] ?? TC[''];
+    g.fillRect(x, y, ZPU_CELL, ZPU_CELL);
+  }
+
+  // Pass 2: terrain textures
+  for (const r of rooms) {
+    const [bx, by] = pxr(r.x, r.y);
+    const cx = bx + ZPU_CELL / 2, cy2 = by + ZPU_CELL / 2;
+    const rng = srand(r.id * 2654435761);
+    g.lineWidth = 1;
+    switch (r.terrain) {
+      case 'Forest':
+        g.fillStyle = 'rgba(20,55,22,0.85)';
+        for (let i = 0; i < 3; i++) {
+          g.beginPath(); g.arc(bx+2+rng()*(ZPU_CELL-4), by+2+rng()*(ZPU_CELL-4), 1.2, 0, Math.PI*2); g.fill();
+        } break;
+      case 'Mountains':
+        g.fillStyle = tint(TC['Mountains'], 28); g.strokeStyle = shade(TC['Mountains'], 20);
+        g.beginPath(); g.moveTo(cx, by+2); g.lineTo(bx+2, by+ZPU_CELL-3); g.lineTo(bx+ZPU_CELL-2, by+ZPU_CELL-3); g.closePath();
+        g.fill(); g.stroke(); break;
+      case 'Hills':
+        g.strokeStyle = tint(TC['Hills'], 22);
+        g.beginPath(); g.arc(cx, by+ZPU_CELL, ZPU_CELL*0.55, Math.PI, 0); g.stroke(); break;
+      case 'Water':
+        g.strokeStyle = tint(TC['Water'], 25);
+        for (const yw of [by + Math.floor(ZPU_CELL/3), by + Math.floor(2*ZPU_CELL/3)]) {
+          g.beginPath(); g.moveTo(bx+2, yw); g.lineTo(cx, yw-1); g.lineTo(bx+ZPU_CELL-2, yw); g.stroke();
+        } break;
+      case 'Swamp':
+        g.strokeStyle = shade(TC['Swamp'], 15);
+        g.beginPath(); g.moveTo(bx+3, by+3); g.lineTo(bx+ZPU_CELL-3, by+ZPU_CELL-3); g.stroke();
+        g.beginPath(); g.moveTo(bx+ZPU_CELL-3, by+3); g.lineTo(bx+3, by+ZPU_CELL-3); g.stroke(); break;
+      case 'Desert':
+        g.fillStyle = tint(TC['Desert'], 20);
+        for (let i=0; i<3; i++) g.fillRect(bx+2+rng()*(ZPU_CELL-3), by+2+rng()*(ZPU_CELL-3), 1, 1); break;
+      case 'Tundra':
+        g.strokeStyle = tint(TC['Tundra'], 18);
+        g.beginPath(); g.moveTo(bx+2, cy2); g.lineTo(bx+ZPU_CELL-2, cy2); g.stroke();
+        g.beginPath(); g.moveTo(cx, by+2); g.lineTo(cx, by+ZPU_CELL-2); g.stroke(); break;
+      case 'Field':
+        g.strokeStyle = shade(TC['Field'], 18);
+        for (let ry2=by+3; ry2<by+ZPU_CELL-1; ry2+=4) {
+          g.beginPath(); g.moveTo(bx+2, ry2); g.lineTo(bx+ZPU_CELL-2, ry2); g.stroke();
+        } break;
+      case 'Inside':
+        g.strokeStyle = tint(TC['Inside'], 25);
+        g.strokeRect(bx+3, by+3, ZPU_CELL-6, ZPU_CELL-6); break;
+    }
+  }
+
+  // Pass 3: exit connection lines (cardinal only, within satellite)
+  {
+    const drawnEdges = new Set();
+    g.lineWidth = Math.max(0.5, ZPU_CELL * 0.07);
+    for (const r of rooms) {
+      for (const [dir, tid] of Object.entries(r.exits)) {
+        if (!DIRS[dir] || !satById[tid]) continue;
+        const key = Math.min(r.id, tid) + ',' + Math.max(r.id, tid);
+        if (drawnEdges.has(key)) continue;
+        drawnEdges.add(key);
+        const t = satById[tid];
+        const [cx1, cy1] = pxrC(r.x, r.y);
+        const [cx2, cy2] = pxrC(t.x, t.y);
+        g.strokeStyle = r.zone !== t.zone ? 'rgba(180,135,55,0.55)' : 'rgba(80,62,45,0.28)';
+        g.beginPath(); g.moveTo(cx1, cy1); g.lineTo(cx2, cy2); g.stroke();
+      }
+    }
+  }
+
+  // Pass 4: zone edge borders
+  // sat coords: nbN = y-1 (smaller index = north/top), nbS = y+1
+  {
+    const zEdges = {};
+    for (const r of rooms) {
+      if (!r.zone) continue;
+      if (!zEdges[r.zone]) zEdges[r.zone] = [];
+      const segs = zEdges[r.zone];
+      const [bx, by] = pxr(r.x, r.y);
+      const nbN = lIdx[`${r.x},${r.y-1}`];
+      if (!nbN || nbN.zone !== r.zone) segs.push(bx, by, bx+ZPU_CELL, by);
+      const nbS = lIdx[`${r.x},${r.y+1}`];
+      if (!nbS || nbS.zone !== r.zone) segs.push(bx, by+ZPU_CELL, bx+ZPU_CELL, by+ZPU_CELL);
+      const nbE = lIdx[`${r.x+1},${r.y}`];
+      if (!nbE || nbE.zone !== r.zone) segs.push(bx+ZPU_CELL, by, bx+ZPU_CELL, by+ZPU_CELL);
+      const nbW = lIdx[`${r.x-1},${r.y}`];
+      if (!nbW || nbW.zone !== r.zone) segs.push(bx, by, bx, by+ZPU_CELL);
+    }
+    g.lineWidth = Math.max(2, ZPU_CELL * 0.2);
+    for (const [zname, segs] of Object.entries(zEdges)) {
+      const z = zones[zname]; if (!z) continue;
+      g.strokeStyle = `hsla(${z.hue},60%,50%,0.72)`;
+      g.beginPath();
+      for (let i=0; i<segs.length; i+=4) { g.moveTo(segs[i], segs[i+1]); g.lineTo(segs[i+2], segs[i+3]); }
+      g.stroke();
+    }
+  }
+
+  // Pass 5: zone centroid labels
+  {
+    const zPos = {};
+    for (const r of rooms) {
+      if (!r.zone) continue;
+      const [px2, py2] = pxr(r.x, r.y);
+      if (!zPos[r.zone]) zPos[r.zone] = { sx:0, sy:0, n:0 };
+      zPos[r.zone].sx += px2 + ZPU_CELL/2; zPos[r.zone].sy += py2 + ZPU_CELL/2; zPos[r.zone].n++;
+    }
+    const lSz2 = Math.max(8, Math.min(13, ZPU_CELL * 0.75));
+    g.font = `bold ${lSz2}px "Share Tech Mono",monospace`;
+    g.textAlign = 'center'; g.textBaseline = 'middle';
+    for (const [zname, z] of Object.entries(zones)) {
+      if (z.count < 4) continue;
+      const p = zPos[zname]; if (!p) continue;
+      const lx = p.sx/p.n, ly = p.sy/p.n;
+      const label = zname.length > 22 ? zname.slice(0,20)+'…' : zname;
+      const tw = g.measureText(label).width;
+      g.fillStyle = 'rgba(0,0,0,0.78)';
+      g.fillRect(lx-tw/2-3, ly-lSz2/2-3, tw+6, lSz2+6);
+      g.fillStyle = `hsl(${z.hue},65%,70%)`;
+      g.fillText(label, lx, ly);
+    }
+  }
+
+  // Border
+  g.strokeStyle = '#6e5a3a'; g.lineWidth = 1.5; g.strokeRect(2, 2, pxW-4, pxH-4);
+
+  sat.offscreen = oc;
+  return oc;
+}
+
+function zpuScreenToGrid(ox, oy) {
+  const mx = (ox - zpuViewX) / zpuZoom;
+  const my = (oy - zpuViewY) / zpuZoom;
+  return [Math.floor((mx - ZPU_PAD) / ZPU_CELL), Math.floor((my - ZPU_PAD) / ZPU_CELL)];
+}
+
+function drawZpu() {
+  if (!popupSat) return;
+  const oc = buildSatCanvas(popupSat);
+  const W = zpuCanvas.width, H = zpuCanvas.height;
+  zpuCtx.fillStyle = '#0e0c14'; zpuCtx.fillRect(0, 0, W, H);
+  zpuCtx.save();
+  zpuCtx.translate(zpuViewX, zpuViewY);
+  zpuCtx.scale(zpuZoom, zpuZoom);
+  zpuCtx.drawImage(oc, 0, 0);
+  zpuCtx.restore();
+  // LOD room name labels
+  const eff = zpuZoom * ZPU_CELL;
+  if (eff > 10) {
+    const inside = eff > 28;
+    const fSz = inside ? Math.min(13, eff * 0.18) : Math.min(8, eff * 0.38);
+    zpuCtx.textAlign = 'center';
+    for (const r of popupSat.rooms) {
+      const label = r.name.replace(/\s*\([^)]+\)\s*$/, '').slice(0, inside ? 24 : 16);
+      if (!label) continue;
+      const mx = ZPU_PAD + r.x * ZPU_CELL + ZPU_CELL / 2;
+      if (inside) {
+        const my = ZPU_PAD + r.y * ZPU_CELL + ZPU_CELL / 2;
+        const sx = zpuViewX + mx * zpuZoom, sy = zpuViewY + my * zpuZoom;
+        zpuCtx.font = `bold ${fSz}px "Share Tech Mono",monospace`;
+        zpuCtx.textBaseline = 'middle';
+        const tw = zpuCtx.measureText(label).width;
+        zpuCtx.fillStyle = 'rgba(0,0,0,0.72)';
+        zpuCtx.fillRect(sx-tw/2-2, sy-fSz/2-2, tw+4, fSz+4);
+        zpuCtx.fillStyle = 'rgba(235,222,192,0.95)';
+        zpuCtx.fillText(label, sx, sy);
+      } else {
+        const my = ZPU_PAD + r.y * ZPU_CELL + ZPU_CELL;
+        const sx = zpuViewX + mx * zpuZoom, sy = zpuViewY + my * zpuZoom + 1;
+        zpuCtx.font = `${fSz}px "Share Tech Mono",monospace`;
+        zpuCtx.textBaseline = 'top';
+        const tw = zpuCtx.measureText(label).width;
+        zpuCtx.fillStyle = 'rgba(0,0,0,0.65)';
+        zpuCtx.fillRect(sx-tw/2-2, sy-1, tw+4, fSz+2);
+        zpuCtx.fillStyle = 'rgba(218,208,182,0.92)';
+        zpuCtx.fillText(label, sx, sy);
+      }
+    }
+  }
+}
+
+function zpuFit() {
+  if (!popupSat) return;
+  const oc = buildSatCanvas(popupSat);
+  const W = zpuCanvas.width, H = zpuCanvas.height;
+  zpuZoom = Math.min(W / oc.width, H / oc.height) * 0.88;
+  zpuViewX = (W - oc.width  * zpuZoom) / 2;
+  zpuViewY = (H - oc.height * zpuZoom) / 2;
+}
+
+function openZonePopup(sat, anchorX, anchorY) {
+  popupSat = sat;
+  buildSatCanvas(sat);  // pre-render
+
+  const W = window.innerWidth, H = window.innerHeight;
+  const PW = Math.min(600, Math.round(W * 0.52));
+  const PH = Math.min(500, Math.round(H * 0.62));
+  let left = anchorX + 16, top = Math.round(anchorY - PH / 2);
+  if (left + PW > W - 8)  left = anchorX - PW - 16;
+  if (left < 4)           left = Math.round((W - PW) / 2);
+  top = Math.max(44, Math.min(H - PH - 8, top));
+
+  popup.style.left   = left + 'px';
+  popup.style.top    = top  + 'px';
+  popup.style.width  = PW   + 'px';
+  popup.style.height = PH   + 'px';
+  popup.classList.add('open');
+
+  document.getElementById('zpu-title').textContent = sat.name.toUpperCase();
+  const nz = Object.keys(sat.zones).length;
+  document.getElementById('zpu-sub').textContent =
+    `${sat.rooms.length} rooms · ${nz} zone section${nz !== 1 ? 's' : ''}`;
+
+  const cH = PH - 36;  // subtract header height
+  zpuCanvas.width  = PW; zpuCanvas.height = cH;
+  zpuCanvas.style.width = PW + 'px'; zpuCanvas.style.height = cH + 'px';
+
+  zpuFit();
+  drawZpu();
+}
+
+function closeZonePopup() {
+  popup.classList.remove('open');
+  popupSat = null;
+}
+
+document.getElementById('zpu-close').addEventListener('click', closeZonePopup);
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && popup.classList.contains('open')) closeZonePopup();
+});
+
+// Popup pan / zoom / hover
+zpuCanvas.addEventListener('mousedown', e => {
+  e.stopPropagation();
+  zpuDrag = true; zpuDidDrag = false;
+  zpuDragX0 = e.clientX; zpuDragY0 = e.clientY; zpuVX0 = zpuViewX; zpuVY0 = zpuViewY;
+  zpuCanvas.style.cursor = 'grabbing';
+});
+zpuCanvas.addEventListener('mousemove', e => {
+  if (zpuDrag) {
+    const dx = e.clientX - zpuDragX0, dy = e.clientY - zpuDragY0;
+    if (Math.abs(dx) > 3 || Math.abs(dy) > 3) zpuDidDrag = true;
+    zpuViewX = zpuVX0 + dx; zpuViewY = zpuVY0 + dy; drawZpu(); return;
+  }
+  if (!popupSat) return;
+  const rect = zpuCanvas.getBoundingClientRect();
+  const [rx, ry] = zpuScreenToGrid(e.clientX - rect.left, e.clientY - rect.top);
+  const r = popupSat.rooms.find(room => room.x === rx && room.y === ry);
+  if (r) {
+    zpuTip.innerHTML =
+      `<div style="color:var(--gold);font-family:'IM Fell English',serif;font-size:11px">${r.zone || '—'}</div>` +
+      `<div>${r.name}</div>` +
+      `<div style="color:#7a6a4a;font-size:8px">${r.terrain}  ·  #${r.id}</div>`;
+    zpuTip.style.display = 'block';
+    const lx = e.clientX - rect.left, ly = e.clientY - rect.top;
+    zpuTip.style.left = (lx + 12) + 'px'; zpuTip.style.top = (ly - 8) + 'px';
+  } else { zpuTip.style.display = 'none'; }
+});
+zpuCanvas.addEventListener('mouseup', () => { zpuDrag = false; zpuCanvas.style.cursor = 'crosshair'; });
+zpuCanvas.addEventListener('mouseleave', () => { zpuDrag = false; zpuTip.style.display = 'none'; zpuCanvas.style.cursor = 'crosshair'; });
+zpuCanvas.addEventListener('wheel', e => {
+  e.stopPropagation(); e.preventDefault();
+  const rect = zpuCanvas.getBoundingClientRect();
+  const f = e.deltaY < 0 ? 1.15 : 0.87;
+  const wmx = (e.clientX - rect.left - zpuViewX) / zpuZoom;
+  const wmy = (e.clientY - rect.top  - zpuViewY) / zpuZoom;
+  zpuZoom = Math.max(0.1, Math.min(30, zpuZoom * f));
+  zpuViewX = e.clientX - rect.left - wmx * zpuZoom;
+  zpuViewY = e.clientY - rect.top  - wmy * zpuZoom;
+  drawZpu();
+}, { passive: false });
+zpuCanvas.addEventListener('dblclick', () => { zpuFit(); drawZpu(); });
+
+// ── DYNAMIC PER-FRAME RENDERER ────────────────────────────────────────────────
+// Four LOD levels keyed on eff = zoom * CELL (effective cell px on screen):
+//
+//  L0  eff <  8  — silhouette: zone-color fills only, nothing else
+//  L1  eff  8-18 — overview: terrain fills + faint zone borders
+//  L2  eff 18-40 — structure: + exit lines + zone labels (collision-checked)
+//  L3  eff > 40  — detail: + terrain textures + room labels + pips
+//
+function drawDirect(W, H) {
+  const { rooms, zones, crossZoneRooms, exitLines, xrange, yrange } = mapData;
+  const [xmin] = xrange, [, ymax] = yrange;
+  const eff = zoom * CELL;
+
+  function wx(rx) { return viewX + (PAD_PX + (rx - xmin) * CELL) * zoom; }
+  function wy(ry) { return viewY + (PAD_PX + (ymax - ry) * CELL) * zoom; }
+
+  const gx0 = Math.floor(xmin + (-viewX / zoom - PAD_PX) / CELL) - 1;
+  const gx1 = Math.ceil( xmin + ((W - viewX) / zoom - PAD_PX) / CELL) + 1;
+  const gy0 = Math.floor(ymax - ((H - viewY) / zoom - PAD_PX) / CELL) - 1;
+  const gy1 = Math.ceil( ymax - (-viewY / zoom - PAD_PX) / CELL) + 1;
+  const visRooms = rooms.filter(r => r.x >= gx0 && r.x <= gx1 && r.y >= gy0 && r.y <= gy1);
+
+  // ── L0 / L1: BASE FILLS ─────────────────────────────────────────────────────
+  // Below eff=8: zone-hue fill → clean colored blobs, read the world shape.
+  // eff≥8: terrain fill → detailed color-coded rooms.
+  for (const r of visRooms) {
+    const sx = wx(r.x), sy = wy(r.y);
+    if (eff < 8) {
+      ctx.fillStyle = r.zone && zones[r.zone]
+        ? `hsl(${zones[r.zone].hue},30%,24%)`
+        : '#252030';
+    } else {
+      ctx.fillStyle = TC[r.terrain] ?? TC[''];
+    }
+    ctx.fillRect(sx, sy, eff, eff);
+  }
+
+  // ── L1+: ZONE BORDERS ───────────────────────────────────────────────────────
+  // Single neutral tone — no per-zone colors. Alpha and width are capped so
+  // borders never become thick colored rectangles at high zoom.
+  if (eff >= 8) {
+    const segs = [];
+    for (const r of visRooms) {
+      if (!r.zone) continue;
+      const sx = wx(r.x), sy = wy(r.y);
+      if (coordIdx[`${r.x},${r.y+1}`]?.zone !== r.zone) segs.push(sx, sy,     sx+eff, sy);
+      if (coordIdx[`${r.x},${r.y-1}`]?.zone !== r.zone) segs.push(sx, sy+eff, sx+eff, sy+eff);
+      if (coordIdx[`${r.x+1},${r.y}`]?.zone !== r.zone) segs.push(sx+eff, sy, sx+eff, sy+eff);
+      if (coordIdx[`${r.x-1},${r.y}`]?.zone !== r.zone) segs.push(sx, sy,     sx,     sy+eff);
+    }
+    const a = Math.min(0.50, 0.12 + (eff - 8) * 0.010).toFixed(2);
+    ctx.lineWidth = Math.min(1.2, Math.max(0.6, eff * 0.025));
+    ctx.strokeStyle = `rgba(210,180,110,${a})`;
+    ctx.beginPath();
+    for (let i = 0; i < segs.length; i += 4) { ctx.moveTo(segs[i], segs[i+1]); ctx.lineTo(segs[i+2], segs[i+3]); }
+    ctx.stroke();
+  }
+
+  // ── L2+: EXIT LINES ─────────────────────────────────────────────────────────
+  // Cross-zone lines are hidden at low zoom (they create long diagonal noise).
+  if (eff >= 14) {
+    ctx.lineWidth = Math.max(0.4, Math.min(1.0, eff * 0.022));
+    for (const el of exitLines) {
+      if (el.cross && eff < 22) continue;  // long-distance links only at closer zoom
+      if (el.x1 < gx0-1 && el.x2 < gx0-1) continue;
+      if (el.x1 > gx1+1 && el.x2 > gx1+1) continue;
+      if (el.y1 < gy0-1 && el.y2 < gy0-1) continue;
+      if (el.y1 > gy1+1 && el.y2 > gy1+1) continue;
+      ctx.strokeStyle = el.cross ? 'rgba(140,108,40,0.38)' : 'rgba(55,44,28,0.30)';
+      ctx.beginPath();
+      ctx.moveTo(wx(el.x1) + eff/2, wy(el.y1) + eff/2);
+      ctx.lineTo(wx(el.x2) + eff/2, wy(el.y2) + eff/2);
+      ctx.stroke();
+    }
+  }
+
+  // ── L3+: TERRAIN TEXTURES ───────────────────────────────────────────────────
+  if (eff >= 22) {
+    for (const r of visRooms) renderTerrainTexture(ctx, r, wx(r.x), wy(r.y), eff);
+  }
+
+  // ── L3+: PIPS (fixed pixel size — never scales with zoom) ───────────────────
+  if (eff >= 14) {
+    const ms = 3; // always 3px regardless of zoom
+    for (const r of visRooms) {
+      const sx = wx(r.x), sy = wy(r.y);
+      if (r.portals) {
+        ctx.fillStyle = 'rgba(40,200,175,0.92)';
+        ctx.fillRect(sx + 1, sy + eff - ms - 1, ms, ms);
+      }
+      if (crossZoneRooms.has(r.id)) {
+        ctx.fillStyle = 'rgba(195,152,50,0.78)';
+        ctx.fillRect(sx + eff - ms - 1, sy + 1, ms, ms);
+      }
+    }
+  }
+
+  // ── SCREEN-SPACE OVERLAYS (zone labels, room labels, search) ────────────────
+  drawZoneLabels(W, H);
+  drawSearchHighlight();
+  drawLodLabels(W, H);
+}
+
+// ── MAIN DRAW ─────────────────────────────────────────────────────────────────
+function draw() {
+  const dpr = window.devicePixelRatio || 1;
+  const W = canvas.width / dpr, H = canvas.height / dpr;
+  ctx.save(); ctx.scale(dpr, dpr);
+  ctx.fillStyle = '#16141c'; ctx.fillRect(0, 0, W, H);
+  if (mapData) drawDirect(W, H);
+  // Vignette
+  const vg = ctx.createRadialGradient(W/2,H/2,Math.min(W,H)*0.3,W/2,H/2,Math.max(W,H)*0.75);
+  vg.addColorStop(0, 'rgba(0,0,0,0)'); vg.addColorStop(1, 'rgba(0,0,0,0.42)');
+  ctx.fillStyle = vg; ctx.fillRect(0, 0, W, H);
+  ctx.restore();
+  zoomEl.textContent = `${zoom.toFixed(2)}×`;
+  drawMinimap(W, H);
+}
+
+// ── FLY-TO ANIMATION ─────────────────────────────────────────────────────────
+function flyTo(tx, ty, tz, dur = 440) {
+  const sx = viewX, sy = viewY, sz = zoom, t0 = performance.now();
+  function step(t) {
+    const p = Math.min(1, (t - t0) / dur);
+    const e = p < 0.5 ? 2 * p * p : -1 + (4 - 2 * p) * p;
+    viewX = sx + (tx - sx) * e; viewY = sy + (ty - sy) * e; zoom = sz + (tz - sz) * e;
+    draw();
+    if (p < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+
+function fitZone(zname) {
+  if (!mapData?.zones[zname]) return;
+  const z = mapData.zones[zname];
+  const [xmin] = mapData.xrange, [, ymax] = mapData.yrange;
+  const W = canvas.clientWidth, H = canvas.clientHeight;
+  const bx = PAD_PX + (z.minX - xmin) * CELL - 8;
+  const by = PAD_PX + (ymax - z.maxY) * CELL - 8;
+  const bw = (z.maxX - z.minX + 1) * CELL + 16;
+  const bh = (z.maxY - z.minY + 1) * CELL + 16;
+  const nz = Math.max(0.3, Math.min(10, Math.min((W - 60) / bw, (H - 60) / bh) * 0.85));
+  flyTo(W / 2 - (bx + bw / 2) * nz, H / 2 - (by + bh / 2) * nz, nz);
+}
+
+// ── VIEW INIT / RESIZE ────────────────────────────────────────────────────────
+function initView() {
+  const W = canvas.clientWidth, H = canvas.clientHeight;
+  zoom = Math.min(W / offW, H / offH) * 0.92;
+  viewX = (W - offW * zoom) / 2; viewY = (H - offH * zoom) / 2;
+}
+
+function resize() {
+  const dpr = window.devicePixelRatio || 1;
+  canvas.width = window.innerWidth * dpr; canvas.height = window.innerHeight * dpr;
+  canvas.style.width = window.innerWidth + 'px'; canvas.style.height = window.innerHeight + 'px';
+  draw();
+}
+window.addEventListener('resize', () => { resize(); draw(); });
+
+// ── COORDINATE INDEX ──────────────────────────────────────────────────────────
+function buildIndex() {
+  for (const k of Object.keys(coordIdx)) delete coordIdx[k];
+  for (const k of Object.keys(idIdx)) delete idIdx[k];
+  // Conflict resolution in parseMap guarantees every room has a unique coord,
+  // so coordIdx is a clean 1-to-1 mapping with no collisions.
+  for (const r of mapData.rooms) {
+    r.primary = true;
+    idIdx[r.id] = r;
+    coordIdx[`${r.x},${r.y}`] = r;
+  }
+}
+
+function screenToGrid(sx, sy) {
+  const mx = (sx - viewX) / zoom, my = (sy - viewY) / zoom;
+  const rx = Math.round((mx - PAD_PX) / CELL + mapData.xrange[0]);
+  const ry = Math.round(-(my - PAD_PX) / CELL + mapData.yrange[1]);
+  return [rx, ry];
+}
+
+// ── MOUSE EVENTS ──────────────────────────────────────────────────────────────
+canvas.addEventListener('mousemove', e => {
+  if (drag) {
+    if (Math.abs(e.clientX - dragX0) > 3 || Math.abs(e.clientY - dragY0) > 3) didDrag = true;
+    viewX = vX0 + (e.clientX - dragX0); viewY = vY0 + (e.clientY - dragY0); draw(); return;
+  }
+  if (!mapData) return;
+  const [rx, ry] = screenToGrid(e.clientX, e.clientY);
+  const r = coordIdx[`${rx},${ry}`];
+  if (r) {
+    const dispZone = (r.origZone && r.origZone !== r.zone) ? `${r.zone}  ·  ${r.origZone}` : (r.zone || '—');
+    document.getElementById('tip-zone').textContent = dispZone;
+    document.getElementById('tip-name').textContent = r.name.replace(/\s*\([^)]+\)\s*$/, '') || r.name;
+    document.getElementById('tip-extra').textContent = `${r.terrain || 'unknown'}  ·  #${r.id}  (${r.x},${r.y})`;
+    let czLines = Object.entries(r.exits)
+      .filter(([, tid]) => idIdx[tid] && idIdx[tid].zone !== r.zone)
+      .map(([d, tid]) => `${d} → ${idIdx[tid]?.zone || '?'}`);
+    if (r.portals?.length) {
+      czLines = czLines.concat(r.portals.map(s => `⬡ enter: ${s.name}`));
+      canvas.style.cursor = 'pointer';
+    } else {
+      canvas.style.cursor = 'crosshair';
+    }
+    document.getElementById('tip-exits').textContent = czLines.length
+      ? czLines.slice(0, 6).join('  ·  ') : '';
+    tip.style.display = 'block';
+    tip.style.left = (e.clientX + 16) + 'px'; tip.style.top = (e.clientY - 8) + 'px';
+  } else { tip.style.display = 'none'; canvas.style.cursor = 'crosshair'; }
+});
+
+canvas.addEventListener('mousedown', e => {
+  drag = true; didDrag = false; dragX0 = e.clientX; dragY0 = e.clientY; vX0 = viewX; vY0 = viewY;
+  canvas.style.cursor = 'grabbing';
+});
+canvas.addEventListener('mouseup', () => { drag = false; canvas.style.cursor = 'crosshair'; });
+canvas.addEventListener('mouseleave', () => { drag = false; tip.style.display = 'none'; canvas.style.cursor = 'crosshair'; });
+canvas.addEventListener('click', e => {
+  if (didDrag || !mapData) return;
+  const [rx, ry] = screenToGrid(e.clientX, e.clientY);
+  const r = coordIdx[`${rx},${ry}`];
+  if (r?.portals?.length) openZonePopup(r.portals[0], e.clientX, e.clientY);
+});
+canvas.addEventListener('wheel', e => {
+  e.preventDefault();
+  const f = e.deltaY < 0 ? 1.12 : 0.89;
+  const wmx = (e.clientX - viewX) / zoom, wmy = (e.clientY - viewY) / zoom;
+  zoom = Math.max(0.05, Math.min(80, zoom * f));
+  viewX = e.clientX - wmx * zoom; viewY = e.clientY - wmy * zoom; draw();
+}, { passive: false });
+
+// Minimap click to pan
+document.getElementById('minimap-wrap').addEventListener('click', e => {
+  if (!offscreen) return;
+  const rect = mmCanvas.getBoundingClientRect();
+  if (e.target !== mmCanvas) return;
+  const mx = (e.clientX - rect.left) / mmCanvas.width * offW;
+  const my = (e.clientY - rect.top) / mmCanvas.height * offH;
+  const W = canvas.clientWidth, H = canvas.clientHeight;
+  flyTo(W / 2 - mx * zoom, H / 2 - my * zoom, zoom);
+});
+
+// Zoom buttons
+document.getElementById('zoom-in-btn').addEventListener('click', () => {
+  const W = canvas.clientWidth, H = canvas.clientHeight;
+  const wmx = (W / 2 - viewX) / zoom, wmy = (H / 2 - viewY) / zoom;
+  zoom = Math.min(80, zoom * 1.3); viewX = W / 2 - wmx * zoom; viewY = H / 2 - wmy * zoom; draw();
+});
+document.getElementById('zoom-out-btn').addEventListener('click', () => {
+  const W = canvas.clientWidth, H = canvas.clientHeight;
+  const wmx = (W / 2 - viewX) / zoom, wmy = (H / 2 - viewY) / zoom;
+  zoom = Math.max(0.05, zoom / 1.3); viewX = W / 2 - wmx * zoom; viewY = H / 2 - wmy * zoom; draw();
+});
+document.getElementById('fit-btn').addEventListener('click', () => { initView(); draw(); });
+
+// ── KEYBOARD ──────────────────────────────────────────────────────────────────
+document.addEventListener('keydown', e => {
+  if (['INPUT', 'TEXTAREA'].includes(e.target.tagName)) return;
+  const W = canvas.clientWidth, H = canvas.clientHeight;
+  const zoomCenter = f => {
+    const wmx = (W/2 - viewX) / zoom, wmy = (H/2 - viewY) / zoom;
+    zoom = Math.max(0.05, Math.min(80, zoom * f));
+    viewX = W/2 - wmx * zoom; viewY = H/2 - wmy * zoom; draw();
+  };
+  switch (e.key) {
+    case '=': case '+': zoomCenter(1.25); break;
+    case '-':            zoomCenter(0.80); break;
+    case '0': case 'f': case 'F': initView(); draw(); break;
+    case 'z': case 'Z': toggleZonePanel(); break;
+    case '/': e.preventDefault(); document.getElementById('search-input').focus(); break;
+    case 'ArrowLeft':  viewX += 60; draw(); break;
+    case 'ArrowRight': viewX -= 60; draw(); break;
+    case 'ArrowUp':    viewY += 60; draw(); break;
+    case 'ArrowDown':  viewY -= 60; draw(); break;
+    case 'Escape': clearSearch(); break;
+  }
+});
+
+// ── ZONE PANEL ────────────────────────────────────────────────────────────────
+function toggleZonePanel() {
+  const p = document.getElementById('zone-panel');
+  const b = document.getElementById('zones-btn');
+  p.classList.toggle('open');
+  b.classList.toggle('active');
+  b.textContent = p.classList.contains('open') ? 'ZONES ◂' : 'ZONES ▸';
+}
+document.getElementById('zones-btn').addEventListener('click', toggleZonePanel);
+
+document.querySelectorAll('.zsort').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.zsort').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    zoneSortMode = btn.dataset.sort;
+    renderZoneList(document.getElementById('zone-filter').value);
+  });
+});
+
+let zoneArr = [];
+
+function renderZoneList(filter = '') {
+  const list = document.getElementById('zone-list');
+  const fl = filter.toLowerCase();
+  let arr = fl ? zoneArr.filter(([z]) => z.toLowerCase().includes(fl)) : zoneArr.slice();
+  if (zoneSortMode === 'alpha') arr.sort((a, b) => a[0].localeCompare(b[0]));
+  list.innerHTML = '';
+  for (const [zname, z] of arr) {
+    const item = document.createElement('div');
+    item.className = 'zi' + (zname === activeZone ? ' active' : '');
+    item.innerHTML =
+      `<span class="zi-dot" style="background:hsl(${z.hue},52%,42%)"></span>` +
+      `<span class="zi-name" title="${zname}">${zname}</span>` +
+      `<span class="zi-cnt">${z.count}</span>`;
+    item.addEventListener('click', () => {
+      activeZone = zname;
+      document.querySelectorAll('.zi').forEach(el => el.classList.remove('active'));
+      item.classList.add('active');
+      fitZone(zname);
+    });
+    list.appendChild(item);
+  }
+}
+
+function buildZonePanel() {
+  zoneArr = Object.entries(mapData.zones).sort((a, b) => b[1].count - a[1].count);
+  document.getElementById('zone-count').textContent = `(${zoneArr.length})`;
+  renderZoneList();
+  document.getElementById('zone-filter').addEventListener('input', e => renderZoneList(e.target.value));
+}
+
+// ── SEARCH ────────────────────────────────────────────────────────────────────
+function runSearch(q) {
+  const cnt = document.getElementById('search-count');
+  if (!mapData || !q.trim()) { clearSearch(); return; }
+  const fl = q.trim().toLowerCase();
+  if (fl.startsWith('#')) {
+    const id = parseInt(fl.slice(1));
+    searchMatches = isNaN(id) ? [] : mapData.rooms.filter(r => r.id === id);
+  } else {
+    searchMatches = mapData.rooms.filter(r =>
+      r.name.toLowerCase().includes(fl) || (r.zone || '').toLowerCase().includes(fl));
+  }
+  cnt.textContent = searchMatches.length ? `${searchMatches.length} found` : 'no match';
+  draw();
+  if (searchMatches.length) {
+    const r = searchMatches[0];
+    const [xmin] = mapData.xrange, [, ymax] = mapData.yrange;
+    const W = canvas.clientWidth, H = canvas.clientHeight;
+    const mx = PAD_PX + (r.x - xmin) * CELL + CELL / 2;
+    const my = PAD_PX + (ymax - r.y) * CELL + CELL / 2;
+    flyTo(W / 2 - mx * zoom, H / 2 - my * zoom, Math.max(zoom, 2));
+  }
+}
+
+function clearSearch() {
+  searchMatches = [];
+  document.getElementById('search-count').textContent = '';
+  draw();
+}
+
+const si = document.getElementById('search-input');
+let sTimer;
+si.addEventListener('input', e => { clearTimeout(sTimer); sTimer = setTimeout(() => runSearch(e.target.value), 260); });
+si.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { clearSearch(); si.blur(); si.value = ''; }
+  if (e.key === 'Enter') runSearch(si.value);
+});
+
+// ── LEGEND ────────────────────────────────────────────────────────────────────
+function toggleLegend() {
+  legendOpen = !legendOpen;
+  document.getElementById('leg-rows').style.display = legendOpen ? '' : 'none';
+  document.getElementById('leg-toggle').textContent = legendOpen ? '▾' : '▸';
+}
+
+function buildLegend() {
+  const el = document.getElementById('leg-rows'); el.innerHTML = '';
+  const present = new Set(mapData.rooms.map(r => r.terrain));
+  for (const t of TORDER) {
+    if (!present.has(t)) continue;
+    const d = document.createElement('div'); d.className = 'lr';
+    d.innerHTML = `<div class="ls" style="background:${TC[t]}"></div><div class="ll">${TL[t] || 'Unknown'}</div>`;
+    el.appendChild(d);
+  }
+  [{cls:'', sty:'background:rgba(210,168,65,0.85)', lbl:'Zone Portal'},
+   {cls:'', sty:'background:rgba(45,195,175,0.85)', lbl:'Dungeon Entrance'},
+   {cls:' dash', sty:'', lbl:'Zone Boundary'}].forEach(({cls, sty, lbl}) => {
+    const d = document.createElement('div'); d.className = 'lr';
+    d.innerHTML = `<div class="ls${cls}" style="${sty}"></div><div class="ll">${lbl}</div>`;
+    el.appendChild(d);
+  });
+}
+
+// ── PROCESS MAP ───────────────────────────────────────────────────────────────
+function processText(text) {
+  let data;
+  try { data = parseMap(text); }
+  catch (e) { showErr('Parse error: ' + e.message); return; }
+  if (!data.rooms.length) { showErr('No rooms found.'); return; }
+  mapData = data;
+  const { rooms, xrange, yrange } = data;
+  const spanX = xrange[1] - xrange[0] + 1, spanY = yrange[1] - yrange[0] + 1;
+  CELL = Math.max(6, Math.min(14, Math.round(1200 / spanX)));
+  buildIndex(); buildZoneCentroids(); buildOffscreen(); initView(); buildLegend(); buildZonePanel();
+  const zc = Object.keys(data.zones).length, czc = data.crossZoneRooms.size;
+  statsEl.textContent = `${rooms.length.toLocaleString()} rooms · ${spanX}×${spanY} · ${zc} zones · ${czc} portals`;
+  splash.style.opacity = '0'; setTimeout(() => splash.style.display = 'none', 400);
+  draw();
+}
+
+function showErr(m) { const e = document.getElementById('sp-err'); e.style.display = 'block'; e.textContent = m; }
+
+// ── FILE PICKER (fallback) ────────────────────────────────────────────────────
+function openPicker() {
+  const inp = document.createElement('input'); inp.type = 'file'; inp.accept = '.map,*';
+  inp.onchange = ev => {
+    const f = ev.target.files[0]; if (!f) return;
+    const r = new FileReader(); r.onload = e2 => processText(e2.target.result); r.readAsText(f);
+  };
+  inp.click();
+}
+document.getElementById('sp-btn').addEventListener('click', openPicker);
+document.getElementById('load-btn').addEventListener('click', openPicker);
+
+// ── SERVER LOAD + SSE WATCHER ─────────────────────────────────────────────────
+function setLive(on) { document.getElementById('live-dot').classList.toggle('on', on); }
+
+let watcher = null;
+
+function startWatcher() {
+  if (watcher) watcher.close();
+  watcher = new EventSource('/api/watch');
+  watcher.onmessage = e => { if (e.data === 'changed') loadFromServer(); };
+  watcher.onerror = () => { setLive(false); watcher.close(); watcher = null; };
+}
+
+async function loadFromServer() {
+  const ctrl = new AbortController();
+  const t = setTimeout(() => ctrl.abort(), 5000);
+  try {
+    const resp = await fetch('/api/map', { cache: 'no-store', signal: ctrl.signal });
+    clearTimeout(t);
+    if (!resp.ok) throw new Error(resp.status);
+    const text = await resp.text();
+    processText(text);
+    setLive(true);
+    if (!watcher || watcher.readyState === EventSource.CLOSED) startWatcher();
+    return true;
+  } catch {
+    clearTimeout(t);
+    setLive(false);
+    return false;
+  }
+}
+
+// ── STARTUP ───────────────────────────────────────────────────────────────────
+(async () => {
+  resize();
+  const ctrl = new AbortController();
+  const t = setTimeout(() => ctrl.abort(), 2000);
+  let ok = false;
+  try {
+    const resp = await fetch('/api/map', { cache: 'no-store', signal: ctrl.signal });
+    clearTimeout(t);
+    if (resp.ok) {
+      const text = await resp.text();
+      try {
+        processText(text);
+        setLive(true);
+        startWatcher();
+        ok = true;
+      } catch (renderErr) {
+        console.error('Map render error:', renderErr);
+        showErr(renderErr.message || String(renderErr));
+      }
+    }
+  } catch (fetchErr) {
+    clearTimeout(t);
+    if (fetchErr?.name !== 'AbortError') console.error('Fetch error:', fetchErr);
+  }
+
+  if (!ok) {
+    document.getElementById('sp-status').textContent = 'Server not found — select map file manually';
+    document.getElementById('sp-btn').style.display = '';
+  }
+})();
+</script>
+</body>
+</html>

@@ -11,24 +11,23 @@
 #nop ------------------ ALIASES ------------------
 #alias {_kill_engage} {
     #variable {_ak_fn} {_kill_engage};
-    hyp mob;
-    tel rancor o stalk mob;
-    #delay {.5} {
-        resc rancor;
-        #if {$lvl > 49} {sli 'rot'};
-        #elseif {$lvl > 39} {shred};
-        tel rancor o rage;
-        tel prodigy o chain;
-        tel haenym o hellquake;
-        #if {$lvl > 39} {shred};
-    }
+    #if {$lvl > 49} {sli 'rot'};
+    #elseif {$lvl > 39} {shred};
+    tel rancor o rage;
+    tel prodigy o chain;
+    tel haenym o hellquake;
+    #if {$lvl > 39} {shred};
+    resc rancor;
 }
 
 #macro {[} {_kill_engage}
 
-#macro {=} {
+#alias {_rr_engage} {
+    #variable {_ak_fn} {_rr_engage};
     rr;
 }
+
+#macro {=} {_rr_engage}
 
 #macro {]} {
     tel rancor o stalk mob;
@@ -108,9 +107,10 @@
 }
 
 #ALIAS {come} {
+    rally set;
     #if {!$is_follower} {
         #foreach {$followers[%*]} {follower} {
-            #if {"$follower" != "$me"} {tel $follower o trk ${leader}};
+            #if {"$follower" != "$me"} {tel $follower o rd};
         };
     };
 }

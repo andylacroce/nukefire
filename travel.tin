@@ -8,13 +8,14 @@
 #ALIAS {gs} {gps set %1}
 #ALIAS {gf %1}  {gps find %1}
 #ALIAS {rd} {
-    gam;
+    #if {!$is_follower} {gam};
+    look;
     #delay {1} {
         dep;
         bal;
         #delay {1} {
             #VARIABLE {last_balance} {$bank_balance};
-            run $dest;  
+            run $dest;
         }
     };
 }
