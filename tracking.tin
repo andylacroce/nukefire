@@ -13,9 +13,18 @@
 
 #nop ------------------ RECON TRACKING ACTIONS ------------------
 #nop Guard: only fire when tracking is on and trackee is not self
+
+#track was successful
 #ACTION {%* trail leads %1.} {#if {$tracking_on && "$trackee" != "$me"} {%1;track $trackee}}
+#ACTION {The trail of %* leads %1 from here.} {#if {$tracking_on && "$trackee" != "$me"} {%1;track $trackee}}
+
+#track was unsuccessful
 #action {%* trail seems to lead %*} {#if {$tracking_on && "$trackee" != "$me"} {track $trackee}}
+#action {The trail seems to bend %*} {#if {$tracking_on && "$trackee" != "$me"} {track $trackee}}
+
+#track is complete
 #ACTION {You are already with} {#if {$tracking_on && "$trackee" != "$me"} {untrk}}
+#ACTION {You are already standing in the same place as} {#if {$tracking_on && "$trackee" != "$me"} {untrk}}
 
 #nop ------------------ TRACKING CONTROL ------------------
 #variable {tracking_on} {1}

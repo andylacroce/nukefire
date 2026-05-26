@@ -68,6 +68,7 @@
 #ALIAS {gcr %1 %2} {
     with %1;
     give %1 credits %2;
+    bal;
 }
 
 #ACTION {credits is lying here.} {get all.credits}

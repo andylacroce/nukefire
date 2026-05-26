@@ -18,7 +18,7 @@ F 1139075
 
 G 0
 
-I 3088
+I 3180
 
 L {ASCII NESW LINE} {NO EXITS} {x}
 L {ASCII NESW LINE} {N} {o}
@@ -2919,7 +2919,7 @@ E {3048}{s}{s}{4}{0}{}{1.000}{}{0.00}
 E {3188}{u}{u}{16}{0}{}{1.000}{}{0.00}
 E {3026}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {3015}{0}{}{The Ruins of Tool Street (Tek Angeles/Inside/28)}{\e[0m\e[38;5;94m■\e[0m}{}{Tek Angeles}{}{Inside}{}{1.000}{}
+R {3015}{0}{}{The Ruins of Tool Street (Tek Angeles/Inside/29)}{\e[0m\e[38;5;94m■\e[0m}{}{Tek Angeles}{}{Inside}{}{1.000}{}
 E {3018}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {3016}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {3017}{s}{s}{4}{0}{}{1.000}{}{0.00}
@@ -3078,7 +3078,7 @@ E {3052}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
 R {3055}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
-R {3056}{0}{}{The Repair Shop (Tek Angeles/Smooth/28)}{\e[0m\e[38;5;248m■\e[0m}{}{Tek Angeles}{}{Smooth}{}{1.000}{}
+R {3056}{0}{}{The Repair Shop (Tek Angeles/Smooth/29)}{\e[0m\e[38;5;248m■\e[0m}{}{Tek Angeles}{}{Smooth}{}{1.000}{}
 E {3054}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {3289}{s}{s}{4}{0}{}{1.000}{}{0.00}
 
@@ -3434,7 +3434,7 @@ R {3254}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
 R {3287}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
-R {3289}{0}{}{The special materials shop (Tek Angeles/Inside/28)}{\e[0m\e[38;5;94m■\e[0m}{}{Tek Angeles}{}{Inside}{}{1.000}{}
+R {3289}{0}{}{The special materials shop (Tek Angeles/Inside/29)}{\e[0m\e[38;5;94m■\e[0m}{}{Tek Angeles}{}{Inside}{}{1.000}{}
 E {3335}{d}{d}{32}{0}{}{1.000}{}{0.00}
 E {3186}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {3056}{n}{n}{1}{0}{}{1.000}{}{0.00}
@@ -3533,7 +3533,7 @@ E {3190}{e}{e}{2}{0}{}{1.000}{}{0.00}
 R {3334}{0}{}{Longwalking Room (Tek Angeles/Inside/28)}{\e[0m\e[38;5;94m■\e[0m}{}{Tek Angeles}{}{Inside}{}{1.000}{}
 E {3180}{u}{u}{16}{0}{}{1.000}{}{0.00}
 
-R {3335}{0}{}{Inscription Artisan's Workshop (Tek Angeles/Inside/28)}{\e[0m\e[38;5;94m■\e[0m}{}{Tek Angeles}{}{Inside}{}{1.000}{}
+R {3335}{0}{}{Inscription Artisan's Workshop (Tek Angeles/Inside/29)}{\e[0m\e[38;5;94m■\e[0m}{}{Tek Angeles}{}{Inside}{}{1.000}{}
 E {3289}{u}{u}{16}{0}{}{1.000}{}{0.00}
 
 R {3336}{0}{}{Baggs' Basement (Tek Angeles/Inside/28)}{\e[0m\e[38;5;94m■\e[0m}{}{Tek Angeles}{}{Inside}{}{1.000}{}
@@ -4980,7 +4980,7 @@ R {4010}{0}{}{A northern highway (Forest and Road North of Tek/Smooth/33)}{\e[0m
 E {4011}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {4009}{s}{s}{4}{0}{}{1.000}{}{0.00}
 
-R {4011}{0}{}{A northern highway (Forest and Road North of Tek/Smooth/33)}{\e[0m\e[38;5;248m■\e[0m}{}{Forest and Road North of Tek}{}{Smooth}{}{1.000}{}
+R {4011}{0}{}{A northern highway (Forest and Road North of Tek/Smooth/34)}{\e[0m\e[38;5;248m■\e[0m}{}{Forest and Road North of Tek}{}{Smooth}{}{1.000}{}
 E {4173}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {4012}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {4010}{s}{s}{4}{0}{}{1.000}{}{0.00}
