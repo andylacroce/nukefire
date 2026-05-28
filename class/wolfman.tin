@@ -29,10 +29,10 @@
 #alias {frenz}      {#if {$frenzy_on} {frenzy_off} {frenzy_on}}
 
 #nop ------------------ AFX: SPELL LISTENERS & TIMER ------------------
-#ACTION {^SPL: %* wolfout} {#variable {has_wolfout} {1}}
-#ACTION {^SPL: %* contagious frenticism} {#variable {has_frenzy} {1}}
+#ACTION {%*) wolfout%*} {#variable {has_wolfout} {1}} {2}
+#ACTION {%*) contagious frenticism%*} {#variable {has_frenzy} {1}} {2}
 
-#ACTION {TIMER: %*} {
+#ACTION {Timer Flags: %*} {
 	#delay {2} {
 		#if {$has_wolfout == 0 && $wolfout_on} {wolf};
 		#variable {has_wolfout} {0};

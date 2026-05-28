@@ -9,7 +9,7 @@
 #class dcon open
 	#variable {has_damcon} {0}
 	
-    #action {SPL: %* damcon} {#variable {has_damcon} {1}}
+    #action {%*) damcon%*} {#variable {has_damcon} {1}} {2}
     
     #action {The //DAMCON\\ status light blinks on.} {#variable {has_damcon} {1}}
     #action {The //DAMCON\\ status light blinks off.} {#variable {has_damcon} {0};damcon}
@@ -18,7 +18,7 @@
 #alias {dcon_on} {
 	#class {dcon} {clear};
 	#class {dcon} {open};
-	#action {SPL: %%* damcon} {#variable {has_damcon} {1}};
+	#action {%%*) damcon%%*} {#variable {has_damcon} {1}} {2};
 	#action {The //DAMCON\\ status light blinks on.} {#variable {has_damcon} {1}};
 	#action {The //DAMCON\\ status light blinks off.} {#variable {has_damcon} {0};damcon};
 	#class {dcon} {close};
@@ -42,7 +42,7 @@
 #class turbo open
 	#variable {has_turbo} {0}
 	
-    #action {SPL: %* turbo} {#variable {has_turbo} {1}}
+    #action {%*) turbo%*} {#variable {has_turbo} {1}} {2}
     
     #action {The //TURBO\\ status light blinks on in your vision field.} {#variable {has_turbo} {1}}
     #action {The //TURBO\\ status light blinks off.} {#variable {has_turbo} {0};turbo}
@@ -51,7 +51,7 @@
 #alias {turbo_on} {
 	#class {turbo} {clear};
 	#class {turbo} {open};
-	#action {SPL: %%* turbo} {#variable {has_turbo} {1}};
+	#action {%%*) turbo%%*} {#variable {has_turbo} {1}} {2};
 	#action {The //TURBO\\ status light blinks on in your vision field.} {#variable {has_turbo} {1}};
 	#action {The //TURBO\\ status light blinks off.} {#variable {has_turbo} {0};turbo};
 	#class {turbo} {close};
@@ -73,7 +73,7 @@
 #var {autoheal_on} {1}
 
 #nop ------------------ TIMER / AUTOCAST ------------------
-#action {TIMER: %*} {
+#action {Timer Flags: %*} {
     #variable {has_damcon} {0};
     #variable {has_turbo} {0};
     #delay {2} {

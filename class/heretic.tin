@@ -60,14 +60,14 @@
 #variable {has_shield_of_flames} {0}
 #variable {fort_cd} {0}
 #variable {dark_cd} {0}
-#ACTION {^SPL: %* fortify} {#variable {has_fort} {1}}
-#ACTION {^SPL: %* unholyfist} {#variable {has_unholy} {1}}
-#ACTION {^SPL: %* dark blessing} {#variable {has_dark} {1}}
-#ACTION {^SPL: %* dark covenant} {#variable {has_covenant} {1}}
-#ACTION {^SPL: %* shield of flames} {#variable {has_shield_of_flames} {1}}
+#ACTION {%*) fortify%*} {#variable {has_fort} {1}} {2}
+#ACTION {%*) unholyfist%*} {#variable {has_unholy} {1}} {2}
+#ACTION {%*) dark blessing%*} {#variable {has_dark} {1}} {2}
+#ACTION {%*) dark covenant%*} {#variable {has_covenant} {1}} {2}
+#ACTION {%*) shield of flames%*} {#variable {has_shield_of_flames} {1}} {2}
 
 #nop ------------------ AUTO-CAST / TIMER ------------------
-#ACTION {TIMER: %*} {
+#ACTION {Timer Flags: %*} {
     #delay {2} {
         #if {$has_fort == 0 && $lvl > 8} {sli 'aura of fort'; #variable {has_fort} {1};};
         #if {$has_unholy == 0 && $lvl > 10} {sli 'unholyfist'};

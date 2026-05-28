@@ -54,10 +54,10 @@
 #action {You receive %1 experience points.} {_gypsy_on_xp; _track_xp %1}
 #action {You can't gain anymore experience.} {_gypsy_on_xp}
 
-#ACTION {^SPL: %* voodoo contract} {#variable {has_voodoo} {1}}
-#ACTION {^SPL: %* phantom mirage} {#variable {has_phantom} {1}}
-#ACTION {^SPL: %* fortune's blessing} {#variable {has_fortune} {1}}
-#ACTION {TIMER: %*} {
+#ACTION {%*) voodoo contract%*} {#variable {has_voodoo} {1}} {2}
+#ACTION {%*) phantom mirage%*} {#variable {has_phantom} {1}} {2}
+#ACTION {%*) fortune's blessing%*} {#variable {has_fortune} {1}} {2}
+#ACTION {Timer Flags: %*} {
 	#delay {2} {
 		#if {"%1" != "%*Gypsy_Dance%*" && $lvl > 19}{rom};
 		#if {$has_voodoo == 0 && $lvl > 39}{sign};
