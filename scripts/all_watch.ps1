@@ -76,7 +76,7 @@ function Write-ChannelLine($file, $line) {
     } elseif ($file -eq 'broadcast.log') {
         if ($line -match '^\[[\d/]+ [\d:]+\] (.+)$') {
             Write-Tag $tag $color
-            Write-BroadcastContent $Matches[1] | Out-Null
+            Write-BroadcastContent $Matches[1]
         }
         return
     } elseif ($file -eq 'group.log') {

@@ -40,6 +40,7 @@
 #VARIABLE {has_voodoo} {0}
 #VARIABLE {has_phantom} {0}
 #VARIABLE {has_fortune} {0}
+#VARIABLE {has_tarot_vision} {0}
 #VARIABLE {grows_cooldown} {0}
 #VARIABLE {autoheal_on} {1}
 #VARIABLE {rom_cd} {0}
@@ -57,14 +58,17 @@
 #ACTION {%*) voodoo contract%*} {#variable {has_voodoo} {1}} {2}
 #ACTION {%*) phantom mirage%*} {#variable {has_phantom} {1}} {2}
 #ACTION {%*) fortune's blessing%*} {#variable {has_fortune} {1}} {2}
+#ACTION {%*) tarot vision%*} {#variable {has_tarot_vision} {1}} {2}
 #ACTION {Timer Flags: %*} {
 	#delay {2} {
 		#if {"%1" != "%*Gypsy_Dance%*" && $lvl > 19}{rom};
 		#if {$has_voodoo == 0 && $lvl > 39}{sign};
 		#if {$has_phantom == 0 && $lvl > 24}{mir};
 		#if {$has_fortune == 0 && $lvl > 39}{sli 'tarot' $me};
+		#if {$has_tarot_vision == 0 && $lvl > 39}{sli 'tarot' $me};
 		#variable {has_voodoo} {0};
 		#variable {has_phantom} {0};
+		#variable {has_tarot_vision} {0};
 		#nop has_fortune is NOT reset here -- fall-off handler and SPL trigger own its state
 	}
 }

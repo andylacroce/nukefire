@@ -13,17 +13,16 @@ $script:BroadcastPatterns = @(
     @{ Regex = '^Skynet\(TM\) (.+)$';              Label = 'Skynet(TM)';      Color = 'DarkYellow' }
 )
 
-# Write one broadcast line (label + message). Returns $true on any output.
+# Write one broadcast line (label + message).
 # Caller handles bell and source-tag (Write-Tag) if needed.
 function Write-BroadcastContent([string]$content) {
     foreach ($p in $script:BroadcastPatterns) {
         if ($content -match $p.Regex) {
             Write-Host $p.Label -ForegroundColor $p.Color -NoNewline
             Write-Host (' ' + $Matches[1].Trim()) -ForegroundColor White
-            return $true
+            return
         }
     }
     # Fallback: unknown type — display raw so nothing is silently dropped
     Write-Host $content -ForegroundColor DarkGray
-    return $true
 }
