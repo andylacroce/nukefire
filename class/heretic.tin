@@ -26,6 +26,7 @@
 #alias {wyrm} {#if {$lvl > 49} {sli 'wyrm'}}
 #alias {sof} {#if {$lvl > 49} {sli 'shield of flames'}}
 #alias {hellquake} {#if {$lvl > 44 && $heretic_combat_cd == 0} {sli 'hellquake'; #variable heretic_combat_cd 1; #delay {10} {#variable heretic_combat_cd 0}}}
+#ACTION {There are no valid targets to perform the HellQuake on.} {#variable {heretic_combat_cd} {0}}
 #alias {heal %1} {sli 'soul swell' %1}
 
 #nop ------------------ IMMOLATE TOGGLE ------------------
