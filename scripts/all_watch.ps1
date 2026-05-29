@@ -1,4 +1,5 @@
 # all_watch.ps1 — Aggregated view of all channel logs with source indicator
+. "$PSScriptRoot/broadcast_config.ps1"
 
 $tailLines = 100
 Clear-Host
@@ -73,21 +74,11 @@ function Write-ChannelLine($file, $line) {
             Write-Host $text -ForegroundColor White; return
         }
     } elseif ($file -eq 'broadcast.log') {
-        if ($line -match '^\[[\d/]+ [\d:]+\] \[GLORY\] (.+)$') {
-            Write-Tag $tag $color; Write-Host '[GLORY] ' -ForegroundColor Yellow -NoNewline; Write-Host $Matches[1].Trim() -ForegroundColor White; return
+        if ($line -match '^\[[\d/]+ [\d:]+\] (.+)$') {
+            Write-Tag $tag $color
+            Write-BroadcastContent $Matches[1]
         }
-        if ($line -match '^\[[\d/]+ [\d:]+\] \[ NEW ITEM EVENT \] (.+)$') {
-            Write-Tag $tag $color; Write-Host '[ NEW ITEM ] ' -ForegroundColor Green -NoNewline; Write-Host $Matches[1].Trim() -ForegroundColor White; return
-        }
-        if ($line -match '^\[[\d/]+ [\d:]+\] \[ DCC SYSTEM \] (.+)$') {
-            Write-Tag $tag $color; Write-Host '[ DCC ] ' -ForegroundColor Red -NoNewline; Write-Host $Matches[1].Trim() -ForegroundColor White; return
-        }
-        if ($line -match '^\[[\d/]+ [\d:]+\] \[FACETED WORK\] (.+)$') {
-            Write-Tag $tag $color; Write-Host '[FACETED] ' -ForegroundColor Magenta -NoNewline; Write-Host $Matches[1].Trim() -ForegroundColor White; return
-        }
-        if ($line -match '^\[[\d/]+ [\d:]+\] Skynet\(TM\) (.+)$') {
-            Write-Tag $tag $color; Write-Host 'Skynet(TM) ' -ForegroundColor DarkYellow -NoNewline; Write-Host $Matches[1].Trim() -ForegroundColor White; return
-        }
+        return
     } elseif ($file -eq 'group.log') {
         if ($line -match '^\[[\d/]+ [\d:]+\] \[([^\]]+)\] You group-say, (.+)$') {
             Write-Tag $tag $color; Write-Speaker $Matches[1].Trim("'"); Write-Host (Remove-Quotes $Matches[2]) -ForegroundColor White; return

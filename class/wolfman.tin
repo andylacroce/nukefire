@@ -4,10 +4,10 @@
 
 #alias {rr} {
 	#if {$lvl < 20} {bash;bash;bash};
-	#if {$lvl >= 20} {gnaw};
-	#if {$lvl >= 20} {chilling};
-	#if {$lvl >= 35} {srend};
 	#if {$lvl >= 20} {pounce};
+	#if {$lvl >= 20} {gnaw};
+	#if {$lvl >= 35} {srend};
+	#if {$lvl >= 20} {chilling};
 	#if {$lvl >= 20} {gutting};
 }
 

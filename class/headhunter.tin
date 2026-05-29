@@ -3,7 +3,7 @@
 #nop Adds damcon and overboost (from cyborg) with toggles and defaults ON
 #nop =====================================================
 
-#ALIAS {rr} {hstomp;servo;heat;protocol;overload;tpunch}
+#ALIAS {rr} {auger;hstomp;servo;heat;protocol;overload;tpunch}
 
 #nop ------------------ DAMCON TOGGLE ------------------
 #class dcon open

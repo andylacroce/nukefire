@@ -4,7 +4,21 @@
 
 #nop ------------------ ALIASES ------------------
 #variable {heretic_combat_cd} {0}
-#alias {rr} {#if {$heretic_combat_cd == 0} {#if {$lvl < 35} {brand} {torment}; #variable heretic_combat_cd 1; #delay {10} {#variable heretic_combat_cd 0}}}
+#variable {smite_cd} {0}
+
+#alias {rr} {
+    #if {$heretic_combat_cd == 0} {
+        #if {$lvl < 35} {brand} {torment};
+        #variable heretic_combat_cd 1;
+        #delay {10} {#variable heretic_combat_cd 0};
+    };
+    #if {$lvl > 39 && $smite_cd == 0} {
+        sli 'smite';
+        #variable smite_cd 1;
+        #delay {10} {#variable smite_cd 0};
+    };
+    #if {$lvl > 24} {sli 'heretic drain'};
+}
 
 #alias {fort} {sli 'aura of fort'; #variable {has_fort} {1};}
 #alias {sum %1} {#if {$lvl > 9} {tel $leader @-@B<< SUMMONING %1 >>@n;sli 'summon' %1}}
