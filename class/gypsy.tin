@@ -48,7 +48,7 @@
 #nop ------------------ EXPERIENCE TRIGGERS ------------------
 #alias {_gypsy_on_xp} {
 	#if {$lvl > 19 && $rom_cd == 0} {rom; #var rom_cd 1; #delay {20} {#var rom_cd 0};};
-	#if {$lvl > 39 && $tarot_cd == 0} {tarot_group; #var tarot_cd 1; #delay {180} {#var tarot_cd 0};};
+	#if {$lvl > 39 && $tarot_cd == 0} {tarot_group; #var tarot_cd 1; #delay {20} {#var tarot_cd 0};};
 }
 
 #action {You receive %1 experience points.} {_gypsy_on_xp; _track_xp %1}
@@ -73,12 +73,12 @@
 #nop Fortune falls off messages
 #ACTION {Fortune's blessing retreats from you.} {
 	#variable {has_fortune} {0};
-	#if {$lvl > 39}{tarot $me};
+	#if {$lvl > 39}{tarot_group};
 }
 #ACTION {The shimmer of Fortune's blessing fades from around %1.} {
 	#var recaster %1;
 	is_group_member %1;
-	#if {$lvl > 39 && $igm_result == 1}{tarot $recaster};
+	#if {$lvl > 39 && $igm_result == 1}{tarot_group};
 }
 
 #nop ------------------ GROW SCAR: GMCP-BASED ------------------

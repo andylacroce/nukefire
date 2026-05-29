@@ -58,6 +58,7 @@
 #ACTION {\[ NEW ITEM EVENT \] %*} {_leader_log {nukefire/logs/broadcast.log} {%1} {%0}}
 #ACTION {\[CLASS REMORT EVENT\] %*} {_leader_log {nukefire/logs/broadcast.log} {%1} {%0}}
 #ACTION {\[Class Legacy\] %*} {_leader_log {nukefire/logs/broadcast.log} {%1} {%0}}
+#ACTION {\[ NUKEFIRE MUDVAULT \] %*} {_leader_log {nukefire/logs/broadcast.log} {%1} {%0}}
 #ACTION {Skynet\(TM\) %*} {
     #if {!${is_follower}} {
         #variable {_chlog_ok} {1};
