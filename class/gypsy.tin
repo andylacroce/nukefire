@@ -32,6 +32,10 @@
 #ALIAS {cb %1} {sli 'cure blind' %1}
 #ALIAS {rc %1} {sli 'remove curse' %1}
 #ALIAS {tarot_group} {group_targeted tarot}
+#ALIAS {autotarot_on}  {#variable {autotarot_on} {1}; #showme {Autotarot ON}}
+#ALIAS {autotarot_off} {#variable {autotarot_on} {0}; #showme {Autotarot OFF}}
+#ALIAS {autotarot} {#if {$autotarot_on} {autotarot_off} {autotarot_on}}
+#ALIAS {ata} {autotarot}
 #ALIAS {fa} {first %1}
 #ALIAS {fam} {first $me}
 
@@ -43,13 +47,14 @@
 #VARIABLE {has_tarot_vision} {0}
 #VARIABLE {grows_cooldown} {0}
 #VARIABLE {autoheal_on} {1}
+#VARIABLE {autotarot_on} {1}
 #VARIABLE {rom_cd} {0}
 #VARIABLE {tarot_cd} {0}
 
 #nop ------------------ EXPERIENCE TRIGGERS ------------------
 #alias {_gypsy_on_xp} {
 	#if {$lvl > 19 && $rom_cd == 0} {rom; #var rom_cd 1; #delay {20} {#var rom_cd 0};};
-	#if {$lvl > 39 && $tarot_cd == 0} {tarot_group; #var tarot_cd 1; #delay {60} {#var tarot_cd 0};};
+	#if {$autotarot_on && $lvl > 39 && $tarot_cd == 0} {tarot_group; #var tarot_cd 1; #delay {30} {#var tarot_cd 0};};
 }
 
 #action {You receive %1 experience points.} {_gypsy_on_xp; _track_xp %1}
@@ -64,8 +69,8 @@
 		#if {"%1" != "%*Gypsy_Dance%*" && $lvl > 19}{rom};
 		#if {$has_voodoo == 0 && $lvl > 39}{sign};
 		#if {$has_phantom == 0 && $lvl > 24}{mir};
-		#if {$has_fortune == 0 && $lvl > 39}{sli 'tarot' $me};
-		#if {$has_tarot_vision == 0 && $lvl > 39}{sli 'tarot' $me};
+		#if {$autotarot_on && $has_fortune == 0 && $lvl > 39}{sli 'tarot' $me};
+		#if {$autotarot_on && $has_tarot_vision == 0 && $lvl > 39}{sli 'tarot' $me};
 		#variable {has_voodoo} {0};
 		#variable {has_phantom} {0};
 		#variable {has_tarot_vision} {0};
@@ -77,12 +82,14 @@
 #nop Fortune falls off messages
 #ACTION {Fortune's blessing retreats from you.} {
 	#variable {has_fortune} {0};
-	#if {$lvl > 39}{sli 'tarot' $me};
+	#if {$autotarot_on && $lvl > 39}{tarot_group};
 }
 #ACTION {The shimmer of Fortune's blessing fades from around %1.} {
 	is_group_member %1;
-	#if {$lvl > 39 && $igm_result == 1}{sli 'tarot' %1};
+	#if {$autotarot_on && $lvl > 39 && $igm_result == 1}{tarot_group};
 }
+
+#ACTION {Your attempt to read the tarot cards fails.} {tarot_group}
 
 #nop ------------------ GROW SCAR: GMCP-BASED ------------------
 #alias {_on_gmcp_vitals} {

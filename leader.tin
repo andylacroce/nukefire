@@ -173,7 +173,7 @@
 #action {You have added materials:} {mat}
 
 #nop ------------------ AUTO-KILL LOOP ------------------
-#variable {autokill_on}          {0}
+#variable {autokill_on}          {1}
 #variable {_ak_fn}               {_kill_engage}
 #variable {_ak_last_enemy_count} {0}
 #variable {_ak_pending}          {0}
