@@ -49,7 +49,7 @@
 #nop ------------------ EXPERIENCE TRIGGERS ------------------
 #alias {_gypsy_on_xp} {
 	#if {$lvl > 19 && $rom_cd == 0} {rom; #var rom_cd 1; #delay {20} {#var rom_cd 0};};
-	#if {$lvl > 39 && $tarot_cd == 0} {tarot_group; #var tarot_cd 1; #delay {90} {#var tarot_cd 0};};
+	#if {$lvl > 39 && $tarot_cd == 0} {tarot_group; #var tarot_cd 1; #delay {60} {#var tarot_cd 0};};
 }
 
 #action {You receive %1 experience points.} {_gypsy_on_xp; _track_xp %1}

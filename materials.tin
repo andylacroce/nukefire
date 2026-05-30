@@ -5,13 +5,13 @@
 
 #nop ------------------ ACTIONS ------------------
 #ACTION {A small silver disc hovers before you in mid-air.} {get all.disc}
-#ACTION {You retrieve a small silver disc from} {am}
-#ACTION {You get a small silver disc.} {am}
-#ACTION { gives you a small silver disc.} {am}
+#ACTION {You retrieve a small silver disc from} {#if {!$is_follower} {am}}
+#ACTION {You get a small silver disc.} {#if {!$is_follower} {am}}
+#ACTION { gives you a small silver disc.} {#if {!$is_follower} {am}}
 #ACTION {A dimly glowing shard rests here in the ash.} {get all.embercore}
-#ACTION {You retrieve a cinderglass embercore from} {am}
-#ACTION {You get a cinderglass embercore.} {am}
-#ACTION { gives you a cinderglass embercore.} {am}
+#ACTION {You retrieve a cinderglass embercore from} {#if {!$is_follower} {am}}
+#ACTION {You get a cinderglass embercore.} {#if {!$is_follower} {am}}
+#ACTION { gives you a cinderglass embercore.} {#if {!$is_follower} {am}}
 
 #nop ------------------ ALIASES ------------------
 #ALIAS {am} {addmat;mat}
