@@ -69,8 +69,8 @@
 		#if {"%1" != "%*Gypsy_Dance%*" && $lvl > 19}{rom};
 		#if {$has_voodoo == 0 && $lvl > 39}{sign};
 		#if {$has_phantom == 0 && $lvl > 24}{mir};
-		#if {$autotarot_on && $has_fortune == 0 && $lvl > 39}{sli 'tarot' $me};
-		#if {$autotarot_on && $has_tarot_vision == 0 && $lvl > 39}{sli 'tarot' $me};
+		#if {$autotarot_on && $has_fortune == 0 && $lvl > 39}{tarot $me};
+		#if {$autotarot_on && $has_tarot_vision == 0 && $lvl > 39}{tarot $me};
 		#variable {has_voodoo} {0};
 		#variable {has_phantom} {0};
 		#variable {has_tarot_vision} {0};
@@ -82,11 +82,11 @@
 #nop Fortune falls off messages
 #ACTION {Fortune's blessing retreats from you.} {
 	#variable {has_fortune} {0};
-	#if {$autotarot_on && $lvl > 39}{tarot_group};
+	#if {$autotarot_on && $lvl > 39}{tarot $me};
 }
 #ACTION {The shimmer of Fortune's blessing fades from around %1.} {
 	is_group_member %1;
-	#if {$autotarot_on && $lvl > 39 && $igm_result == 1}{tarot_group};
+	#if {$autotarot_on && $lvl > 39 && $igm_result == 1}{tarot %1};
 }
 
 #ACTION {Your attempt to read the tarot cards fails.} {tarot_group}
