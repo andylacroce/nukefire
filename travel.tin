@@ -9,13 +9,15 @@
 #ALIAS {gf %1}  {gps find %1}
 #ALIAS {rd} {
     #if {!$is_follower} {gam};
+    #variable {dest} {};
     look;
-    #delay {1} {
-        dep;
-        bal;
-        #delay {1} {
-            #VARIABLE {last_balance} {$bank_balance};
-            run $dest;
+    #delay {.5} {
+        #if {!$is_follower} {dep; bal};
+        #delay {.5} {
+            #if {"$dest" != ""} {
+                #if {!$is_follower} {#VARIABLE {last_balance} {$bank_balance}};
+                run $dest;
+            };
         }
     };
 }

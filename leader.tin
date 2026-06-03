@@ -108,11 +108,14 @@
 
 #ALIAS {come} {
     rally set;
-    #if {!$is_follower} {
-        #foreach {$followers[%*]} {follower} {
-            #if {"$follower" != "$me"} {tel $follower o rd};
+    #DELAY {.5} {
+        #if {!$is_follower} {
+            #foreach {$followers[%*]} {follower} {
+                #if {"$follower" != "$me"} {tel $follower o rd};
+            };
         };
-    };
+    #delay {3} {rc};
+    }
 }
 
 #alias {rc} {
