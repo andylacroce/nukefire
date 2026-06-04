@@ -18,7 +18,7 @@ F 1122691
 
 G 0
 
-I 40585
+I 3001
 
 L {ASCII NESW LINE} {NO EXITS} {x}
 L {ASCII NESW LINE} {N} {o}
@@ -4367,7 +4367,7 @@ E {26005}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {14792}{s}{s}{4}{0}{}{1.000}{}{0.00}
 E {3443}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {3443}{0}{}{A wide highway (Western Tek/Smooth/29)}{\e[0m\e[38;5;248m■\e[0m}{}{Western Tek}{}{Smooth}{}{1.000}{}
+R {3443}{0}{}{A wide highway (Western Tek/Smooth/30)}{\e[0m\e[38;5;248m■\e[0m}{}{Western Tek}{}{Smooth}{}{1.000}{}
 E {3442}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {26004}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {14792}{s}{s}{4}{0}{}{1.000}{}{0.00}
@@ -7723,7 +7723,7 @@ E {1999}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
 R {5603}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
-R {5604}{0}{}{In the leafy forest (Twig, Druid, Etc/Forest/41)}{\e[0m\e[38;5;22m■\e[0m}{}{Twig, Druid, Etc}{}{Forest}{}{1.000}{}
+R {5604}{0}{}{In the leafy forest (Twig, Druid, Etc/Forest/42)}{\e[0m\e[38;5;22m■\e[0m}{}{Twig, Druid, Etc}{}{Forest}{}{1.000}{}
 E {5605}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {5603}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {5788}{s}{s}{4}{0}{}{1.000}{}{0.00}
@@ -7737,13 +7737,13 @@ E {5604}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
 R {5606}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
-R {5607}{0}{}{A trail through the leafy forest (Twig, Druid, Etc/Smooth/41)}{\e[0m\e[38;5;248m■\e[0m}{}{Twig, Druid, Etc}{}{Smooth}{}{1.000}{}
+R {5607}{0}{}{A trail through the leafy forest (Twig, Druid, Etc/Smooth/42)}{\e[0m\e[38;5;248m■\e[0m}{}{Twig, Druid, Etc}{}{Smooth}{}{1.000}{}
 E {5603}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {5602}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {5604}{s}{s}{4}{0}{}{1.000}{}{0.00}
 E {5608}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {5608}{0}{}{A trail along the river (Twig, Druid, Etc/Field/41)}{\e[0m\e[38;5;34m■\e[0m}{}{Twig, Druid, Etc}{}{Field}{}{1.000}{}
+R {5608}{0}{}{A trail along the river (Twig, Druid, Etc/Field/42)}{\e[0m\e[38;5;34m■\e[0m}{}{Twig, Druid, Etc}{}{Field}{}{1.000}{}
 E {5607}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {5602}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {5609}{s}{s}{4}{0}{}{1.000}{}{0.00}
@@ -7780,20 +7780,20 @@ R {5646}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
 R {5653}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
-R {5654}{0}{}{On the Great River (Twig, Druid, Etc/Water/41)}{\e[0m\e[38;5;39m~\e[0m}{}{Twig, Druid, Etc}{}{Water}{}{1.000}{}
+R {5654}{0}{}{On the Great River (Twig, Druid, Etc/Water/42)}{\e[0m\e[38;5;39m~\e[0m}{}{Twig, Druid, Etc}{}{Water}{}{1.000}{}
 E {5608}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {5653}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {5655}{s}{s}{4}{0}{}{1.000}{}{0.00}
 
-R {5655}{0}{}{On the Great River (Twig, Druid, Etc/Water/41)}{\e[0m\e[38;5;39m~\e[0m}{}{Twig, Druid, Etc}{}{Water}{}{1.000}{}
+R {5655}{0}{}{On the Great River (Twig, Druid, Etc/Water/42)}{\e[0m\e[38;5;39m~\e[0m}{}{Twig, Druid, Etc}{}{Water}{}{1.000}{}
 E {5654}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {5656}{s}{s}{4}{0}{}{1.000}{}{0.00}
 
-R {5656}{0}{}{On the Great River (Twig, Druid, Etc/Water/41)}{\e[0m\e[38;5;39m~\e[0m}{}{Twig, Druid, Etc}{}{Water}{}{1.000}{}
+R {5656}{0}{}{On the Great River (Twig, Druid, Etc/Water/42)}{\e[0m\e[38;5;39m~\e[0m}{}{Twig, Druid, Etc}{}{Water}{}{1.000}{}
 E {5655}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {5657}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {5657}{0}{}{On the Great River (Twig, Druid, Etc/Water/41)}{\e[0m\e[38;5;39m~\e[0m}{}{Twig, Druid, Etc}{}{Water}{}{1.000}{}
+R {5657}{0}{}{On the Great River (Twig, Druid, Etc/Water/42)}{\e[0m\e[38;5;39m~\e[0m}{}{Twig, Druid, Etc}{}{Water}{}{1.000}{}
 E {5656}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {5781}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {5658}{w}{w}{8}{0}{}{1.000}{}{0.00}
@@ -7825,7 +7825,7 @@ E {14801}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {5684}{s}{s}{4}{0}{}{1.000}{}{0.00}
 E {5680}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {5682}{0}{}{In the thick forest (Twig, Druid, Etc/Forest/41)}{\e[0m\e[38;5;22m■\e[0m}{}{Twig, Druid, Etc}{}{Forest}{}{1.000}{}
+R {5682}{0}{}{In the thick forest (Twig, Druid, Etc/Forest/42)}{\e[0m\e[38;5;22m■\e[0m}{}{Twig, Druid, Etc}{}{Forest}{}{1.000}{}
 E {5744}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {14802}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {5685}{s}{s}{4}{0}{}{1.000}{}{0.00}
@@ -7839,7 +7839,7 @@ E {5681}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {5688}{s}{s}{4}{0}{}{1.000}{}{0.00}
 E {5683}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {5685}{0}{}{In the thick forest (Twig, Druid, Etc/Forest/41)}{\e[0m\e[38;5;22m■\e[0m}{}{Twig, Druid, Etc}{}{Forest}{}{1.000}{}
+R {5685}{0}{}{In the thick forest (Twig, Druid, Etc/Forest/42)}{\e[0m\e[38;5;22m■\e[0m}{}{Twig, Druid, Etc}{}{Forest}{}{1.000}{}
 E {5686}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {5682}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {5689}{s}{s}{4}{0}{}{1.000}{}{0.00}
@@ -8176,7 +8176,7 @@ E {5775}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {5584}{s}{s}{4}{0}{}{1.000}{}{0.00}
 E {5779}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {5781}{0}{}{In the thick leafy forest (Twig, Druid, Etc/Forest/41)}{\e[0m\e[38;5;22m■\e[0m}{}{Twig, Druid, Etc}{}{Forest}{}{1.000}{}
+R {5781}{0}{}{In the thick leafy forest (Twig, Druid, Etc/Forest/42)}{\e[0m\e[38;5;22m■\e[0m}{}{Twig, Druid, Etc}{}{Forest}{}{1.000}{}
 E {5782}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {5777}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {5657}{s}{s}{4}{0}{}{1.000}{}{0.00}
@@ -8188,7 +8188,7 @@ E {5584}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {5790}{s}{s}{4}{0}{}{1.000}{}{0.00}
 E {5790}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {5788}{0}{}{In the thick leafy forest (Twig, Druid, Etc/Forest/41)}{\e[0m\e[38;5;22m■\e[0m}{}{Twig, Druid, Etc}{}{Forest}{}{1.000}{}
+R {5788}{0}{}{In the thick leafy forest (Twig, Druid, Etc/Forest/42)}{\e[0m\e[38;5;22m■\e[0m}{}{Twig, Druid, Etc}{}{Forest}{}{1.000}{}
 E {5789}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {5604}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {5794}{s}{s}{4}{0}{}{1.000}{}{0.00}
@@ -8208,7 +8208,7 @@ E {5613}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {5799}{s}{s}{4}{0}{}{1.000}{}{0.00}
 E {5618}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {5794}{0}{}{In the thick leafy forest (Twig, Druid, Etc/Forest/41)}{\e[0m\e[38;5;22m■\e[0m}{}{Twig, Druid, Etc}{}{Forest}{}{1.000}{}
+R {5794}{0}{}{In the thick leafy forest (Twig, Druid, Etc/Forest/42)}{\e[0m\e[38;5;22m■\e[0m}{}{Twig, Druid, Etc}{}{Forest}{}{1.000}{}
 E {5795}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {5789}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {5800}{s}{s}{4}{0}{}{1.000}{}{0.00}
@@ -9847,7 +9847,7 @@ E {7630}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {27001}{s}{s}{4}{0}{}{1.000}{}{0.00}
 E {7057}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {7630}{0}{}{Desert (WilderZone/Desert/50)}{\e[0m\e[38;5;136m■\e[0m}{}{WilderZone}{}{Desert}{}{1.000}{}
+R {7630}{0}{}{Desert (WilderZone/Desert/51)}{\e[0m\e[38;5;136m■\e[0m}{}{WilderZone}{}{Desert}{}{1.000}{}
 E {7626}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {7553}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {7629}{s}{s}{4}{0}{}{1.000}{}{0.00}
@@ -10168,7 +10168,7 @@ E {8132}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {8133}{s}{s}{4}{0}{}{1.000}{}{0.00}
 E {8002}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {8132}{0}{}{In the bog (Swamp of Sadness/Swamp/51)}{\e[0m\e[38;5;22m■\e[0m}{}{Swamp of Sadness}{}{Swamp}{}{1.000}{}
+R {8132}{0}{}{In the bog (Swamp of Sadness/Swamp/52)}{\e[0m\e[38;5;22m■\e[0m}{}{Swamp of Sadness}{}{Swamp}{}{1.000}{}
 E {8131}{s}{s}{4}{0}{}{1.000}{}{0.00}
 E {8131}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
@@ -15552,7 +15552,7 @@ E {3446}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {14796}{s}{s}{4}{0}{}{1.000}{}{0.00}
 E {14790}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {14792}{0}{}{In the thick forest (South of Sil Highway/Forest/88)}{\e[0m\e[38;5;22m■\e[0m}{}{South of Sil Highway}{}{Forest}{}{1.000}{}
+R {14792}{0}{}{In the thick forest (South of Sil Highway/Forest/89)}{\e[0m\e[38;5;22m■\e[0m}{}{South of Sil Highway}{}{Forest}{}{1.000}{}
 E {14793}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {3445}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {14797}{s}{s}{4}{0}{}{1.000}{}{0.00}
@@ -15581,7 +15581,7 @@ E {14791}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {14801}{s}{s}{4}{0}{}{1.000}{}{0.00}
 E {14795}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {14797}{0}{}{In the thick forest (South of Sil Highway/Forest/88)}{\e[0m\e[38;5;22m■\e[0m}{}{South of Sil Highway}{}{Forest}{}{1.000}{}
+R {14797}{0}{}{In the thick forest (South of Sil Highway/Forest/89)}{\e[0m\e[38;5;22m■\e[0m}{}{South of Sil Highway}{}{Forest}{}{1.000}{}
 E {14798}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {14792}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {14802}{s}{s}{4}{0}{}{1.000}{}{0.00}
@@ -15611,7 +15611,7 @@ E {14796}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {5681}{s}{s}{4}{0}{}{1.000}{}{0.00}
 E {14800}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {14802}{0}{}{In the thick forest (South of Sil Highway/Forest/88)}{\e[0m\e[38;5;22m■\e[0m}{}{South of Sil Highway}{}{Forest}{}{1.000}{}
+R {14802}{0}{}{In the thick forest (South of Sil Highway/Forest/89)}{\e[0m\e[38;5;22m■\e[0m}{}{South of Sil Highway}{}{Forest}{}{1.000}{}
 E {14803}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {14797}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {5682}{s}{s}{4}{0}{}{1.000}{}{0.00}
@@ -16939,7 +16939,7 @@ R {15449}{0}{}{A narrow wash (Alien Area\/NW Mountains/Mountains/91)}{\e[0m\e[38
 E {15440}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {15448}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {15451}{0}{}{Foothills (Alien Area\/NW Mountains/Mountains/90)}{\e[0m\e[38;5;250m^\e[0m}{}{Alien Area\/NW Mountains}{}{Mountains}{}{1.000}{}
+R {15451}{0}{}{Foothills (Alien Area\/NW Mountains/Mountains/91)}{\e[0m\e[38;5;250m^\e[0m}{}{Alien Area\/NW Mountains}{}{Mountains}{}{1.000}{}
 E {15452}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {15442}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {15460}{s}{s}{4}{0}{}{1.000}{}{0.00}
@@ -16965,7 +16965,7 @@ E {15456}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
 R {15459}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
-R {15460}{0}{}{Foothills (Alien Area\/NW Mountains/Hills/90)}{\e[0m\e[38;5;58m^\e[0m}{}{Alien Area\/NW Mountains}{}{Hills}{}{1.000}{}
+R {15460}{0}{}{Foothills (Alien Area\/NW Mountains/Hills/91)}{\e[0m\e[38;5;58m^\e[0m}{}{Alien Area\/NW Mountains}{}{Hills}{}{1.000}{}
 E {15461}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {15451}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {15467}{s}{s}{4}{0}{}{1.000}{}{0.00}
@@ -16977,7 +16977,7 @@ R {15462}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
 R {15466}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
-R {15467}{0}{}{The barrens (Alien Area\/NW Mountains/Mountains/90)}{\e[0m\e[38;5;250m^\e[0m}{}{Alien Area\/NW Mountains}{}{Mountains}{}{1.000}{}
+R {15467}{0}{}{The barrens (Alien Area\/NW Mountains/Mountains/91)}{\e[0m\e[38;5;250m^\e[0m}{}{Alien Area\/NW Mountains}{}{Mountains}{}{1.000}{}
 E {15468}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {15460}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {15474}{s}{s}{4}{0}{}{1.000}{}{0.00}
@@ -16987,7 +16987,7 @@ R {15468}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
 R {15473}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
-R {15474}{0}{}{Barren foothills (Alien Area\/NW Mountains/Mountains/90)}{\e[0m\e[38;5;250m^\e[0m}{}{Alien Area\/NW Mountains}{}{Mountains}{}{1.000}{}
+R {15474}{0}{}{Barren foothills (Alien Area\/NW Mountains/Mountains/91)}{\e[0m\e[38;5;250m^\e[0m}{}{Alien Area\/NW Mountains}{}{Mountains}{}{1.000}{}
 E {15475}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {15467}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {15480}{s}{s}{4}{0}{}{1.000}{}{0.00}
@@ -16997,7 +16997,7 @@ R {15475}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
 R {15479}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
-R {15480}{0}{}{The barrens (Alien Area\/NW Mountains/Hills/90)}{\e[0m\e[38;5;58m^\e[0m}{}{Alien Area\/NW Mountains}{}{Hills}{}{1.000}{}
+R {15480}{0}{}{The barrens (Alien Area\/NW Mountains/Hills/91)}{\e[0m\e[38;5;58m^\e[0m}{}{Alien Area\/NW Mountains}{}{Hills}{}{1.000}{}
 E {15481}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {15474}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {15485}{s}{s}{4}{0}{}{1.000}{}{0.00}
@@ -17009,7 +17009,7 @@ R {15482}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
 R {15484}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
-R {15485}{0}{}{The barrens (Alien Area\/NW Mountains/Mountains/90)}{\e[0m\e[38;5;250m^\e[0m}{}{Alien Area\/NW Mountains}{}{Mountains}{}{1.000}{}
+R {15485}{0}{}{The barrens (Alien Area\/NW Mountains/Mountains/91)}{\e[0m\e[38;5;250m^\e[0m}{}{Alien Area\/NW Mountains}{}{Mountains}{}{1.000}{}
 E {15486}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {15480}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {15488}{s}{s}{4}{0}{}{1.000}{}{0.00}
@@ -17019,7 +17019,7 @@ R {15486}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
 R {15487}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
-R {15488}{0}{}{Hills (Alien Area\/NW Mountains/Hills/90)}{\e[0m\e[38;5;58m^\e[0m}{}{Alien Area\/NW Mountains}{}{Hills}{}{1.000}{}
+R {15488}{0}{}{Hills (Alien Area\/NW Mountains/Hills/91)}{\e[0m\e[38;5;58m^\e[0m}{}{Alien Area\/NW Mountains}{}{Hills}{}{1.000}{}
 E {15489}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {15485}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {15491}{s}{s}{4}{0}{}{1.000}{}{0.00}
@@ -17037,7 +17037,7 @@ E {15487}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {26126}{s}{s}{4}{0}{}{1.000}{}{0.00}
 E {18549}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {15491}{0}{}{Hills (Alien Area\/NW Mountains/Hills/90)}{\e[0m\e[38;5;58m^\e[0m}{}{Alien Area\/NW Mountains}{}{Hills}{}{1.000}{}
+R {15491}{0}{}{Hills (Alien Area\/NW Mountains/Hills/91)}{\e[0m\e[38;5;58m^\e[0m}{}{Alien Area\/NW Mountains}{}{Hills}{}{1.000}{}
 E {15492}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {15488}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {26080}{s}{s}{4}{0}{}{1.000}{}{0.00}
@@ -17834,19 +17834,19 @@ E {16705}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {16725}{s}{s}{4}{0}{}{1.000}{}{0.00}
 E {16714}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {16716}{0}{}{Black Sand Strand (Witch Isle/Field/98)}{\e[0m\e[38;5;34m■\e[0m}{}{Witch Isle}{}{Field}{}{1.000}{}
+R {16716}{0}{}{Black Sand Strand (Witch Isle/Field/99)}{\e[0m\e[38;5;34m■\e[0m}{}{Witch Isle}{}{Field}{}{1.000}{}
 E {16717}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {16707}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {4387}{s}{s}{4}{0}{}{1.000}{}{0.00}
 E {16715}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {16717}{0}{}{Black Sand Strand (Witch Isle/Field/98)}{\e[0m\e[38;5;34m■\e[0m}{}{Witch Isle}{}{Field}{}{1.000}{}
+R {16717}{0}{}{Black Sand Strand (Witch Isle/Field/99)}{\e[0m\e[38;5;34m■\e[0m}{}{Witch Isle}{}{Field}{}{1.000}{}
 E {16718}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {16708}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {16725}{s}{s}{4}{0}{}{1.000}{}{0.00}
 E {16716}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {16718}{0}{}{Black Shell Beach (Witch Isle/Field/98)}{\e[0m\e[38;5;34m■\e[0m}{}{Witch Isle}{}{Field}{}{1.000}{}
+R {16718}{0}{}{Black Shell Beach (Witch Isle/Field/99)}{\e[0m\e[38;5;34m■\e[0m}{}{Witch Isle}{}{Field}{}{1.000}{}
 E {16719}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {16708}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {16728}{s}{s}{4}{0}{}{1.000}{}{0.00}
@@ -17862,7 +17862,7 @@ R {16720}{0}{}{Breadfruit Jungle (Witch Isle/Forest/99)}{\e[0m\e[38;5;22m■\e[0
 E {16710}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {16730}{s}{s}{4}{0}{}{1.000}{}{0.00}
 
-R {16721}{0}{}{Breadfruit Jungle (Witch Isle/Forest/98)}{\e[0m\e[38;5;22m■\e[0m}{}{Witch Isle}{}{Forest}{}{1.000}{}
+R {16721}{0}{}{Breadfruit Jungle (Witch Isle/Forest/99)}{\e[0m\e[38;5;22m■\e[0m}{}{Witch Isle}{}{Forest}{}{1.000}{}
 E {16722}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {16711}{n}{n}{1}{0}{}{1.000}{}{0.00}
 
@@ -17888,14 +17888,14 @@ E {16715}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {16735}{s}{s}{4}{0}{}{1.000}{}{0.00}
 E {16724}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {16726}{0}{}{Breadfruit Jungle (Witch Isle/Forest/98)}{\e[0m\e[38;5;22m■\e[0m}{}{Witch Isle}{}{Forest}{}{1.000}{}
+R {16726}{0}{}{Breadfruit Jungle (Witch Isle/Forest/99)}{\e[0m\e[38;5;22m■\e[0m}{}{Witch Isle}{}{Forest}{}{1.000}{}
 E {4387}{d}{d}{32}{0}{}{1.000}{}{0.00}
 E {16727}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {16716}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {16736}{s}{s}{4}{0}{}{1.000}{}{0.00}
 E {16725}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {16727}{0}{}{Breadfruit Jungle (Witch Isle/Forest/98)}{\e[0m\e[38;5;22m■\e[0m}{}{Witch Isle}{}{Forest}{}{1.000}{}
+R {16727}{0}{}{Breadfruit Jungle (Witch Isle/Forest/99)}{\e[0m\e[38;5;22m■\e[0m}{}{Witch Isle}{}{Forest}{}{1.000}{}
 E {16728}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {16717}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {16737}{s}{s}{4}{0}{}{1.000}{}{0.00}
@@ -17945,7 +17945,7 @@ E {16737}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {16726}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {16735}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {16737}{0}{}{The Shadow Palm (Witch Isle/Forest/98)}{\e[0m\e[38;5;22m■\e[0m}{}{Witch Isle}{}{Forest}{}{1.000}{}
+R {16737}{0}{}{The Shadow Palm (Witch Isle/Forest/99)}{\e[0m\e[38;5;22m■\e[0m}{}{Witch Isle}{}{Forest}{}{1.000}{}
 E {16738}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {16727}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {16747}{s}{s}{4}{0}{}{1.000}{}{0.00}
@@ -17989,12 +17989,12 @@ E {16745}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {16754}{s}{s}{4}{0}{}{1.000}{}{0.00}
 E {16743}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {16745}{0}{}{The Broken Village (Witch Isle/Inside/98)}{\e[0m\e[38;5;94m■\e[0m}{}{Witch Isle}{}{Inside}{}{1.000}{}
+R {16745}{0}{}{The Broken Village (Witch Isle/Inside/99)}{\e[0m\e[38;5;94m■\e[0m}{}{Witch Isle}{}{Inside}{}{1.000}{}
 E {16746}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {16755}{s}{s}{4}{0}{}{1.000}{}{0.00}
 E {16744}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {16746}{0}{}{The Broken Village (Witch Isle/Inside/98)}{\e[0m\e[38;5;94m■\e[0m}{}{Witch Isle}{}{Inside}{}{1.000}{}
+R {16746}{0}{}{The Broken Village (Witch Isle/Inside/99)}{\e[0m\e[38;5;94m■\e[0m}{}{Witch Isle}{}{Inside}{}{1.000}{}
 E {16747}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {16756}{s}{s}{4}{0}{}{1.000}{}{0.00}
 E {16745}{w}{w}{8}{0}{}{1.000}{}{0.00}
@@ -18031,7 +18031,7 @@ E {16742}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {16762}{s}{s}{4}{0}{}{1.000}{}{0.00}
 E {16751}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {16753}{0}{}{Bone-Hung Rise (Witch Isle/Hills/98)}{\e[0m\e[38;5;58m^\e[0m}{}{Witch Isle}{}{Hills}{}{1.000}{}
+R {16753}{0}{}{Bone-Hung Rise (Witch Isle/Hills/99)}{\e[0m\e[38;5;58m^\e[0m}{}{Witch Isle}{}{Hills}{}{1.000}{}
 E {16754}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {16743}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {16763}{s}{s}{4}{0}{}{1.000}{}{0.00}
@@ -18081,7 +18081,7 @@ E {16763}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {16752}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {16772}{s}{s}{4}{0}{}{1.000}{}{0.00}
 
-R {16763}{0}{}{Basalt Knife Ridge (Witch Isle/Hills/98)}{\e[0m\e[38;5;58m^\e[0m}{}{Witch Isle}{}{Hills}{}{1.000}{}
+R {16763}{0}{}{Basalt Knife Ridge (Witch Isle/Hills/99)}{\e[0m\e[38;5;58m^\e[0m}{}{Witch Isle}{}{Hills}{}{1.000}{}
 E {16764}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {16753}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {16773}{s}{s}{4}{0}{}{1.000}{}{0.00}
@@ -18250,7 +18250,7 @@ E {16796}{w}{w}{8}{0}{}{1.000}{}{0.00}
 R {16798}{0}{}{The Last Bone Gate (Witch Isle/Inside/99)}{\e[0m\e[38;5;94m■\e[0m}{}{Witch Isle}{}{Inside}{}{1.000}{}
 E {16788}{n}{n}{1}{0}{}{1.000}{}{0.00}
 
-R {16799}{0}{}{The Moon-Drowned Heart (Witch Isle/Inside/98)}{\e[0m\e[38;5;94m■\e[0m}{}{Witch Isle}{}{Inside}{}{1.000}{}
+R {16799}{0}{}{The Moon-Drowned Heart (Witch Isle/Inside/99)}{\e[0m\e[38;5;94m■\e[0m}{}{Witch Isle}{}{Inside}{}{1.000}{}
 E {16789}{n}{n}{1}{0}{}{1.000}{}{0.00}
 
 R {16800}{0}{}{Bleak Crossroads (If It Bleeds/Inside/99)}{\e[0m\e[38;5;94m■\e[0m}{}{If It Bleeds}{}{Inside}{}{1.000}{}
@@ -19634,19 +19634,19 @@ R {17381}{0}{}{Maladon Keep — Shadow Stairwell (Vega Jane II/Smooth/104)}{\e[0
 E {17378}{s}{s}{4}{0}{}{1.000}{}{0.00}
 E {17382}{u}{u}{16}{0}{}{1.000}{}{0.00}
 
-R {17382}{0}{}{Maladon Keep — Broken Landing (Vega Jane II/Smooth/103)}{\e[0m\e[38;5;248m■\e[0m}{}{Vega Jane II}{}{Smooth}{}{1.000}{}
+R {17382}{0}{}{Maladon Keep — Broken Landing (Vega Jane II/Smooth/104)}{\e[0m\e[38;5;248m■\e[0m}{}{Vega Jane II}{}{Smooth}{}{1.000}{}
 E {17381}{d}{d}{32}{0}{}{1.000}{}{0.00}
 E {17383}{s}{s}{4}{0}{}{1.000}{}{0.00}
 
-R {17383}{0}{}{Maladon Keep — The Watcher's Room (Vega Jane II/Smooth/103)}{\e[0m\e[38;5;248m■\e[0m}{}{Vega Jane II}{}{Smooth}{}{1.000}{}
+R {17383}{0}{}{Maladon Keep — The Watcher's Room (Vega Jane II/Smooth/104)}{\e[0m\e[38;5;248m■\e[0m}{}{Vega Jane II}{}{Smooth}{}{1.000}{}
 E {17385}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {17382}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {17384}{s}{s}{4}{0}{}{1.000}{}{0.00}
 
-R {17384}{0}{}{Maladon Keep — Ivy-Strangled Balcony (Vega Jane II/Smooth/103)}{\e[0m\e[38;5;248m■\e[0m}{}{Vega Jane II}{}{Smooth}{}{1.000}{}
+R {17384}{0}{}{Maladon Keep — Ivy-Strangled Balcony (Vega Jane II/Smooth/104)}{\e[0m\e[38;5;248m■\e[0m}{}{Vega Jane II}{}{Smooth}{}{1.000}{}
 E {17383}{n}{n}{1}{0}{}{1.000}{}{0.00}
 
-R {17385}{0}{}{Maladon Keep — The Cloistered Chamber (Vega Jane II/Smooth/103)}{\e[0m\e[38;5;248m■\e[0m}{}{Vega Jane II}{}{Smooth}{}{1.000}{}
+R {17385}{0}{}{Maladon Keep — The Cloistered Chamber (Vega Jane II/Smooth/104)}{\e[0m\e[38;5;248m■\e[0m}{}{Vega Jane II}{}{Smooth}{}{1.000}{}
 E {17394}{u}{u}{16}{0}{}{1.000}{}{0.00}
 E {17383}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
@@ -19714,10 +19714,10 @@ E {17404}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {17399}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {17403}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {17401}{0}{}{Maladon Keep — Western Cell (Vega Jane III/Smooth/104)}{\e[0m\e[38;5;248m■\e[0m}{}{Vega Jane III}{}{Smooth}{}{1.000}{}
+R {17401}{0}{}{Maladon Keep — Western Cell (Vega Jane III/Smooth/105)}{\e[0m\e[38;5;248m■\e[0m}{}{Vega Jane III}{}{Smooth}{}{1.000}{}
 E {17399}{e}{e}{2}{0}{}{1.000}{}{0.00}
 
-R {17402}{0}{}{Maladon Keep — Eastern Cell (Vega Jane III/Smooth/104)}{\e[0m\e[38;5;248m■\e[0m}{}{Vega Jane III}{}{Smooth}{}{1.000}{}
+R {17402}{0}{}{Maladon Keep — Eastern Cell (Vega Jane III/Smooth/105)}{\e[0m\e[38;5;248m■\e[0m}{}{Vega Jane III}{}{Smooth}{}{1.000}{}
 E {17399}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
 R {17403}{0}{}{Maladon Keep — Chained Remorse (Vega Jane III/Smooth/105)}{\e[0m\e[38;5;248m■\e[0m}{}{Vega Jane III}{}{Smooth}{}{1.000}{}
@@ -27446,7 +27446,7 @@ E {18624}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
 R {26002}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
-R {26003}{0}{}{In the thick forest (Knight Tree, Alice, etc/Hills/146)}{\e[0m\e[38;5;58m^\e[0m}{}{Knight Tree, Alice, etc}{}{Hills}{}{1.000}{}
+R {26003}{0}{}{In the thick forest (Knight Tree, Alice, etc/Hills/147)}{\e[0m\e[38;5;58m^\e[0m}{}{Knight Tree, Alice, etc}{}{Hills}{}{1.000}{}
 E {26004}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {26016}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {3443}{s}{s}{4}{0}{}{1.000}{}{0.00}
@@ -27495,7 +27495,7 @@ E {18623}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
 R {26015}{0}{}{}{ }{}{}{}{}{}{1.000}{}
 
-R {26016}{0}{}{In the thick forest (Knight Tree, Alice, etc/Hills/146)}{\e[0m\e[38;5;58m^\e[0m}{}{Knight Tree, Alice, etc}{}{Hills}{}{1.000}{}
+R {26016}{0}{}{In the thick forest (Knight Tree, Alice, etc/Hills/147)}{\e[0m\e[38;5;58m^\e[0m}{}{Knight Tree, Alice, etc}{}{Hills}{}{1.000}{}
 E {26017}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {26027}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {26003}{s}{s}{4}{0}{}{1.000}{}{0.00}
@@ -27543,7 +27543,7 @@ E {26037}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {26013}{s}{s}{4}{0}{}{1.000}{}{0.00}
 E {26025}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {26027}{0}{}{In the thick forest (Knight Tree, Alice, etc/Hills/146)}{\e[0m\e[38;5;58m^\e[0m}{}{Knight Tree, Alice, etc}{}{Hills}{}{1.000}{}
+R {26027}{0}{}{In the thick forest (Knight Tree, Alice, etc/Hills/147)}{\e[0m\e[38;5;58m^\e[0m}{}{Knight Tree, Alice, etc}{}{Hills}{}{1.000}{}
 E {26028}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {26039}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {26016}{s}{s}{4}{0}{}{1.000}{}{0.00}
@@ -27583,7 +27583,7 @@ E {26058}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {26014}{s}{s}{4}{0}{}{1.000}{}{0.00}
 E {18623}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {26039}{0}{}{In the thick forest (Knight Tree, Alice, etc/Hills/146)}{\e[0m\e[38;5;58m^\e[0m}{}{Knight Tree, Alice, etc}{}{Hills}{}{1.000}{}
+R {26039}{0}{}{In the thick forest (Knight Tree, Alice, etc/Hills/147)}{\e[0m\e[38;5;58m^\e[0m}{}{Knight Tree, Alice, etc}{}{Hills}{}{1.000}{}
 E {26040}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {26059}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {26027}{s}{s}{4}{0}{}{1.000}{}{0.00}
@@ -27632,7 +27632,7 @@ E {26065}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {26038}{s}{s}{4}{0}{}{1.000}{}{0.00}
 E {18619}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {26059}{0}{}{In the thick forest (Knight Tree, Alice, etc/Hills/146)}{\e[0m\e[38;5;58m^\e[0m}{}{Knight Tree, Alice, etc}{}{Hills}{}{1.000}{}
+R {26059}{0}{}{In the thick forest (Knight Tree, Alice, etc/Hills/147)}{\e[0m\e[38;5;58m^\e[0m}{}{Knight Tree, Alice, etc}{}{Hills}{}{1.000}{}
 E {26060}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {26066}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {26039}{s}{s}{4}{0}{}{1.000}{}{0.00}
@@ -27673,7 +27673,7 @@ E {26072}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {26058}{s}{s}{4}{0}{}{1.000}{}{0.00}
 E {26120}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {26066}{0}{}{In the thick forest (Knight Tree, Alice, etc/Hills/146)}{\e[0m\e[38;5;58m^\e[0m}{}{Knight Tree, Alice, etc}{}{Hills}{}{1.000}{}
+R {26066}{0}{}{In the thick forest (Knight Tree, Alice, etc/Hills/147)}{\e[0m\e[38;5;58m^\e[0m}{}{Knight Tree, Alice, etc}{}{Hills}{}{1.000}{}
 E {26067}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {26073}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {26059}{s}{s}{4}{0}{}{1.000}{}{0.00}
@@ -27706,7 +27706,7 @@ E {26079}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {26065}{s}{s}{4}{0}{}{1.000}{}{0.00}
 E {26121}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {26073}{0}{}{In the thick forest (Knight Tree, Alice, etc/Hills/146)}{\e[0m\e[38;5;58m^\e[0m}{}{Knight Tree, Alice, etc}{}{Hills}{}{1.000}{}
+R {26073}{0}{}{In the thick forest (Knight Tree, Alice, etc/Hills/147)}{\e[0m\e[38;5;58m^\e[0m}{}{Knight Tree, Alice, etc}{}{Hills}{}{1.000}{}
 E {26074}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {26080}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {26066}{s}{s}{4}{0}{}{1.000}{}{0.00}
@@ -27739,7 +27739,7 @@ E {15491}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {26072}{s}{s}{4}{0}{}{1.000}{}{0.00}
 E {26122}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {26080}{0}{}{In the thick forest (Knight Tree, Alice, etc/Hills/146)}{\e[0m\e[38;5;58m^\e[0m}{}{Knight Tree, Alice, etc}{}{Hills}{}{1.000}{}
+R {26080}{0}{}{In the thick forest (Knight Tree, Alice, etc/Hills/147)}{\e[0m\e[38;5;58m^\e[0m}{}{Knight Tree, Alice, etc}{}{Hills}{}{1.000}{}
 E {26081}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {15491}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {26073}{s}{s}{4}{0}{}{1.000}{}{0.00}
@@ -33420,7 +33420,7 @@ E {31427}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {31465}{s}{s}{4}{0}{}{1.000}{}{0.00}
 E {31446}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {31448}{0}{}{Haunted Sea (The Deathlands/Water/174)}{\e[0m\e[38;5;39m~\e[0m}{}{The Deathlands}{}{Water}{}{1.000}{}
+R {31448}{0}{}{Haunted Sea (The Deathlands/Water/175)}{\e[0m\e[38;5;39m~\e[0m}{}{The Deathlands}{}{Water}{}{1.000}{}
 E {31449}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {31428}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {31466}{s}{s}{4}{0}{}{1.000}{}{0.00}
@@ -34587,9 +34587,13 @@ E {31648}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {31688}{s}{s}{4}{0}{}{1.000}{}{0.00}
 E {31666}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {31668}{0}{}{}{ }{}{}{}{}{}{1.000}{}
+R {31668}{0}{}{A desolate wasteland (The Deathlands/Desert/177)}{\e[0m\e[38;5;136m■\e[0m}{}{The Deathlands}{}{Desert}{}{1.000}{}
+E {31669}{e}{e}{2}{0}{}{1.000}{}{0.00}
+E {31649}{n}{n}{1}{0}{}{1.000}{}{0.00}
+E {31689}{s}{s}{4}{0}{}{1.000}{}{0.00}
+E {31667}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {31669}{0}{}{A desolate wasteland (The Deathlands/Desert/176)}{\e[0m\e[38;5;136m■\e[0m}{}{The Deathlands}{}{Desert}{}{1.000}{}
+R {31669}{0}{}{A desolate wasteland (The Deathlands/Desert/177)}{\e[0m\e[38;5;136m■\e[0m}{}{The Deathlands}{}{Desert}{}{1.000}{}
 E {31670}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {31650}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {31690}{s}{s}{4}{0}{}{1.000}{}{0.00}
@@ -34684,31 +34688,31 @@ E {31663}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {31705}{s}{s}{4}{0}{}{1.000}{}{0.00}
 E {31683}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {31685}{0}{}{A desolate wasteland (The Deathlands/Desert/176)}{\e[0m\e[38;5;136m■\e[0m}{}{The Deathlands}{}{Desert}{}{1.000}{}
+R {31685}{0}{}{A desolate wasteland (The Deathlands/Desert/177)}{\e[0m\e[38;5;136m■\e[0m}{}{The Deathlands}{}{Desert}{}{1.000}{}
 E {31686}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {31664}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {31706}{s}{s}{4}{0}{}{1.000}{}{0.00}
 E {31684}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {31686}{0}{}{A desolate wasteland (The Deathlands/Desert/176)}{\e[0m\e[38;5;136m■\e[0m}{}{The Deathlands}{}{Desert}{}{1.000}{}
+R {31686}{0}{}{A desolate wasteland (The Deathlands/Desert/177)}{\e[0m\e[38;5;136m■\e[0m}{}{The Deathlands}{}{Desert}{}{1.000}{}
 E {31687}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {31665}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {31707}{s}{s}{4}{0}{}{1.000}{}{0.00}
 E {31685}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {31687}{0}{}{A desolate wasteland (The Deathlands/Desert/176)}{\e[0m\e[38;5;136m■\e[0m}{}{The Deathlands}{}{Desert}{}{1.000}{}
+R {31687}{0}{}{A desolate wasteland (The Deathlands/Desert/177)}{\e[0m\e[38;5;136m■\e[0m}{}{The Deathlands}{}{Desert}{}{1.000}{}
 E {31688}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {31666}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {31708}{s}{s}{4}{0}{}{1.000}{}{0.00}
 E {31686}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {31688}{0}{}{A desolate wasteland (The Deathlands/Desert/176)}{\e[0m\e[38;5;136m■\e[0m}{}{The Deathlands}{}{Desert}{}{1.000}{}
+R {31688}{0}{}{A desolate wasteland (The Deathlands/Desert/177)}{\e[0m\e[38;5;136m■\e[0m}{}{The Deathlands}{}{Desert}{}{1.000}{}
 E {31689}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {31667}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {31709}{s}{s}{4}{0}{}{1.000}{}{0.00}
 E {31687}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {31689}{0}{}{A desolate wasteland (The Deathlands/Desert/176)}{\e[0m\e[38;5;136m■\e[0m}{}{The Deathlands}{}{Desert}{}{1.000}{}
+R {31689}{0}{}{A desolate wasteland (The Deathlands/Desert/177)}{\e[0m\e[38;5;136m■\e[0m}{}{The Deathlands}{}{Desert}{}{1.000}{}
 E {31690}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {31668}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {31710}{s}{s}{4}{0}{}{1.000}{}{0.00}
@@ -34805,13 +34809,13 @@ E {31684}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {31722}{s}{s}{4}{0}{}{1.000}{}{0.00}
 E {31704}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {31706}{0}{}{A desolate wasteland (The Deathlands/Desert/177)}{\e[0m\e[38;5;136m■\e[0m}{}{The Deathlands}{}{Desert}{}{1.000}{}
+R {31706}{0}{}{A desolate wasteland (The Deathlands/Desert/178)}{\e[0m\e[38;5;136m■\e[0m}{}{The Deathlands}{}{Desert}{}{1.000}{}
 E {31707}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {31685}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {31723}{s}{s}{4}{0}{}{1.000}{}{0.00}
 E {31705}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {31707}{0}{}{A desolate wasteland (The Deathlands/Desert/177)}{\e[0m\e[38;5;136m■\e[0m}{}{The Deathlands}{}{Desert}{}{1.000}{}
+R {31707}{0}{}{A desolate wasteland (The Deathlands/Desert/178)}{\e[0m\e[38;5;136m■\e[0m}{}{The Deathlands}{}{Desert}{}{1.000}{}
 E {31708}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {31686}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {31724}{s}{s}{4}{0}{}{1.000}{}{0.00}
@@ -34911,7 +34915,7 @@ E {31706}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {31739}{s}{s}{4}{0}{}{1.000}{}{0.00}
 E {31722}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {31724}{0}{}{A desolate wasteland (The Deathlands/Desert/177)}{\e[0m\e[38;5;136m■\e[0m}{}{The Deathlands}{}{Desert}{}{1.000}{}
+R {31724}{0}{}{A desolate wasteland (The Deathlands/Desert/178)}{\e[0m\e[38;5;136m■\e[0m}{}{The Deathlands}{}{Desert}{}{1.000}{}
 E {31725}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {31707}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {31740}{s}{s}{4}{0}{}{1.000}{}{0.00}
@@ -35004,7 +35008,7 @@ E {31723}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {31756}{s}{s}{4}{0}{}{1.000}{}{0.00}
 E {31738}{w}{w}{8}{0}{}{1.000}{}{0.00}
 
-R {31740}{0}{}{A desolate wasteland (The Deathlands/Desert/177)}{\e[0m\e[38;5;136m■\e[0m}{}{The Deathlands}{}{Desert}{}{1.000}{}
+R {31740}{0}{}{A desolate wasteland (The Deathlands/Desert/178)}{\e[0m\e[38;5;136m■\e[0m}{}{The Deathlands}{}{Desert}{}{1.000}{}
 E {31741}{e}{e}{2}{0}{}{1.000}{}{0.00}
 E {31724}{n}{n}{1}{0}{}{1.000}{}{0.00}
 E {31757}{s}{s}{4}{0}{}{1.000}{}{0.00}

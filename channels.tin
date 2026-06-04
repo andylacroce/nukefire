@@ -61,6 +61,7 @@
 #ACTION {\[ NUKEFIRE MUDVAULT \] %*} {_leader_log {nukefire/logs/broadcast.log} {%1} {%0}}
 #ACTION {\[ DCC SYSTEM \] %*} {_leader_log {nukefire/logs/broadcast.log} {%1} {%0}}
 #ACTION {\[FACETED WORK\] %*} {_leader_log {nukefire/logs/broadcast.log} {%1} {%0}}
+#ACTION {\[IMPLANT WORK\] %*} {_leader_log {nukefire/logs/broadcast.log} {%1} {%0}}
 #ACTION {Skynet\(TM\) %*} {
     #if {!${is_follower}} {
         #variable {_chlog_ok} {1};

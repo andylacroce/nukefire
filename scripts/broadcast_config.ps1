@@ -5,6 +5,7 @@
 $script:BroadcastPatterns = @(
     @{ Regex = '^\[GLORY\] (.+)$';                Label = '[GLORY]';         Color = 'Yellow'     }
     @{ Regex = '^\[FACETED WORK\] (.+)$';          Label = '[FACETED WORK]';  Color = 'Magenta'    }
+    @{ Regex = '^\[IMPLANT WORK\] (.+)$';          Label = '[IMPLANT WORK]';  Color = 'Blue'       }
     @{ Regex = '^\[ NEW ITEM EVENT \] (.+)$';      Label = '[ NEW ITEM ]';    Color = 'Green'      }
     @{ Regex = '^\[ DCC SYSTEM \] (.+)$';          Label = '[ DCC ]';         Color = 'Red'        }
     @{ Regex = '^\[ NUKEFIRE MUDVAULT \] (.+)$';   Label = '[ MUDVAULT ]';    Color = 'Cyan'       }
