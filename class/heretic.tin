@@ -315,7 +315,7 @@
     };
 } {1}
 
-#ACTION {You rise a level!} {
+#ACTION {*** LEVEL UP! You advanced to level %1!} {
     sc;
 	emote gained a level and dances a celebratory jig.;
 	#delay {3} {

@@ -1,7 +1,13 @@
 # Always run in a fresh process so Add-Type never hits stale cached types.
 # Detect which shell executable to use so child shells match the current runtime
 # (keeps behaviour the same when running under Windows PowerShell or PowerShell 7).
-$ShellExe = if ($PSVersionTable.PSEdition -eq 'Core') { 'pwsh' } else { 'powershell' }
+# Resolved to a full path (not just the bare name) so that Windows Terminal's
+# long-lived "monarch" process — which caches PATH from whenever it first
+# started and won't see updates from a later PowerShell install/upgrade —
+# can still launch it correctly.
+$ShellCmd = if ($PSVersionTable.PSEdition -eq 'Core') { 'pwsh' } else { 'powershell' }
+$ShellExe = (Get-Command $ShellCmd -ErrorAction SilentlyContinue).Source
+if (-not $ShellExe) { $ShellExe = $ShellCmd }
 
 if (-not $env:NUKEFIRE_LAUNCHED) {
     $env:NUKEFIRE_LAUNCHED = '1'
